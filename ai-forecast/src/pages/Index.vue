@@ -7,7 +7,7 @@
             <q-item-label>Photos</q-item-label>
           </q-item-section>
         </q-item>
-
+<!-- //ljkl -->
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
             <q-item-label>Videos</q-item-label>
