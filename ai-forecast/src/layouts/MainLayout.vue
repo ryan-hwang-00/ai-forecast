@@ -1,5 +1,6 @@
 <template>
-  <q-layout view="hhh LpR fff">
+
+  <q-layout view="hHh LpR fff">
 
     <q-header bordered class="bg-primary text-white" height-hint="98">
       <q-toolbar>
@@ -22,6 +23,7 @@
       <router-view />
     </q-page-container>
 
+
   </q-layout>
 </template>
 
@@ -29,11 +31,13 @@
 export default {
   data () {
     return {
+
     }
   }
 }
 </script><!--
 <template>
+
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -139,5 +143,7 @@ export default {
     }
   }
 }
+
 </script>
 -->
+
