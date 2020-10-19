@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Foreca Machine
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>FM v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
