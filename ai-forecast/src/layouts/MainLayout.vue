@@ -1,4 +1,38 @@
 <template>
+  <q-layout view="hhh LpR fff">
+
+    <q-header bordered class="bg-primary text-white" height-hint="98">
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-avatar>
+            <!-- <img src="https://cdn.quasar.dev/logo/svg/quasar-logo.svg"> -->
+          </q-avatar>
+          Foreca Machine
+        </q-toolbar-title>
+      </q-toolbar>
+
+      <q-tabs align="left">
+        <q-route-tab to="/store" label="store" />
+        <q-route-tab to="/page2" label="Page Two" />
+      </q-tabs>
+    </q-header>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+  </q-layout>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+    }
+  }
+}
+</script><!--
+<template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -105,3 +139,4 @@ export default {
   }
 }
 </script>
+-->
