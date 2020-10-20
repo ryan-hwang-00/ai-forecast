@@ -32,7 +32,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'test1', component: () => import('pages/test1.vue') }
+      { path: 'predict_variables', component: () => import('pages/predict_variables.vue') }
     ]
   },
 
@@ -41,13 +41,6 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: 'main_test', component: () => import('pages/main_test.vue') }
-    ]
-  },
-  {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
-    children: [
-      { path: 'test2', component: () => import('pages/test2.vue') }
     ]
   },
 
