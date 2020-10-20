@@ -13,11 +13,11 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-pa-md">
-            <q-btn unelevated color="light-green-7" size="lg" class="full-width" label="Login" />
+            <q-btn unelevated color="blue" size="lg" class="full-width" label="Login" />
           </q-card-actions>
-          <q-card-section class="text-center q-pa-none">
+          <q-card-section class="text-center q-pa-none" >
             <p class="text-grey-10">If you are not registered, please register first</p>
-            <q-btn rounded standout v-model="text" label="회원가입" />
+            <q-btn rounded standout v-model=text label="회원가입" to="/register" />
           </q-card-section>
         </q-card>
       </div>
