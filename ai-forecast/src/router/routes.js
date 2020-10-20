@@ -50,7 +50,13 @@ const routes = [
       { path: 'test2', component: () => import('pages/test2.vue') }
     ]
   },
-
+  {
+    path: '/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: 'item', component: () => import('pages/item.vue') }
+    ]
+  },
 
   
 ]
