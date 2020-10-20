@@ -14,7 +14,7 @@
 
       <q-tabs align="left">
         <q-route-tab to="/store" label="store" />
-        <q-route-tab to="/page2" label="Page Two" />
+        <q-route-tab to="/item" label="item" />
         <q-route-tab to="/login" label="Login" />
         <q-route-tab to="/predict_variables" label="predic_variables" />
       </q-tabs>
