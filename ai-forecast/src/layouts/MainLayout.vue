@@ -9,10 +9,12 @@
         </q-toolbar-title>
       </q-toolbar>
 
-      <q-tabs align="center">
-        <q-route-tab to="/store" icon="store" label="store" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/login" icon="login" label="Login" />
+
+      <q-tabs align="left">
+        <q-route-tab to="/store" label="store" />
+        <q-route-tab to="/item" label="item" />
+        <q-route-tab to="/login" label="Login" />
+        <q-route-tab to="/predict_variables" label="predic_variables" />
       </q-tabs>
     </q-header>
 

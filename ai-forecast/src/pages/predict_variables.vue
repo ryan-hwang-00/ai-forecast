@@ -1,10 +1,7 @@
 <template>
-  
-  
-
-  <div class="row q-pa-md justify-around">
-
-    <q-btn-dropdown color="primary" label="상품명">
+  <div class="q-pa-md doc-container">
+    <div class="row justify-around">
+      <q-btn-dropdown color="primary" label="상품명">
       <q-list>
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
@@ -37,10 +34,9 @@
         </q-item>   
       </q-list>
     </q-btn-dropdown>
-  
 
-    <!-- 두 번째 버튼 추가해봄 -->
-    <q-btn-dropdown color="primary" label="행사구분">
+
+      <q-btn-dropdown color="primary" label="행사구분">
       <q-list>
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
@@ -57,8 +53,7 @@
     </q-btn-dropdown>
 
 
-    <!-- 세 번째 버튼 -->
-    <q-btn-dropdown color="primary" label="휴무">
+      <q-btn-dropdown color="primary" label="휴무">
       <q-list>
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
@@ -73,40 +68,50 @@
         </q-item>        
       </q-list>
     </q-btn-dropdown>
+    
 
-<!-- 날짜 선택창  -->
-    <!-- <div class="q-pb-sm">
-      Model: {{ model }}
+    
+
+    
+
+      
     </div>
 
-    <q-date v-model="model" range /> -->
-<!-- 날짜 선택창  -->
+    
+<br/>
+<!-- <br/> -->
+
+    
+      <!-- <div class="column items-center" style="height: 100px"> -->
+          
+          
+          <!-- <div class="col-1">  </div>
+          <div class="col-1"> 11 </div>
+          <div class="col-1"> 22 </div> -->
+          <!-- <div class="col-1 self-center"> 11 </div> -->
+          
 
 
-    <!-- 네 번째 버튼 -->
-    <!-- <q-btn-dropdown color="primary" label="광고등급">
-      <q-list>
-        <q-item clickable v-close-popup @click="onItemClick">
-          <q-item-section>
-            <q-item-label>정상영업</q-item-label>
-          </q-item-section>
-        </q-item>
+      <!-- </div>   -->
+      <!-- column items-center 끝 -->
 
-        <q-item clickable v-close-popup @click="onItemClick">
-          <q-item-section>
-            <q-item-label>매장휴무</q-item-label>
-          </q-item-section>
-        </q-item>        
-      </q-list>
-    </q-btn-dropdown> -->
+      <div class="column items-center" style="height: 50px">
+      <div class="q-pa-md">
+          
+          
+          <div class="col-1 q-pb-sm">{{ model }}</div>
+          <q-date v-model="model" range />
+          </div>
+      </div>  
+
+      
 
 
     
+    
 
-  
+
+
   </div>
-    
-
   
-
 </template>
