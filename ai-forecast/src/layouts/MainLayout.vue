@@ -1,4 +1,43 @@
 <template>
+
+  <q-layout view="hHh LpR fff">
+
+    <q-header bordered class="bg-primary text-white" height-hint="98">
+      <q-toolbar>
+        <q-toolbar-title class = "absolute-center">
+          Foreca Machine
+        </q-toolbar-title>
+      </q-toolbar>
+
+
+      <q-tabs align="left">
+        <q-route-tab to="/store" label="store" />
+        <q-route-tab to="/item" label="item" />
+        <q-route-tab to="/login" label="Login" />
+        <q-route-tab to="/predict_variables" label="predic_variables" />
+      </q-tabs>
+    </q-header>
+
+    <q-page-container class = 'bg-grey-1'>
+      <router-view />
+    </q-page-container>
+
+
+  </q-layout>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+
+    }
+  }
+}
+
+</script><!--
+<template>
+
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
@@ -12,10 +51,10 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Foreca Machine
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>FM v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -104,4 +143,5 @@ export default {
     }
   }
 }
+
 </script>
