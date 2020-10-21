@@ -1,20 +1,35 @@
 <template>
   <div class="q-pa-md">
-    <q-btn-dropdown color="primary" label="Dropdown Button">
+    <q-btn-dropdown
+      color="primary"
+      label="Dropdown Button"
+    >
       <q-list>
-        <q-item clickable v-close-popup @click="onItemClick">
+        <q-item
+          clickable
+          v-close-popup
+          @click="onItemClick"
+        >
           <q-item-section>
             <q-item-label>Photos</q-item-label>
           </q-item-section>
         </q-item>
-<!-- //ljkl -->
-        <q-item clickable v-close-popup @click="onItemClick">
+        <!-- //ljkl -->
+        <q-item
+          clickable
+          v-close-popup
+          @click="onItemClick"
+        >
           <q-item-section>
             <q-item-label>Videos</q-item-label>
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="onItemClick">
+        <q-item
+          clickable
+          v-close-popup
+          @click="onItemClick"
+        >
           <q-item-section>
             <q-item-label>Articles</q-item-label>
           </q-item-section>
@@ -35,26 +50,50 @@
         height="300px"
         class="bg-primary text-white shadow-1 rounded-borders"
       >
-        <q-carousel-slide name="style" class="column no-wrap flex-center">
-          <q-icon name="style" size="56px" />
+        <q-carousel-slide
+          name="style"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="style"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="tv" class="column no-wrap flex-center">
-          <q-icon name="card_travel" size="56px" />
+        <q-carousel-slide
+          name="tv"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="card_travel"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="layers" class="column no-wrap flex-center">
-          <q-icon name="layers" size="56px" />
+        <q-carousel-slide
+          name="layers"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="layers"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="map" class="column no-wrap flex-center">
-          <q-icon name="terrain" size="56px" />
+        <q-carousel-slide
+          name="map"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="terrain"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
@@ -77,26 +116,50 @@
         height="300px"
         class="bg-purple text-white shadow-1 rounded-borders"
       >
-        <q-carousel-slide name="style" class="column no-wrap flex-center">
-          <q-icon name="style" size="56px" />
+        <q-carousel-slide
+          name="style"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="style"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="tv" class="column no-wrap flex-center">
-          <q-icon name="live_tv" size="56px" />
+        <q-carousel-slide
+          name="tv"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="live_tv"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="layers" class="column no-wrap flex-center">
-          <q-icon name="layers" size="56px" />
+        <q-carousel-slide
+          name="layers"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="layers"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
         </q-carousel-slide>
-        <q-carousel-slide name="map" class="column no-wrap flex-center">
-          <q-icon name="terrain" size="56px" />
+        <q-carousel-slide
+          name="map"
+          class="column no-wrap flex-center"
+        >
+          <q-icon
+            name="terrain"
+            size="56px"
+          />
           <div class="q-mt-md text-center">
             {{ lorem }}
           </div>
