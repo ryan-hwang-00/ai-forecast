@@ -1,24 +1,5 @@
 <template>
-  <div class="q-pa-xl">
-     <div class="q-gutter-md">
-      <q-btn color="red-6" icon="date_range">
-        <div>날짜</div>
-      </q-btn>
-      
-      <q-btn color="yellow-10" icon="fastfood">
-        <div>상품명</div>
-      </q-btn>
-
-      <q-btn color="purple-13" icon="notifications_active">
-        <div>행사</div>
-      </q-btn>
-      
-      <q-btn color="deep-purple-8" icon="beach_access">
-        <div>휴무</div>
-      </q-btn>
-
-
-    </div>
+  <div class="q-pa-md">
     <div class="q-gutter-md">
       <q-carousel
         v-model="slide"
