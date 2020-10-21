@@ -94,3 +94,25 @@
   </div>
   <!-- div 1 -->
 </template>
+
+
+<script>
+export default {
+  methods: {
+    onItemClick () {
+      // console.log('Clicked on an Item')
+    }
+  }
+}
+</script>
+
+
+<script>
+export default {
+  data () {
+    return {
+      model : { 시작: '2020/07/08', 끝 : '2020/07/17' }
+    }
+  }
+}
+</script>
