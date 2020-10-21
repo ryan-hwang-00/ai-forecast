@@ -8,46 +8,67 @@
         <q-card square class="shadow-24" style="width:300px;height:485px;">
           <q-card-section class="bg-primary">
             <h4 class="text-h5 text-white q-my-md">Registration</h4>
-            <div class="absolute-bottom-right q-pr-md" style="transform: translateY(50%);">
-              <q-btn fab icon="close" color="black" />
+            <div class="absolute-bottom-right q-pr-md" 
+                 style="transform: translateY(50%);">
             </div>
           </q-card-section>
 
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <q-input square clearable v-model="email" type="email" label="E-mail">
+              <q-input square clearable v-model="email" 
+              type="email" label="E-mail">
+
                 <template v-slot:prepend>
                   <q-icon name="email" />
                 </template>
               </q-input>
 
-              <q-input square clearable v-model="username" type="username" label="ID">
+              <q-input square clearable v-model="username" 
+              type="username" label="ID">
                 <template v-slot:prepend>
                   <q-icon name="person" />
                 </template>
               </q-input>
 
-              <q-input square clearable v-model="password" type="password1" label="Password">
+              <q-input square clearable v-model="password" 
+              type="password1" label="Password">
                 <template v-slot:prepend>
                   <q-icon name="lock" />
                 </template>    
               </q-input>
 
-              <q-input square clearable v-model="password" type="password2" label="1 more time">
+              <q-input square clearable v-model="password" 
+              type="password2" label="1 more time">
                 <template v-slot:prepend>
                   <q-icon name="lock" />    
                 </template>
               </q-input>
+
             </q-form>
           </q-card-section>
 
-          <q-card-actions class="q-px-lg">
-            <q-btn unelevated size="lg" color="blue" class="full-width text-5-white" label="회원가입완료" />
+          <q-card-actions class="q-pa-md q-gutter-sm">
+            <q-btn label="가입하기" color="primary" @click="small = true" />
+
+              <q-dialog
+              v-model="small">
+              <q-card style="width: 300px">
+                <q-card-section>
+                  <div class="text-h6">완료</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">
+                  가입이 완료되었습니다.
+                </q-card-section>
+
+                <q-card-actions align="right" class="bg-white text-teal">
+                  <q-btn flat label="OK" v-close-popup />
+                </q-card-actions>
+              </q-card>
+            </q-dialog>
+
           </q-card-actions>
 
-          <q-card-section class="text-center q-pa-sm">
-            <p class="text-grey-6">Return to login</p>
-          </q-card-section>
         </q-card>
       </div>
     </div>
@@ -60,13 +81,19 @@ export default {
   name: 'Login',
   data () {
     return {
+
       email: '',
       username: '',
       password: '',
+
+      small: false,
+      medium: false,
+      fullWidth: false,
+      fullHeight: false
     }
   }
 }
-</script>
+</script> 
 
 
 <style lang='sass'>
