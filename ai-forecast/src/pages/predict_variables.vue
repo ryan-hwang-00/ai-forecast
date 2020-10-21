@@ -201,8 +201,6 @@
     <!-- </div>   -->
     <!-- column items-center 끝 -->
 
-<<<<<<< HEAD
-
       <div class="column items-center" style="height: 50px">  
       <!-- div 3 -->
 
@@ -220,22 +218,5 @@
   </div>
   <!-- div 1 -->
   
-=======
-    <div
-      class="column items-center"
-      style="height: 50px"
-    >
-      <div class="q-pa-md">
 
-        <div class="col-1 q-pb-sm">{{ model }}</div>
-        <q-date
-          v-model="model"
-          range
-        />
-      </div>
-    </div>
-
-  </div>
-
->>>>>>> afc77df077056b454477fedc7c07a206a255659e
 </template>
