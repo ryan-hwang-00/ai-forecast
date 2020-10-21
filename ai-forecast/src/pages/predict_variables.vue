@@ -1,7 +1,9 @@
 <template>
-  <div class="q-pa-md doc-container">
-    <div class="row justify-around">
-      <q-btn-dropdown color="primary" label="상품명">
+  <div class="q-pa-md doc-container"> <!-- div 1 -->
+  <!-- <div class="q-pa-md doc-container"> -->
+  <!-- <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly"> -->
+    <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">  <!-- div 2 -->
+      <q-btn-dropdown color="red-10" size="17px" label="상품명">
       <q-list>
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
@@ -36,7 +38,7 @@
     </q-btn-dropdown>
 
 
-      <q-btn-dropdown color="primary" label="행사구분">
+      <q-btn-dropdown color="primary" size="17px" label="행사구분">
       <q-list>
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
@@ -53,7 +55,7 @@
     </q-btn-dropdown>
 
 
-      <q-btn-dropdown color="primary" label="휴무">
+      <q-btn-dropdown color="primary" size="17px" label="휴무">
       <q-list>
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
@@ -68,14 +70,9 @@
         </q-item>        
       </q-list>
     </q-btn-dropdown>
-    
-
-    
-
-    
 
       
-    </div>
+    </div> <!-- div 2 -->
 
     
 <br/>
@@ -95,23 +92,22 @@
       <!-- </div>   -->
       <!-- column items-center 끝 -->
 
-      <div class="column items-center" style="height: 50px">
-      <div class="q-pa-md">
+
+      <div class="column items-center" style="height: 50px">  
+      <!-- div 3 -->
+
+      <div class="q-pa-md">                        <!-- div 4 -->
           
           
           <div class="col-1 q-pb-sm">{{ model }}</div>
           <q-date v-model="model" range />
-          </div>
-      </div>  
-
+          </div>                             <!-- div 4 -->
       
+      </div>         
+      <!-- div 3 -->
 
-
-    
-    
-
-
-
+  
   </div>
+  <!-- div 1 -->
   
 </template>

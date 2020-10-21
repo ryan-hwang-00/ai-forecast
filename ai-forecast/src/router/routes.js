@@ -8,7 +8,6 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'store', component: () => import('pages/store.vue') },
       { path: 'login', component: () => import('pages/login.vue') },
-      { path: 'main_test', component: () => import('pages/main_test.vue') },
       { path: 'register', component: () => import('pages/register.vue') },
       { path: 'predict_variables', component: () => import('pages/predict_variables.vue') },
       { path: 'item', component: () => import('pages/item.vue') }
