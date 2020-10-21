@@ -11,7 +11,8 @@ const routes = [
       { path: 'main_test', component: () => import('pages/main_test.vue') },
       { path: 'register', component: () => import('pages/register.vue') },
       { path: 'predict_variables', component: () => import('pages/predict_variables.vue') },
-      { path: 'item', component: () => import('pages/item.vue') }
+      { path: 'item', component: () => import('pages/item.vue') },
+      { path: 'Predict', component: () => import('pages/Predict.vue') }
     ]
   },
 
