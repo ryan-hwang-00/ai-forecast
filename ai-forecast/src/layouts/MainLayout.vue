@@ -1,27 +1,39 @@
 <template>
-
   <q-layout view="hHh LpR fff">
-
+    
     <q-header bordered class="bg-primary text-white" height-hint="98">
+      
       <q-toolbar>
-        <q-toolbar-title class = "absolute-center">
-          Foreca Machine
+        <q-toolbar-title class = "absolute-top-left">
+          <q-avatar rounded size="150px" >
+            <img src="~assets/FMLogo.svg">
+          </q-avatar>
         </q-toolbar-title>
       </q-toolbar>
 
-
-      <q-tabs align="left">
-        <q-route-tab to="/store" label="store" />
-        <q-route-tab to="/item" label="item" />
+      <q-tabs align="right">
+        <!-- <q-route-tab to="/store" label="store" />
+        <q-route-tab to="/item" label="item" /> -->
         <q-route-tab to="/login" label="Login" />
-        <q-route-tab to="/predict_variables" label="predic_variables" />
+        <!-- <q-route-tab to="/predict_variables" label="predic_variables" /> -->
       </q-tabs>
+
     </q-header>
 
     <q-page-container class = 'bg-grey-1'>
       <router-view />
     </q-page-container>
 
+    <q-footer elevated class="bg-grey-8 text-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <!-- <q-avatar>
+            <img src="~assets/FMLogo.svg">
+          </q-avatar> -->
+          <!-- Title -->
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
 
   </q-layout>
 </template>
@@ -34,8 +46,9 @@ export default {
     }
   }
 }
+</script>
 
-</script><!--
+<!--
 <template>
 
   <q-layout view="lHh Lpr lFf">
@@ -145,3 +158,4 @@ export default {
 }
 
 </script>
+-->
