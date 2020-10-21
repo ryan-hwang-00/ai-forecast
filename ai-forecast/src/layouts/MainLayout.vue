@@ -6,7 +6,7 @@
       <q-toolbar>
         <q-toolbar-title class = "absolute-top-left">
           <q-avatar rounded size="150px" >
-            <img src="~assets/FMLogo.svg">
+            <img src="~assets/FMLogo1.svg">
           </q-avatar>
         </q-toolbar-title>
       </q-toolbar>
