@@ -12,7 +12,9 @@
       >
         <img src="~assets/FMLogo2.svg">
       </q-avatar>
+    </div>
 
+    <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">
       <q-card-section class="text-center q-pa-none">
         <p class="text-grey-10">포카머신을 시작해 볼까요?</p>
         <q-btn
