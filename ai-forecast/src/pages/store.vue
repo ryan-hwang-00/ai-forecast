@@ -38,11 +38,11 @@ export default {
   methods: {
     onItemClickStore1() {
       console.log("store1");
-      this.bread = "store1";
+      this.store1 = "store1";
     },
     onItemClickStore2() {
       console.log("store2");
-      this.fruits = "store2";
+      this.store2 = "store2";
     },
     onBackEndSendClick() {
       const data = {

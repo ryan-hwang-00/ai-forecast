@@ -50,6 +50,7 @@
 </template>
 
 <script>
+import { LocalStorage } from "quasar";
 export default {
   name: 'Login',
   data () {
@@ -60,6 +61,12 @@ export default {
   },
   methods :{
     userCheck() {
+      const user = {
+      store: "store",
+      bread: "",
+      sheck: ""
+      }
+      LocalStorage.set("user", user.store);
       if (this.email == "NG" & this.password == '1111') {
         location.href="http://localhost:8080/#/store";
     }

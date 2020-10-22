@@ -6,7 +6,7 @@
 
       <q-btn
       clickable
-      @click="onItemClickBread"
+      @click="onBackEndSendClick"
       to="/predict_variables">
        <img src="~assets/bread.png" height="100px">
       </q-btn>
@@ -90,12 +90,15 @@ import axios from "axios";
           'sausages': this.sausages
         };
         console.log("data log=========", data);
-        const returnData = axios
-        .post(
-        "http://localhost:8080/api/", // backend endpoint
-        data,
-        options
-        )
+        // const returnData = axios
+        // .post(
+        // "http://localhost:8080/api/", // backend endpoint
+        // data,
+        // options
+        // )
+        const dataTest = axios.get('https://reqres.in/api/users?page=1');
+        console.log(dataTest)
+        
         
         condole.log('returnData', this.returnData);
       }
