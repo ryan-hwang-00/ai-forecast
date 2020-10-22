@@ -48,7 +48,8 @@
           </q-card-section>
 
           <q-card-actions class="q-pa-md q-gutter-sm">
-            <q-btn label="가입하기" color="primary" @click="small = true" />
+            <q-btn label="가입하기" color="primary" type="submit" />
+            <q-btn label="뒤로" color="primary" to="/login" /> 
 
               <q-dialog
               v-model="small">
