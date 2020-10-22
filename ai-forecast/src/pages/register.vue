@@ -49,7 +49,7 @@
 
           <q-card-actions class="q-pa-md q-gutter-sm">
             <q-btn label="가입하기" color="primary" type="submit" />
-            <q-btn label="뒤로" color="primary" to="/login" /> 
+            <q-btn label="뒤로" flat class="q-ml-sm" color="primary" to="/login" /> 
 
               <q-dialog
               v-model="small">
@@ -75,7 +75,6 @@
     </div>
   </q-page>
 </template>
-
 
 <script>
 export default {
