@@ -7,31 +7,33 @@
       <div class="row">
         <q-card square bordered class="q-pa-lg shadow-1">
           <q-card-section>
-            <q-form class="q-gutter-md">
+            <q-form 
+            class="q-gutter-md">
 
               <q-input square filled clearable 
               v-model="email"
-              :rules="[val => !!val ||  'e-mail is wrong!']"
+              :rules="[val => val && val.length > 0  ||  'e-mail is wrong!']"
               type="e-mail" 
               label="e-mail" />
 
               <q-input square filled clearable 
               v-model="password" 
               type="password" 
-              :rules="[val => !!val ||  'password is wrong!']"
+              :rules="[val => val && val.length > 0  ||  'password is wrong!']"
               label="password" />
 
             </q-form>
           </q-card-section>
 
           <q-card-actions class="q-pa-md">
-            <q-btn 
+            <q-btn
             push
             unelevated color="blue" 
+            type="submit"
             size="lg" 
-            class="full-width" 
-            to="/store"
-            label='login'/>
+            class="full-width"
+            @click="userCheck"
+            label = 'login'/>
           </q-card-actions>
 
           <q-card-section class="text-center q-pa-none" >
@@ -49,15 +51,19 @@
 
 <script>
 export default {
-  name:'Login',
+  name: 'Login',
   data () {
-    return { 
-      email : 'naver',
-      password : '1111'
-    }
+    return {
+      email: "",
+      password: ""
+      }
   },
+  methods :{
+    userCheck() {
+      if (this.email == "NG" & this.password == '1111') {
+        location.href="http://localhost:8080/#/store";
+    }
+  }
+}
 }
 </script>
-
-<style>
-</style>
