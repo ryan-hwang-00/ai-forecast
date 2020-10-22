@@ -21,7 +21,7 @@
         title="주간 예측량"
         :data="data1"
         :columns="columns"
-        row-key="name"
+        row-key="Date"
       />
     </div>
 
