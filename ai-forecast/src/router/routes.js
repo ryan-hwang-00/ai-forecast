@@ -28,11 +28,6 @@ const routes = [
     component: () => import('pages/register.vue')
   },
 
-  {
-    path: '/login',
-    component: () => import('pages/store.vue')
-  },
-
 ]
 
 export default routes
