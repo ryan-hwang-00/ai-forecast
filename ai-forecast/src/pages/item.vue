@@ -47,28 +47,59 @@
   </main>
 </template>
 <script>
-
-export default {
-  data () {
-    return {
-  }
-  },
-  methods: {
-    onItemClickBread () {
-      console.log('bread')
+import axios from "axios";
+ 
+  export default {
+    name: "item",
+    data() {
+      return {
+      bread: "",
+      fruits: "",
+      mineralWater: "",
+      ramen: "",
+      sausages: ""
+      };
     },
-    onItemClickFruits () {
-      console.log('fruits')
-    },
-    onItemClickMineralWater () {
-      console.log('mineral-water')
-    },
-    onItemClickRamen () {
-      console.log('ramen')
-    },
-    onItemClickSausages () {
-      console.log('sausages')
+    methods: {
+      onItemClickBread() {
+        console.log("bread");
+        this.bread = "bread";
+      },
+      onItemClickFruits() {
+        console.log("fruits");
+        this.fruits = "fruits";
+      },
+      onItemClickMineralWater() {
+        console.log("mineral-water");
+        this.mineralWater = "mineral-water";
+      },
+      onItemClickRamen() {
+        console.log("ramen");
+        this.ramen = "ramen";
+      },
+      onItemClickSausages() {
+        console.log("sausages");
+        this.sausages = "sausages";
+      },
+      onBackEndSendClick() {
+        const data = {
+          'fruits': this.bread,
+          'bread': this.fruits,
+          'mineralwater': this.mineralWater,
+          'ramen': this.ramen,
+          'sausages': this.sausages
+        };
+        console.log("data log=========", data);
+        const returnData = axios
+        .post(
+        "http://localhost:8080/api/", // backend endpoint
+        data,
+        options
+        )
+        
+        condole.log('returnData', this.returnData);
+      }
     }
-  }
-}
+};
+
 </script>

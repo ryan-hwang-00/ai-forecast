@@ -5,14 +5,14 @@
     <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly" >
       <q-btn color="yellow-10"
       clickable
-       @click="on1ItemClick"
+       @click="onItemClickStore1"
        to="/item">
         <q-icon left size="5em" name="store" /> 
         <div>store 1</div>
       </q-btn>
       <q-btn q-btn color="pink"
       clickable
-       @click="on2ItemClick"
+       @click="onItemClickStore2"
        to="/item">
         <q-icon left size="5em" name="store" /> 
         <div>store 2</div>
@@ -24,18 +24,40 @@
 </template>
 
 <script>
+
+import axios from "axios";
+ 
 export default {
-  data () {
+  name: "store",
+  data() {
     return {
-  }
+    store1: "",
+    store2: "",
+    };
   },
   methods: {
-    on1ItemClick () {
-      console.log('store1')
+    onItemClickStore1() {
+      console.log("store1");
+      this.bread = "store1";
     },
-    on2ItemClick () {
-      console.log('store2')
+    onItemClickStore2() {
+      console.log("store2");
+      this.fruits = "store2";
+    },
+    onBackEndSendClick() {
+      const data = {
+        'store1': this.store1,
+        'store2': this.store2,
+      };
+      console.log("data log=========", data);
+      const returnData = axios
+      .post(
+      "http://localhost:8080/api/", // backend endpoint
+      data,
+      options
+      )
+      condole.log('returnData', this.returnData);
     }
   }
-}
+};
 </script>
