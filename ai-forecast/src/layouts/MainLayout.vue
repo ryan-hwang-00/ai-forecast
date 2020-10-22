@@ -5,9 +5,10 @@
       
       <q-toolbar>
         <q-toolbar-title class = "absolute-top-left">
-          <q-avatar rounded size="150px" >
-            <img src="~assets/FMLogo1.svg">
-          </q-avatar>
+
+          <q-btn clickable to="/">
+            <img src="~assets/FMLogo1.svg" height="98px">
+          </q-btn>
         </q-toolbar-title>
       </q-toolbar>
 

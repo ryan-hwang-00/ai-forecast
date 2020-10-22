@@ -1,24 +1,30 @@
 <template>
   <div class="q-pa-xl">
-     <div class="q-gutter-md">
-      <q-btn color="red-6" icon="date_range">
-        <div>날짜</div>
-      </q-btn>
-      
-      <q-btn color="yellow-10" icon="fastfood">
-        <div>상품명</div>
-      </q-btn>
-
-      <q-btn color="purple-13" icon="notifications_active">
-        <div>행사</div>
-      </q-btn>
-      
-      <q-btn color="deep-purple-8" icon="beach_access">
-        <div>휴무</div>
-      </q-btn>
-
-
+     
+     <div class="q-gutter-sm">
+      <q-chip clickable @click="onClick" color="red-6" text-color="white" icon="date_range">
+       날짜
+      </q-chip>
+      <q-chip clickable @click="onClick" color="yellow-10" text-color="white" icon="fastfood">
+       상품명
+      </q-chip>
+      <q-chip clickable @click="onClick" color="purple-13" text-color="white" icon="notifications_active">
+        행사
+      </q-chip>
+      <q-chip clickable @click="onClick" color="deep-purple-8" text-color="white" icon="beach_access">
+        휴무
+      </q-chip>
     </div>
+
+    <div class="q-pa-md">
+      <q-table
+        title="주간 예측량"
+        :data="data1"
+        :columns="columns"
+        row-key="Date"
+      />
+    </div>
+
     <div class="q-gutter-md">
       <q-carousel
         v-model="slide"
@@ -59,6 +65,7 @@
         </q-carousel-slide>
       </q-carousel>
     </div>
+  
   </div>
 </template>
 
@@ -81,6 +88,68 @@ export default {
       alert('안녕하세요.')
       this.lorem = 'abcde'
     }
+  },
+
+  methods: {
+    onClick () {
+      console.log(onItemClick)
+      this.lorem = '신라면멀티'
+    }
+  },
+
+  data () {
+    return {
+      columns: [
+        {
+          name: 'Date',
+          required: true,
+          label: 'Date',
+          align: 'left',
+          field: 'Date',
+          sortable: true
+        },
+        {
+          name: 'Predict_Value',
+          label: '예측 수량',
+          align: 'right',
+          field: 'Predict_Value',
+          sortable: true
+        }
+      ],
+      data1 : [
+        {
+          Date: '2020-10-23',
+          Predict_Value: 118,
+        },
+        {
+          Date: '2020-10-24',
+          Predict_Value: 131,
+        },
+        {
+          Date: '2020-10-25',
+          Predict_Value: 159,
+        },
+        {
+          Date: '2020-10-26',
+          Predict_Value: 182,
+        },
+        {
+          Date: '2020-10-27',
+          Predict_Value: 159,
+        },
+        {
+          Date: '2020-10-28',
+          Predict_Value: 284,
+        },
+        {
+          Date: '2020-10-29',
+          Predict_Value: 568,
+        },
+      ]
+    }
   }
 }
 </script>
+
+
+
