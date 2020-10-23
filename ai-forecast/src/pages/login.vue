@@ -25,7 +25,9 @@
             </q-form>
           </q-card-section>
 
-          <q-card-actions class="q-pa-md">
+          <q-card-actions 
+          class="q-pa-md">
+           
             <q-btn
             push
             unelevated color="blue" 
@@ -34,7 +36,6 @@
             class="full-width"
             @click="userCheck"
             label = 'login'/>
-        
           </q-card-actions>
 
           <q-card-section class="text-center q-pa-none" >
@@ -50,6 +51,8 @@
 </template>
 
 <script>
+import { LocalStorage } from "quasar";
+
 export default {
   name: 'Login',
   data () {
@@ -58,12 +61,30 @@ export default {
       password: ""
       }
   },
-  methods :{
-    userCheck() {
-      if (this.email == "NG" & this.password == '1111') {
+
+  methods : {
+
+    userCheck: function() {
+      const user = LocalStorage.getItem("user");
+
+      if (this.email == user.email & this.password == user.password) {
         location.href="http://localhost:8080/#/store";
+      
+          this.$q.dialog({
+          title: 'Congratulation!',
+          message: '포커머신에 오신 것을 환영합니다!'
+
+          }).onOk(() => {
+            // console.log('OK')
+          }).onCancel(() => {
+            // console.log('Cancel')
+          }).onDismiss(() => {
+            // console.log('I am triggered on both OK and Cancel')
+          })
+      }
     }
   }
 }
-}
+
+
 </script>
