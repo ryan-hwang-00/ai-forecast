@@ -82,21 +82,6 @@ export default {
     }
   },
 
-  methods: {
-    onItemClick () {
-      console.log('Clicked on an Item')
-      alert('안녕하세요.')
-      this.lorem = 'abcde'
-    }
-  },
-
-  methods: {
-    onClick () {
-      console.log(onItemClick)
-      this.lorem = '신라면멀티'
-    }
-  },
-
   data () {
     return {
       columns: [
