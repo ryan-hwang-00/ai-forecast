@@ -34,12 +34,12 @@
             class="full-width"
             @click="userCheck"
             label = 'login'/>
+        
           </q-card-actions>
 
           <q-card-section class="text-center q-pa-none" >
             <p class="text-grey-10">If you are not registered, please register first</p>
-            <q-btn rounded standout 
-            v-model=text 
+            <q-btn rounded standout  
             label="회원가입" 
             to="/register" />
           </q-card-section>

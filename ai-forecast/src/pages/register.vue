@@ -15,30 +15,31 @@
 
           <q-card-section>
             <q-form class="q-px-sm q-pt-xl q-pb-lg">
-              <q-input square clearable v-model="email" 
-              type="email" label="E-mail">
+
+              <q-input square clearable 
+              v-model="email" 
+              type="email" 
+              label="E-mail">
 
                 <template v-slot:prepend>
                   <q-icon name="email" />
                 </template>
               </q-input>
 
-              <q-input square clearable v-model="username" 
-              type="username" label="ID">
-                <template v-slot:prepend>
-                  <q-icon name="person" />
-                </template>
-              </q-input>
+              <q-input square clearable 
+              v-model="password" 
+              type="password1" 
+              label="Password">
 
-              <q-input square clearable v-model="password" 
-              type="password1" label="Password">
                 <template v-slot:prepend>
                   <q-icon name="lock" />
                 </template>    
               </q-input>
 
-              <q-input square clearable v-model="password" 
-              type="password2" label="1 more time">
+              <q-input square clearable 
+              v-model="password1" 
+              type="password2" 
+              label="one more time">
                 <template v-slot:prepend>
                   <q-icon name="lock" />    
                 </template>
@@ -48,11 +49,19 @@
           </q-card-section>
 
           <q-card-actions class="q-pa-md q-gutter-sm">
-            <q-btn label="가입하기" color="primary" type="submit" />
-            <q-btn label="뒤로" color="primary" to="/login" /> 
 
-              <q-dialog
-              v-model="small">
+            <q-btn 
+            label="가입하기" 
+            color="primary"
+            @click="alert"
+            type="submit" />
+
+            <q-btn label="뒤로" 
+            color="primary" 
+            to="/login" /> 
+
+            <q-dialog 
+            >
               <q-card style="width: 300px">
                 <q-card-section>
                   <div class="text-h6">완료</div>
@@ -76,27 +85,73 @@
   </q-page>
 </template>
 
-
 <script>
+import { LocalStorage } from "quasar";
+ 
 export default {
-  name: 'Login',
-  data () {
-    return {
+ 
+  name: 'register',
+    data () {
+      return {
+        email: '',
+        password: '',
+        password1:'',
+        user: {}
+      }
+    },
 
-      email: '',
-      username: '',
-      password: '',
+  methods: {
+      alert () {
+        if (this.password == "") {
+          
+          this.$q.dialog({
+            title: 'Alert',
+            message: '비밀번호를 입력해주세요!'
 
-      small: false,
-      medium: false,
-      fullWidth: false,
-      fullHeight: false
-    }
+        }).onOk(() => {
+          // console.log('OK')
+        }).onCancel(() => {
+          // console.log('Cancel')
+        }).onDismiss(() => {
+          // console.log('I am triggered on both OK and Cancel')
+        })
+        }
+
+        if (this.password != this.password1) {
+          
+          this.$q.dialog({
+            title: 'Alert',
+            message: '비밀번호를 확인해주세요!'
+
+        }).onOk(() => {
+          // console.log('OK')
+        }).onCancel(() => {
+          // console.log('Cancel')
+        }).onDismiss(() => {
+          // console.log('I am triggered on both OK and Cancel')
+        })
+        }
+
+        else{
+          this.$q.dialog({
+          title: 'Alert',
+          message: '가입이 되었습니다!'
+
+        }).onOk(() => {
+          // console.log('OK')
+        }).onCancel(() => {
+          // console.log('Cancel')
+        }).onDismiss(() => {
+          // console.log('I am triggered on both OK and Cancel')
+        })
+        }
+      }
+   }
   }
-}
 
-</script> 
 
+
+</script>
 
 <style lang='sass'>
     .q-px-lg
