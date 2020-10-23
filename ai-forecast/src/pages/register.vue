@@ -89,7 +89,6 @@
 import { LocalStorage } from "quasar";
  
 export default {
- 
   name: 'register',
     data () {
       return {
@@ -99,43 +98,55 @@ export default {
         user: {}
       }
     },
-
   methods: {
-      alert () {
+    alert () {
         if (this.password == "") {
           
           this.$q.dialog({
-            title: 'Alert',
-            message: '비밀번호를 입력해주세요!'
+          title: 'Alert',
+          message: '비밀번호를 입력해주세요!'
 
-        }).onOk(() => {
-          // console.log('OK')
-        }).onCancel(() => {
-          // console.log('Cancel')
-        }).onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
-        })
-        }
+          }).onOk(() => {
+            // console.log('OK')
+          }).onCancel(() => {
+            // console.log('Cancel')
+          }).onDismiss(() => {
+            // console.log('I am triggered on both OK and Cancel')
+          })
+       }
+    
+        // else if {
+        //   this.$q.dialog({
+        //     title: 'Alert',
+        //     message: '비밀번호를 입력해주세요!'
+        // }
 
-        if (this.password != this.password1) {
+        else if (this.password == this.password1) {
           
           this.$q.dialog({
-            title: 'Alert',
-            message: '비밀번호를 확인해주세요!'
+          title: '가입 성공!',
+          message: '가입되었습니다!'
 
-        }).onOk(() => {
-          // console.log('OK')
-        }).onCancel(() => {
-          // console.log('Cancel')
-        }).onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
-        })
+          }).onOk(() => {
+            // console.log('OK')
+          }).onCancel(() => {
+            // console.log('Cancel')
+          }).onDismiss(() => {
+            // console.log('I am triggered on both OK and Cancel')
+          })
+
+          const user = {
+            email: this.email,
+            password: this.password
+          };
+
+          LocalStorage.set("user", user);
         }
 
-        else{
+        else {
           this.$q.dialog({
           title: 'Alert',
-          message: '가입이 되었습니다!'
+          message: '비밀번호를 확인해주세요!'
 
         }).onOk(() => {
           // console.log('OK')
@@ -145,16 +156,8 @@ export default {
           // console.log('I am triggered on both OK and Cancel')
         })
         }
-      }
-   }
+    }
   }
-
-
+}
 
 </script>
-
-<style lang='sass'>
-    .q-px-lg
-        .block
-            font-size : 17px
-</style>
