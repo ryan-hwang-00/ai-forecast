@@ -66,14 +66,14 @@
 
         <q-item clickable v-close-popup @click="onItemClick">
           <q-item-section>
-            <q-item-label>매장휴무</q-item-label>
+            <q-item-label>일요일 휴무</q-item-label>
           </q-item-section>
         </q-item>        
       </q-list>
     </q-btn-dropdown>
 
       
-    </div> <!-- div 2 -->
+    </div> <!-- /div 2 -->
   
 
 
@@ -83,16 +83,33 @@
       <div class="q-pa-md">                        <!-- div 4 -->
           
           
-          <div class="col-1 q-pb-sm">{{ model }}</div>
-          <q-date v-model="model" range />
-          </div>                             <!-- div 4 -->
+          <div class="col-1 q-pb-sm">{{ date }}</div>
+          <q-date v-model="date"
+          title="Calendar"
+          subtitle="Year" range />
+          </div>                             <!-- /div 4 -->
       
       </div>         
-      <!-- div 3 -->
+      <!-- /div_3 -->
+      
+      
+      </br>   </br>   </br>   </br>   </br>   </br>   </br>   </br>   </br>   
+      </br>   </br>   </br>   </br>   </br>   </br>   </br>  </br> </br> </br>
+      </br>   </br>   </br>   </br>   
+
+      <div class="row justify-end">
+        <!-- div_5 -->
+
+      <q-btn push color="white" text-color="primary" label="Predict" to="/Predict"/>
+
+      </div>
+      <!-- /div_5 -->
+
 
   
   </div>
-  <!-- div 1 -->
+  <!-- /div 1 -->
+
 </template>
 
 
@@ -111,7 +128,7 @@ export default {
 export default {
   data () {
     return {
-      model : { 시작: '2020/07/08', 끝 : '2020/07/17' }
+      date : { 시작: '2020/07/08', 끝 : '2020/07/17' }
     }
   }
 }

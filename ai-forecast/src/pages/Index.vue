@@ -1,5 +1,7 @@
 <template>
   <div class="q-pa-md">
+    
+
     <q-btn-dropdown
       color="primary"
       label="Dropdown Button"
@@ -36,6 +38,7 @@
         </q-item>
       </q-list>
     </q-btn-dropdown>
+    
     <div class="q-gutter-md">
       <q-carousel
         v-model="slide"
@@ -100,7 +103,7 @@
         </q-carousel-slide>
       </q-carousel>
 
-      <q-carousel
+      <!-- <q-carousel
         v-model="slide"
         transition-prev="jump-right"
         transition-next="jump-left"
@@ -164,7 +167,7 @@
             {{ lorem }}
           </div>
         </q-carousel-slide>
-      </q-carousel>
+      </q-carousel> -->
     </div>
   </div>
 </template>
@@ -175,7 +178,7 @@ export default {
   data () {
     return {
       slide: 'style',
-      lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
+      lorem: 'Test1'
     }
   },
   methods: {
