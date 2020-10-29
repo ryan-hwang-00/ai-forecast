@@ -68,7 +68,7 @@ def detect_outliers(df, n, features):
     return multiple_outliers
 
 
-def sep_xy(df):
+def sep_xy(df, x_columns, x_1_columns):
     x_df = df[x_columns]
 #      'man_pop', 'woman_pop', '10s', '20s',,'trend'
 #        '30s', '40s', '50s', '60s', '70s',
@@ -92,22 +92,14 @@ def sep_xy(df):
     return x_df, x_df_1, y_df
 
 
-def preprocessing_data(model_name='1_bac2_dec_para_bic_train',
+def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
+                       model_name='1_bac2_dec_para_bic_train',
                        store_code=1,
                        product_name='백산수2.0L',
                        sequence_x=180 * 4,
                        sequence_y=7):
-    """
-    docstring
-    """
 
-    df = pd.read_csv('AI_Sale_ver3.0.csv', encoding='euc-kr', index_col=0)
-
-    model_name = '1_bac2_dec_para_bic_train'
-    store_code = 1
-    product_name = '백산수2.0L'
-    sequence_x = 180 * 4
-    sequence_y = 7
+    df = pd.read_csv(datasets, encoding='euc-kr', index_col=0)
 
     df['store_code'] = df['store_code'].astype('object')
 
@@ -242,9 +234,9 @@ def preprocessing_data(model_name='1_bac2_dec_para_bic_train',
                    'holi_name_현충일_1_bac_2',
                    'promotion_flag_1_bac_2']
 
-    x_df, x_df_1, y_df = sep_xy(df)
-    x_train, x_train_1, y_train = sep_xy(df_train)
-    x_test, x_test_1, y_test = sep_xy(df_test)
+    x_df, x_df_1, y_df = sep_xy(df, x_columns, x_1_columns)
+    x_train, x_train_1, y_train = sep_xy(df_train,  x_columns, x_1_columns)
+    x_test, x_test_1, y_test = sep_xy(df_test, x_columns, x_1_columns)
 
     x_scaler = MinMaxScaler()
     x_1_scaler = MinMaxScaler()
@@ -266,8 +258,8 @@ def preprocessing_data(model_name='1_bac2_dec_para_bic_train',
     x_test_scaled, x_test_1_scaled, y_test_scaled = get_sequence(
         x_test_scaled, x_test_1_scaled, y_test_scaled, sequence_x=sequence_x, sequence_y=sequence_y)
 
-    column_num_x = x_train_scaled.shape[2]
+    column_num_x = 67
 
-    column_num_x_1 = x_train_1_scaled.shape[2]
+    column_num_x_1 = 48
 
     return x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled
