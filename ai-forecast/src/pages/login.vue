@@ -73,7 +73,7 @@ export default {
           this.$q.dialog({
           title: 'Congratulation!',
           message: '포커머신에 오신 것을 환영합니다!'
-
+        
           }).onOk(() => {
             // console.log('OK')
           }).onCancel(() => {
@@ -82,9 +82,36 @@ export default {
             // console.log('I am triggered on both OK and Cancel')
           })
       }
+
+      else if (this.email == '' & this.password == '') {
+          this.$q.dialog({
+          title: 'Alert',
+          message: '정보를 입력해주세요!'
+
+          }).onOk(() => {
+            // console.log('OK')
+          }).onCancel(() => {
+            // console.log('Cancel')
+          }).onDismiss(() => {
+            // console.log('I am triggered on both OK and Cancel')
+          })    
+      }
+
+      else  {
+          this.$q.dialog({
+          title: 'Alert',
+          message: '회원이 아닙니다!'
+
+        }).onOk(() => {
+          // console.log('OK')
+        }).onCancel(() => {
+          // console.log('Cancel')
+        }).onDismiss(() => {
+          // console.log('I am triggered on both OK and Cancel')
+        })    
     }
   }
 }
-
+}
 
 </script>
