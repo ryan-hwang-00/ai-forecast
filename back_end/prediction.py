@@ -35,7 +35,3 @@ def prediction(x_test_scaled, x_test_1_scaled, y_scaler, weight='1_bac2.hdf5', m
     print('successed inversion')
 
     return y_test_pre_in[-1]
-
-
-print(prediction(x_test_scaled, x_test_1_scaled,
-                 y_scaler, weight='1_bac2.hdf5', model=model))
