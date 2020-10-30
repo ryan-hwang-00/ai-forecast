@@ -121,6 +121,10 @@
 
 
 <script>
+import { LocalStorage } from "quasar";
+
+import axios from "axios";
+
 export default {
   methods: {
     bac_2l () {
@@ -153,16 +157,36 @@ export default {
     },
     summary_alert () {
       console.log('Clicked summary_alert')
-      var item_summary=localStorage.getItem('item_info');
-      var event_summary=localStorage.getItem('event_info');
-      var break_summary=localStorage.getItem('break_info');
+      this.item = localStorage.getItem('item_info');
+      this.event = localStorage.getItem('event_info');
+      this.break = localStorage.getItem('break_info');
       // localStorage.event_222=test_variable
       alert("예측 상품 : " + item_summary + "  할인 정보 : " + event_summary + "  휴무 정보 : " + break_summary);
+    },
+    searchparam () {
+      const data = {
+        "item": this.item,
+        "event": this.event,
+        "break": this.break 
+      }
+      axios.post('http:://localhost:3000/api/v1.0/forecast/sale',
+        data
+      ).then(response => {
+        console.log(response)
+        this.axiosPostResponseData = JSON.stringify(response.data)
+      }).catch((ex) => {
+        console.warn("ERROR!!!!! : ", ex)
+      })
     }
   },
   data () {
     return {
-      date : { 시작: '2020/07/08', 끝 : '2020/07/17' }
+      date : { 시작: '2020/07/08', 끝 : '2020/07/17' },
+      item : '',
+      event : '',
+      break : '',
+      fromdate : '',
+      todate : ''
     }
   }
 }
