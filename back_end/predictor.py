@@ -8,6 +8,7 @@ sequence_y = 7
 model = create_model(column_num_x, column_num_x_1, sequence_x, sequence_y)
 
 
+
 def predictor():
 
     next_week_sales = prediction(x_test_scaled, x_test_1_scaled,
@@ -16,3 +17,4 @@ def predictor():
     print(next_week_sales)
 
     return next_week_sales
+
