@@ -54,12 +54,13 @@
         @click="setMultiLocalStorage()"
       />
 
+
+
       <q-input
         standout
         v-model="textGetJson"
         label="JSON 데이터를 로컬 스토리지에서 가져오기"
       />
-
       <q-btn
         color="white"
         text-color="black"
@@ -67,12 +68,13 @@
         @click="getMultiLocalStorage()"
       />
 
+
+
       <q-input
         standout="bg-teal text-white"
         v-model="textGetJsonSingle"
         label="데이터 중 하나 가져오기"
       />
-
       <q-btn
         color="white"
         text-color="black"
@@ -80,12 +82,13 @@
         @click="getMultiSingleLocalStorage()"
       />
 
+
+
       <q-input
         standout="bg-teal text-white"
         v-model="axiosGetData"
         label="axios 데이터 가져오기"
       />
-
       <q-btn
         color="white"
         text-color="black"
@@ -93,12 +96,13 @@
         @click="getAxios()"
       />
 
+
+
       <q-input
         standout="bg-teal text-white"
         v-model="axiosPostResponseData"
         label="axios post"
       />
-
       <q-btn
         color="white"
         text-color="black"
@@ -184,11 +188,13 @@ export default {
 
     postAxios: function () {
       const data = {
-        "name": "morpheus22",
-        "job": "leader"
+
+        "horizon": "7",
       }
 
-      axios.post('http://127.0.0.1:3000/api/v2.0/forecast/sales'
+      axios.post('http://127.0.0.1:3000/api/v3.0/forecast/sales', 
+      
+      data
       ).then(response => {
 
         console.log(response)
