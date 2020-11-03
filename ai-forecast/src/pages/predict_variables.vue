@@ -100,8 +100,6 @@
         </div>         
         <!-- /div_3 -->
           
-
-    
     </div>
     <!-- /div 1 -->
     <div class="row justify-end q-ma-lg">
@@ -110,48 +108,56 @@
         <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/>
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
         
-
     </div>
         <!-- /div_5 -->
 
-
   </main>
-
 </template>
 
 
 <script>
 export default {
   methods: {
+
     bac_2l () {
       console.log('Clicked test1')
       localStorage.item_info = '백산수_2l';
     },
+
     bac_500ml () {
       console.log('Clicked test2')
       localStorage.item_info = '백산수_500ml';
     },
+
     onItemClick3 () {
       console.log('Clicked test3')
       localStorage.item_info = 'store_test3';
     },
+
     no_event () {
       console.log('Clicked event_info')
       localStorage.event_info = '정상가';
     },
+
     event_on () {
       console.log('Clicked event_info')
       localStorage.event_info = '할인진행';
     },
+
     normal_state () {
       console.log('Clicked break_info')
       localStorage.break_info = '정상영업';
     },
+
     break_day () {
+
       console.log('Clicked break_info')
       localStorage.break_info = '일요휴무';
+
     },
+
     summary_alert () {
+
       console.log('Clicked summary_alert')
       var item_summary=localStorage.getItem('item_info');
       var event_summary=localStorage.getItem('event_info');
@@ -159,11 +165,14 @@ export default {
       // localStorage.event_222=test_variable
       alert("예측 상품 : " + item_summary + "  할인 정보 : " + event_summary + "  휴무 정보 : " + break_summary);
     }
+    
   },
+
   data () {
     return {
       date : { 시작: '2020/07/08', 끝 : '2020/07/17' }
     }
+    
   }
 }
 </script>

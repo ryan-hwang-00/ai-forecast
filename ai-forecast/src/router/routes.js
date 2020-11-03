@@ -16,7 +16,8 @@ const routes = [
       { path: "login", component: () => import("pages/login.vue") },
       { path: "register", component: () => import("pages/register.vue") },
       { path: "item", component: () => import("pages/item.vue") },
-      { path: "Predict", component: () => import("pages/Predict.vue") }
+      { path: "Predict", component: () => import("pages/Predict.vue") },
+      { path: "sample", component: () => import("pages/sample.vue") }
     ]
   },
 
