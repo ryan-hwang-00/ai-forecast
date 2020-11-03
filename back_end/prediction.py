@@ -34,4 +34,7 @@ def prediction(x_test_scaled, x_test_1_scaled, y_scaler, weight='1_bac2.hdf5', m
 
     print('successed inversion')
 
+    # 데이터프레임으로 만들어줘야 할듯?? -> .to_json하려면
+    # y_test_pre_in = pd.DataFrame(y_test_pre_in)
+
     return y_test_pre_in[-1]
