@@ -106,6 +106,8 @@
     <!-- /div 1 -->
     <div class="row justify-end q-ma-lg">
           <!-- div_5 -->
+        <q-btn push color="white" text-color="primary" label="number_store" @click="number_store"/>
+        <q-btn push color="white" text-color="primary" label="dict_check" @click="data_check"/>
         <q-btn push color="white" text-color="primary" label="flask" @click="flask_alert"/>
         <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/>
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
@@ -171,24 +173,87 @@ export default {
       // localStorage.event_222=test_variable
       alert("예측 상품 : " + item_info + "  할인 정보 : " + event_info + "  휴무 정보 : " + break_info);
     },
-    flask_alert () {
+
+    // for test
+    
+    flask_alert : function () {
+
       const data = {
-        // "item": this.item_info,
-        // "event": this.event_info,
-        // "break": this.break_info 
-        "real_y" : 3,
-        "mean_temp" : 2
+
+        "name": "morpheus22",      
+
       }
+
       axios.post('http://127.0.0.1:5000/userLogin',
+
         data
+
       ).then(response => {
-        console.log(response);
-        this.res_data = JSON.stringify(response.data)
+
+        console.log(response)
+
+        localStorage.day1 = JSON.stringify(response.data['day1']);
+        localStorage.day2 = JSON.stringify(response.data['day2']);
+        localStorage.day3 = JSON.stringify(response.data['day3']);
+        // alert(test_data);
+        setTimeout(function() { 
+          this.day1_1=localStorage.day1 }, 50);
+        setTimeout(function() { 
+          alert(this.day1_1) }, 100);
+          
+        // this.day1_1=localStorage.day1;
+
       }).catch((ex) => {
+
         console.warn("ERROR!!!!! : ", ex)
-      })
-      alert(res_data);
+
+      });
+      
+      
+
     },
+    data_check () {
+      console.log('Clicked data_check')
+      this.check_data = localStorage.getItem('test_data');
+      
+      // localStorage.event_222=test_variable
+      alert(this.check_data);
+    },
+    number_store () {
+      localStorage.day1 = 200;
+      localStorage.day2 = 400;
+      localStorage.day3 = 900;
+      localStorage.day4 = 600;
+      localStorage.day5 = 700;
+      localStorage.day6 = 400;
+      localStorage.day7 = 200;
+    },
+
+  
+
+    
+    
+  
+
+    // flask_alert () {
+    //   const data = {
+    //     "item": this.item_info,
+    //     "event": this.event_info,
+    //     "break": this.break_info 
+    //     real_y : 3,
+    //     "mean_temp" : 2
+    //   }
+    //   axios.post('http://127.0.0.1:5000/userLogin',
+    //     {"real_y" : 3,}
+    //   ).then(response => {
+    //     console.log(response)
+    //     localStorage.res_data = JSON.stringify(response.data);
+        
+
+    //   });
+    //   alert(res_data);
+      
+    // },
     searchparam () {
       const data = {
         "item": this.item_info,
@@ -218,4 +283,43 @@ export default {
     }
   }
 }
+
+
+// for test
+// flask_alert () {
+//       postAxios: function () {
+
+//       const data = {
+
+//         "name": "morpheus22",
+
+//         "job": "leader"
+
+//       }
+
+//       axios.post('http://127.0.0.1:5000/userLogin',
+
+//         data
+
+//       ).then(response => {
+
+//         console.log(response)
+
+//         this.axiosPostResponseData = JSON.stringify(response.data)
+
+//       }).catch((ex) => {
+
+//         console.warn("ERROR!!!!! : ", ex)
+
+//       })
+
+//     }
+
+//   },
+
+
+
 </script>
+
+
+
