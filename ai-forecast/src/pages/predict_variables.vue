@@ -26,19 +26,19 @@
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-close-popup @click="onItemClick">
+          <q-item clickable v-close-popup @click="sin_ramyun">
             <q-item-section>
               <q-item-label>신라면 멀티</q-item-label>                    <!-- 3 -->
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-close-popup @click="onItemClick">
+          <q-item clickable v-close-popup @click="ansung_ramyun">
             <q-item-section>
               <q-item-label>안성탕면 멀티</q-item-label>                  <!-- 4 -->
             </q-item-section>
           </q-item>
 
-          <q-item clickable v-close-popup @click="onItemClick">
+          <q-item clickable v-close-popup @click="jin_ramyun">
             <q-item-section>
               <q-item-label>진라면 멀티(순한맛)</q-item-label>            <!-- 5 -->
             </q-item-section>
@@ -106,7 +106,7 @@
     <!-- /div 1 -->
     <div class="row justify-end q-ma-lg">
           <!-- div_5 -->
-
+        <q-btn push color="white" text-color="primary" label="flask" @click="flask_alert"/>
         <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/>
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
         
@@ -128,46 +128,72 @@ import axios from "axios";
 export default {
   methods: {
     bac_2l () {
-      console.log('Clicked test1')
-      localStorage.item_info = '백산수_2l';
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수_2l';
     },
     bac_500ml () {
-      console.log('Clicked test2')
-      localStorage.item_info = '백산수_500ml';
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수_500ml';
     },
-    onItemClick3 () {
-      console.log('Clicked test3')
-      localStorage.item_info = 'store_test3';
+    sin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '신라면_멀티';
+    },
+    ansung_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '안성탕면_멀티';
+    },
+    jin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '진라면_멀티(순한맛)';
     },
     no_event () {
       console.log('Clicked event_info')
-      localStorage.event_info = '정상가';
+      localStorage.event_1 = '정상가';
     },
     event_on () {
       console.log('Clicked event_info')
-      localStorage.event_info = '할인진행';
+      localStorage.event_1 = '할인진행';
     },
     normal_state () {
       console.log('Clicked break_info')
-      localStorage.break_info = '정상영업';
+      localStorage.break_1 = '정상영업';
     },
     break_day () {
       console.log('Clicked break_info')
-      localStorage.break_info = '일요휴무';
+      localStorage.break_1 = '일요휴무';
     },
     summary_alert () {
       console.log('Clicked summary_alert')
-      this.item = localStorage.getItem('item_info');
-      this.event = localStorage.getItem('event_info');
-      this.break = localStorage.getItem('break_info');
+      var item_info = localStorage.getItem('item_1');
+      var event_info = localStorage.getItem('event_1');
+      var break_info = localStorage.getItem('break_1');
       // localStorage.event_222=test_variable
-      alert("예측 상품 : " + item_summary + "  할인 정보 : " + event_summary + "  휴무 정보 : " + break_summary);
+      alert("예측 상품 : " + item_info + "  할인 정보 : " + event_info + "  휴무 정보 : " + break_info);
+    },
+    flask_alert () {
+      const data = {
+        // "item": this.item_info,
+        // "event": this.event_info,
+        // "break": this.break_info 
+        "real_y" : 3,
+        "mean_temp" : 2
+      }
+      axios.post('http://127.0.0.1:5000/userLogin',
+        data
+      ).then(response => {
+        console.log(response);
+        this.res_data = JSON.stringify(response.data)
+      }).catch((ex) => {
+        console.warn("ERROR!!!!! : ", ex)
+      })
+      alert(res_data);
     },
     searchparam () {
       const data = {
-        "item": this.item,
-        "event": this.event,
-        "break": this.break 
+        "item": this.item_info,
+        "event": this.event_info,
+        "break": this.break_info 
       }
       axios.post('http:://localhost:3000/api/v1.0/forecast/sale',
         data
@@ -186,7 +212,9 @@ export default {
       event : '',
       break : '',
       fromdate : '',
-      todate : ''
+      todate : '',
+      res_data: ''
+
     }
   }
 }
