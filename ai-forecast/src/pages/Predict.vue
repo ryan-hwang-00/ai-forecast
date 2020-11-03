@@ -19,7 +19,7 @@
     <div class="q-pa-md">
       <q-table
         title="주간 예측량"
-        :data="data1"
+        :data="data"
         :columns="columns"
         row-key="Date"
       />
@@ -101,7 +101,7 @@ export default {
           sortable: true
         }
       ],
-      data1 : [
+      data : [
         {
           Date: '2020-10-23',
           Predict_Value: 118,
