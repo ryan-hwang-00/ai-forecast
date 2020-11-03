@@ -83,8 +83,6 @@
         
       </div> <!-- /div 2 -->
     
-
-
         <div class="fit row justify-center content-center">
         <!-- div 3 -->
 
@@ -100,8 +98,6 @@
         </div>         
         <!-- /div_3 -->
           
-
-    
     </div>
     <!-- /div 1 -->
     <div class="row justify-end q-ma-lg">
@@ -112,13 +108,10 @@
         <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/>
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
         
-
     </div>
         <!-- /div_5 -->
 
-
   </main>
-
 </template>
 
 
@@ -129,10 +122,12 @@ import axios from "axios";
 
 export default {
   methods: {
+
     bac_2l () {
       console.log('Clicked item')
       localStorage.item_1 = '백산수_2l';
     },
+
     bac_500ml () {
       console.log('Clicked item')
       localStorage.item_1 = '백산수_500ml';
@@ -141,6 +136,7 @@ export default {
       console.log('Clicked item')
       localStorage.item_1 = '신라면_멀티';
     },
+
     ansung_ramyun () {
       console.log('Clicked item')
       localStorage.item_1 = '안성탕면_멀티';
@@ -148,24 +144,34 @@ export default {
     jin_ramyun () {
       console.log('Clicked item')
       localStorage.item_1 = '진라면_멀티(순한맛)';
+
     },
+
     no_event () {
       console.log('Clicked event_info')
       localStorage.event_1 = '정상가';
     },
+
     event_on () {
       console.log('Clicked event_info')
       localStorage.event_1 = '할인진행';
     },
+
     normal_state () {
       console.log('Clicked break_info')
       localStorage.break_1 = '정상영업';
     },
+
     break_day () {
+
       console.log('Clicked break_info')
+
       localStorage.break_1 = '일요휴무';
+
     },
+
     summary_alert () {
+
       console.log('Clicked summary_alert')
       var item_info = localStorage.getItem('item_1');
       var event_info = localStorage.getItem('event_1');
@@ -244,7 +250,9 @@ export default {
         console.warn("ERROR!!!!! : ", ex)
       })
     }
+    
   },
+
   data () {
     return {
       date : { 시작: '2020/07/08', 끝 : '2020/07/17' },
@@ -256,6 +264,7 @@ export default {
       res_data: ''
 
     }
+    
   }
 }
 

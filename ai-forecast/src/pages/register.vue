@@ -28,7 +28,7 @@
 
               <q-input square clearable 
               v-model="password" 
-              type="password1" 
+              type="password" 
               label="Password">
 
                 <template v-slot:prepend>
@@ -38,7 +38,7 @@
 
               <q-input square clearable 
               v-model="password1" 
-              type="password2" 
+              type="password" 
               label="one more time">
                 <template v-slot:prepend>
                   <q-icon name="lock" />    
@@ -126,7 +126,7 @@ export default {
           this.$q.dialog({
           title: '가입 성공!',
           message: '가입되었습니다!'
-
+          
           }).onOk(() => {
             // console.log('OK')
           }).onCancel(() => {
@@ -141,6 +141,7 @@ export default {
           };
 
           LocalStorage.set("user", user);
+          location.href="http://localhost:8080/#/login";
         }
 
         else {
