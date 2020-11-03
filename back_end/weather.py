@@ -13,7 +13,7 @@ url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'
 key = "NnpxwR7oA3LxPCsLEMG2CcvrkIZRLw0%2BHmz2ClUcOfaKvAMlySAiadvjQKqyQu0HorPtqAGZpj%2Bxfe6iSFyDKw%3D%3D"
 
 
-def weather_api(c, d):
+def weather_api(startDate, endDate):
 
     queryParams_page1 = '?' + urlencode({
 
@@ -22,8 +22,8 @@ def weather_api(c, d):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "1",
-        "startDt": c,
-        "endDt": d,
+        "startDt": startDate,
+        "endDt": endDate,
         "stnIds": "159",
         "dataType": "JSON"})
 
@@ -55,8 +55,8 @@ def weather_api(c, d):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "2",
-        "startDt": c,
-        "endDt": d,
+        "startDt": startDate,
+        "endDt": endDate,
         "stnIds": "159",
         "dataType": "JSON"})
 
@@ -82,4 +82,4 @@ def weather_api(c, d):
     weather_api_concat = pd.concat([weather_api_1, weather_api_2])
     weather_api_concat = weather_api_concat.reset_index(drop=True)
 
-    return(weather_api_concat)
+    return weather_api_concat
