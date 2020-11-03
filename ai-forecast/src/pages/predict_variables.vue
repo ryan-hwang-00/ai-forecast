@@ -179,9 +179,8 @@ export default {
     flask_alert : function () {
 
       const data = {
-
-        "name": "morpheus22",      
-
+        "real_y" : 3,
+        "mean_temp" : 2
       }
 
       axios.post('http://127.0.0.1:5000/userLogin',
@@ -192,6 +191,7 @@ export default {
 
         console.log(response)
 
+        localStorage.origin_data = JSON.stringify(response.data);
         localStorage.day1 = JSON.stringify(response.data['day1']);
         localStorage.day2 = JSON.stringify(response.data['day2']);
         localStorage.day3 = JSON.stringify(response.data['day3']);
@@ -214,7 +214,7 @@ export default {
     },
     data_check () {
       console.log('Clicked data_check')
-      this.check_data = localStorage.getItem('test_data');
+      this.check_data = localStorage.getItem('origin_data');
       
       // localStorage.event_222=test_variable
       alert(this.check_data);
@@ -229,31 +229,6 @@ export default {
       localStorage.day7 = 200;
     },
 
-  
-
-    
-    
-  
-
-    // flask_alert () {
-    //   const data = {
-    //     "item": this.item_info,
-    //     "event": this.event_info,
-    //     "break": this.break_info 
-    //     real_y : 3,
-    //     "mean_temp" : 2
-    //   }
-    //   axios.post('http://127.0.0.1:5000/userLogin',
-    //     {"real_y" : 3,}
-    //   ).then(response => {
-    //     console.log(response)
-    //     localStorage.res_data = JSON.stringify(response.data);
-        
-
-    //   });
-    //   alert(res_data);
-      
-    // },
     searchparam () {
       const data = {
         "item": this.item_info,
