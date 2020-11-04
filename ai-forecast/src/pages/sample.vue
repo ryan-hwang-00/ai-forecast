@@ -1,6 +1,7 @@
 <template>
 
   <div class="q-pa-md">
+
     <div
       class="q-gutter-md"
 
@@ -16,11 +17,13 @@
         color="white"
         text-color="black"
         label="로컬 스토리지에 데이터 저장"
+
         @click="setLocalStorage()"
 
       />
 
       <q-input
+
         filled
         v-model="textGetLocal"
         label="로컬 스토리지에서 데이터 가져오기"
@@ -31,6 +34,7 @@
         text-color="black"
         label="로컬 스토리지에서 데이터 가져오기"
         @click="getLocalStorage()"
+
       />
 
       <!--
@@ -48,6 +52,7 @@
       -->
 
       <q-btn
+
         color="white"
         text-color="black"
         label="JSON 데이터를 로컬 스토리지 등록"
@@ -139,12 +144,15 @@ export default {
       console.log('textSetLocal', this.textSetLocal)
       LocalStorage.set("textSetLocal", this.textSetLocal);
       // LocalStorage.set('user', 'user')
+
     },
 
     // get single data
 
     getLocalStorage: function () {
+
       this.textGetLocal = LocalStorage.getItem("textSetLocal");
+
     },
 
     // save multi data (JSON)
@@ -152,23 +160,28 @@ export default {
     setMultiLocalStorage: function () {
 
       this.textSetJson = {
+
         user: 'username',
         email: '1111@email.com',
         password: 'password'
       }
 
       LocalStorage.set("textSetJson", this.textSetJson);
+
     },
 
     // get multi data(JSON)
 
     getMultiLocalStorage: function () {
+
       //json to string 형태로 변환
+
       this.textGetJson = JSON.stringify(LocalStorage.getItem("textSetJson"));
 
     },
 
     // get multi data(JSON)
+
     getMultiSingleLocalStorage: function () {
       const data = LocalStorage.getItem("textSetJson")
       this.textGetJsonSingle = data.email;
@@ -180,6 +193,7 @@ export default {
       axios.get('https://reqres.in/api/users/2')
         .then((response) => {
           this.axiosGetData = JSON.stringify(response.data)
+
         })
 
     },
@@ -187,6 +201,7 @@ export default {
     // axios post data
 
     postAxios: function () {
+
       const data = {
 
         "horizon": "7",
@@ -203,6 +218,7 @@ export default {
         LocalStorage.set("axiosJSON", this.axiosPostResponseData)
 
       }).catch((ex) => {
+
         console.warn("ERROR!!!!! : ", ex)
 
       })
@@ -212,6 +228,7 @@ export default {
   }
 
 }
+
 
 </script>
 

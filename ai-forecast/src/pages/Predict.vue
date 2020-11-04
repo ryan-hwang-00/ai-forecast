@@ -2,16 +2,19 @@
   <div class="q-pa-xl">
      
      <div class="q-gutter-sm">
-      <q-chip clickable @click="onClick" color="red-6" text-color="white" icon="date_range">
-       날짜
+      <q-chip color="red-6" text-color="white" icon="date_range">
+        날짜
       </q-chip>
-      <q-chip clickable @click="onClick" color="yellow-10" text-color="white" icon="fastfood">
-       상품명
+      <q-chip color="amber-10" text-color="white" icon="store">
+        매장명
       </q-chip>
-      <q-chip clickable @click="onClick" color="purple-13" text-color="white" icon="notifications_active">
+      <q-chip color="blue-12" text-color="white" icon="fastfood">
+        상품명
+      </q-chip>
+      <q-chip color="purple-13" text-color="white" icon="notifications_active">
         행사
       </q-chip>
-      <q-chip clickable @click="onClick" color="deep-purple-8" text-color="white" icon="beach_access">
+      <q-chip color="deep-purple-8" text-color="white" icon="beach_access">
         휴무
       </q-chip>
     </div>
@@ -134,6 +137,3 @@ export default {
   }
 }
 </script>
-
-
-
