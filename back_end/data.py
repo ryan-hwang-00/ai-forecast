@@ -144,9 +144,9 @@ def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
     df_merge = pd.merge(df_merge, df_6_jin, how='outer',
                         on='date', suffixes=('', '_6_jin'))
 
-    df_merge = df_merge.set_index('date')
+    df_merge_index_date = df_merge.set_index('date')
 
-    df = df_merge.sort_index()
+    df = df_merge_index_date.sort_index()
 
     df = df[df['flag'] == 1]
 
@@ -262,4 +262,4 @@ def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
 
     column_num_x_1 = 48
 
-    return x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled
+    return df_merge, x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled
