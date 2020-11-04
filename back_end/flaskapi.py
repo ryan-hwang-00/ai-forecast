@@ -1,6 +1,25 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 
+dic = {1: {'백산수2.0L': {'promotion': 'promotion_flag_1_bac_2',
+                       'sale': 'sale_qty_1_bac_2'}
+           }, {'백산수500ml': {'promotion': 'promotion_flag',
+                            'sale': 'sale_qty_1_bac_5'}
+               }, {'신라면멀티': {'promotion': 'promotion_flag_1_sin',
+                             'sale': 'sale_qty_1_sin'}
+                   }, {'안성탕면멀티': {'promotion': 'promotion_flag_1_ans',
+                                  'sale': 'sale_qty_1_ans'}
+                       }, {'진라면멀티(순한맛)': {'promotion': 'promotion_flag_1_jin',
+                                          'sale': 'sale_qty_1_jin'}
+                           },
+       6: {'백산수2.0L': {'promotion': 'promotion_flag_6_bac_2',
+                       'sale': 'sale_qty_6_bac_2'}
+           }, {'백산수500ml': {'promotion': 'promotion_flag_6_bac_5', 'sale': 'sale_qty_6_bac_5'}
+               }, {'신라면멀티': {'promotion': 'promotion_flag_6_sin', 'sale': 'sale_qty_6_sin'}
+                   }, {'안성탕면멀티': {'promotion': 'promotion_flag_6_ans', 'sale': 'sale_qty_6_ans'}
+                       }, {'진라면멀티(순한맛)': {'promotion': 'promotion_flag_6_jin', 'sale': 'sale_qty_6_jin'}
+                           }}
+
 app = Flask(__name__)
 CORS(app)
 

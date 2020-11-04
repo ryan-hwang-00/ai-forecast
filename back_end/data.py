@@ -68,7 +68,7 @@ def detect_outliers(df, n, features):
     return multiple_outliers
 
 
-def sep_xy(df, x_columns, x_1_columns):
+def sep_xy(df, x_columns, x_1_columns, sale_qty='sale_qty_1_bac_2'):
     x_df = df[x_columns]
 #      'man_pop', 'woman_pop', '10s', '20s',,'trend'
 #        '30s', '40s', '50s', '60s', '70s',
@@ -79,7 +79,7 @@ def sep_xy(df, x_columns, x_1_columns):
     x_df = pd.get_dummies(x_df)
     x_df_1 = pd.get_dummies(x_df_1)
 
-    y_df = df[['sale_qty_1_bac_2']]
+    y_df = df[[sale_qty]]
 
     x_df = x_df.values
     x_df_1 = x_df_1.values
@@ -92,12 +92,38 @@ def sep_xy(df, x_columns, x_1_columns):
     return x_df, x_df_1, y_df
 
 
-def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
-                       model_name='1_bac2_dec_para_bic_train',
-                       store_code=1,
-                       product_name='백산수2.0L',
-                       sequence_x=180 * 4,
-                       sequence_y=7):
+def sep_data(datasets='AI_Sale_ver3.0.csv',
+             store_code=1,
+             product_name='백산수2.0L',
+             train_date='2019-12-24',
+             predict_date='2019-12-31'):
+
+    meta_index = pd.DataFrame(
+        data=[[1, '백산수2.0L', 'promotion_flag_1_bac_2', 'sale_qty_1_bac_2', '1_bac2.hdf5'],
+              [1, '백산수500ml', 'promotion_flag',
+               'sale_qty_1_bac_5', '1_bac5.hdf5'],
+              [1, '신라면멀티', 'promotion_flag_1_sin',
+               'sale_qty_1_sin', '1_sin.hdf5'],
+              [1, '안성탕면멀티', 'promotion_flag_1_ans',
+               'sale_qty_1_ans', '1_ans.hdf5'],
+              [1, '진라면멀티(순한맛)', 'promotion_flag_1_jin',
+               'sale_qty_1_jin', '1_jin.hdf5'],
+              [6, '백산수2.0L', 'promotion_flag_6_bac_2',
+               'sale_qty_6_bac_2', '6_bac2.hdf5'],
+              [6, '백산수500ml', 'promotion_flag_6_bac_5',
+               'sale_qty_6_bac_5', '6_bac5.hdf5'],
+              [6, '신라면멀티', 'promotion_flag_6_sin',
+               'sale_qty_6_sin', ' 6_jin.hdf5'],
+              [6, '안성탕면멀티', 'promotion_flag_6_ans',
+               'sale_qty_6_ans', '6_ans.hdf5'],
+              [6, '진라면멀티(순한맛)', 'promotion_flag_6_jin', 'sale_qty_6_jin', '6_sin.hdf5']],
+        columns=['store', 'product', 'promotion', 'sale', 'weight'])
+
+    promotion = meta_index[(meta_index['store'] == store_code) & (
+        meta_index['product'] == product_name)].iloc[0]['promotion']
+
+    sale_qty = meta_index[(meta_index['store'] == store_code) & (
+        meta_index['product'] == product_name)].iloc[0]['sale']
 
     df = pd.read_csv(datasets, encoding='euc-kr', index_col=0)
 
@@ -174,8 +200,8 @@ def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
         Outliers_to_drop = detect_outliers(df, 0, [sale])
         df.loc[Outliers_to_drop, sale] = np.percentile(df[[sale]], 75)*2
 
-    df_train = df.loc[:df[df['date'] == '2019-12-24'].index[0]]
-    df_test = df.loc[:df[df['date'] == '2019-12-31'].index[0]]
+    df_train = df.loc[:df[df['date'] == train_date].index[0]]
+    df_test = df.loc[:df[df['date'] == predict_date].index[0]]
 
     df = df.drop(columns='date')
     df_train = df_train.drop(columns='date')
@@ -185,6 +211,7 @@ def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
                  'weekday_1_bac_2', 'weeknum_1_bac_2',
                  'flag_1_bac_2', 'weekend_1_bac_2', 'national_holiday_1_bac_2',
                  'nat_long_holiday_1_bac_2', 'break_1_bac_2', 'mean_temp_1_bac_2',
+                 # 최대풍속은 빼자.
                  'precipitation_1day_1_bac_2', 'max_windspeed_1_bac_2',
                  'mean_humidity_1_bac_2', 'mean_pressure_1_bac_2',
                  'sin_month_1_bac_2', 'cos_month_1_bac_2',
@@ -232,34 +259,50 @@ def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
                    'holi_name_임시공휴일_1_bac_2', 'holi_name_전국동시지방선거_1_bac_2',
                    'holi_name_추석_1_bac_2', 'holi_name_한글날_1_bac_2',
                    'holi_name_현충일_1_bac_2',
-                   'promotion_flag_1_bac_2']
+                   promotion]
 
-    x_df, x_df_1, y_df = sep_xy(df, x_columns, x_1_columns)
-    x_train, x_train_1, y_train = sep_xy(df_train,  x_columns, x_1_columns)
-    x_test, x_test_1, y_test = sep_xy(df_test, x_columns, x_1_columns)
+    return df, df_train, df_test, sale_qty, x_columns, x_1_columns
+
+
+def scaled_origin(sequence_x=180 * 4,
+                  sequence_y=7):
+
+    df, df_train, df_test, sale_qty, x_columns, x_1_columns = sep_data()
+
+    x_df, x_df_1, y_df = sep_xy(df, x_columns, x_1_columns, sale_qty=sale_qty)
 
     x_scaler = MinMaxScaler()
     x_1_scaler = MinMaxScaler()
     y_scaler = MinMaxScaler()
+
     x_df_scaled = x_scaler.fit_transform(x_df)
     x_df_1_scaled = x_1_scaler.fit_transform(x_df_1)
     y_df_scaled = y_scaler.fit_transform(y_df)
-    x_train_scaled = x_scaler.transform(x_train)
-    x_train_1_scaled = x_1_scaler.transform(x_train_1)
-    y_train_scaled = y_scaler.transform(y_train)
-    x_test_scaled = x_scaler.transform(x_test)
-    x_test_1_scaled = x_1_scaler.transform(x_test_1)
-    y_test_scaled = y_scaler.transform(y_test)
 
     x_df_scaled, x_df_1_scaled, y_df_scaled = get_sequence(
         x_df_scaled, x_df_1_scaled, y_df_scaled, sequence_x=sequence_x, sequence_y=sequence_y)
+
+    column_num_x = len(x_columns)
+
+    column_num_x_1 = len(x_1_columns)
+
+    return x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_columns, x_1_columns, sale_qty
+
+
+def scaled_data(sequence_x=180 * 4,
+                sequence_y=7,
+                df_train=pd.DataFrame):
+
+    x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_columns, x_1_columns, sale_qty = scaled_origin()
+
+    x_train, x_train_1, y_train = sep_xy(
+        df_train,  x_columns, x_1_columns, sale_qty=sale_qty)
+
+    x_train_scaled = x_scaler.transform(x_train)
+    x_train_1_scaled = x_1_scaler.transform(x_train_1)
+    y_train_scaled = y_scaler.transform(y_train)
+
     x_train_scaled, x_train_1_scaled, y_train_scaled = get_sequence(
         x_train_scaled, x_train_1_scaled, y_train_scaled, sequence_x=sequence_x, sequence_y=sequence_y)
-    x_test_scaled, x_test_1_scaled, y_test_scaled = get_sequence(
-        x_test_scaled, x_test_1_scaled, y_test_scaled, sequence_x=sequence_x, sequence_y=sequence_y)
 
-    column_num_x = 67
-
-    column_num_x_1 = 48
-
-    return x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled
+    return x_train_scaled, x_train_1_scaled, y_train_scaled
