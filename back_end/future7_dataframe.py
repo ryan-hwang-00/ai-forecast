@@ -14,6 +14,19 @@ import urllib
 import requests
 from datetime import datetime, timedelta
 import weather2
+from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+from flask import Flask, request, jsonify
+
+
+df1 = pd.read_csv('./data/date_info.csv')
+
+
+def row_select(dataframe, column, value):
+    second_df = dataframe[dataframe[column] == value]
+
+    index_num = second_df.index.values.tolist()
+    return index_num
 
 
 def date_info(start_date, event_info, break_info):
