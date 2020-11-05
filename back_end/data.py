@@ -170,6 +170,7 @@ def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
     # 찾은 아웃라이어를 바꿔줍니다.
     sales_columns = ['sale_qty_1_bac_2', 'sale_qty_6_bac_2', 'sale_qty_1_bac_5', 'sale_qty_6_bac_5',
                      'sale_qty_1_sin', 'sale_qty_6_sin', 'sale_qty_1_ans', 'sale_qty_6_ans', 'sale_qty_1_jin', 'sale_qty_6_jin']
+
     for sale in sales_columns:
         Outliers_to_drop = detect_outliers(df, 0, [sale])
         df.loc[Outliers_to_drop, sale] = np.percentile(df[[sale]], 75)*2

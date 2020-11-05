@@ -75,6 +75,7 @@
 <script>
 export default {
   data () {
+
     return {
       slide: 'style',
       lorem1: '주간 예측 판매량',
@@ -82,11 +83,13 @@ export default {
       lorem3: '전월 동기 비교 그래프',
       lorem4: '뭐 넣을까 고민중...',
     }
+    
   },
 
   data () {
     return {
       columns: [
+
         {
           name: 'Date',
           required: true,
@@ -95,6 +98,7 @@ export default {
           field: 'Date',
           sortable: true
         },
+
         {
           name: 'Predict_Value',
           label: '예측 수량',
@@ -103,31 +107,38 @@ export default {
           sortable: true
         }
       ],
+
       data : [
         {
           Date: '2020-10-23',
           Predict_Value: 118,
         },
+
         {
           Date: '2020-10-24',
           Predict_Value: 131,
         },
+
         {
           Date: '2020-10-25',
           Predict_Value: 159,
         },
+
         {
           Date: '2020-10-26',
           Predict_Value: 182,
         },
+
         {
           Date: '2020-10-27',
           Predict_Value: 159,
         },
+
         {
           Date: '2020-10-28',
           Predict_Value: 284,
         },
+
         {
           Date: '2020-10-29',
           Predict_Value: 568,
