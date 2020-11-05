@@ -262,4 +262,4 @@ def preprocessing_data(datasets='AI_Sale_ver3.0.csv',
 
     column_num_x_1 = 48
 
-    return df_merge, x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled
+    return x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled
