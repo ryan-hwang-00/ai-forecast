@@ -18,6 +18,7 @@ const routes = [
       { path: "item", component: () => import("pages/item.vue") },
       { path: "Predict", component: () => import("pages/Predict.vue") },
 
+      { path: "test", component: () => import("pages/test.vue") },    
       { path: "chart", component: () => import("pages/chart.vue") },
 
       { path: "sample", component: () => import("pages/sample.vue") }

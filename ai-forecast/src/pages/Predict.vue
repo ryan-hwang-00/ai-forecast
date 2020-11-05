@@ -1,139 +1,162 @@
 <template>
-  <div class="q-pa-xl">
-     
-     <div class="q-gutter-sm">
-      <q-chip color="red-6" text-color="white" icon="date_range">
-        날짜
-      </q-chip>
-      <q-chip color="amber-10" text-color="white" icon="store">
-        매장명
-      </q-chip>
-      <q-chip color="blue-12" text-color="white" icon="fastfood">
-        상품명
-      </q-chip>
-      <q-chip color="purple-13" text-color="white" icon="notifications_active">
-        행사
-      </q-chip>
-      <q-chip color="deep-purple-8" text-color="white" icon="beach_access">
-        휴무
-      </q-chip>
+  <div class="justify-center q-ma-sm">
+    
+    <div class="row justify-center q-col-gutter-sm q-py-sm">
+      <q-chip label="날짜" size="18px" color="red-6" text-color="white" icon="date_range"/>
+      <q-chip label="매장명" size="18px" color="amber-10" text-color="white" icon="store"/>
+      <q-chip label="상품명" size="18px" color="blue-12" text-color="white" icon="fastfood"/>
+      <q-chip label="행사" size="18px" color="purple-13" text-color="white" icon="notifications_active"/>
+      <q-chip label="휴무" size="18px" color="deep-purple-8" text-color="white" icon="beach_access"/>
     </div>
 
-    <div class="q-pa-md">
-      <q-table
+    <div class="row justify-center q-col-gutter-sm q-py-sm">    
+      <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
+        <q-table
         title="주간 예측량"
         :data="data"
         :columns="columns"
         row-key="Date"
       />
+      </div>
+      
+      <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
+        <q-carousel
+          v-model="slide"
+          transition-prev="scale"
+          transition-next="scale"
+          swipeable
+          animated
+          control-color="white"
+          navigation
+          padding
+          arrows
+          height="700px"
+          width = "500px"
+          class="bg-primary text-white shadow-1 rounded-borders"
+        >
+          <q-carousel-slide name="style" class="column no-wrap flex-center">
+                <bar-chart></bar-chart>
+          </q-carousel-slide>
+          
+          <q-carousel-slide name="tv" class="column no-wrap flex-center">
+            <!-- <div class="row justify-center q-col-gutter-sm  q-py-sm">     -->
+              <!-- <div class="q-pa-sm"> -->
+                <line-chart></line-chart>
+              <!-- </div> -->
+            <!-- </div> -->
+          </q-carousel-slide>
+
+          <q-carousel-slide name="layers" class="column no-wrap flex-center">
+                <mixed-chart></mixed-chart>
+          </q-carousel-slide>
+
+        </q-carousel>
+      </div>
     </div>
 
-    <div class="q-gutter-md">
-      <q-carousel
-        v-model="slide"
-        transition-prev="scale"
-        transition-next="scale"
-        swipeable
-        animated
-        control-color="white"
-        navigation
-        padding
-        arrows
-        height="500px"
-        class="bg-primary text-white shadow-1 rounded-borders"
-      >
-        <q-carousel-slide name="style" class="column no-wrap flex-center">
-          <q-icon name="style" size="56px" />
-          <div class="q-mt-md text-center">
-            {{ lorem1 }}
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="tv" class="column no-wrap flex-center">
-          <q-icon name="card_travel" size="56px" />
-          <div class="q-mt-md text-center">
-            {{ lorem2 }}
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="layers" class="column no-wrap flex-center">
-          <q-icon name="layers" size="56px" />
-          <div class="q-mt-md text-center">
-            {{ lorem3 }}
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide name="map" class="column no-wrap flex-center">
-          <q-icon name="terrain" size="56px" />
-          <div class="q-mt-md text-center">
-            {{ lorem4 }}
-          </div>
-        </q-carousel-slide>
-      </q-carousel>
-    </div>
   </div>
 </template>
 
-
 <script>
-export default {
-  data () {
-    return {
-      slide: 'style',
-      lorem1: '주간 예측 판매량',
-      lorem2: '전년 동기 비교 그래프',
-      lorem3: '전월 동기 비교 그래프',
-      lorem4: '뭐 넣을까 고민중...',
-    }
-  },
+    import BarChart from '../components/charts/BarChart'
+    import LineChart from '../components/charts/LineChart'
+    import MixedChart from '../components/charts/MixedChart'
+    import { LocalStorage } from "quasar";
 
-  data () {
-    return {
-      columns: [
-        {
-          name: 'Date',
-          required: true,
-          label: 'Date',
-          align: 'left',
-          field: 'Date',
-          sortable: true
+
+    export default {
+        name: "Predict",
+        components: {
+          BarChart,
+          LineChart,
+          MixedChart
         },
-        {
-          name: 'Predict_Value',
-          label: '예측 수량',
-          align: 'right',
-          field: 'Predict_Value',
-          sortable: true
+        data () {
+          return {
+            getdate: '',
+            getstore: '',
+            getproduct: '',
+            getevent: '',
+            getflag: '',
+            // textSetJson: {},
+            // textGetJson: {},
+            // textGetJsonSingle: '',
+            slide: 'style',
+            
+            // Table Data
+            columns: [
+              {
+                name: 'Date',
+                required: true,
+                label: 'Date',
+                align: 'left',
+                field: 'Date',
+                sortable: true
+              },
+              {
+                name: 'Predict_Value',
+                label: '예측 수량',
+                align: 'right',
+                field: 'Predict_Value',
+                sortable: true
+              }
+            ],
+            data : [
+            {
+              Date: '2020-10-23',
+              Predict_Value: 118,
+            },
+            {
+              Date: '2020-10-24',
+              Predict_Value: 131,
+            },
+            {
+              Date: '2020-10-25',
+              Predict_Value: 159,
+            },
+            {
+              Date: '2020-10-26',
+              Predict_Value: 182,
+            },
+            {
+              Date: '2020-10-27',
+              Predict_Value: 159,
+            },
+            {
+              Date: '2020-10-28',
+              Predict_Value: 284,
+            },
+            {
+              Date: '2020-10-29',
+              Predict_Value: 568,
+            },
+            ]
+
+            // Chart Data
+
+          }
+        },
+        methods: {
+          getLocalStoragedate: function () {
+            this.getdate = LocalStorage.getItem("date");
+          },
+
+          getLocalStoragestore: function () {
+            this.getstore = LocalStorage.getItem("store");
+          },
+
+          getLocalStorageproduct: function () {
+            var getproduct = LocalStorage.getItem("item_1");
+          },
+          
+          getLocalStorageevent: function () {
+            this.getevent = LocalStorage.getItem("event_1");
+          },
+
+          getLocalStorageflag: function () {
+            this.getflag = LocalStorage.getItem("flag");
+          }
+
         }
-      ],
-      data : [
-        {
-          Date: '2020-10-23',
-          Predict_Value: 118,
-        },
-        {
-          Date: '2020-10-24',
-          Predict_Value: 131,
-        },
-        {
-          Date: '2020-10-25',
-          Predict_Value: 159,
-        },
-        {
-          Date: '2020-10-26',
-          Predict_Value: 182,
-        },
-        {
-          Date: '2020-10-27',
-          Predict_Value: 159,
-        },
-        {
-          Date: '2020-10-28',
-          Predict_Value: 284,
-        },
-        {
-          Date: '2020-10-29',
-          Predict_Value: 568,
-        },
-      ]
     }
-  }
-}
 </script>
