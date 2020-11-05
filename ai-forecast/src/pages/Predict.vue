@@ -2,11 +2,21 @@
   <div class="justify-center q-ma-sm">
     
     <div class="row justify-center q-col-gutter-sm q-py-sm">
-      <q-chip label="날짜" size="18px" color="red-6" text-color="white" icon="date_range"/>
-      <q-chip label="매장명" size="18px" color="amber-10" text-color="white" icon="store"/>
-      <q-chip label="상품명" size="18px" color="blue-12" text-color="white" icon="fastfood"/>
-      <q-chip label="행사" size="18px" color="purple-13" text-color="white" icon="notifications_active"/>
-      <q-chip label="휴무" size="18px" color="deep-purple-8" text-color="white" icon="beach_access"/>
+      <q-chip size="18px" color="red-6" text-color="white" icon="date_range">
+        {{getdate}}
+      </q-chip>
+      <q-chip size="18px" color="amber-10" text-color="white" icon="store">
+        {{getstore}}
+      </q-chip>
+      <q-chip size="18px" color="blue-12" text-color="white" icon="fastfood">
+        {{getproduct}}
+      </q-chip>
+      <q-chip size="18px" color="purple-13" text-color="white" icon="notifications_active">
+        {{getevent}}
+      </q-chip>
+      <q-chip size="18px" color="deep-purple-8" text-color="white" icon="beach_access">
+        {{getflag}}
+      </q-chip>
     </div>
 
     <div class="row justify-center q-col-gutter-sm q-py-sm">    
@@ -74,14 +84,11 @@
         },
         data () {
           return {
-            getdate: '',
-            getstore: '',
-            getproduct: '',
-            getevent: '',
-            getflag: '',
-            // textSetJson: {},
-            // textGetJson: {},
-            // textGetJsonSingle: '',
+            getdate: '날짜',
+            getstore: '매장명',
+            getproduct: '상품명',
+            getevent: '행사',
+            getflag: '휴무일',
             slide: 'style',
             
             // Table Data
