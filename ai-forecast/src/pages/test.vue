@@ -8,12 +8,6 @@
       <q-chip label="휴무" size="18px" color="deep-purple-8" text-color="white" icon="beach_access"/>
     </div>
 
-    <div class="row justify-center q-col-gutter-sm  q-py-sm">    
-      <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
-        <table1></table1>
-      </div>
-    </div>
-
     <div class="q-gutter-md">
       <q-carousel
         v-model="slide"
@@ -55,16 +49,13 @@
 <script>
 import BarChart from '../components/charts/BarChart'
 import LineChart from '../components/charts/LineChart'
-import table1 from '../components/table/table1'
 
 
 export default {
   name: 'PageIndex',
   components: {
     BarChart,
-    BarChart2,
-    LineChart,
-    table1
+    LineChart
   },
   data () {
     return {}
