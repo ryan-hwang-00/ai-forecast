@@ -15,15 +15,23 @@ url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'
 key = "NnpxwR7oA3LxPCsLEMG2CcvrkIZRLw0%2BHmz2ClUcOfaKvAMlySAiadvjQKqyQu0HorPtqAGZpj%2Bxfe6iSFyDKw%3D%3D"
 
 
+def weather_api(startdt):
 
-def weather_api(c):
+    startdt = datetime.strptime(startdt, "%Y-%m-%d")
 
-    stardt = int(c.replace('-', ''))
-    enddt = int(c.replace('-', '')) + 6
+    addtime = timedelta(days=6)
+    enddt = startdt + addtime
 
-    stardt = str(stardt)
+    startdt = startdt.strftime('%Y-%m-%d')
+    enddt = enddt.strftime('%Y-%m-%d')
+
+    startdt = int(startdt.replace('-', ''))
+    enddt = int(enddt.replace('-', ''))
+
+    startdt = str(startdt)
     enddt = str(enddt)
-    time1 = datetime(int(stardt[0:4]), int(stardt[4:6]), int(stardt[6:8]))
+
+    time1 = datetime(int(startdt[0:4]), int(startdt[4:6]), int(startdt[6:8]))
     time2 = datetime(int(enddt[0:4]), int(enddt[4:6]), int(enddt[6:8]))
     day_len = (time2-time1).days
 
@@ -34,7 +42,7 @@ def weather_api(c):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "1",
-        "startDt": stardt,
+        "startDt": startdt,
         "endDt": enddt,
         "stnIds": "159",
         "dataType": "JSON"
@@ -71,10 +79,8 @@ def weather_api(c):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "2",
-
-        "startDt": stardt,
+        "startDt": startdt,
         "endDt": enddt,
-
         "stnIds": "159",
         "dataType": "JSON"})
 
@@ -112,6 +118,59 @@ def weather_api(c):
     else:
 
         return weather_api_3
+
+
+def utc_to_date(utc):
+    date = datetime.utcfromtimestamp(utc).strftime('%Y-%m-%d')
+
+    return date
+
+
+def future7_weather_api():
+
+    url = 'https://api.openweathermap.org/data/2.5/onecall'
+    key = "9688b3e45c54541ccc6c099da90380ab"
+
+    queryParams_page1 = '?' + urlencode({
+
+        "lat": 35.1028,
+        "lon": 129.0403,
+        "appid": unquote(key),
+        "exclude": "hourly,minutely,current,alerts",
+        "units": "metric"
+
+    })
+
+    queryURL_page1 = url + queryParams_page1
+    response_page1 = requests.get(queryURL_page1)
+    info_page1 = json.loads(response_page1.text)
+
+    a = []
+    for i in range(len(info_page1['daily'])):
+
+        utc_num = info_page1['daily'][i]['dt']
+
+        if 'rain' in list(info_page1['daily'][i].keys()):
+
+            dict = {"date": utc_to_date(utc_num), 'mean_temp': info_page1['daily'][i]['temp']['day'],
+                    'mean_humidity': info_page1['daily'][i]['humidity'],
+                    'mean_pressure': info_page1['daily'][i]['pressure'],
+                    'rain': info_page1['daily'][i]['rain']}
+
+        else:
+
+            dict = {"date": utc_to_date(utc_num), 'mean_temp': info_page1['daily'][i]['temp']['day'],
+                    'mean_humidity': info_page1['daily'][i]['humidity'],
+                    'mean_pressure': info_page1['daily'][i]['pressure'],
+                    'rain': 0}
+
+        predict = pd.DataFrame(dict, index=[0])
+
+        a.append(predict)
+
+    weather_pre = pd.concat(a).reset_index(drop=True)
+
+    return weather_pre
 
 
 def utc_to_date(utc):
