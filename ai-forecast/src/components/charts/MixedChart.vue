@@ -1,6 +1,6 @@
 <template>
   <q-card class="bg-white full-width">
-    <q-card-section class="bg-blue-grey-8">
+    <q-card-section class="bg-primary">
       <div class="row items-center no-wrap">
         <div class="col">
           <div class="text-h6 text-white text-center">Mixed Chart</div>
@@ -29,37 +29,37 @@ export default {
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['1900', '1950', '1999', '2050'],
+          labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
           datasets: [{
-            label: 'Europe',
+            label: 'Value1',
             type: 'line',
             borderColor: '#8e5ea2',
-            data: [408, 547, 675, 734],
+            data: [1478, 1267, 734, 784, 433, 1341, 1342],
             fill: false
           }, {
-            label: 'Africa',
+            label: 'Value2',
             type: 'line',
             borderColor: '#3e95cd',
-            data: [133, 221, 783, 2478],
+            data: [2478, 1267, 734, 784, 433, 341, 1342],
             fill: false
           }, {
-            label: 'Europe',
+            label: 'Value1',
             type: 'bar',
             backgroundColor: 'rgba(0,0,0,0.2)',
-            data: [408, 547, 675, 734]
+            data: [1478, 1267, 734, 784, 433, 1341, 1342]
           }, {
-            label: 'Africa',
+            label: 'Value2',
             type: 'bar',
             backgroundColor: 'rgba(0,0,0,0.2)',
             backgroundColorHover: '#3e95cd',
-            data: [133, 221, 783, 2478]
+            data: [2478, 1267, 734, 784, 433, 341, 1342]
           }
           ]
         },
         options: {
           title: {
             display: true,
-            text: 'Population growth (millions): Europe & Africa'
+            text: 'Value'
           },
           legend: { display: false }
         }

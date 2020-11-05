@@ -170,9 +170,9 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
     df_merge = pd.merge(df_merge, df_6_jin, how='outer',
                         on='date', suffixes=('', '_6_jin'))
 
-    df_merge = df_merge.set_index('date')
+    df_merge_index_date = df_merge.set_index('date')
 
-    df = df_merge.sort_index()
+    df = df_merge_index_date.sort_index()
 
     df = df[df['flag'] == 1]
 

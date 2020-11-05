@@ -102,7 +102,6 @@
       />
 
 
-
       <q-input
         standout="bg-teal text-white"
         v-model="axiosPostResponseData"
@@ -114,6 +113,7 @@
         label="axios post"
         @click="postAxios()"
       />
+
 
     </div>
   </div>
@@ -208,7 +208,7 @@ export default {
       }
 
       axios.post('http://127.0.0.1:3000/api/v3.0/forecast/sales', 
-      
+
       data
       ).then(response => {
 

@@ -10,12 +10,14 @@ df, df_train, df_test, sale_qty, x_columns, x_1_columns = data.sep_data()
 x_test_scaled, x_test_1_scaled, y_test_scaled = data.scaled_data(
     df_train=df_test)
 
+
 sequence_x = 180 * 4
 sequence_y = 7
 model = create_model(column_num_x, column_num_x_1, sequence_x, sequence_y)
 
 
-def prediction(x_test_scaled, x_test_1_scaled, y_scaler, weight='1_bac2.hdf5', model=model):
+def prediction(x_test_scaled, x_test_1_scaled, y_scaler,
+               weight='1_bac2.hdf5', model=model):
 
     print('loading weights')
 

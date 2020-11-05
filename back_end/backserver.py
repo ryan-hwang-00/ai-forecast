@@ -4,48 +4,49 @@ import numpy as np
 import pandas as pd
 from tensorflow.keras.models import Sequential, load_model
 from sklearn import preprocessing
-from prediction import prediction
 from modeling import create_model
 from data import preprocessing_data
 import data
 from datetime import datetime
 from predictor import predictor
 
-
 app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/api/v3.0/forecast/sales", methods=['POST'])
+@app.route("/api/v5.0/forecast/sales", methods=['POST'])
 def pre():
 
-    horizon = int(request.json['horizon'])
+    input = int(request.json['horizon'])
 
-    # x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled = data.preprocessing_data()
+    a = {'a': [horizon, horizon, horizon], "b": [
+        horizon + 1, horizon + 2, horizon + 3]}
 
-    # sequence_x = 180 * 4
-    # sequence_y = 7
+    ret = pd.DataFrame(a)
 
-    # model = create_model(column_num_x, column_num_x_1, sequence_x, sequence_y)
-
-    # a = prediction(x_test_scaled, x_test_1_scaled,
-    #                y_scaler, weight='1_bac2.hdf5', model=model)
-    a = predictor()
-
-    # a = a.apply(lambda x : )
-    a = pd.DataFrame(a)[-horizon:]
-
-    # a = a.reshape(1, 7)
-    # a = pd.DataFrame(a)
-
-    # a.columns = ['2020-01-01', '2020-01-02', '2020-01-03',
-    #              '2020-01-04', '2020-01-05', '2020-01-06', '2020-01-07']
-
-    # print(next_week_sales)
-
-    ret = a.to_json(orient='records', date_format='iso')
+    ret = ret.to_json(orient='columns', date_format='iso')
 
     return ret
+    # start_date = '2020-01-01'
+    # test = preprocessing_data()[0]
+
+    # x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled = data.preprocessing_data()
+    # sequence_x = 180 * 4
+    # sequence_y = 7
+    # model = create_model(column_num_x, column_num_x_1, sequence_x, sequence_y)
+    # a = prediction(x_test_scaled, x_test_1_scaled,
+    # y_scaler, weight='1_bac2.hdf5', model=model)
+
+    # 날짜 지정하면 그 날짜로부터 7일의 날짜 인덱스로 넣을 것.
+
+    # pre = predictor()[-horizon:]
+
+    # index_1 = (test['date'] == start_date).index[0]
+    # date_7days = test['date'].loc[index_1: index_1 + 6]
+
+    # pre = pre * 4123
+    # pre = pd.DataFrame(pre, index=date_7days)
+    # ret = pre.to_json(orient='columns', date_format='iso')
 
 
 if __name__ == '__main__':
