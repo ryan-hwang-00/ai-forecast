@@ -86,24 +86,56 @@
         <div class="fit row justify-center content-center">
         <!-- div 3 -->
 
-        <div class="q-pa-md">                        <!-- div 4 -->
-            
-            
-            <div class="q-pb-sm">{{ date }}</div>
-            <q-date v-model="date"
-            title="Calendar"
-            subtitle="Year" range />
-            </div>                             <!-- /div 4 -->
+        <!-- div 4 -->
+        <div class="q-pa-md">
+          <div class="q-gutter-md row items-start">
+            <div>
+              <div class="q-pb-sm q-gutter-sm">
+                <q-badge color="teal">
+                  시작일: {{ model1 }}
+                </q-badge>
+                <!-- <q-badge color="purple" text-color="white"> Mask: YYYY-MM-DD </q-badge> -->
+            </div>
+          </div>
+        </div>
+
+        <q-date v-model="model1" mask="YYYY-MM-DD" />
+      </div>               
+        <!-- /div 4 -->
         
         </div>         
         <!-- /div_3 -->
+
+
+      <!-- div_6 -->
+    <div class="q-pa-md">
+      <div class="q-gutter-sm">
+        <q-checkbox v-model="selection" val=1 label="월요일" color="teal" />
+        <q-checkbox v-model="selection" val=2 label="화요일" color="orange" />
+        <q-checkbox v-model="selection" val=3 label="수요일" color="red" />
+        <q-checkbox v-model="selection" val=4 label="목요일" color="cyan" />
+        <q-checkbox v-model="selection" val=5 label="금요일" color="cyan" />
+        <q-checkbox v-model="selection" val=6 label="토요일" color="cyan" />
+        <q-checkbox v-model="selection" val=7 label="일요일" color="cyan" />
+
+      </div>
+
+      <div class="q-px-sm">
+        할인 요일: <strong>{{ selection }}</strong>
+      </div>
+    </div>
+    <!--/div_6  -->
           
     </div>
     <!-- /div 1 -->
+
+    
+
+
     <div class="row justify-end q-ma-lg">
           <!-- div_5 -->
         <q-btn push color="white" text-color="primary" label="number_store" @click="number_store"/>
-        <q-btn push color="white" text-color="primary" label="dict_check" @click="data_check"/>
+        <q-btn push color="white" text-color="primary" label="date_check" @click="data_check"/>
         <q-btn push color="white" text-color="primary" label="flask" @click="flask_alert"/>
         <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/>
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
@@ -116,11 +148,23 @@
 
 
 <script>
-import { LocalStorage } from "quasar";
+import { date, LocalStorage } from "quasar";
 
 import axios from "axios";
 
 export default {
+  data () {
+    return {
+      model1: '2019-02-15',
+      model2: '03-21-2019',
+      selection: [ ]
+      
+      
+    }
+      this.selected_date={model1}
+  },
+
+
   methods: {
 
     bac_2l () {
@@ -159,14 +203,14 @@ export default {
 
     normal_state () {
       console.log('Clicked break_info')
-      localStorage.break_1 = '정상영업';
+      localStorage.break_1 = 0;
     },
 
     break_day () {
 
       console.log('Clicked break_info')
 
-      localStorage.break_1 = '일요휴무';
+      localStorage.break_1 = 1;
 
     },
 
@@ -185,11 +229,15 @@ export default {
     flask_alert : function () {
 
       const data = {
-        "real_y" : 3,
-        "mean_temp" : 2
+        
+        
+        "for_return" : this.day1_2,
+        "selected_date" : this.model1,
+        "event_info" : this.selection,
+        "break_info" : localStorage.getItem('break_1')
       }
 
-      axios.post('http://127.0.0.1:5000/userLogin',
+      axios.post('http://127.0.0.1:5000/date_info',
 
         data
 
@@ -198,14 +246,14 @@ export default {
         console.log(response)
 
         localStorage.origin_data = JSON.stringify(response.data);
-        localStorage.day1 = JSON.stringify(response.data['day1']);
-        localStorage.day2 = JSON.stringify(response.data['day2']);
-        localStorage.day3 = JSON.stringify(response.data['day3']);
+        localStorage.return1 = JSON.stringify(response.data['day']);
+        localStorage.return2 = JSON.stringify(response.data['promotion']);
+        
         // alert(test_data);
         setTimeout(function() { 
-          this.day1_1=localStorage.day1 }, 50);
+          this.return1=localStorage.return1 }, 50);
         setTimeout(function() { 
-          alert(this.day1_1) }, 100);
+          alert(this.return1) }, 100);
           
         // this.day1_1=localStorage.day1;
 
@@ -220,19 +268,22 @@ export default {
     },
     data_check () {
       console.log('Clicked data_check')
-      this.check_data = localStorage.getItem('origin_data');
+      // this.sel_date=data();
+      // this.check_data = localStorage.getItem('origin_data');
       
       // localStorage.event_222=test_variable
-      alert(this.check_data);
+      alert(this.model1);
+      alert(this.selection);
     },
     number_store () {
       localStorage.day1 = 200;
-      localStorage.day2 = 400;
+      localStorage.day2 = 555;
       localStorage.day3 = 900;
       localStorage.day4 = 600;
       localStorage.day5 = 700;
       localStorage.day6 = 400;
       localStorage.day7 = 200;
+      this.day1_2 = localStorage.day2;
     },
 
     searchparam () {
@@ -253,19 +304,7 @@ export default {
     
   },
 
-  data () {
-    return {
-      date : { 시작: '2020/07/08', 끝 : '2020/07/17' },
-      item : '',
-      event : '',
-      break : '',
-      fromdate : '',
-      todate : '',
-      res_data: ''
-
-    }
-    
-  }
+  
 }
 
 
