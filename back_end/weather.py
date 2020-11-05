@@ -15,12 +15,15 @@ url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'
 key = "NnpxwR7oA3LxPCsLEMG2CcvrkIZRLw0%2BHmz2ClUcOfaKvAMlySAiadvjQKqyQu0HorPtqAGZpj%2Bxfe6iSFyDKw%3D%3D"
 
 
-def weather_api(c, d):
+def weather_api(c):
 
-    c = str(c)
-    d = str(d)
-    time1 = datetime(int(c[0:4]), int(c[4:6]), int(c[6:8]))
-    time2 = datetime(int(d[0:4]), int(d[4:6]), int(d[6:8]))
+    stardt = int(c.replace('-', ''))
+    enddt = int(c.replace('-', '')) + 7
+
+    stardt = str(stardt)
+    enddt = str(enddt)
+    time1 = datetime(int(stardt[0:4]), int(stardt[4:6]), int(stardt[6:8]))
+    time2 = datetime(int(enddt[0:4]), int(enddt[4:6]), int(enddt[6:8]))
     day_len = (time2-time1).days
 
     queryParams_page1 = '?' + urlencode({
@@ -30,8 +33,8 @@ def weather_api(c, d):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "1",
-        "startDt": c,
-        "endDt": d,
+        "startDt": stardt,
+        "endDt": enddt,
         "stnIds": "159",
         "dataType": "JSON"
 
@@ -67,8 +70,8 @@ def weather_api(c, d):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "2",
-        "startDt": c,
-        "endDt": d,
+        "startDt": stardt,
+        "endDt": enddt,
         "stnIds": "159",
         "dataType": "JSON"})
 

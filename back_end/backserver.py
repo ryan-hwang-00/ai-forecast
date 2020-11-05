@@ -14,12 +14,21 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/api/v4.0/forecast/sales", methods=['POST'])
+@app.route("/api/v5.0/forecast/sales", methods=['POST'])
 def pre():
 
-    horizon = int(request.json['horizon'])
-    start_date = '2020-01-01'
-    test = preprocessing_data()[0]
+    input = int(request.json['horizon'])
+
+    a = {'a': [horizon, horizon, horizon], "b": [
+        horizon + 1, horizon + 2, horizon + 3]}
+
+    ret = pd.DataFrame(a)
+
+    ret = ret.to_json(orient='columns', date_format='iso')
+
+    return ret
+    # start_date = '2020-01-01'
+    # test = preprocessing_data()[0]
 
     # x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_test_scaled, x_test_1_scaled, y_test_scaled = data.preprocessing_data()
     # sequence_x = 180 * 4
@@ -30,16 +39,14 @@ def pre():
 
     # 날짜 지정하면 그 날짜로부터 7일의 날짜 인덱스로 넣을 것.
 
-    pre = predictor()[-horizon:]
+    # pre = predictor()[-horizon:]
 
-    index_1 = (test['date'] == start_date).index[0]
-    date_7days = test['date'].loc[index_1: index_1+6]
+    # index_1 = (test['date'] == start_date).index[0]
+    # date_7days = test['date'].loc[index_1: index_1 + 6]
 
-    pre = pre * 4123
-    pre = pd.DataFrame(pre, index=date_7days)
-    ret = pre.to_json(orient='columns', date_format='iso')
-
-    return ret
+    # pre = pre * 4123
+    # pre = pd.DataFrame(pre, index=date_7days)
+    # ret = pre.to_json(orient='columns', date_format='iso')
 
 
 if __name__ == '__main__':
