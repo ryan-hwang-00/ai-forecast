@@ -33,6 +33,7 @@ def weather_api(startdt):
 
     time1 = datetime(int(startdt[0:4]), int(startdt[4:6]), int(startdt[6:8]))
     time2 = datetime(int(enddt[0:4]), int(enddt[4:6]), int(enddt[6:8]))
+
     day_len = (time2-time1).days
 
     queryParams_page1 = '?' + urlencode({
@@ -42,8 +43,10 @@ def weather_api(startdt):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "1",
+
         "startDt": startdt,
         "endDt": enddt,
+
         "stnIds": "159",
         "dataType": "JSON"
 
@@ -79,8 +82,10 @@ def weather_api(startdt):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "2",
+
         "startDt": startdt,
         "endDt": enddt,
+
         "stnIds": "159",
         "dataType": "JSON"})
 
