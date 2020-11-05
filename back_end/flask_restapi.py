@@ -46,7 +46,9 @@ def prdict():
 
     return_df_7 = date_info(start_date, event_info, break_info)
 
-    return return_df_7
+    return jsonify(return_df_7)
+
+    print(return_df_7)
 
 
 # def date_info():
@@ -112,5 +114,6 @@ def prdict():
 #     # test_return 코드 끝
 #     print('return data : ', return_data)
 #     return jsonify(return_data)
+
 if __name__ == "__main__":
     app.run()
