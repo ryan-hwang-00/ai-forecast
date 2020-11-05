@@ -58,6 +58,7 @@
 </template>
 
 <script>
+
     import BarChart from '../components/charts/BarChart'
     import LineChart from '../components/charts/LineChart'
     import MixedChart from '../components/charts/MixedChart'
@@ -135,6 +136,7 @@
             // Chart Data
 
           }
+
         },
         methods: {
           getLocalStoragedate: function () {

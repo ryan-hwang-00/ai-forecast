@@ -2,6 +2,7 @@ from modeling import create_model
 import numpy as np
 import data
 
+
 df, df_train, df_test, sale_qty, x_columns, x_1_columns = data.sep_data()
 
 (x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1,

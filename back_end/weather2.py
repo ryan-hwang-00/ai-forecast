@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 
 url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'
-key = "NnpxwR7oA3LxPCsLEMG2CcvrkIZRLw0%2BHmz2ClUcOfaKvAMlySAiadvjQKqyQu0HorPtqAGZpj%2Bxfe6iSFyDKw%3D%3D"
+key = "6vFwBIO5ZKEEPDpVKwkmfssrPdCMNtDdPSff4szG9k4lVLL9qkYIfTxhw6gEggcK9CA6dCD8GsrCDXe%2FU1zKYQ%3D%3D"
 
 
 def weather_api(startdt):
@@ -30,6 +30,7 @@ def weather_api(startdt):
 
     startdt = str(startdt)
     enddt = str(enddt)
+    print('startdate : ', startdt, 'enddate : ', enddt)
 
     time1 = datetime(int(startdt[0:4]), int(startdt[4:6]), int(startdt[6:8]))
     time2 = datetime(int(enddt[0:4]), int(enddt[4:6]), int(enddt[6:8]))
@@ -51,7 +52,7 @@ def weather_api(startdt):
         "dataType": "JSON"
 
     })
-
+    print('step2 finished -------')
     queryURL_page1 = url + queryParams_page1
     response_page1 = requests.get(queryURL_page1)
     info_page1 = json.loads(response_page1.text)
@@ -74,7 +75,7 @@ def weather_api(startdt):
     weather_api_1 = weather_api_1.fillna(0)
     weather_api_1 = weather_api_1.astype({'mean_temp': 'float', 'mean_humidity': 'float',
                                           'mean_pressure': 'float', 'rain': 'float'})
-
+    print('step3 finished -------')
     queryParams_page1 = '?' + urlencode({
 
         "ServiceKey": unquote(key),
@@ -93,6 +94,7 @@ def weather_api(startdt):
     response_page1 = requests.get(queryURL_page1)
     info_page1 = json.loads(response_page1.text)
 
+    print('step4 finished -------')
     b = []
     for i in range(len(info_page1['response']['body']['items']['item'])):
 
@@ -115,7 +117,7 @@ def weather_api(startdt):
     weather_api_3 = pd.concat([weather_api_1, weather_api_2])
 
     weather_api_3 = weather_api_3.reset_index(drop=True)
-
+    print('step5 finished -------')
     if day_len <= 600:
 
         return weather_api_1
@@ -123,59 +125,6 @@ def weather_api(startdt):
     else:
 
         return weather_api_3
-
-
-def utc_to_date(utc):
-    date = datetime.utcfromtimestamp(utc).strftime('%Y-%m-%d')
-
-    return date
-
-
-def future7_weather_api():
-
-    url = 'https://api.openweathermap.org/data/2.5/onecall'
-    key = "9688b3e45c54541ccc6c099da90380ab"
-
-    queryParams_page1 = '?' + urlencode({
-
-        "lat": 35.1028,
-        "lon": 129.0403,
-        "appid": unquote(key),
-        "exclude": "hourly,minutely,current,alerts",
-        "units": "metric"
-
-    })
-
-    queryURL_page1 = url + queryParams_page1
-    response_page1 = requests.get(queryURL_page1)
-    info_page1 = json.loads(response_page1.text)
-
-    a = []
-    for i in range(len(info_page1['daily'])):
-
-        utc_num = info_page1['daily'][i]['dt']
-
-        if 'rain' in list(info_page1['daily'][i].keys()):
-
-            dict = {"date": utc_to_date(utc_num), 'mean_temp': info_page1['daily'][i]['temp']['day'],
-                    'mean_humidity': info_page1['daily'][i]['humidity'],
-                    'mean_pressure': info_page1['daily'][i]['pressure'],
-                    'rain': info_page1['daily'][i]['rain']}
-
-        else:
-
-            dict = {"date": utc_to_date(utc_num), 'mean_temp': info_page1['daily'][i]['temp']['day'],
-                    'mean_humidity': info_page1['daily'][i]['humidity'],
-                    'mean_pressure': info_page1['daily'][i]['pressure'],
-                    'rain': 0}
-
-        predict = pd.DataFrame(dict, index=[0])
-
-        a.append(predict)
-
-    weather_pre = pd.concat(a).reset_index(drop=True)
-
-    return weather_pre
 
 
 def utc_to_date(utc):
