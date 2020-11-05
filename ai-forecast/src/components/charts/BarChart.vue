@@ -1,6 +1,6 @@
 <template>
   <q-card class="bg-white q-pa-none full-width">
-    <q-card-section class="bg-blue-grey-8">
+    <q-card-section class="bg-primary">
       <div class="row items-center no-wrap">
         <div class="col">
           <div class="text-h6 text-white text-center">Bar Chart</div>
