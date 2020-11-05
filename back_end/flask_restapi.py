@@ -20,41 +20,35 @@ import urllib
 import requests
 from datetime import datetime, timedelta
 import weather2
-from future7_dataframe import date_info
+from future7_dataframe import date_info, row_select
 
 url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'
 key = "NnpxwR7oA3LxPCsLEMG2CcvrkIZRLw0%2BHmz2ClUcOfaKvAMlySAiadvjQKqyQu0HorPtqAGZpj%2Bxfe6iSFyDKw%3D%3D"
 
 
-df1 = pd.read_csv('./data/date_info.csv')
 # df1=df1.drop('Unnamed: 0', axis=1)
-
-
-def row_select(dataframe, column, value):
-    second_df = dataframe[dataframe[column] == value]
-
-    index_num = second_df.index.values.tolist()
-    return index_num
-
 
 # 날씨 api 함수 정의
 
-
 # 날씨 api 함수 정의 끝
-
 
 app = Flask(__name__)
 CORS(app)
 
 
 @app.route('/date_info', methods=['POST'])
-arrived_data = request.get_json()
-start_date = arrived_data['selected_date']
-event_info = arrived_data['event_info']
-break_info = arrived_data['break_info']
+def prdict():
 
+    arrived_data = request.get_json()
+    start_date = arrived_data['selected_date']
+    event_info = arrived_data['event_info']
+    break_info = arrived_data['break_info']
 
-date_info(start_date, event_info, break_info)
+    return_df_7 = date_info(start_date, event_info, break_info)
+
+    return jsonify(return_df_7)
+
+    print(return_df_7)
 
 
 # def date_info():
@@ -120,5 +114,6 @@ date_info(start_date, event_info, break_info)
 #     # test_return 코드 끝
 #     print('return data : ', return_data)
 #     return jsonify(return_data)
+
 if __name__ == "__main__":
     app.run()
