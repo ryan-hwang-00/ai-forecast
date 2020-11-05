@@ -37,18 +37,17 @@ CORS(app)
 
 
 @app.route('/date_info', methods=['POST'])
-def prdict():
+def seven_days():
 
     arrived_data = request.get_json()
     start_date = arrived_data['selected_date']
     event_info = arrived_data['event_info']
     break_info = arrived_data['break_info']
 
-    return_df_7 = date_info(start_date, event_info, break_info)
+    return_df_7, merged_df = date_info(start_date, event_info, break_info)
 
-    return jsonify(return_df_7)
-
-    print(return_df_7)
+    print(merged_df)
+    return return_df_7
 
 
 # def date_info():
@@ -114,6 +113,5 @@ def prdict():
 #     # test_return 코드 끝
 #     print('return data : ', return_data)
 #     return jsonify(return_data)
-
 if __name__ == "__main__":
     app.run()

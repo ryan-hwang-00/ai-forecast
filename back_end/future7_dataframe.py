@@ -73,4 +73,4 @@ def date_info(start_date, event_info, break_info):
     return_data['day'] = int(df2['day'].iloc[5])
     return_data['promotion'] = int(df2['promotion_flag'].iloc[3])
 
-    return return_data
+    return return_data, merged_df
