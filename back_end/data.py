@@ -95,7 +95,7 @@ def sep_xy(df, x_columns, x_1_columns, sale_qty='sale_qty_1_bac_2'):
 def sep_data(datasets='AI_Sale_ver3.0.csv',
              store_code=1,
              product_name='백산수2.0L',
-             train_date='2019-12-24',
+             train_date='2019-12-31',
              predict_date='2019-12-31'):
 
     meta_index = pd.DataFrame(
@@ -260,7 +260,7 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
                    'holi_name_추석_1_bac_2', 'holi_name_한글날_1_bac_2',
                    'holi_name_현충일_1_bac_2',
                    promotion]
-
+    df.to_csv('AI_Sale_ver4.0.csv', encoding='euc-kr')
     return df, df_train, df_test, sale_qty, x_columns, x_1_columns
 
 
@@ -306,3 +306,6 @@ def scaled_data(sequence_x=180 * 4,
         x_train_scaled, x_train_1_scaled, y_train_scaled, sequence_x=sequence_x, sequence_y=sequence_y)
 
     return x_train_scaled, x_train_1_scaled, y_train_scaled
+
+
+sep_data()
