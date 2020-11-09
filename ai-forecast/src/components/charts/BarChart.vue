@@ -45,9 +45,19 @@ export default {
             display: false
           },
           scales: {
+            // xAxes: [{
+            //   ticks: {
+            //     autoSkip: true,    //자동으로 숫자 건너뛰기
+            //     maxTicksLimit: 7, // x값 표시 개수
+            //     maxRotation: 90,  // x값 최대 회전 각도 
+            //     minRotation: 90, // x값 최소 회전 각도
+            //     fontSize: 14,
+            //   }
+            // }],
             yAxes: [{
                 ticks: {
-                  min: 0
+                  min: 0,
+                  max: 2500
                 }
             }]
             },
