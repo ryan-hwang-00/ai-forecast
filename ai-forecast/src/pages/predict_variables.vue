@@ -129,9 +129,6 @@
     </div>
     <!-- /div 1 -->
 
-    
-
-
     <div class="row justify-end q-ma-lg">
           <!-- div_5 -->
         <q-btn push color="white" text-color="primary" label="number_store" @click="number_store"/>
@@ -149,16 +146,16 @@
 
 <script>
 import { date, LocalStorage } from "quasar";
-
 import axios from "axios";
+
 
 export default {
   data () {
     return {
-      model1: '2020-02-15',
-      model2: '03-21-2019',
+
+      model1: '',
+      model2: '',
       selection: [ ]
-      
       
     }
       this.selected_date={model1}
@@ -230,7 +227,6 @@ export default {
 
       const data = {
         
-        
         "for_return" : this.day1_2,
         "selected_date" : this.model1,
         "event_info" : this.selection,
@@ -263,8 +259,6 @@ export default {
 
       });
       
-      
-
     },
     data_check () {
       console.log('Clicked data_check')
@@ -276,6 +270,7 @@ export default {
       alert(this.selection);
     },
     number_store () {
+      
       localStorage.day1 = 200;
       localStorage.day2 = 555;
       localStorage.day3 = 900;
@@ -284,6 +279,7 @@ export default {
       localStorage.day6 = 400;
       localStorage.day7 = 200;
       this.day1_2 = localStorage.day2;
+
     },
 
     searchparam () {
@@ -303,10 +299,7 @@ export default {
     }
     
   },
-
-  
 }
-
 
 // for test
 // flask_alert () {
@@ -340,9 +333,6 @@ export default {
 
 //   },
 
-
-
 </script>
-
 
 
