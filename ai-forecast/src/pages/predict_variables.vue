@@ -149,6 +149,8 @@
 
 <script>
 import { date, LocalStorage } from "quasar";
+import BarChart from '../components/charts/BarChart'
+import Predict from '../pages/Predict'
 
 import axios from "axios";
 
@@ -157,7 +159,8 @@ export default {
     return {
       model1: '2020-02-15',
       model2: '03-21-2019',
-      selection: [ ]
+      selection: [ ],
+      test1_data : Predict.data().getflag
       
       
     }
@@ -246,8 +249,14 @@ export default {
         console.log(response)
 
         localStorage.origin_data = JSON.stringify(response.data);
-        localStorage.return1 = JSON.stringify(response.data['day']);
-        localStorage.return2 = JSON.stringify(response.data['promotion']);
+        localStorage.day1 = JSON.stringify(response.data['day1']);
+        localStorage.day2 = JSON.stringify(response.data['day2']);
+        localStorage.day3 = JSON.stringify(response.data['day3']);
+        localStorage.day4 = JSON.stringify(response.data['day4']);
+        localStorage.day5 = JSON.stringify(response.data['day5']);
+        localStorage.day6 = JSON.stringify(response.data['day6']);
+        localStorage.day7 = JSON.stringify(response.data['day7']);
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
         
         // alert(test_data);
         setTimeout(function() { 
@@ -276,14 +285,15 @@ export default {
       alert(this.selection);
     },
     number_store () {
-      localStorage.day1 = 200;
+      localStorage.day1 = 300;
       localStorage.day2 = 555;
       localStorage.day3 = 900;
       localStorage.day4 = 600;
       localStorage.day5 = 700;
       localStorage.day6 = 400;
-      localStorage.day7 = 200;
-      this.day1_2 = localStorage.day2;
+      localStorage.day7 = 600;
+      
+      
     },
 
     searchparam () {

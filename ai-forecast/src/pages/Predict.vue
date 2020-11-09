@@ -45,19 +45,19 @@
           class="bg-primary text-white shadow-1 rounded-borders"
         >
           <q-carousel-slide name="style" class="column no-wrap flex-center">
-                <bar-chart></bar-chart>
+            <bar-chart></bar-chart>
           </q-carousel-slide>
           
           <q-carousel-slide name="tv" class="column no-wrap flex-center">
-            <!-- <div class="row justify-center q-col-gutter-sm  q-py-sm">     -->
-              <!-- <div class="q-pa-sm"> -->
-                <line-chart></line-chart>
-              <!-- </div> -->
-            <!-- </div> -->
+            <line-chart></line-chart>
           </q-carousel-slide>
 
           <q-carousel-slide name="layers" class="column no-wrap flex-center">
-                <mixed-chart></mixed-chart>
+            <mixed-chart></mixed-chart>
+          </q-carousel-slide>
+
+          <q-carousel-slide name="ef" class="column no-wrap flex-center">
+            <pie-chart></pie-chart>
           </q-carousel-slide>
 
         </q-carousel>
@@ -70,23 +70,24 @@
 <script>
 
     import BarChart from '../components/charts/BarChart'
+    import PieChart from '../components/charts/PieChart'
     import LineChart from '../components/charts/LineChart'
     import MixedChart from '../components/charts/MixedChart'
     import { LocalStorage } from "quasar";
-
 
     export default {
         name: "Predict",
         components: {
           BarChart,
           LineChart,
+          PieChart,
           MixedChart
         },
         data () {
           return {
             getdate: '날짜',
             getstore: '매장명',
-            getproduct: '상품명',
+            getproduct: '',
             getevent: '행사',
             getflag: '휴무일',
             slide: 'style',
@@ -155,7 +156,7 @@
           },
 
           getLocalStorageproduct: function () {
-            var getproduct = LocalStorage.getItem("item_1");
+            this.getproduct = LocalStorage.getItem("item_1");
           },
           
           getLocalStorageevent: function () {
@@ -164,6 +165,22 @@
 
           getLocalStorageflag: function () {
             this.getflag = LocalStorage.getItem("flag");
+          },
+          fillData () {
+            this.datacollection = {
+              labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+              datasets: [
+                {
+                  label: 'Value',
+                  backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
+                  // Data for the x-axis of the chart
+                  data: [this.getLocalStorageproduct(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
+                }
+              ]
+            }
+          },
+          getRandomInt () {
+            return Math.floor(Math.random() * (50 - 5 + 1)) + 5
           }
 
         }

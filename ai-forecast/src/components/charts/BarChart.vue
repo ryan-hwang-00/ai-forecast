@@ -15,6 +15,7 @@
 
 <script>
 import Chart from 'chart.js'
+
 export default {
   data () {
     return {
@@ -34,7 +35,8 @@ export default {
             {
               label: 'Value',
               backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-              data: [2478, 1267, 734, 784, 433, 341, 1342]
+              data: [localStorage.day1, localStorage.day2, localStorage.day3, localStorage.day4, localStorage.day5, localStorage.day6, localStorage.day7]
+              // [2478, 1267, 734, 784, 433, 341, 1342]
             }
           ]
         },
@@ -42,7 +44,14 @@ export default {
           legend: {
             display: false
           },
-          title: {
+          scales: {
+            yAxes: [{
+                ticks: {
+                  min: 0
+                }
+            }]
+            },
+            title: {
             display: true,
             text: 'Predict Value'
           }
