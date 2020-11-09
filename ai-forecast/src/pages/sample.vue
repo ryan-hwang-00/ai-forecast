@@ -164,6 +164,7 @@ export default {
         user: 'username',
         email: '1111@email.com',
         password: 'password'
+
       }
 
       LocalStorage.set("textSetJson", this.textSetJson);
@@ -182,10 +183,14 @@ export default {
 
     // get multi data(JSON)
 
+
     getMultiSingleLocalStorage: function () {
       const data = LocalStorage.getItem("textSetJson")
-      this.textGetJsonSingle = data.email;
+
+      this.textGetJsonSingle = data.user;
+      console.log( this.textGetJsonSingle)
     },
+
 
     // axios get data
     getAxios: function () {
