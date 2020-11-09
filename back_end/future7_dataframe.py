@@ -31,7 +31,7 @@ def row_select(dataframe, column, value):
 
 def date_info(start_date, event_info, break_info):
 
-    arrived_data = request.get_json()  # json 데이터를 받아옴
+    # arrived_data = request.get_json()  # json 데이터를 받아옴
 
     weather_df = weather2.weather_api(start_date)
 
