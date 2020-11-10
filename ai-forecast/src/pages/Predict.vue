@@ -113,6 +113,8 @@
 <script>
 import PieChart from '../components/charts/PieChart'
 import MixedChart from '../components/charts/MixedChart'
+// import LineChart from '../components/charts/LineChart'
+// import BarChart from '../components/charts/BarChart'
 import { LocalStorage } from "quasar";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
