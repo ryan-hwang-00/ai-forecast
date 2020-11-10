@@ -1,6 +1,6 @@
 <template>
   <div class="justify-center q-ma-sm">
-
+    <!-- 예측 변수 정보 chip -->
     <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
         size="18px"
@@ -49,17 +49,9 @@
         @click="onPredictClick()"
       />
     </div>
-
+    <!-- 예측 값 테이블 및 그래프 -->
     <div class="row justify-center q-col-gutter-sm q-py-sm">
-      <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
-        <q-table
-          title="주간 예측량"
-          :data="data"
-          :columns="columns"
-          row-key="Date"
-        />
-      </div>
-
+      <!-- 예측값 그래프 캐롯셀 -->
       <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
         <q-carousel
           v-model="slide"
@@ -100,31 +92,44 @@
             name="ef"
             class="column no-wrap flex-center"
           >
-            <pie-chart></pie-chart>
+            <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
           </q-carousel-slide>
 
         </q-carousel>
+
       </div>
+      <!-- 예측 값 테이블 -->
+      <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
+        <q-table
+          title="주간 예측량"
+          :data="data"
+          :columns="columns"
+          row-key="Date"
+        />
+      </div>
+
     </div>
 
   </div>
-</template>
+</template> 
 
 <script>
-import PieChart from '../components/charts/PieChart'
+// import PieChart from '../components/charts/PieChart'
 import MixedChart from '../components/charts/MixedChart'
 // import LineChart from '../components/charts/LineChart'
 // import BarChart from '../components/charts/BarChart'
 import { LocalStorage } from "quasar";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
+import DoughnutChart from '../components/charts/DoughnutChart.js'
 
 export default {
   name: "Predict",
   components: {
     BarChart,
     LineChart,
-    PieChart,
+    // PieChart,
+    DoughnutChart,
     MixedChart
   },
   data () {
@@ -193,6 +198,7 @@ export default {
   created () {
     this.fillDataBar()
     this.fillDataLine()
+    this.fillDataDoughnutChart()
     this.onPredictClick()
   },
 
@@ -230,6 +236,20 @@ export default {
         }
         ]
       }
+    },
+
+    fillDataDoughnutChart () {
+      this.datacollectionDoughnut = {
+        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        datasets: [{
+          label: 'wnrk',
+          backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
+          data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+        }]
+      };
+
+
+      // BarChart.update();
     },
 
     onPredictClick: function () {
