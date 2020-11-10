@@ -43,12 +43,8 @@
         {{getflag}}
       </q-chip>
 
-
-      <!-- 예측 변수 정보 불러오는 버튼 (삭제 요망) -->
       <!-- <q-btn color="white" text-color="black" label="예측 변수 정보 불러오기" @click="onvariableClick()"/> -->
     </div>
-
-
 
     <!-- 예측 값 그래프 및 테이블 -->
     <div class="row justify-center q-col-gutter-sm q-py-sm">
@@ -154,8 +150,9 @@ export default {
     BarChart,
     LineChart,
     // PieChart,
+    MixedChart,
     DoughnutChart,
-    MixedChart
+    Mycanvas
   },
   data () {
     return {
