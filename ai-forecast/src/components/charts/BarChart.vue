@@ -58,6 +58,7 @@ export default {
                 ticks: {
                   min: 0,
                   max: 2500
+                  //stepSize : 250
                 }
             }]
             },

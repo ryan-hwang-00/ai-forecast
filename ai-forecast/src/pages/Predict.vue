@@ -86,7 +86,7 @@
             name="tv"
             class="column no-wrap flex-center"
           >
-            <line-chart v-if="loaded" :chart-data="datacollectionLine"></line-chart>
+            <line-chart :chart-data="datacollectionLine"></line-chart>
           </q-carousel-slide>
 
           <q-carousel-slide
@@ -211,17 +211,18 @@ export default {
             label: 'Value',
             backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
             // Data for the x-axis of the chart
-            data: [120, 22, 20, 333, 22, 333, 22]
+            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
           }
         ]
       }
       // BarChart.update();
     },
+    
     fillDataLine () {
       this.datacollectionLine = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
         datasets: [{
-          data: [120, 22, 33, 44, 1, 33, 222],
+          data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()],
           label: 'Predict Value',
           borderColor: 'white',
           fill: false,
@@ -243,25 +244,35 @@ export default {
         this.getflag = "휴무: 휴무일 없음"
       }
     },
-    getRandomInt () {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+
+    getday1Value () {
+      this.day1 = LocalStorage.getItem("day1")
+      return this.day1
     },
-    // fillData () {
-    //   this.datacollection = {
-    //     labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
-    //     datasets: [
-    //       {
-    //         label: 'Value',
-    //         backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-    //         // Data for the x-axis of the chart
-    //         data: [this.getLocalStorageproduct(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-    //       }
-    //     ]
-    //   }
-    // },
-    // getRandomInt () {
-    //   return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-    // }
+    getday2Value () {
+      this.day2 = LocalStorage.getItem("day2")
+      return this.day2
+    },
+    getday3Value () {
+      this.day3 = LocalStorage.getItem("day3")
+      return this.day3
+    },
+    getday4Value () {
+      this.day4 = LocalStorage.getItem("day4")
+      return this.day4
+    },
+    getday5Value () {
+      this.day5 = LocalStorage.getItem("day5")
+      return this.day5
+    },
+    getday6Value () {
+      this.day6 = LocalStorage.getItem("day6")
+      return this.day6
+    },
+    getday7Value () {
+      this.day7 = LocalStorage.getItem("day7")
+      return this.day7
+    }
   }
 }
 </script>

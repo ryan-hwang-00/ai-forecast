@@ -256,6 +256,7 @@ export default {
         localStorage.day5 = JSON.stringify(response.data['day5']);
         localStorage.day6 = JSON.stringify(response.data['day6']);
         localStorage.day7 = JSON.stringify(response.data['day7']);
+        localStorage.date = this.model1;
         // localStorage.return2 = JSON.stringify(response.data['promotion']);
         
         // alert(test_data);
