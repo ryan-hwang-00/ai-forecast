@@ -26,7 +26,7 @@
 <script>
 
 import axios from "axios";
- 
+
 export default {
   name: "store",
   data() {
@@ -34,6 +34,7 @@ export default {
     store1: "",
     store2: "",
     };
+
   },
   methods: {
     onItemClickStore1() {
