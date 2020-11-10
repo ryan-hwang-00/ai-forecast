@@ -71,7 +71,7 @@
             <q-card-section class="bg-primary">
                 <div class="row items-center no-wrap">
                     <div class="col">
-                        <div class="text-h6 text-dark text-center">주간 예측량</div>
+                        <div class="text-h6 text-dark text-center text-Do-Hyeon">주간 예측량</div>
                     </div>
                 </div>
             </q-card-section>
@@ -383,3 +383,6 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+</style>
