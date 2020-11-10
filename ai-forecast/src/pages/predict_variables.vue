@@ -81,7 +81,6 @@
       </q-btn-dropdown>
 
 
-
       <div class="q-pa-md">
         <q-btn-dropdown
           class="glossy"
@@ -108,6 +107,36 @@
 
       
       </div> <!-- /div 2 -->
+   
+
+      <div class="fit row justify-start" style="max-width:630px">
+      <!-- <q-chip color="indigo-10" text-color="white" icon="bookmark" >  할인요일 선택  </q-chip> -->
+      <q-btn color="white" text-color="black" label="할인 요일 선택" />
+      </div>
+
+      <!-- div_6 -->
+    <div class="q-pa-md">
+      <div class="q-gutter-sm">
+        <q-checkbox v-model="selection" val=1 label="월요일" color="teal" />
+        <q-checkbox v-model="selection" val=2 label="화요일" color="orange" />
+        <q-checkbox v-model="selection" val=3 label="수요일" color="red" />
+        <q-checkbox v-model="selection" val=4 label="목요일" color="cyan" />
+        <q-checkbox v-model="selection" val=5 label="금요일" color="cyan" />
+        <q-checkbox v-model="selection" val=6 label="토요일" color="cyan" />
+        <q-checkbox v-model="selection" val=7 label="일요일" color="cyan" />
+
+      </div>
+
+      <div class="q-px-sm">
+        할인 요일: <strong>{{ selection }}</strong>
+      </div>
+    </div>
+    <!--/div_6  -->
+
+
+
+
+
     
 
       

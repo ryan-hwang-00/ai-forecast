@@ -30,11 +30,10 @@
   </div>
 </template>
 
-<style>
-</style>
 
 <script>
-import BarChart from '../components/charts/BarChart'
+
+import BarChart from 'components/charts/BarChart.vue'
 import LineChart from '../components/charts/LineChart'
 import RadarChart from '../components/charts/RadarChart'
 import PieChart from '../components/charts/PieChart'
@@ -43,8 +42,11 @@ import DoughnutChart from '../components/charts/DoughnutChart'
 import HorizontalBarChart from '../components/charts/HorizontalBarChart'
 import MixedChart from '../components/charts/MixedChart'
 import BubbleChart from '../components/charts/BubbleChart'
+
 export default {
+
   name: 'PageIndex',
+  
   components: {
     BarChart,
     LineChart,
@@ -56,8 +58,13 @@ export default {
     MixedChart,
     BubbleChart
   },
+
   data () {
-    return {}
+    return {
+
+
+    }
   }
 }
+
 </script>

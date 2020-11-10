@@ -26,6 +26,7 @@
           </q-card-section>
 
           <q-card-actions 
+
           class="text-grand-hotel q-pa-md">
            
             <q-btn

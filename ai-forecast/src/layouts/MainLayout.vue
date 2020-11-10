@@ -1,6 +1,5 @@
 <template>
   <q-layout view="hHh LpR fff">
-    
     <q-header bordered class="bg-primary text-white" height-hint="98">
       
       <q-toolbar>
@@ -9,6 +8,7 @@
           <q-btn clickable to="/">
             <img src="~assets/FMLogo1.svg" height="98px">
           </q-btn>
+          
         </q-toolbar-title>
       </q-toolbar>
 
