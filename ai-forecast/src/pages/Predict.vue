@@ -116,6 +116,7 @@ import MixedChart from '../components/charts/MixedChart'
 import { LocalStorage } from "quasar";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
+
 export default {
   name: "Predict",
   components: {
@@ -134,6 +135,7 @@ export default {
       getevent: '행사',
       getflag: '휴무일',
       slide: 'style',
+
       // Table Data
       columns: [
         {
@@ -185,10 +187,19 @@ export default {
       // Chart Data
     }
   },
+
   created () {
     this.fillDataBar()
     this.fillDataLine()
+    this.onPredictClick()
   },
+
+  // mounted () {
+  //   this.fillDataBar()
+  //   this.fillDataLine()
+  //   this.onPredictClick()
+  // },
+
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
@@ -205,17 +216,6 @@ export default {
       // BarChart.update();
     },
     fillDataLine () {
-      // this.datacollectionLine = {
-      //   labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
-      //   datasets: [{
-      //     data: [120, 222, 222, 222, 222, 222, 222],
-      //     label: 'Predict Value',
-      //     borderColor: '#34495E',
-      //     fill: false,
-      //     lineTension: 0.9
-      //   }
-      //   ]
-      // }
       this.datacollectionLine = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
         datasets: [{
@@ -234,7 +234,12 @@ export default {
       this.getstore = LocalStorage.getItem("store");
       this.getproduct = LocalStorage.getItem("item_1");
       this.getevent = LocalStorage.getItem("event_1");
-      this.getflag = LocalStorage.getItem("flag");
+      this.getbreak = LocalStorage.getItem("break_1");
+      if (this.getbreak == "1") {
+        this.getflag = "휴무: 일요일";        
+      } else {
+        this.getflag = "휴무: 휴무일 없음"
+      }
     },
     getRandomInt () {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
