@@ -43,8 +43,14 @@ def seven_days():
     start_date = arrived_data['selected_date']
     event_info = arrived_data['event_info']
     break_info = arrived_data['break_info']
+    # print(start_date, event_info, break_info)
+    # return_df_7, merged_df = date_info(start_date, event_info, break_info)
+    # merged_df.to_csv('fffff.csv', encoding='euc-kr')
 
     return_df_7, merged_df = date_info(start_date, event_info, break_info)
+
+    trainer(model_name='1_bac2.hdf5', store_code=1,
+            product_name='백산수2.0L', predict_date='2020-01-07')
 
     print(merged_df)
     return return_df_7

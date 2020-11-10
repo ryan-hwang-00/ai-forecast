@@ -129,9 +129,6 @@
     </div>
     <!-- /div 1 -->
 
-    
-
-
     <div class="row justify-end q-ma-lg">
           <!-- div_5 -->
         <q-btn push color="white" text-color="primary" label="number_store" @click="number_store"/>
@@ -149,19 +146,16 @@
 
 <script>
 import { date, LocalStorage } from "quasar";
-import BarChart from '../components/charts/BarChart'
-import Predict from '../pages/Predict'
-
 import axios from "axios";
+
 
 export default {
   data () {
     return {
-      model1: '2020-02-15',
-      model2: '03-21-2019',
-      selection: [ ],
-      test1_data : Predict.data().getflag
-      
+
+      model1: '',
+      model2: '',
+      selection: [ ]
       
     }
       this.selected_date={model1}
@@ -233,7 +227,6 @@ export default {
 
       const data = {
         
-        
         "for_return" : this.day1_2,
         "selected_date" : this.model1,
         "event_info" : this.selection,
@@ -273,8 +266,6 @@ export default {
 
       });
       
-      
-
     },
     data_check () {
       console.log('Clicked data_check')
@@ -314,10 +305,7 @@ export default {
     }
     
   },
-
-  
 }
-
 
 // for test
 // flask_alert () {
@@ -351,9 +339,6 @@ export default {
 
 //   },
 
-
-
 </script>
-
 
 

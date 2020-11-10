@@ -19,15 +19,20 @@ import Chart from 'chart.js'
 export default {
   data () {
     return {
+
     }
   },
+
   mounted () {
     this.createChart('bar-chart')
   },
+
+
   methods: {
     createChart (chartId) {
       const ctx = document.getElementById(chartId)
       const myChart = new Chart(ctx, {
+
         type: 'bar',
         data: {
           labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
@@ -40,6 +45,8 @@ export default {
             }
           ]
         },
+
+
         options: {
           legend: {
             display: false
@@ -67,8 +74,11 @@ export default {
             text: 'Predict Value'
           }
         }
+        
+
       })
       return myChart
+
     }
   }
 }

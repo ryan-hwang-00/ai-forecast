@@ -1,8 +1,8 @@
 <template>
   <q-page class="bg-light-white window-height window-width row justify-center items-center">
     <div class="column">
-      <div class="row q-col-gutter-sm content-center items-center justify-evenly">
-        <h5 class="full-width">Login</h5>
+      <div class="text-grand-hotel text-weight-bolder">
+        <h3 class="full-width">Loginstagram</h3>
       </div>
       <div class="row">
         <q-card square bordered class="q-pa-lg shadow-1">
@@ -26,7 +26,7 @@
           </q-card-section>
 
           <q-card-actions 
-          class="q-pa-md">
+          class="text-grand-hotel q-pa-md">
            
             <q-btn
             push
@@ -36,12 +36,14 @@
             class="full-width"
             @click="userCheck"
             label = 'login'/>
+
           </q-card-actions>
 
           <q-card-section class="text-center q-pa-none" >
-            <p class="text-grey-10">If you are not registered, please register first</p>
-            <q-btn rounded standout  
-            label="회원가입" 
+            <p class="text-grand-hotel text-grey-10" >If you are not registered, please register first</p>
+            <q-btn rounded standout 
+            class = "text-grand-hoteltext-bold" 
+            label="register" 
             to="/register" />
           </q-card-section>
         </q-card>
@@ -58,8 +60,8 @@ export default {
   data () {
     return {
 
-      email: "",
-      password: ""
+      email: "bbbb",
+      password: "1234"
       
       }
   },
@@ -117,3 +119,8 @@ export default {
 }
 
 </script>
+
+<style lang="sass">
+
+
+</style>

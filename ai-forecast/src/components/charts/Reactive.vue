@@ -32,7 +32,8 @@ import { Chart, mixins } from 'chart.js'
         }
       }
     },
-    mounted () {
+    mounted () { 
+      
       this.renderChart(this.chartData, this.options)
     }
   }

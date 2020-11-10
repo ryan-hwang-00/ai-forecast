@@ -23,6 +23,8 @@ import graphviz
 import seaborn as sns
 from matplotlib import rc, font_manager
 
+from future7_dataframe import date_info
+
 
 def get_sequence(x_train, x_train_1, y_train, sequence_x=21, sequence_y=7):
 
@@ -204,18 +206,20 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
     df_train = df.loc[:df[df['date'] == train_date].index[0]]
     df_test = df.loc[:df[df['date'] == predict_date].index[0]]
 
-    df = df.drop(columns='date')
+    # df = df.drop(columns='date')
     df_train = df_train.drop(columns='date')
     df_test = df_test.drop(columns='date')
 
-    x_columns = ['year_1_bac_2', 'month_1_bac_2', 'day_1_bac_2',
-                 'weekday_1_bac_2', 'weeknum_1_bac_2',
-                 'flag_1_bac_2', 'weekend_1_bac_2', 'national_holiday_1_bac_2',
-                 'nat_long_holiday_1_bac_2', 'break_1_bac_2', 'mean_temp_1_bac_2',
+    x_columns = ['date', 'year_1_bac_2', 'month_1_bac_2', 'day_1_bac_2',
+                 'weekday_1_bac_2', 'weeknum_1_bac_2', 'weekend_1_bac_2', 'national_holiday_1_bac_2',
+                 'break_1_bac_2', 'mean_temp_1_bac_2',
                  'precipitation_1day_1_bac_2',
                  'mean_humidity_1_bac_2', 'mean_pressure_1_bac_2',
                  'sin_month_1_bac_2', 'cos_month_1_bac_2',
-                 'sin_day_1_bac_2', 'cos_day_1_bac_2', 'sin_weekday_1_bac_2', 'dow_금요일_1_bac_2', 'dow_목요일_1_bac_2',
+                 'sin_day_1_bac_2', 'cos_day_1_bac_2',
+                 'sin_weekday_1_bac_2', 'cos_weekday_1_bac_2',
+                 'sin_weeknum_1_bac_2', 'cos_weeknum_1_bac_2',
+                 'dow_금요일_1_bac_2', 'dow_목요일_1_bac_2',
                  'dow_수요일_1_bac_2', 'dow_월요일_1_bac_2', 'dow_일요일_1_bac_2',
                  'dow_토요일_1_bac_2', 'dow_화요일_1_bac_2', 'holi_name_0_1_bac_2',
                  'holi_name_1월1일_1_bac_2', 'holi_name_개천절_1_bac_2',
@@ -240,13 +244,15 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
                  'promotion_flag_6_jin', 'sale_qty_6_jin']
 
     x_1_columns = ['year_1_bac_2', 'month_1_bac_2', 'day_1_bac_2',
-                   'weekday_1_bac_2', 'weeknum_1_bac_2',
-                   'flag_1_bac_2', 'weekend_1_bac_2', 'national_holiday_1_bac_2',
-                   'nat_long_holiday_1_bac_2', 'break_1_bac_2', 'mean_temp_1_bac_2',
+                   'weekday_1_bac_2', 'weeknum_1_bac_2', 'weekend_1_bac_2', 'national_holiday_1_bac_2',
+                   'break_1_bac_2', 'mean_temp_1_bac_2',
                    'precipitation_1day_1_bac_2',
                    'mean_humidity_1_bac_2', 'mean_pressure_1_bac_2',
                    'sin_month_1_bac_2', 'cos_month_1_bac_2',
-                   'sin_day_1_bac_2', 'cos_day_1_bac_2', 'sin_weekday_1_bac_2', 'dow_금요일_1_bac_2', 'dow_목요일_1_bac_2',
+                   'sin_day_1_bac_2', 'cos_day_1_bac_2',
+                   'sin_weekday_1_bac_2', 'cos_weekday_1_bac_2',
+                   'sin_weeknum_1_bac_2', 'cos_weeknum_1_bac_2',
+                   'dow_금요일_1_bac_2', 'dow_목요일_1_bac_2',
                    'dow_수요일_1_bac_2', 'dow_월요일_1_bac_2', 'dow_일요일_1_bac_2',
                    'dow_토요일_1_bac_2', 'dow_화요일_1_bac_2', 'holi_name_0_1_bac_2',
                    'holi_name_1월1일_1_bac_2', 'holi_name_개천절_1_bac_2',
@@ -260,14 +266,141 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
                    'holi_name_추석_1_bac_2', 'holi_name_한글날_1_bac_2',
                    'holi_name_현충일_1_bac_2',
                    promotion]
-    df.to_csv('AI_Sale_ver4.0.csv', encoding='euc-kr')
+    # df.to_csv('AI_Sale_ver4.0.csv', encoding='euc-kr', columns=x_columns)
+    return df, df_train, df_test, sale_qty, x_columns, x_1_columns
+
+return_df_7, merged_df = date_info('2020-01-01', ['2', '4', '6', '7'], 0)
+
+def sep_data2(train='AI_Sale_ver4.0.csv', test=merged_df,
+              product_name='백산수2.0L',
+              store_code=1,
+              train_date='2019-12-31',
+              predict_date='2020-01-07'):
+
+    meta_index = pd.DataFrame(
+        data=[[1, '백산수2.0L', 'promotion_flag_1_bac_2', 'sale_qty_1_bac_2', '1_bac2.hdf5'],
+              [1, '백산수500ml', 'promotion_flag',
+               'sale_qty_1_bac_5', '1_bac5.hdf5'],
+              [1, '신라면멀티', 'promotion_flag_1_sin',
+               'sale_qty_1_sin', '1_sin.hdf5'],
+              [1, '안성탕면멀티', 'promotion_flag_1_ans',
+               'sale_qty_1_ans', '1_ans.hdf5'],
+              [1, '진라면멀티(순한맛)', 'promotion_flag_1_jin',
+               'sale_qty_1_jin', '1_jin.hdf5'],
+              [6, '백산수2.0L', 'promotion_flag_6_bac_2',
+               'sale_qty_6_bac_2', '6_bac2.hdf5'],
+              [6, '백산수500ml', 'promotion_flag_6_bac_5',
+               'sale_qty_6_bac_5', '6_bac5.hdf5'],
+              [6, '신라면멀티', 'promotion_flag_6_sin',
+               'sale_qty_6_sin', ' 6_jin.hdf5'],
+              [6, '안성탕면멀티', 'promotion_flag_6_ans',
+               'sale_qty_6_ans', '6_ans.hdf5'],
+              [6, '진라면멀티(순한맛)', 'promotion_flag_6_jin', 'sale_qty_6_jin', '6_sin.hdf5']],
+        columns=['store', 'product', 'promotion', 'sale', 'weight'])
+
+    sale_qty = meta_index[(meta_index['store'] == store_code) & (
+        meta_index['product'] == product_name)].iloc[0]['sale']
+
+    past = pd.read_csv(train, encoding='euc-kr', index_col=0)
+
+    future = test
+
+    future['sin_month'] = np.sin(2*np.pi*future.month/12)
+    future['cos_month'] = np.cos(2*np.pi*future.month/12)
+    future['sin_day'] = np.sin(2*np.pi*future.day/past.day.max())
+    future['cos_day'] = np.cos(2*np.pi*future.day/past.day.max())
+    future['sin_weekday'] = np.sin(2*np.pi*future.weekday/past.weekday.max())
+    future['cos_weekday'] = np.cos(2*np.pi*future.weekday/past.weekday.max())
+    future['sin_weeknum'] = np.sin(2*np.pi*1/past.weeknum.max())
+    future['cos_weeknum'] = np.cos(2*np.pi*1/past.weeknum.max())
+
+    weekends = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 1, 7: 1}
+
+    future['weekend'] = future['weekday'].apply(lambda x: weekends[x])
+
+    future['holi_name'] = future['holiday_name']
+    future = future.drop(columns='holiday_name')
+
+    future = pd.get_dummies(future, columns=['dow', 'holi_name'])
+
+    future['precipitation_1day'] = future['rain']
+    future = future.drop(columns='rain')
+
+    # future = future.drop(columns='date')
+
+    df = past.append(future, ignore_index=True)
+    # print(df)
+    df_train = df.loc[:df[df['date'] == train_date].index[0]]
+    df_test = df.loc[:df[df['date'] == predict_date].index[0]]
+
+    df = df.drop(columns='date')
+    df_train = df_train.drop(columns='date')
+    df_test = df_test.drop(columns='date')
+
+    x_columns = ['year', 'month', 'day',
+                 'weekday', 'weeknum', 'weekend', 'national_holiday',
+                 'break', 'mean_temp',
+                 'precipitation_1day',
+                 'mean_humidity', 'mean_pressure',
+                 'sin_month', 'cos_month',
+                 'sin_day', 'cos_day',
+                 'sin_weekday', 'cos_weekday',
+                 'sin_weeknum', 'cos_weeknum',
+                 'dow_금요일', 'dow_목요일',
+                 'dow_수요일', 'dow_월요일', 'dow_일요일',
+                 'dow_토요일', 'dow_화요일', 'holi_name_0',
+                 'holi_name_1월1일', 'holi_name_개천절',
+                 'holi_name_광복절', 'holi_name_국회의원선거일',
+                 'holi_name_기독탄신일', 'holi_name_대체공휴일',
+                 'holi_name_대체휴무일', 'holi_name_대통령선거일',
+                 'holi_name_부처님오신날', 'holi_name_삼일절',
+                 'holi_name_석가탄신일', 'holi_name_설날',
+                 'holi_name_신정', 'holi_name_어린이날',
+                 'holi_name_임시공휴일', 'holi_name_전국동시지방선거',
+                 'holi_name_추석', 'holi_name_한글날',
+                 'holi_name_현충일',
+                 'promotion_flag_1_bac_2', 'sale_qty_1_bac_2',
+                 'promotion_flag_6_bac_2', 'sale_qty_6_bac_2',
+                 'promotion_flag', 'sale_qty_1_bac_5',
+                 'promotion_flag_6_bac_5', 'sale_qty_6_bac_5',
+                 'promotion_flag_1_sin', 'sale_qty_1_sin',
+                 'promotion_flag_6_sin', 'sale_qty_6_sin',
+                 'promotion_flag_1_ans', 'sale_qty_1_ans',
+                 'promotion_flag_6_ans', 'sale_qty_6_ans',
+                 'promotion_flag_1_jin', 'sale_qty_1_jin',
+                 'promotion_flag_6_jin', 'sale_qty_6_jin']
+
+    x_1_columns = ['year', 'month', 'day',
+                   'weekday', 'weeknum', 'weekend', 'national_holiday',
+                   'break', 'mean_temp',
+                   'precipitation_1day',
+                   'mean_humidity', 'mean_pressure',
+                   'sin_month', 'cos_month',
+                   'sin_day', 'cos_day',
+                   'sin_weekday', 'cos_weekday',
+                   'sin_weeknum', 'cos_weeknum',
+                   'dow_금요일', 'dow_목요일',
+                   'dow_수요일', 'dow_월요일', 'dow_일요일',
+                   'dow_토요일', 'dow_화요일', 'holi_name_0',
+                   'holi_name_1월1일', 'holi_name_개천절',
+                   'holi_name_광복절', 'holi_name_국회의원선거일',
+                   'holi_name_기독탄신일', 'holi_name_대체공휴일',
+                   'holi_name_대체휴무일', 'holi_name_대통령선거일',
+                   'holi_name_부처님오신날', 'holi_name_삼일절',
+                   'holi_name_석가탄신일', 'holi_name_설날',
+                   'holi_name_신정', 'holi_name_어린이날',
+                   'holi_name_임시공휴일', 'holi_name_전국동시지방선거',
+                   'holi_name_추석', 'holi_name_한글날',
+                   'holi_name_현충일',
+                   'promotion_flag']
+
     return df, df_train, df_test, sale_qty, x_columns, x_1_columns
 
 
 def scaled_origin(sequence_x=180 * 4,
                   sequence_y=7):
 
-    df, df_train, df_test, sale_qty, x_columns, x_1_columns = sep_data()
+    df, df_train, df_test, sale_qty, x_columns, x_1_columns = sep_data2()
 
     x_df, x_df_1, y_df = sep_xy(df, x_columns, x_1_columns, sale_qty=sale_qty)
 
@@ -308,4 +441,4 @@ def scaled_data(sequence_x=180 * 4,
     return x_train_scaled, x_train_1_scaled, y_train_scaled
 
 
-sep_data()
+# sep_data()
