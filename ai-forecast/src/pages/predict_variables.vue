@@ -5,7 +5,7 @@
     
     
 
-      <div class="fit row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly" style="max-width:1300px">  <!-- div 2 -->
+      <div class="fit row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly" style="max-width:1100px">  <!-- div 2 -->
         <!-- 상위 div에서 column의 content를 center 정렬하라고 되어 있음 -->
         <!-- 위 div class에서 fit 지정해주지 않으면 
         justify-evenly가 적용되지 않고 공백 없이 3개 버튼이 붙어버림
@@ -47,7 +47,7 @@
       </q-btn-dropdown>
 
 
-        <q-btn-dropdown color="primary" size="17px" label="행사구분">
+        <!-- <q-btn-dropdown color="primary" size="17px" label="행사구분">
         <q-list>
           <q-item clickable v-close-popup @click="no_event">
             <q-item-section>
@@ -61,7 +61,7 @@
             </q-item-section>
           </q-item>        
         </q-list>
-      </q-btn-dropdown>
+      </q-btn-dropdown> -->
 
 
         <q-btn-dropdown color="primary" size="17px" label="휴무">
@@ -80,8 +80,64 @@
         </q-list>
       </q-btn-dropdown>
 
-        
+      <!-- 여기 아래로 지우면 됨 -->
+
+      <div class="q-pa-md">
+        <q-btn-dropdown
+          class="glossy"
+          color="purple"
+          label="Account Settings"
+        >
+          <div class="row no-wrap q-pa-md">
+            <div class="column">
+              <div class="text-h6 q-mb-md">Settings</div>
+              <q-toggle v-model="event_mon" label="월요일 할인" />
+              <q-toggle v-model="event_tue" label="화요일 할인" />
+            </div>
+
+          </div>
+        </q-btn-dropdown>
+      </div>
+
+
+
+
+      <!-- 여기 위로 지우면 됨 -->
+
+
+
+      
       </div> <!-- /div 2 -->
+   
+
+      <div class="fit row justify-start" style="max-width:630px">
+      <!-- <q-chip color="indigo-10" text-color="white" icon="bookmark" >  할인요일 선택  </q-chip> -->
+      <q-btn color="white" text-color="black" label="할인 요일 선택" />
+      </div>
+
+      <!-- div_6 -->
+    <div class="q-pa-md">
+      <div class="q-gutter-sm">
+        <q-checkbox v-model="selection" val=1 label="월요일" color="teal" />
+        <q-checkbox v-model="selection" val=2 label="화요일" color="orange" />
+        <q-checkbox v-model="selection" val=3 label="수요일" color="red" />
+        <q-checkbox v-model="selection" val=4 label="목요일" color="cyan" />
+        <q-checkbox v-model="selection" val=5 label="금요일" color="cyan" />
+        <q-checkbox v-model="selection" val=6 label="토요일" color="cyan" />
+        <q-checkbox v-model="selection" val=7 label="일요일" color="cyan" />
+
+      </div>
+
+      <div class="q-px-sm">
+        할인 요일: <strong>{{ selection }}</strong>
+      </div>
+    </div>
+    <!--/div_6  -->
+
+
+
+
+
     
         <div class="fit row justify-center content-center">
         <!-- div 3 -->
@@ -107,34 +163,20 @@
         <!-- /div_3 -->
 
 
-      <!-- div_6 -->
-    <div class="q-pa-md">
-      <div class="q-gutter-sm">
-        <q-checkbox v-model="selection" val=1 label="월요일" color="teal" />
-        <q-checkbox v-model="selection" val=2 label="화요일" color="orange" />
-        <q-checkbox v-model="selection" val=3 label="수요일" color="red" />
-        <q-checkbox v-model="selection" val=4 label="목요일" color="cyan" />
-        <q-checkbox v-model="selection" val=5 label="금요일" color="cyan" />
-        <q-checkbox v-model="selection" val=6 label="토요일" color="cyan" />
-        <q-checkbox v-model="selection" val=7 label="일요일" color="cyan" />
-
-      </div>
-
-      <div class="q-px-sm">
-        할인 요일: <strong>{{ selection }}</strong>
-      </div>
-    </div>
-    <!--/div_6  -->
+      
           
     </div>
     <!-- /div 1 -->
 
+    
+
+
     <div class="row justify-end q-ma-lg">
           <!-- div_5 -->
-        <q-btn push color="white" text-color="primary" label="number_store" @click="number_store"/>
-        <q-btn push color="white" text-color="primary" label="date_check" @click="data_check"/>
-        <q-btn push color="white" text-color="primary" label="flask" @click="flask_alert"/>
-        <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/>
+        
+        
+        <q-btn push color="white" text-color="primary" label="get data" @click="flask_alert"/>
+        <!-- <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/> -->
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
         
     </div>
@@ -146,16 +188,21 @@
 
 <script>
 import { date, LocalStorage } from "quasar";
-import axios from "axios";
+import BarChart from '../components/charts/BarChart'
+import Predict from '../pages/Predict'
 
+import axios from "axios";
 
 export default {
   data () {
     return {
-
-      model1: '',
-      model2: '',
-      selection: [ ]
+      model1: '2020-02-15',
+      model2: '03-21-2019',
+      selection: [ ],
+      test1_data : Predict.data().getflag,
+      event_mon: false,
+      event_tue: false
+      
       
     }
       this.selected_date={model1}
@@ -227,6 +274,7 @@ export default {
 
       const data = {
         
+        
         "for_return" : this.day1_2,
         "selected_date" : this.model1,
         "event_info" : this.selection,
@@ -242,8 +290,16 @@ export default {
         console.log(response)
 
         localStorage.origin_data = JSON.stringify(response.data);
-        localStorage.return1 = JSON.stringify(response.data['day']);
-        localStorage.return2 = JSON.stringify(response.data['promotion']);
+        localStorage.day1 = JSON.stringify(response.data['day1']);
+        localStorage.day2 = JSON.stringify(response.data['day2']);
+        localStorage.day3 = JSON.stringify(response.data['day3']);
+        localStorage.day4 = JSON.stringify(response.data['day4']);
+        localStorage.day5 = JSON.stringify(response.data['day5']);
+        localStorage.day6 = JSON.stringify(response.data['day6']);
+        localStorage.day7 = JSON.stringify(response.data['day7']);
+        localStorage.date = this.model1;
+        localStorage.event_mon = this.event_mon
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
         
         // alert(test_data);
         setTimeout(function() { 
@@ -259,28 +315,23 @@ export default {
 
       });
       
-    },
-    data_check () {
-      console.log('Clicked data_check')
-      // this.sel_date=data();
-      // this.check_data = localStorage.getItem('origin_data');
       
-      // localStorage.event_222=test_variable
-      alert(this.model1);
-      alert(this.selection);
-    },
-    number_store () {
-      
-      localStorage.day1 = 200;
-      localStorage.day2 = 555;
-      localStorage.day3 = 900;
-      localStorage.day4 = 600;
-      localStorage.day5 = 700;
-      localStorage.day6 = 400;
-      localStorage.day7 = 200;
-      this.day1_2 = localStorage.day2;
 
     },
+    
+
+    // 로컬스토리지 이용하는 법 테스트를 위한 number store
+    // number_store () {
+    //   localStorage.day1 = 300;
+    //   localStorage.day2 = 555;
+    //   localStorage.day3 = 900;
+    //   localStorage.day4 = 600;
+    //   localStorage.day5 = 700;
+    //   localStorage.day6 = 400;
+    //   localStorage.day7 = 600;
+      
+      
+    // },
 
     searchparam () {
       const data = {
@@ -299,7 +350,10 @@ export default {
     }
     
   },
+
+  
 }
+
 
 // for test
 // flask_alert () {
@@ -333,6 +387,9 @@ export default {
 
 //   },
 
+
+
 </script>
+
 
 

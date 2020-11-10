@@ -26,11 +26,12 @@
           </q-card-section>
 
           <q-card-actions 
+
           class="text-grand-hotel q-pa-md">
            
             <q-btn
             push
-            unelevated color="blue" 
+            unelevated color="blue-10" 
             type="submit"
             size="lg" 
             class="full-width"

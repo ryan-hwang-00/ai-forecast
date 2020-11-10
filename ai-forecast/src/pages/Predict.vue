@@ -25,10 +25,12 @@
         title="주간 예측량"
         :data="data"
         :columns="columns"
+        :pagination.sync="pagination"
+        :rows-per-page-options="[0]"
         row-key="Date"
       />
       </div>
-      
+
       <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
         <q-carousel
           v-model="slide"
@@ -74,14 +76,16 @@
     import MixedChart from '../components/charts/MixedChart'
     import { LocalStorage } from "quasar";
 
-
     export default {
+
         name: "Predict",
+
         components: {
           BarChart,
           LineChart,
           MixedChart
         },
+
         data () {
           return {
             getdate: '날짜',
@@ -90,8 +94,11 @@
             getevent: '행사',
             getflag: '휴무일',
             slide: 'style',
-            
             // Table Data
+            pagination: {
+              rowsPerPage: 7
+            },
+
             columns: [
               {
                 name: 'Date',
@@ -101,6 +108,7 @@
                 field: 'Date',
                 sortable: true
               },
+
               {
                 name: 'Predict_Value',
                 label: '예측 수량',
@@ -109,42 +117,43 @@
                 sortable: true
               }
             ],
+
             data : [
+
             {
               Date: '2020-10-23',
-              Predict_Value: 118,
+              Predict_Value: JSON.stringify(LocalStorage.getItem("textSetJson")['a'])
             },
             {
               Date: '2020-10-24',
-              Predict_Value: 131,
+              Predict_Value: JSON.stringify(LocalStorage.getItem("textSetJson")['b'])            
             },
             {
               Date: '2020-10-25',
-              Predict_Value: 159,
+              Predict_Value: JSON.stringify(LocalStorage.getItem("textSetJson")['c'])
             },
             {
               Date: '2020-10-26',
-              Predict_Value: 182,
+              Predict_Value : JSON.stringify(LocalStorage.getItem("textSetJson")['d'])
             },
             {
               Date: '2020-10-27',
-              Predict_Value: 159,
+              Predict_Value: JSON.stringify(LocalStorage.getItem("textSetJson")['e'])
             },
             {
               Date: '2020-10-28',
-              Predict_Value: 284,
+              Predict_Value: JSON.stringify(LocalStorage.getItem("textSetJson")['f'])
             },
             {
               Date: '2020-10-29',
-              Predict_Value: 568,
-            },
+              Predict_Value: JSON.stringify(LocalStorage.getItem("textSetJson")['g'])
+            }
             ]
 
             // Chart Data
-
           }
-
         },
+
         methods: {
           getLocalStoragedate: function () {
             this.getdate = LocalStorage.getItem("date");

@@ -23,7 +23,7 @@
           standout
           v-model=text
           label="Start"
-          to="/store"
+          to="/map"
         />
 
       </q-card-section>

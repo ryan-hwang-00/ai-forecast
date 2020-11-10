@@ -161,9 +161,13 @@ export default {
 
       this.textSetJson = {
 
-        user: 'username',
-        email: '1111@email.com',
-        password: 'password'
+        a: 40,
+        b: 30,
+        c: 700,
+        d: 200,
+        e: 4200,
+        f: 220,
+        g: 1000
 
       }
 
@@ -176,8 +180,8 @@ export default {
     getMultiLocalStorage: function () {
 
       //json to string 형태로 변환
-
       this.textGetJson = JSON.stringify(LocalStorage.getItem("textSetJson"));
+      console.log(this.textGetJson)
 
     },
 
@@ -185,10 +189,12 @@ export default {
 
 
     getMultiSingleLocalStorage: function () {
-      const data = LocalStorage.getItem("textSetJson")
 
-      this.textGetJsonSingle = data.user;
-      console.log( this.textGetJsonSingle)
+      const data = LocalStorage.getItem("textSetJson")
+      this.textGetJsonSingle = data.a;
+
+      console.log(JSON.stringify(LocalStorage.getItem("textSetJson")['a']));
+
     },
 
 
@@ -210,11 +216,13 @@ export default {
       const data = {
 
         "horizon": "7",
+
       }
 
       axios.post('http://127.0.0.1:3000/api/v3.0/forecast/sales', 
 
       data
+      
       ).then(response => {
 
         console.log(response)
