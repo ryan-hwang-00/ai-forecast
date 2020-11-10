@@ -69,8 +69,8 @@ export default {
        {location.href="http://localhost:8080/#/store";
       
           this.$q.dialog({
-          title: 'Congratulation!',
-          message: '포커머신에 오신 것을 환영합니다!'
+          title: '부산!',
+          message: '부산지역입니다.'
         
           }).onOk(() => {
             // console.log('OK')
