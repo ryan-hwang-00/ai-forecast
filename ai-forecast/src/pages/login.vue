@@ -2,7 +2,7 @@
   <q-page class="bg-light-white window-height window-width row justify-center items-center">
     <div class="column">
       <div class="text-grand-hotel text-weight-bolder">
-        <h3 class="full-width">Loginstagram</h3>
+        <h3 class="full-width">Login</h3>
       </div>
       <div class="row">
         <q-card square bordered class="q-pa-lg shadow-1">
@@ -31,7 +31,7 @@
            
             <q-btn
             push
-            unelevated color="blue-10" 
+            unelevated color="primary" 
             type="submit"
             size="lg" 
             class="full-width"

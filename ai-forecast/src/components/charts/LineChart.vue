@@ -31,35 +31,11 @@ export default {
         data: {
           labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
           datasets: [{
-            data: [2478, 1267, 734, 784, 433, 341, 1342],
+            data: [localStorage.day1, localStorage.day2, localStorage.day3, localStorage.day4, localStorage.day5, localStorage.day6, localStorage.day7],
             label: 'Predict Value',
             borderColor: '#34495E',
             fill: false,
             lineTension: 0.9
-          // }, {
-          //   data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
-          //   label: 'Asia',
-          //   borderColor: '#8e5ea2',
-          //   fill: false,
-          //   lineTension: 0
-          // }, {
-          //   data: [168, 170, 178, 190, 203, 276, 408, 547, 675, 734],
-          //   label: 'Europe',
-          //   borderColor: '#3cba9f',
-          //   fill: false,
-          //   lineTension: 0
-          // }, {
-          //   data: [40, 20, 10, 16, 24, 38, 74, 167, 508, 784],
-          //   label: 'Latin America',
-          //   borderColor: '#e8c3b9',
-          //   fill: false,
-          //   lineTension: 0
-          // }, {
-          //   data: [6, 3, 2, 2, 7, 26, 82, 172, 312, 433],
-          //   label: 'North America',
-          //   borderColor: '#c45850',
-          //   fill: false,
-          //   lineTension: 0
           }
           ]
         },

@@ -80,30 +80,29 @@
         </q-list>
       </q-btn-dropdown>
 
-      <!-- 여기 아래로 지우면 됨 -->
 
       <div class="q-pa-md">
         <q-btn-dropdown
           class="glossy"
           color="purple"
-          label="Account Settings"
+          label="할인정보"
         >
           <div class="row no-wrap q-pa-md">
             <div class="column">
-              <div class="text-h6 q-mb-md">Settings</div>
+              <div class="text-h6 q-mb-md">할인 요일 선택</div>
               <q-toggle v-model="event_mon" label="월요일 할인" />
               <q-toggle v-model="event_tue" label="화요일 할인" />
+              <q-toggle v-model="event_wen" label="수요일 할인" />
+              <q-toggle v-model="event_thu" label="목요일 할인" />
+              <q-toggle v-model="event_fri" label="금요일 할인" />
+              <q-toggle v-model="event_sat" label="토요일 할인" />
+              <q-toggle v-model="event_sun" label="일요일 할인" />
+
             </div>
 
           </div>
         </q-btn-dropdown>
       </div>
-
-
-
-
-      <!-- 여기 위로 지우면 됨 -->
-
 
 
       
@@ -138,6 +137,31 @@
 
 
 
+    
+
+      
+
+
+      <!-- 할인정보 체크박스 형태 -->
+      <!-- div_6  -->
+    <!-- <div class="q-pa-md">
+      <div class="q-gutter-sm">
+        <q-checkbox v-model="selection" val=1 label="월요일" color="teal" />
+        <q-checkbox v-model="selection" val=2 label="화요일" color="orange" />
+        <q-checkbox v-model="selection" val=3 label="수요일" color="red" />
+        <q-checkbox v-model="selection" val=4 label="목요일" color="cyan" />
+        <q-checkbox v-model="selection" val=5 label="금요일" color="cyan" />
+        <q-checkbox v-model="selection" val=6 label="토요일" color="cyan" />
+        <q-checkbox v-model="selection" val=7 label="일요일" color="cyan" />
+
+      </div>
+
+      <div class="q-px-sm">
+        할인 요일: <strong>{{ selection }}</strong>
+      </div>
+    </div> -->
+    <!--/div_6  -->
+    
     
         <div class="fit row justify-center content-center">
         <!-- div 3 -->
@@ -197,11 +221,16 @@ export default {
   data () {
     return {
       model1: '2020-02-15',
-      model2: '03-21-2019',
+      // model2: '03-21-2019',
       selection: [ ],
       test1_data : Predict.data().getflag,
       event_mon: false,
-      event_tue: false
+      event_tue: false,
+      event_wen: false,
+      event_thu: false,
+      event_fri: false,
+      event_sat: false,
+      event_sun: false
       
       
     }
@@ -261,11 +290,11 @@ export default {
     summary_alert () {
 
       console.log('Clicked summary_alert')
-      var item_info = localStorage.getItem('item_1');
-      var event_info = localStorage.getItem('event_1');
-      var break_info = localStorage.getItem('break_1');
+      this.item_info = localStorage.getItem('item_1');
+      this.event_info = localStorage.getItem('event_1');
+      this.break_info = localStorage.getItem('break_1');
       // localStorage.event_222=test_variable
-      alert("예측 상품 : " + item_info + "  할인 정보 : " + event_info + "  휴무 정보 : " + break_info);
+      alert("예측 상품 : " + this.item_info + "  할인 정보 : " + this.event_info + "  휴무 정보 : " + this.break_info);
     },
 
     // for test
@@ -275,10 +304,13 @@ export default {
       const data = {
         
         
-        "for_return" : this.day1_2,
-        "selected_date" : this.model1,
-        "event_info" : this.selection,
-        "break_info" : localStorage.getItem('break_1')
+        // "for_return" : this.day1_2,
+        "selected_date" : this.selected_date,
+        "event_info" : [this.event_mon, this.event_tue, this.event_wen, this.event_thu, this.event_fri, this.event_sat, 
+                          this.event_sun],
+        "break_info" : this.break_info,
+        "item_info" : this.item_info
+        // "break_info" : localStorage.getItem('break_1')
       }
 
       axios.post('http://127.0.0.1:5000/date_info',
@@ -298,7 +330,6 @@ export default {
         localStorage.day6 = JSON.stringify(response.data['day6']);
         localStorage.day7 = JSON.stringify(response.data['day7']);
         localStorage.date = this.model1;
-        localStorage.event_mon = this.event_mon
         // localStorage.return2 = JSON.stringify(response.data['promotion']);
         
         // alert(test_data);
@@ -390,6 +421,3 @@ export default {
 
 
 </script>
-
-
-
