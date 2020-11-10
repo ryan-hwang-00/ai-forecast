@@ -47,6 +47,8 @@ def seven_days():
     # return_df_7, merged_df = date_info(start_date, event_info, break_info)
     # merged_df.to_csv('fffff.csv', encoding='euc-kr')
 
+    return_df_7, merged_df = date_info(start_date, event_info, break_info)
+
     trainer(model_name='1_bac2.hdf5', store_code=1,
             product_name='백산수2.0L', predict_date='2020-01-07')
 

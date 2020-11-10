@@ -15,6 +15,7 @@
 
 <script>
 import Chart from 'chart.js'
+
 export default {
   data () {
     return {
@@ -39,7 +40,8 @@ export default {
             {
               label: 'Value',
               backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-              data: [100, 1267, 734, 784, 433, 341, 1342]
+              data: [localStorage.day1, localStorage.day2, localStorage.day3, localStorage.day4, localStorage.day5, localStorage.day6, localStorage.day7]
+              // [2478, 1267, 734, 784, 433, 341, 1342]
             }
           ]
         },
@@ -49,7 +51,25 @@ export default {
           legend: {
             display: false
           },
-          title: {
+          scales: {
+            // xAxes: [{
+            //   ticks: {
+            //     autoSkip: true,    //자동으로 숫자 건너뛰기
+            //     maxTicksLimit: 7, // x값 표시 개수
+            //     maxRotation: 90,  // x값 최대 회전 각도 
+            //     minRotation: 90, // x값 최소 회전 각도
+            //     fontSize: 14,
+            //   }
+            // }],
+            yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: 2500
+                  //stepSize : 250
+                }
+            }]
+            },
+            title: {
             display: true,
             text: 'Predict Value'
           }

@@ -30,7 +30,7 @@
            
             <q-btn
             push
-            unelevated color="blue" 
+            unelevated color="primary" 
             type="submit"
             size="lg" 
             class="full-width"
