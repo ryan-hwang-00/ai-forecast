@@ -22,9 +22,32 @@ from datetime import datetime, timedelta
 import weather2
 from future7_dataframe import date_info, row_select
 
+from predictor import predictor
+
 url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'
 key = "NnpxwR7oA3LxPCsLEMG2CcvrkIZRLw0%2BHmz2ClUcOfaKvAMlySAiadvjQKqyQu0HorPtqAGZpj%2Bxfe6iSFyDKw%3D%3D"
 
+meta_index = pd.DataFrame(
+    data=[[1, '백산수2.0L', 'promotion_flag_1_bac_2',
+           'sale_qty_1_bac_2', '1_bac2.hdf5'],
+          [1, '백산수500ml', 'promotion_flag_1_bac_5',
+           'sale_qty_1_bac_5', '1_bac5.hdf5'],
+          [1, '신라면멀티', 'promotion_flag_1_sin',
+           'sale_qty_1_sin', '1_sin.hdf5'],
+          [1, '안성탕면멀티', 'promotion_flag_1_ans',
+           'sale_qty_1_ans', '1_ans.hdf5'],
+          [1, '진라면멀티(순한맛)', 'promotion_flag_1_jin',
+           'sale_qty_1_jin', '1_jin.hdf5'],
+          [6, '백산수2.0L', 'promotion_flag_6_bac_2',
+           'sale_qty_6_bac_2', '6_bac2.hdf5'],
+          [6, '백산수500ml', 'promotion_flag_6_bac_5',
+           'sale_qty_6_bac_5', '6_bac5.hdf5'],
+          [6, '신라면멀티', 'promotion_flag_6_sin',
+           'sale_qty_6_sin', '6_sin.hdf5'],
+          [6, '안성탕면멀티', 'promotion_flag_6_ans',
+           'sale_qty_6_ans', '6_ans.hdf5'],
+          [6, '진라면멀티(순한맛)', 'promotion_flag_6_jin', 'sale_qty_6_jin', '6_jin.hdf5']],
+    columns=['store', 'product', 'promotion', 'sale', 'weight'])
 
 # df1=df1.drop('Unnamed: 0', axis=1)
 
@@ -43,15 +66,17 @@ def seven_days():
     start_date = arrived_data['selected_date']
     event_info = arrived_data['event_info']
     break_info = arrived_data['break_info']
-    # print(start_date, event_info, break_info)
-    # return_df_7, merged_df = date_info(start_date, event_info, break_info)
-    # merged_df.to_csv('fffff.csv', encoding='euc-kr')
 
-    trainer(model_name='1_bac2.hdf5', store_code=1,
-            product_name='백산수2.0L', predict_date='2020-01-07')
+    print(start_date, event_info, break_info)
 
-    print(merged_df)
-    return return_df_7
+    return_df_7, merged_df = date_info(start_date, event_info, break_info)
+
+    next_week_sales = predictor(merged_df, store_code=6,
+                                product_name='백산수2.0L', predict_date='2020-01-07')
+
+    print(next_week_sales)
+
+    return next_week_sales
 
 
 # def date_info():

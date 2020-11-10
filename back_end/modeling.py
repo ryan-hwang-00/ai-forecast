@@ -1,22 +1,11 @@
-import os
+
 import tensorflow as tf
-import pandas as pd
-import numpy as np
 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Input, Dense, LSTM, Activation
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard, ReduceLROnPlateau
-from tensorflow.keras.backend import square, mean
-from keras import optimizers
-from keras.wrappers.scikit_learn import KerasClassifier
 from tensorflow import keras
-from tensorflow.keras import layers
 
 
-def create_model(column_num_x, column_num_x_1, sequence_x, sequence_y):
-
-    sequence_x = 180 * 4
-    sequence_y = 7
+def create_model(column_num_x, column_num_x_1, sequence_x = 180 * 4, sequence_y = 7):
 
     lstm_dim = 16
     dence_dim = 4
