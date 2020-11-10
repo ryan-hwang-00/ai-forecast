@@ -75,7 +75,7 @@
             <q-card-section class="bg-primary">
                 <div class="row items-center no-wrap">
                     <div class="col">
-                        <div class="text-h6 text-white text-center">주간 예측량</div>
+                        <div class="text-h6 text-dark text-center">주간 예측량</div>
                     </div>
                 </div>
             </q-card-section>
@@ -83,14 +83,21 @@
           </q-carousel-slide>
 
           <q-carousel-slide
-            name="tv"
+            name="Line"
             class="column no-wrap flex-center"
           >
+            <q-card-section class="bg-primary">
+                <div class="row items-center no-wrap">
+                    <div class="col">
+                        <div class="text-h6 text-dark text-center">Line Chart</div>
+                    </div>
+                </div>
+            </q-card-section>
             <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
           </q-carousel-slide>
 
           <q-carousel-slide
-            name="layers"
+            name="mixed"
             class="column no-wrap flex-center"
           >
             <mixed-chart></mixed-chart>
@@ -100,6 +107,13 @@
             name="ef"
             class="column no-wrap flex-center"
           >
+            <q-card-section class="bg-primary">
+                <div class="row items-center no-wrap">
+                    <div class="col">
+                        <div class="text-h6 text-dark text-center">Doughnut Chart</div>
+                    </div>
+                </div>
+            </q-card-section>
             <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
           </q-carousel-slide>
 
@@ -132,6 +146,7 @@ import { LocalStorage } from "quasar";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
+import Mycanvas from '../components/canvas/Mycanvas.vue'
 
 export default {
   name: "Predict",
