@@ -8,7 +8,7 @@
       </div>
     </q-card-section>
     <q-card-section>
-      <canvas id="mixed-chart"></canvas>
+      <canvas id="mixed-chart" height="80px" ></canvas>
     </q-card-section>
   </q-card>
 </template>

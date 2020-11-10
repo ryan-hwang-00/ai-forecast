@@ -42,16 +42,17 @@
       >
         {{getflag}}
       </q-chip>
-       <q-btn
-        color="white"
-        text-color="black"
-        label="예측 정보 불러오기"
-        @click="onPredictClick()"
-      />
+
+
+      <!-- 예측 변수 정보 불러오는 버튼 (삭제 요망) -->
+      <!-- <q-btn color="white" text-color="black" label="예측 변수 정보 불러오기" @click="onvariableClick()"/> -->
     </div>
-    <!-- 예측 값 테이블 및 그래프 -->
+
+
+
+    <!-- 예측 값 그래프 및 테이블 -->
     <div class="row justify-center q-col-gutter-sm q-py-sm">
-      <!-- 예측값 그래프 캐롯셀 -->
+      <!-- 예측 값 그래프 캐롯셀 -->
       <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
         <q-carousel
           v-model="slide"
@@ -63,7 +64,7 @@
           navigation
           padding
           arrows
-          height="700px"
+          height="550px"
           width="500px"
           class="bg-primary text-white shadow-1 rounded-borders"
         >
@@ -71,14 +72,21 @@
             name="style"
             class="column no-wrap flex-center"
           >
-            <bar-chart :chart-data="datacollectionBar"></bar-chart>
+            <q-card-section class="bg-primary">
+                <div class="row items-center no-wrap">
+                    <div class="col">
+                        <div class="text-h6 text-white text-center">주간 예측량</div>
+                    </div>
+                </div>
+            </q-card-section>
+            <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
           </q-carousel-slide>
 
           <q-carousel-slide
             name="tv"
             class="column no-wrap flex-center"
           >
-            <line-chart :chart-data="datacollectionLine"></line-chart>
+            <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
           </q-carousel-slide>
 
           <q-carousel-slide
@@ -104,6 +112,8 @@
           title="주간 예측량"
           :data="data"
           :columns="columns"
+          height="550px"
+          width="500px"
           row-key="Date"
         />
       </div>
@@ -135,7 +145,10 @@ export default {
   data () {
     return {
       datacollectionBar: null,
+      optionsBar: null,
       datacollectionLine: null,
+      optionsLine: null,
+      datacollectionDoughnut: null,
       getdate: '날짜',
       getstore: '매장명',
       getproduct: '상품명',
@@ -199,7 +212,7 @@ export default {
     this.fillDataBar()
     this.fillDataLine()
     this.fillDataDoughnutChart()
-    this.onPredictClick()
+    this.onvariableClick()
   },
 
   // mounted () {
@@ -220,39 +233,98 @@ export default {
             data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
           }
         ]
-      }
+      },
+      this.optionsBar = {
+        legend: {
+          display: false
+        },
+        scales: {
+          // xAxes: [{
+          //   ticks: {
+          //     autoSkip: true,    //자동으로 숫자 건너뛰기
+          //     maxTicksLimit: 7, // x값 표시 개수
+          //     maxRotation: 90,  // x값 최대 회전 각도 
+          //     minRotation: 90, // x값 최소 회전 각도
+          //     fontSize: 14,
+          //   }
+          // }],
+          yAxes: [
+              {
+              ticks: {
+                min: 0,
+                max: 1000
+                //stepSize : 250
+              }
+            }
+          ]
+        },
+        title: {
+          display: true,
+          text: 'Predict Value'
+        }
       // BarChart.update();
+      }
     },
     
     fillDataLine () {
       this.datacollectionLine = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
-        datasets: [{
-          data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()],
-          label: 'Predict Value',
-          borderColor: 'white',
-          fill: false,
-          lineTension: 0.7
-        }
+        datasets: [
+          {
+            label: 'Predict Value',
+            fill: false,
+            borderColor: 'white',
+            pointBorderColor: '#249EBF',
+            borderWidth: 1,
+            lineTension: 0.7,
+            backgroundColor: '#f87979',
+            pointBackgroundColor: 'white',
+            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+          }
         ]
+      },
+      this.optionsLine = {
+        scales: {
+          yAxes: [
+              {
+              ticks: {
+                beginAtZero: true
+              },
+              gridLines: {
+                display: true
+              }
+            }
+          ],
+          xAxes: [ 
+              {
+              gridLines: {
+                display: false
+              }
+            }
+          ]
+        },
+        legend: {
+          display: true
+        },
+        responsive: true,
+        maintainAspectRatio: false
       }
     },
 
     fillDataDoughnutChart () {
       this.datacollectionDoughnut = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
-        datasets: [{
-          label: 'wnrk',
-          backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-          data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
-        }]
+        datasets: [
+          {
+            label: 'wnrk',
+            backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
+            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+          }
+        ]
       };
-
-
-      // BarChart.update();
     },
 
-    onPredictClick: function () {
+    onvariableClick: function () {
       this.getdate = LocalStorage.getItem("date");
       this.getstore = LocalStorage.getItem("store");
       this.getproduct = LocalStorage.getItem("item_1");
@@ -293,6 +365,9 @@ export default {
       this.day7 = LocalStorage.getItem("day7")
       return this.day7
     }
+
+
+
   }
 }
 </script>
