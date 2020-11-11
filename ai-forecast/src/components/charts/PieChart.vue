@@ -39,7 +39,7 @@ export default {
         options: {
           title: {
             display: true,
-            text: 'Index'
+            text: 'Predict Value'
           }
         }
       })

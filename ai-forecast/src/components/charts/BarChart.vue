@@ -15,21 +15,15 @@
 
 <script>
 import Chart from 'chart.js'
-
 export default {
   data () {
     return {
-
     }
   },
-
   mounted () {
     this.createChart('bar-chart')
   },
-
-
   methods: {
-
     createChart (chartId) {
       const ctx = document.getElementById(chartId)
       const myChart = new Chart(ctx, {

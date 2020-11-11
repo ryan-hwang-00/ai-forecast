@@ -379,9 +379,6 @@ export default {
       this.day7 = LocalStorage.getItem("day7")
       return this.day7
     }
-
-
-
   }
 }
 </script>
