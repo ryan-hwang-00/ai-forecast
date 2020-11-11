@@ -25,7 +25,7 @@ export default {
 .item {
   display: inline-block;
   min-width: 0.3em;
-  font-size: 2rem;
+  font-size: 5.5rem;
   animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
 }
 
