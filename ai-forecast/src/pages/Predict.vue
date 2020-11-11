@@ -321,7 +321,10 @@ export default {
           display: true
         },
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        // animation: {
+        //   duration: 0
+        // },
       }
     },
 
