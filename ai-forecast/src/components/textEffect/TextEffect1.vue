@@ -34,7 +34,7 @@ export default {
 }
 
 .right_img::first-letter {
-  color: red;
+  color: #34495E;
 }
 
 for co in 0 .. 12 {
