@@ -34,14 +34,14 @@
 <script>
 
 import BarChart from 'components/charts/BarChart.vue'
-import LineChart from '../components/charts/LineChart'
-import RadarChart from '../components/charts/RadarChart'
-import PieChart from '../components/charts/PieChart'
-import PolarAreaChart from '../components/charts/PolarAreaChart'
-import DoughnutChart from '../components/charts/DoughnutChart'
-import HorizontalBarChart from '../components/charts/HorizontalBarChart'
-import MixedChart from '../components/charts/MixedChart'
-import BubbleChart from '../components/charts/BubbleChart'
+import LineChart from '../components/charts/LineChart.vue'
+import RadarChart from '../components/charts/RadarChart.vue'
+import PieChart from '../components/charts/PieChart.vue'
+import PolarAreaChart from '../components/charts/PolarAreaChart.vue'
+import DoughnutChart from '../components/charts/DoughnutChart.vue'
+import HorizontalBarChart from '../components/charts/HorizontalBarChart.vue'
+import MixedChart from '../components/charts/MixedChart.vue'
+import BubbleChart from '../components/charts/BubbleChart.vue'
 
 export default {
 
