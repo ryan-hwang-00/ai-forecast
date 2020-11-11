@@ -29,19 +29,19 @@ export default {
       const myChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          labels: ['Africa', 'Asia', 'Europe', 'Latin America', 'North America'],
+          labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
           datasets: [
             {
-              label: 'Population (millions)',
-              backgroundColor: ['#3e95cd', '#8e5ea2', '#3cba9f', '#e8c3b9', '#c45850'],
-              data: [2478, 5267, 734, 784, 433]
+              label: 'Vlaue',
+              backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
+              data: [localStorage.day1, localStorage.day2, localStorage.day3, localStorage.day4, localStorage.day5, localStorage.day6, localStorage.day7]
             }
           ]
         },
         options: {
           title: {
             display: true,
-            text: 'Predicted world population (millions) in 2050'
+            text: 'Predict Value'
           }
         }
       })

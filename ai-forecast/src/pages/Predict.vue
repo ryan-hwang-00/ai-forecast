@@ -156,17 +156,20 @@ export default {
   },
   data () {
     return {
-      datacollectionBar: null,
-      optionsBar: null,
-      datacollectionLine: null,
-      optionsLine: null,
-      datacollectionDoughnut: null,
+      // Chip Data
       getdate: '날짜',
       getstore: '매장명',
       getproduct: '상품명',
       getevent: '행사',
       getflag: '휴무일',
       slide: 'style',
+      
+      // Chart Data
+      datacollectionBar: null,
+      optionsBar: null,
+      datacollectionLine: null,
+      optionsLine: null,
+      datacollectionDoughnut: null,
 
       // Table Data
       columns: [
@@ -216,7 +219,6 @@ export default {
           Predict_Value: 568,
         },
       ]
-      // Chart Data
     }
   },
 
@@ -377,9 +379,6 @@ export default {
       this.day7 = LocalStorage.getItem("day7")
       return this.day7
     }
-
-
-
   }
 }
 </script>

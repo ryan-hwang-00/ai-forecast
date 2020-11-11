@@ -5,7 +5,7 @@
   >
     <br />
     <br />
-    <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">
+    <div class="row q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">
       <q-avatar
         rounded
         size="300px"
@@ -13,6 +13,10 @@
         <img src="~assets/FMLogo2.svg">
       </q-avatar>
     </div>
+
+  <div class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly">
+    <TextEffect1/>
+  </div>
 
     <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">
       <q-card-section class="text-center q-pa-none">
@@ -31,3 +35,17 @@
 
   </main>
 </template>
+
+<script>
+import TextEffect1 from '../components/textEffect/TextEffect1.vue'
+
+export default {
+  name: "home",
+  components: {
+    TextEffect1
+  }
+}
+</script>
+
+<style>
+</style>

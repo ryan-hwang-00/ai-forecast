@@ -32,7 +32,7 @@ export default {
           labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
           datasets: [{
             data: [localStorage.day1, localStorage.day2, localStorage.day3, localStorage.day4, localStorage.day5, localStorage.day6, localStorage.day7],
-            label: 'Predict Value',
+            label: 'Value',
             borderColor: '#34495E',
             fill: false,
             lineTension: 0.9
