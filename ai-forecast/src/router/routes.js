@@ -18,7 +18,7 @@ const routes = [
       { path: "chart", component: () => import("pages/chart.vue") },
       { path: "sample", component: () => import("pages/sample.vue") },
       { path: "map", component: () => import("pages/map.vue") }
-    
+      
     ]
   },
 
