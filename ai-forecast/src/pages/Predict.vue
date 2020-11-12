@@ -68,28 +68,36 @@
             name="style"
             class="column no-wrap flex-center"
           >
+          <div class="bg-white">
             <q-card-section class="bg-primary">
                 <div class="row items-center no-wrap">
                     <div class="col">
-                        <div class="text-h6 text-dark text-center text-Do-Hyeon">주간 예측량</div>
+                        <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
                     </div>
                 </div>
             </q-card-section>
-            <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+              <div>
+                <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+              </div>
+          </div>
           </q-carousel-slide>
 
           <q-carousel-slide
             name="Line"
             class="column no-wrap flex-center"
           >
+          <div class="bg-white">
             <q-card-section class="bg-primary">
                 <div class="row items-center no-wrap">
                     <div class="col">
-                        <div class="text-h6 text-dark text-center">Line Chart</div>
+                        <div class="text-h6 text-white text-center">Line Chart</div>
                     </div>
                 </div>
             </q-card-section>
-            <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+              <div style="width:800px">
+                <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+              </div>
+          </div>
           </q-carousel-slide>
 
           <q-carousel-slide
@@ -103,14 +111,32 @@
             name="ef"
             class="column no-wrap flex-center"
           >
+          <div class="bg-white">
             <q-card-section class="bg-primary">
                 <div class="row items-center no-wrap">
                     <div class="col">
-                        <div class="text-h6 text-dark text-center">Doughnut Chart</div>
+                        <div class="text-h6 text-white text-center">Doughnut Chart</div>
                     </div>
                 </div>
             </q-card-section>
             <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
+          </div>
+          </q-carousel-slide>
+
+          <q-carousel-slide
+            name="fe"
+            class="column no-wrap flex-center"
+          >
+          <div class="bg-white">
+            <q-card-section class="bg-primary">
+                <div class="row items-center no-wrap">
+                    <div class="col">
+                        <div class="text-h6 text-white text-center">Pie Chart</div>
+                    </div>
+                </div>
+            </q-card-section>
+            <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
+          </div>
           </q-carousel-slide>
 
         </q-carousel>
@@ -134,13 +160,14 @@
 </template> 
 
 <script>
-// import PieChart from '../components/charts/PieChart'
-import MixedChart from '../components/charts/MixedChart'
-// import LineChart from '../components/charts/LineChart'
-// import BarChart from '../components/charts/BarChart'
+// import PieChart from '../components/charts/PieChart.vue'
+import MixedChart from '../components/charts/MixedChart.vue'
+// import LineChart from '../components/charts/LineChart.vue'
+// import BarChart from '../components/charts/BarChart.vue'
 import { LocalStorage } from "quasar";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
+import PieChart from '../components/charts/PieChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
 import Mycanvas from '../components/canvas/Mycanvas.vue'
 
@@ -149,7 +176,7 @@ export default {
   components: {
     BarChart,
     LineChart,
-    // PieChart,
+    PieChart,
     MixedChart,
     DoughnutChart,
     Mycanvas
@@ -170,6 +197,8 @@ export default {
       datacollectionLine: null,
       optionsLine: null,
       datacollectionDoughnut: null,
+      datacollectionPie: null,
+      optionsPie: null,
 
       // Table Data
       columns: [
@@ -225,14 +254,13 @@ export default {
   created () {
     this.fillDataBar()
     this.fillDataLine()
+    this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
   },
 
   // mounted () {
-  //   this.fillDataBar()
-  //   this.fillDataLine()
-  //   this.onPredictClick()
+
   // },
 
   methods: {
@@ -243,7 +271,6 @@ export default {
           {
             label: 'Value',
             backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-            // Data for the x-axis of the chart
             data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
           }
         ]
@@ -276,7 +303,6 @@ export default {
           display: true,
           text: 'Predict Value'
         }
-      // BarChart.update();
       }
     },
     
@@ -287,11 +313,11 @@ export default {
           {
             label: 'Predict Value',
             fill: false,
-            borderColor: 'white',
+            borderColor: '#34495E',
             pointBorderColor: '#249EBF',
             borderWidth: 1,
             lineTension: 0.7,
-            backgroundColor: '#f87979',
+            backgroundColor: '#34495E',
             pointBackgroundColor: 'white',
             data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
           }
@@ -302,7 +328,10 @@ export default {
           yAxes: [
               {
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                min: 0,
+                max: 1000
+                //stepSize : 250
               },
               gridLines: {
                 display: true
@@ -339,6 +368,28 @@ export default {
           }
         ]
       };
+    },
+
+    fillDataPie () {
+      this.datacollectionPie = {
+        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        datasets: [
+          {
+            label: 'Value',
+            backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
+            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+          }
+        ]
+      },
+      this.optionsPie = {
+        legend: {
+          display: true
+        },
+        title: {
+          display: true,
+          text: 'Predict Value'
+        }
+      }
     },
 
     onvariableClick: function () {
