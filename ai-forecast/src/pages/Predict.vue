@@ -64,79 +64,68 @@
           width="500px"
           class="bg-primary text-white shadow-1 rounded-borders"
         >
-          <q-carousel-slide
-            name="style"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
-                    </div>
-                </div>
-            </q-card-section>
-              <div>
-                <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+          <q-carousel-slide name="style" class="column no-wrap flex-center">
+              <div class="bg-white rounded-borders">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div>
+                      <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+                  </div>
               </div>
-          </div>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="Line"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center">Line Chart</div>
-                    </div>
-                </div>
-            </q-card-section>
-              <div style="width:800px">
-                <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+          <q-carousel-slide name="Line" class="column no-wrap flex-center">
+              <div class="bg-white rounded-borders">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center">Line Chart</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div style="width:800px">
+                      <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+                  </div>
               </div>
-          </div>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="mixed"
-            class="column no-wrap flex-center"
-          >
-            <mixed-chart></mixed-chart>
+          <q-carousel-slide name="mixed" class="column no-wrap flex-center">
+              <mixed-chart></mixed-chart>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="ef"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center">Doughnut Chart</div>
-                    </div>
-                </div>
-            </q-card-section>
-            <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
-          </div>
+          <q-carousel-slide name="ef" class="column no-wrap flex-center">
+              <div class="bg-white">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center">Doughnut Chart</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div>
+                      <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
+                  </div>
+              </div>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="fe"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center">Pie Chart</div>
-                    </div>
-                </div>
-            </q-card-section>
-            <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
-          </div>
+          <q-carousel-slide name="fe" class="column no-wrap flex-center">
+              <div class="bg-white rounded">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center">Pie Chart</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div>
+                      <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
+                  </div>
+              </div>
           </q-carousel-slide>
 
         </q-carousel>

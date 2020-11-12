@@ -1,6 +1,6 @@
 <template>
   <div class="TextEffect1">
-    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img"/>
+    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img paybooc-Bold"/>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
   animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
 }
 
-.right_img::first-letter {
+.right_img {
   color: #34495E;
 }
 
