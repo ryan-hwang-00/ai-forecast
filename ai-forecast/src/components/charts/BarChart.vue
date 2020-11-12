@@ -15,7 +15,12 @@
 
 <script>
 import Chart from 'chart.js'
+const { reactiveProp } = mixins;
+
 export default {
+  extends: Bar,
+  mixins: [reactiveProp],
+  props: ["options"],
   data () {
     return {
     }
