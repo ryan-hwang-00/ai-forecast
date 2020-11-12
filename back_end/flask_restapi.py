@@ -71,8 +71,6 @@ def seven_days():
 
     next_week_sales = predictor(merged_df, store_code=6,
                                 product_name='백산수2.0L', predict_date='2020-01-07')
-    next_week_sales = np.around(next_week_sales, 2)
-    print(next_week_sales)
     result = {}
 
     for i in range(0, 7):
