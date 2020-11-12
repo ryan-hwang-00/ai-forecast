@@ -167,4 +167,7 @@ export default {
 </script>
 -->
 <style lang="sass">
+// .q-btn
+//   @media (min-width: $breakpoint-sm-min)
+//     height: 81px
 </style>
