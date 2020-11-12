@@ -50,7 +50,6 @@ meta_index = pd.DataFrame(
     columns=['store', 'product', 'promotion', 'sale', 'weight'])
 
 
-
 app = Flask(__name__)
 CORS(app)
 
@@ -59,10 +58,12 @@ CORS(app)
 def seven_days():
 
     arrived_data = request.get_json()
-    start_date = arrived_data['selected_date']
+    print(arrived_data)
+    # start_date = arrived_data['selected_date']
+    start_date = "2020-01-01"
     event_info = arrived_data['event_info']
-    break_info = arrived_data['break_info']
-
+    # break_info = arrived_data['break_info']
+    break_info = 0
 
     print(start_date, event_info, break_info)
 
@@ -72,14 +73,16 @@ def seven_days():
                                 product_name='백산수2.0L', predict_date='2020-01-07')
 
     print(next_week_sales)
+    result = {}
+    for i in range(0, 7):
+        j = i + 1
+        result['day' + str(j)] = float(round(next_week_sales[i], 2))
 
- 
+
 #    trainer(model_name='1_bac2.hdf5', store_code=1,
 #            product_name='백산수2.0L', predict_date='2020-01-07')
 
-
-    return next_week_sales
-
+    return result
 
 
 if __name__ == "__main__":
