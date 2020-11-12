@@ -1,6 +1,5 @@
 <template>
   <q-layout view="hHh LpR fff">
-    
     <q-header bordered class="bg-primary text-white" height-hint="98">
       
       <q-toolbar>
@@ -9,16 +8,15 @@
           <q-btn clickable to="/">
             <img src="~assets/FMLogo1.svg" height="98px">
           </q-btn>
+          
         </q-toolbar-title>
       </q-toolbar>
 
       <q-tabs align="right">
         <!-- <q-route-tab to="/store" label="store" />
         <q-route-tab to="/item" label="item" /> -->
-        <q-route-tab 
-        class="text-grand-hotel"
-        to="/login" 
-        label="Login" />
+        <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
+        <q-route-tab to="/login" label="로그인" style="max-width: 100px"/>
         <!-- <q-route-tab to="/predict_variables" label="predic_variables" /> -->
       </q-tabs>
 

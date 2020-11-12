@@ -8,7 +8,7 @@
       </div>
     </q-card-section>
     <q-card-section>
-      <canvas id="mixed-chart"></canvas>
+      <canvas id="mixed-chart" height="80px" ></canvas>
     </q-card-section>
   </q-card>
 </template>
@@ -34,7 +34,7 @@ export default {
             label: 'Value1',
             type: 'line',
             borderColor: '#8e5ea2',
-            data: [1478, 1267, 734, 784, 433, 1341, 1342],
+            data: [localStorage.day1, localStorage.day2, localStorage.day3, localStorage.day4, localStorage.day5, localStorage.day6, localStorage.day7],
             fill: false
           }, {
             label: 'Value2',
@@ -46,7 +46,7 @@ export default {
             label: 'Value1',
             type: 'bar',
             backgroundColor: 'rgba(0,0,0,0.2)',
-            data: [1478, 1267, 734, 784, 433, 1341, 1342]
+            data: [localStorage.day1, localStorage.day2, localStorage.day3, localStorage.day4, localStorage.day5, localStorage.day6, localStorage.day7]
           }, {
             label: 'Value2',
             type: 'bar',

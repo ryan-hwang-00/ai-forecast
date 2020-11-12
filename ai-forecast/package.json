@@ -17,8 +17,11 @@
     "quasar": "^1.0.0",
     "validator": "^13.1.17",
     "vue-chartjs": "^3.5.1",
+    "vue-google-maps": "^0.1.21",
     "vue-i18n": "^8.0.0",
-    "vue-sorted-table": "^1.2.0"
+    "vue-sorted-table": "^1.2.0",
+    "vue2-gmap-custom-marker": "^5.6.2",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0"

@@ -1,0 +1,45 @@
+<template>
+  <div class="TextEffect1">
+    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img"/>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      text: 'Foreca Machine',
+      text1: 'F',
+      text2: 'oreca',
+      text3: 'M',
+      text4: 'achine'
+    }
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+@keyframes text-in {
+  0% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+}
+
+.item {
+  display: inline-block;
+  min-width: 0.3em;
+  font-size: 5.5rem;
+  animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
+}
+
+.right_img::first-letter {
+  color: #34495E;
+}
+
+for co in 0 .. 12 {
+  .delay-anime:nth-child({co + 1}) {
+    animation-delay: co * 100ms + 200ms;
+  }
+}
+</style>
