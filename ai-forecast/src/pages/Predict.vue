@@ -84,7 +84,7 @@
                   <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
-                              <div class="text-h6 text-white text-center">Line Chart</div>
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">Line Chart</div>
                           </div>
                       </div>
                   </q-card-section>
@@ -99,11 +99,11 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="ef" class="column no-wrap flex-center">
-              <div class="bg-white">
+              <div class="bg-white rounded-borders">
                   <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
-                              <div class="text-h6 text-white text-center">Doughnut Chart</div>
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">Doughnut Chart</div>
                           </div>
                       </div>
                   </q-card-section>
@@ -114,11 +114,11 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="fe" class="column no-wrap flex-center">
-              <div class="bg-white rounded">
+              <div class="bg-white rounded-borders">
                   <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
-                              <div class="text-h6 text-white text-center">Pie Chart</div>
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">Pie Chart</div>
                           </div>
                       </div>
                   </q-card-section>
