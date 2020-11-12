@@ -26,28 +26,34 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <!-- <q-avatar>
-            <img src="~assets/FMLogo.svg">
-          </q-avatar> -->
-          <!-- Title -->
-        </q-toolbar-title>
-      </q-toolbar>
+    <q-footer bordered class="bg-white text-primary">
+      <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
+        
+        <eva-icon name="github" 
+        animation="pulse" 
+        fill="limegreen"
+        @click='togithubpage'>
+        </eva-icon>
+
+      </q-tabs>
     </q-footer>
 
   </q-layout>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
 
+
+  export default {  
+    data () {
+      return {
+
+        togithubpage: function() {
+        location.href="https://github.com/ryan-hwang-00/ai-forecast"
+        }
+      }
     }
   }
-}
 </script>
 
 <!--
