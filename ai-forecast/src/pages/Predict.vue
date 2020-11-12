@@ -293,7 +293,7 @@ export default {
               {
               ticks: {
                 min: 0,
-                max: 1000
+                // max: 1000
                 //stepSize : 250
               }
             }
@@ -330,7 +330,7 @@ export default {
               ticks: {
                 beginAtZero: true,
                 min: 0,
-                max: 1000
+                // max: 1000
                 //stepSize : 250
               },
               gridLines: {
