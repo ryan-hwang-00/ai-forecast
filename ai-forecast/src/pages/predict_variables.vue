@@ -200,6 +200,7 @@
         
         
         <q-btn push color="white" text-color="primary" label="get data" @click="flask_alert"/>
+        <q-btn push color="white" text-color="primary" label="training" @click="training"/>
         <!-- <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/> -->
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
         
@@ -330,6 +331,49 @@ export default {
         localStorage.day6 = JSON.stringify(response.data['day6']);
         localStorage.day7 = JSON.stringify(response.data['day7']);
         localStorage.date = this.model1;
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
+        
+        // alert(test_data);
+        setTimeout(function() { 
+          this.return1=localStorage.return1 }, 50);
+        setTimeout(function() { 
+          alert(this.return1) }, 100);
+          
+        // this.day1_1=localStorage.day1;
+
+      }).catch((ex) => {
+
+        console.warn("ERROR!!!!! : ", ex)
+
+      });
+      
+      
+
+    },
+    training : function () {
+
+      const data = {
+        
+        
+        // "for_return" : this.day1_2,
+        "selected_date" : this.selected_date,
+        "event_info" : [this.event_mon, this.event_tue, this.event_wen, this.event_thu, this.event_fri, this.event_sat, 
+                          this.event_sun],
+        "break_info" : this.break_info,
+        "item_info" : this.item_info
+        // "break_info" : localStorage.getItem('break_1')
+      }
+
+      axios.post('http://127.0.0.1:5000/training',
+
+        data
+
+      ).then(response => {
+
+        console.log(response)
+
+        localStorage.traing = JSON.stringify(response.data);
+        
         // localStorage.return2 = JSON.stringify(response.data['promotion']);
         
         // alert(test_data);
