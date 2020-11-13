@@ -383,8 +383,15 @@ export default {
 
     onvariableClick () {
       this.getdate = LocalStorage.getItem("date");
-      this.getstore = LocalStorage.getItem("store");
       this.getproduct = LocalStorage.getItem("item_1");
+      this.getshop = LocalStorage.getItem("store_code");
+      if (this.getshop == "1") {
+        this.getstore = "매장: 1호점"
+      } else if (this.getshop == "6") {
+        this.getstore = "매장: 6호점"
+      } else {
+        this.getstore = "매장"
+      };
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak == "1") {
