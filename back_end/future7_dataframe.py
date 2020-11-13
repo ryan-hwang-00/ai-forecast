@@ -32,7 +32,7 @@ def row_select(dataframe, column, value):
 def date_info(start_date, event_info, break_info):
 
     # arrived_data = request.get_json()  # json 데이터를 받아옴
-
+    print('event_info222 >>>>', event_info)
     weather_df = weather2.weather_api(start_date)
 
     pre_in_num = row_select(df1, 'date', start_date)
@@ -46,8 +46,11 @@ def date_info(start_date, event_info, break_info):
         pre_event_list.append(x)
 
     aa = 5
-    for i in df2['dow']:
-        if i in pre_event_list:
+
+    for i in df2['weekday']:
+
+        if int(i) in pre_event_list:
+
             aa = 1
         else:
             aa = 0
@@ -78,6 +81,8 @@ def date_info(start_date, event_info, break_info):
         return_data = break_1_dict
     else:
         return_data = break_0_dict
+
+    print('7_dataframe finished >>>>>')
     # return_data = {}
     # return_data['day'] = int(df2['day'].iloc[5])
     # return_data['promotion'] = int(df2['promotion_flag'].iloc[3])

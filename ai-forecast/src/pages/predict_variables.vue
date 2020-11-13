@@ -242,25 +242,25 @@ export default {
 
     bac_2l () {
       console.log('Clicked item')
-      localStorage.item_1 = '백산수_2l';
+      localStorage.item_1 = '백산수2.0L';
     },
 
     bac_500ml () {
       console.log('Clicked item')
-      localStorage.item_1 = '백산수_500ml';
+      localStorage.item_1 = '백산수500ml';
     },
     sin_ramyun () {
       console.log('Clicked item')
-      localStorage.item_1 = '신라면_멀티';
+      localStorage.item_1 = '신라면멀티';
     },
 
     ansung_ramyun () {
       console.log('Clicked item')
-      localStorage.item_1 = '안성탕면_멀티';
+      localStorage.item_1 = '안성탕면멀티';
     },
     jin_ramyun () {
       console.log('Clicked item')
-      localStorage.item_1 = '진라면_멀티(순한맛)';
+      localStorage.item_1 = '진라면멀티(순한맛)';
 
     },
 
@@ -286,20 +286,6 @@ export default {
 
     },
 
-    summary_alert () {
-
-      console.log('Clicked summary_alert')
-      this.item_info = localStorage.getItem('item_1');
-      this.event_info = localStorage.getItem('event_1');
-      this.break_info = localStorage.getItem('break_1');
-      this.store_code = localStorage.getItem('store_code');
-      // localStorage.event_222=test_variable
-
-      alert("매장:" + this.store_code + "예측 상품 : " + this.item_info + "  할인 정보 : " + this.event_info + "  휴무 정보 : " + this.break_info);
-
-    },
-
-    // for test
 
     flask_alert : function () {
 

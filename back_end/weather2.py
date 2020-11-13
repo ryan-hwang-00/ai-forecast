@@ -59,6 +59,7 @@ def weather_api(startdt):
         a.append(df)
 
     print('step2 finished -------')
+
     weather_api_1 = pd.concat(a)
 
     weather_api_1 = weather_api_1[['tm', 'avgTa', 'avgRhm', 'avgPa', 'sumRn']]

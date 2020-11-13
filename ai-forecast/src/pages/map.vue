@@ -69,7 +69,9 @@
             <g class="circles" />
             </svg>
            
-            <q-dialog 
+            <q-dialog
+            width="400px"  
+            height="400px" 
             v-model="card"
             >
 
@@ -78,7 +80,7 @@
                 width="200px"  
                 height="200px">
 
-                    <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
+                    <q-img src="../assets/busanbridge.jpg" />
 
                     <q-card-section>
                         <div class="row no-wrap items-center">

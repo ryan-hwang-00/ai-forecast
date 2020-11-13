@@ -6,10 +6,6 @@ from flask import Flask, request
 import pandas as pd
 
 from datetime import datetime, timedelta
-<<<<<<< HEAD
-=======
-
->>>>>>> 44ce09c400f9b89e4d3bfa74accca2f1ee69c990
 from future7_dataframe import date_info, row_select
 
 from predictor import predictor
@@ -76,27 +72,28 @@ def seven_days():
     print('break_info >>>>', break_info)
     print('store_info>>> ', store_info)
 
-<<<<<<< HEAD
-=======
     product_info = arrived_data['item_info']
-
->>>>>>> 44ce09c400f9b89e4d3bfa74accca2f1ee69c990
+    print('product_info>>> ', product_info)
     # 11/13 오전 11시 45분 수정
 
     merged_df = date_info(start_date, event_info, break_info)
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
+    print(merged_df)
     predict_addtime = timedelta(days=6)
+    print('step 6>>>>>>>>')
 
     predict_date = startdt + predict_addtime
 
     predict_date = predict_date.strftime('%Y-%m-%d')
 
-    next_week_sales = predictor(merged_df, store_code=store_info,
+    next_week_sales = predictor(merged_df, store_code=int(store_info),
                                 product_name=product_info, predict_date=predict_date)
 
     result = {}
+
+    print('step 7>>>>>>>>>')
 
     addtime = timedelta(days=1)
 
@@ -107,7 +104,7 @@ def seven_days():
         gg[dt] = round(float(next_week_sales[i]), 2)
         result['day' + str(j)] = gg
         startdt = startdt + addtime
-
+    print('step 8>>>>>>>>>>>')
     # print(result)
 
     return result
@@ -143,7 +140,7 @@ def trainer():
 
     product_info = arrived_data['item_info']
 
-    return_df_7, merged_df = date_info(start_date, event_info, break_info)
+    merged_df = date_info(start_date, event_info, break_info)
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
