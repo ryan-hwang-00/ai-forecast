@@ -44,7 +44,7 @@ def trainer(store_code=1, product_name='백산수2.0L', predict_date='2020-01-07
               [6, '진라면멀티(순한맛)', 'promotion_flag_6_jin', 'sale_qty_6_jin', '6_jin.hdf5']],
         columns=['store', 'product', 'promotion', 'sale', 'weight'])
 
-    return_df_7, merged_df = date_info('2020-01-01', ['2', '4', '6', '7'], 0)
+    merged_df = date_info('2020-01-01', ['2', '4', '6', '7'], 0)
 
     model_name = meta_index[(meta_index['store'] == store_code) & (
         meta_index['product'] == product_name)].iloc[0]['weight']
@@ -57,16 +57,16 @@ def trainer(store_code=1, product_name='백산수2.0L', predict_date='2020-01-07
 
     (x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1,
      x_columns, x_1_columns, sale_qty) = data.scaled_origin(sequence_x=180 * 4,
-                  sequence_y=7,
-                  product_name=product_name,
-                    store_code=store_code)
+                                                            sequence_y=7,
+                                                            product_name=product_name,
+                                                            store_code=store_code)
 
     x_train_scaled, x_train_1_scaled, y_train_scaled = data.scaled_data(sequence_x=180 * 4,
-                sequence_y=7,
-                df_train=df_train,
-                product_name=product_name,
-                store_code=store_code
-        )
+                                                                        sequence_y=7,
+                                                                        df_train=df_train,
+                                                                        product_name=product_name,
+                                                                        store_code=store_code
+                                                                        )
 
     sequence_x = 180 * 4
     sequence_y = 7
@@ -80,7 +80,7 @@ def trainer(store_code=1, product_name='백산수2.0L', predict_date='2020-01-07
             keras.losses.Huber(),  # MeanSquaredError,Huber
         ], metrics=['mse'])
 
-    filepath = './weight/'+ model_name
+    filepath = './weight/' + model_name
 
     checkpoint_path = filepath
 

@@ -219,7 +219,7 @@ import axios from "axios";
 export default {
   data () {
     return {
-      model1: '2020-02-15',
+      model1: '2020-01-01',
       // model2: '03-21-2019',
       selection: [ ],
       test1_data : Predict.data().getflag,
@@ -350,7 +350,7 @@ export default {
         setTimeout(function() { 
           this.return1=localStorage.return1 }, 50);
         setTimeout(function() { 
-          alert(this.return1) }, 100);
+          alert('예측완료') }, 100);
           
         // this.day1_1=localStorage.day1;
 
@@ -375,25 +375,23 @@ export default {
       
     // },
 
-    searchparam () {
-      const data = {
-        "item": this.item_info,
-        "event": this.event_info,
-        "break": this.break_info 
-      }
-      axios.post('http:://localhost:3000/api/v1.0/forecast/sale',
-        data
-      ).then(response => {
-        console.log(response)
-        this.axiosPostResponseData = JSON.stringify(response.data)
-      }).catch((ex) => {
-        console.warn("ERROR!!!!! : ", ex)
-      })
-    }
+    // searchparam () {
+    //   const data = {
+    //     "item": this.item_info,
+    //     "event": this.event_info,
+    //     "break": this.break_info 
+    //   }
+    //   axios.post('http:://localhost:3000/api/v1.0/forecast/sale',
+    //     data
+    //   ).then(response => {
+    //     console.log(response)
+    //     this.axiosPostResponseData = JSON.stringify(response.data)
+    //   }).catch((ex) => {
+    //     console.warn("ERROR!!!!! : ", ex)
+    //   })
+    // }
     
   },
-
-  
 }
 
 

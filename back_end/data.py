@@ -269,7 +269,9 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
     # df.to_csv('AI_Sale_ver4.0.csv', encoding='euc-kr', columns=x_columns)
     return df, df_train, df_test, sale_qty, x_columns, x_1_columns
 
-return_df_7, merged_df = date_info('2020-01-01', ['2', '4', '6', '7'], 0)
+
+merged_df = date_info('2020-01-01', ['2', '4', '6', '7'], 0)
+
 
 def sep_data2(train='AI_Sale_ver4.0.csv', test=merged_df,
               product_name='백산수2.0L',
@@ -405,11 +407,11 @@ def sep_data2(train='AI_Sale_ver4.0.csv', test=merged_df,
 def scaled_origin(sequence_x=180 * 4,
                   sequence_y=7,
                   product_name='백산수2.0L',
-                    store_code=1):
+                  store_code=1):
 
     df, df_train, df_test, sale_qty, x_columns, x_1_columns = sep_data2(
-              product_name=product_name,
-              store_code=store_code)
+        product_name=product_name,
+        store_code=store_code)
 
     x_df, x_df_1, y_df = sep_xy(df, x_columns, x_1_columns, sale_qty=sale_qty)
 
@@ -439,9 +441,9 @@ def scaled_data(sequence_x=180 * 4,
                 ):
 
     x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_columns, x_1_columns, sale_qty = scaled_origin(sequence_x=sequence_x,
-                  sequence_y=sequence_y,
-                  product_name=product_name,
-                    store_code=store_code)
+                                                                                                                   sequence_y=sequence_y,
+                                                                                                                   product_name=product_name,
+                                                                                                                   store_code=store_code)
 
     x_train, x_train_1, y_train = sep_xy(
         df_train,  x_columns, x_1_columns, sale_qty=sale_qty)

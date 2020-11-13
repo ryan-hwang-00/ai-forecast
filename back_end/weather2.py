@@ -30,13 +30,8 @@ def weather_api(startdt):
 
     startdt = str(startdt)
     enddt = str(enddt)
-    print('startdate : ', startdt, 'enddate : ', enddt)
 
-    time1 = datetime(int(startdt[0:4]), int(startdt[4:6]), int(startdt[6:8]))
-    time2 = datetime(int(enddt[0:4]), int(enddt[4:6]), int(enddt[6:8]))
-
-    day_len = (time2-time1).days
-
+    print('step1 finished -------')
     queryParams_page1 = '?' + urlencode({
 
         "ServiceKey": unquote(key),
@@ -44,15 +39,13 @@ def weather_api(startdt):
         "dateCd": "DAY",
         "numOfRows": "600",
         "pageNo": "1",
-
         "startDt": startdt,
         "endDt": enddt,
-
         "stnIds": "159",
         "dataType": "JSON"
 
     })
-    print('step2 finished -------')
+
     queryURL_page1 = url + queryParams_page1
     response_page1 = requests.get(queryURL_page1)
     info_page1 = json.loads(response_page1.text)
@@ -65,6 +58,7 @@ def weather_api(startdt):
 
         a.append(df)
 
+    print('step2 finished -------')
     weather_api_1 = pd.concat(a)
 
     weather_api_1 = weather_api_1[['tm', 'avgTa', 'avgRhm', 'avgPa', 'sumRn']]
@@ -76,55 +70,8 @@ def weather_api(startdt):
     weather_api_1 = weather_api_1.astype({'mean_temp': 'float', 'mean_humidity': 'float',
                                           'mean_pressure': 'float', 'rain': 'float'})
     print('step3 finished -------')
-    queryParams_page1 = '?' + urlencode({
 
-        "ServiceKey": unquote(key),
-        "dataCd": "ASOS",
-        "dateCd": "DAY",
-        "numOfRows": "600",
-        "pageNo": "2",
-
-        "startDt": startdt,
-        "endDt": enddt,
-
-        "stnIds": "159",
-        "dataType": "JSON"})
-
-    queryURL_page1 = url + queryParams_page1
-    response_page1 = requests.get(queryURL_page1)
-    info_page1 = json.loads(response_page1.text)
-
-    print('step4 finished -------')
-    b = []
-    for i in range(len(info_page1['response']['body']['items']['item'])):
-
-        df = pd.DataFrame(info_page1['response']
-                          ['body']['items']['item'][i], index=[0])
-
-        b.append(df)
-
-    weather_api_2 = pd.concat(b)
-
-    weather_api_2 = weather_api_2[['tm', 'avgTa', 'avgRhm', 'avgPa', 'sumRn']]
-    weather_api_2 = weather_api_2.rename({'tm': 'date', 'avgTa': 'mean_temp',
-                                          'avgRhm': 'mean_humidity', 'avgPa': 'mean_pressure', 'sumRn': 'rain'}, axis=1)
-
-    weather_api_2 = weather_api_2.replace(r'', np.nan, regex=True)
-    weather_api_2 = weather_api_2.fillna(0)
-    weather_api_2 = weather_api_2.astype({'mean_temp': 'float', 'mean_humidity': 'float',
-                                          'mean_pressure': 'float', 'rain': 'float'})
-
-    weather_api_3 = pd.concat([weather_api_1, weather_api_2])
-
-    weather_api_3 = weather_api_3.reset_index(drop=True)
-    print('step5 finished -------')
-    if day_len <= 600:
-
-        return weather_api_1
-
-    else:
-
-        return weather_api_3
+    return weather_api_1
 
 
 def utc_to_date(utc):

@@ -19,7 +19,6 @@ from urllib.parse import urlencode, unquote, quote_plus
 import urllib
 import requests
 from datetime import datetime, timedelta
-import weather2
 from future7_dataframe import date_info, row_select
 
 from predictor import predictor
@@ -80,11 +79,10 @@ def seven_days():
 
     print('break_info >>>>', break_info)
     print('store_info>>> ', store_info)
-    
-    # 11/13 오전 11시 45분 수정
-    
 
-    return_df_7, merged_df = date_info(start_date, event_info, break_info)
+    # 11/13 오전 11시 45분 수정
+
+    merged_df = date_info(start_date, event_info, break_info)
 
     next_week_sales = predictor(merged_df, store_code=6,
                                 product_name='백산수2.0L', predict_date='2020-01-07')

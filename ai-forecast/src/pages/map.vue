@@ -1,7 +1,7 @@
 <template>
     <q-page class="window-height window-width row justify-center items-center"        
     >
-       <div class="row">
+       <div class="col-auto window-height window-width row justify-center items-center">
         <div id = "app" square bordered class="text-weight-bolder">
             <h4>지역 선택!</h4>
         </div>
@@ -69,50 +69,49 @@
             <g class="circles" />
             </svg>
            
-                <q-dialog 
-                v-model="card"
-                >
+            <q-dialog 
+            v-model="card"
+            >
 
-                    <q-card 
-                    class="my-card"
-                    width="200px"  
-                    height="200px">
+                <q-card 
+                class="my-card"
+                width="200px"  
+                height="200px">
 
-                        <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
-                        <q-card-section>
-                        
+                    <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
 
+                    <q-card-section>
                         <div class="row no-wrap items-center">
                             <div class="col text-h6 ellipsis">
                             부산 매장
                             </div>
 
-                            <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
+                            <div class="col-auto text-grey  q-pt-md row no-wrap items-center">
                             <q-icon name="place" />
                             </div>
                         </div>
-                        </q-card-section>
+                    </q-card-section>
 
-                        <q-separator />
+                    <q-separator />
 
-                        <q-card-actions align="center">
+                    <q-card-actions align="center">
+                        <q-btn 
+                        v-close-popup
+                        color="primary"
+                        @click="store1"
+                        to="/predict_variables" 
+                        label="store1" />
 
-                            <q-btn 
-                            v-close-popup flat 
-                            color="primary"
-                            @click="store1"
-                            to="/predict_variables" 
-                            label="store1" />
-
-                            <q-btn 
-                            v-close-popup flat 
-                            color="primary"
-                            to="/predict_variables" 
-                            @click='store2'
-                            label="store2" />
-                        </q-card-actions>
-                    </q-card>
-                </q-dialog>
+                        <q-btn 
+                        v-close-popup
+                        color="primary"
+                        to="/predict_variables" 
+                        @click='store2'
+                        label="store2" />
+                    
+                    </q-card-actions>     
+                </q-card>
+            </q-dialog>
         </div>
     </q-page>       
 </template>
@@ -138,13 +137,11 @@ export default {
 
       this.title = e.target.id
       
-
     },
 
     store1: function() {
 
         localStorage.store_code = '1';
-
 
     },
 
@@ -160,7 +157,7 @@ export default {
 
 <style scoped>
 path {
-  fill: #C10015;
+  fill: #FA6060;
   cursor: pointer;
   -webkit-transition: all 150ms;
   -moz-transition: all 150ms;
@@ -181,6 +178,7 @@ path:hover {
 }
 .wrapper {
     max-width: 400px;
-    margin: 0 auto;
+    margin: 10 auto;
   }
+
 </style>
