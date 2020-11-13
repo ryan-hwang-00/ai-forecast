@@ -107,13 +107,13 @@
         v-model="axiosPostResponseData"
         label="axios post"
       />
+
       <q-btn
         color="white"
         text-color="black"
         label="axios post"
         @click="postAxios()"
       />
-
 
     </div>
   </div>
