@@ -87,7 +87,7 @@ def seven_days():
 
     predict_date = predict_date.strftime('%Y-%m-%d')
 
-    next_week_sales = predictor(merged_df, store_code=store_info,
+    next_week_sales = predictor(merged_df, store_code=int(store_info),
                                 product_name=product_info, predict_date=predict_date)
 
     result = {}
@@ -154,7 +154,7 @@ def trainer():
     predict_date = predict_date.strftime('%Y-%m-%d')
     print("training init")
 
-    ready_train = start_train(merged_df, store_info, product_info, train_date,
+    ready_train = start_train(merged_df, int(store_info), product_info, train_date,
                               predict_date)
 
     score = ready_train.trainer()

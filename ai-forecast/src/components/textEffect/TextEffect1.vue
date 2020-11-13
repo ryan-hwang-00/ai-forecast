@@ -43,13 +43,22 @@ span {font-family: "paybooc-Bold"}
   animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
 }
 
-.right_img {
-  color: #34495E;
-}
+// .right_img {
+//   color: #34495E;
+// }
 
 for co in 0 .. 13 {
   .delay-anime:nth-child({co + 1}) {
-    animation-delay: co * 100ms + 200ms;
+    animation-delay: 0 * 100ms + 200ms;
+  }
+  if co == 0 or co == 7 {
+    .right_img:nth-child({co + 1}) {
+      color: red;
+    }
+  } else {
+    .right_img:nth-child({co + 1})  {
+      color: #34495E;
+    }
   }
 }
 </style>
