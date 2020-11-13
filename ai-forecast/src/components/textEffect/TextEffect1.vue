@@ -1,6 +1,6 @@
 <template>
   <div class="TextEffect1">
-    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img"/>
+    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img delay-color"/>
   </div>
 </template>
 
@@ -60,5 +60,8 @@ for co in 0 .. 13 {
       color: #34495E;
     }
   }
+  // .delay-color:nth-child({co + 1}) {
+  //   color: red;
+  // }
 }
 </style>
