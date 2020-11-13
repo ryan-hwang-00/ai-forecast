@@ -157,7 +157,7 @@ def trainer():
     predict_date = predict_date.strftime('%Y-%m-%d')
     print("training init")
 
-    ready_train = start_train(merged_df, store_info, product_info, train_date,
+    ready_train = start_train(merged_df, int(store_info), product_info, train_date,
                               predict_date)
 
     score = ready_train.trainer()

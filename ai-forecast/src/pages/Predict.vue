@@ -31,14 +31,16 @@
         color="purple-13"
         text-color="white"
         icon="notifications_active"
+        label="할인행사: "
       >
-        {{getevent}}
+        {{geteventmon}} {{geteventtue}} {{geteventweb}} {{geteventthu}} {{geteventfri}} {{geteventsat}} {{geteventsun}}
       </q-chip>
       <q-chip
         size="18px"
         color="deep-purple-8"
         text-color="white"
         icon="beach_access"
+        label="휴무:"
       >
         {{getflag}}
       </q-chip>
@@ -179,6 +181,13 @@ export default {
       getevent: '행사',
       getflag: '휴무일',
       slide: 'style',
+      geteventmon: '',
+      geteventtue: '',
+      geteventweb: '',
+      geteventthu: '',
+      geteventfri: '',
+      geteventsat: '',
+      geteventsun: '',
       
       // Chart Data
       datacollectionBar: null,
@@ -246,6 +255,7 @@ export default {
     this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
+    this.onDayClick ()
   },
 
   // mounted () {
@@ -395,12 +405,43 @@ export default {
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak == "1") {
-        this.getflag = "휴무: 일요일"
+        this.getflag = "일요일"
       } else if (this.getbreak == "0") {
-        this.getflag = "휴무: 휴무일 없음"
+        this.getflag = "휴무일 없음"
       } else {
         this.getflag = "휴무일"
-      }
+      };
+    },
+
+    onDayClick () {
+      this.getmon = LocalStorage.getItem('event_mon')
+      this.gettue = LocalStorage.getItem('event_tue')
+      this.getthu = LocalStorage.getItem('event_thu')
+      this.getwen = LocalStorage.getItem('event_wen')
+      this.getsat = LocalStorage.getItem('event_sat')
+      this.getsun = LocalStorage.getItem('event_sun')
+      this.getfri = LocalStorage.getItem('event_fri')
+      if (this.getmon == "ture") {
+        this.geteventmon = "월"
+      };
+      if (this.gettue == "ture") {
+        this.geteventtue = "화"
+      };
+      if (this.getwen == "ture") {
+        this.geteventweb = "수"
+      };
+      if (this.getthu == "ture") {
+        this.geteventthu = "목"
+      };
+      if (this.getfri == "ture") {
+        this.geteventfri = "금"
+      };
+      if (this.getsat == "ture") {
+        this.geteventsat = "토"
+      };
+      if (this.getsun == "ture") {
+        this.geteventsun = "일"
+      };
     },
 
     getday1Value () {
