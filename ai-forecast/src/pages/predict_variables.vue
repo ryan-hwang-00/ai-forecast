@@ -214,7 +214,6 @@
 import { date, LocalStorage } from "quasar";
 import BarChart from '../components/charts/BarChart'
 import Predict from '../pages/Predict'
-
 import axios from "axios";
 
 export default {
@@ -282,7 +281,6 @@ export default {
     break_day () {
 
       console.log('Clicked break_info')
-
       localStorage.break_1 = 1;
 
     },
@@ -293,17 +291,19 @@ export default {
       this.item_info = localStorage.getItem('item_1');
       this.event_info = localStorage.getItem('event_1');
       this.break_info = localStorage.getItem('break_1');
+      this.store_code = localStorage.getItem('store_code');
       // localStorage.event_222=test_variable
-      alert("예측 상품 : " + this.item_info + "  할인 정보 : " + this.event_info + "  휴무 정보 : " + this.break_info);
+
+      alert("매장:" + this.store_code + "예측 상품 : " + this.item_info + "  할인 정보 : " + this.event_info + "  휴무 정보 : " + this.break_info);
+
     },
 
     // for test
-    
+
     flask_alert : function () {
 
       const data = {
-        
-        
+
         // "for_return" : this.day1_2,
         "selected_date" : this.selected_date,
         "event_info" : [this.event_mon, this.event_tue, this.event_wen, this.event_thu, this.event_fri, this.event_sat, 
@@ -345,11 +345,8 @@ export default {
         console.warn("ERROR!!!!! : ", ex)
 
       });
-      
-      
 
     },
-    
 
     // 로컬스토리지 이용하는 법 테스트를 위한 number store
     // number_store () {

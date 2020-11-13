@@ -59,11 +59,11 @@ def seven_days():
 
     arrived_data = request.get_json()
     print(arrived_data)
-    # start_date = arrived_data['selected_date']
-    start_date = "2020-01-01"
+    start_date = arrived_data['selected_date']
+    # start_date = "2020-01-01"
     event_info = arrived_data['event_info']
-    # break_info = arrived_data['break_info']
-    break_info = 0
+    break_info = arrived_data['break_info']
+    # break_info = 0
 
     print(start_date, event_info, break_info)
 
