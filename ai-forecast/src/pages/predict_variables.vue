@@ -108,14 +108,14 @@
       
       </div> <!-- /div 2 -->
    
-
+<!-- 
       <div class="fit row justify-start" style="max-width:630px">
-      <!-- <q-chip color="indigo-10" text-color="white" icon="bookmark" >  할인요일 선택  </q-chip> -->
+      
       <q-btn color="white" text-color="black" label="할인 요일 선택" />
-      </div>
+      </div> -->
 
       <!-- div_6 -->
-    <div class="q-pa-md">
+    <!-- <div class="q-pa-md">
       <div class="q-gutter-sm">
         <q-checkbox v-model="selection" val=1 label="월요일" color="teal" />
         <q-checkbox v-model="selection" val=2 label="화요일" color="orange" />
@@ -130,7 +130,7 @@
       <div class="q-px-sm">
         할인 요일: <strong>{{ selection }}</strong>
       </div>
-    </div>
+    </div> -->
     <!--/div_6  -->
 
 
@@ -323,6 +323,7 @@ export default {
         //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
         // "break_info" : this.break_info,
         "item_info" : localStorage.getItem('item_1'),
+        "store_info" : localStorage.getItem('store_code'),
         "break_info" : localStorage.getItem('break_1')
       }
 
