@@ -47,7 +47,7 @@ span {font-family: "paybooc-Bold"}
   color: #34495E;
 }
 
-for co in 0 .. 12 {
+for co in 0 .. 13 {
   .delay-anime:nth-child({co + 1}) {
     animation-delay: co * 100ms + 200ms;
   }
