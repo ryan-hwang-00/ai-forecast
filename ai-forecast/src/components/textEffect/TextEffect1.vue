@@ -1,6 +1,6 @@
 <template>
   <div class="TextEffect1">
-    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img text-Do-Hyeon"/>
+    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img"/>
   </div>
 </template>
 

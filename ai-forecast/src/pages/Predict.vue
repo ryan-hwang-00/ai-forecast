@@ -61,7 +61,7 @@
           padding
           arrows
           height="550px"
-          width="500px"
+          width="300px"
           class="bg-primary text-white shadow-1 rounded-borders"
         >
           <q-carousel-slide name="style" class="column no-wrap flex-center">
@@ -249,7 +249,7 @@ export default {
   },
 
   // mounted () {
-
+  //   this.onvariableClick()
   // },
 
   methods: {
@@ -356,7 +356,7 @@ export default {
             data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
           }
         ]
-      };
+      }
     },
 
     fillDataPie () {
@@ -381,16 +381,18 @@ export default {
       }
     },
 
-    onvariableClick: function () {
+    onvariableClick () {
       this.getdate = LocalStorage.getItem("date");
       this.getstore = LocalStorage.getItem("store");
       this.getproduct = LocalStorage.getItem("item_1");
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak == "1") {
-        this.getflag = "휴무: 일요일";        
-      } else {
+        this.getflag = "휴무: 일요일"
+      } else if (this.getbreak == "0") {
         this.getflag = "휴무: 휴무일 없음"
+      } else {
+        this.getflag = "휴무일"
       }
     },
 
