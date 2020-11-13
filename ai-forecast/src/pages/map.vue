@@ -73,51 +73,45 @@
                 v-model="card"
                 >
 
-                <q-card 
-                class="my-card"
-                width="200px"  
-                height="200px">
+                    <q-card 
+                    class="my-card"
+                    width="200px"  
+                    height="200px">
 
-                    <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
-                    <q-card-section>
-                    <q-btn
-                        fab
-                        color="primary"
-                        icon="place"
-                        class="absolute"
-                        style="top: 0; right: 12px; transform: translateY(-50%);"
-                    />
+                        <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
+                        <q-card-section>
+                        
 
-                    <div class="row no-wrap items-center">
-                        <div class="col text-h6 ellipsis">
-                        부산 매장
+                        <div class="row no-wrap items-center">
+                            <div class="col text-h6 ellipsis">
+                            부산 매장
+                            </div>
+
+                            <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
+                            <q-icon name="place" />
+                            </div>
                         </div>
+                        </q-card-section>
 
-                        <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
-                        <q-icon name="place" />
-                        </div>
-                    </div>
-                    </q-card-section>
+                        <q-separator />
 
-                    <q-separator />
+                        <q-card-actions align="center">
 
-                    <q-card-actions align="center">
+                            <q-btn 
+                            v-close-popup flat 
+                            color="primary"
+                            @click="store1"
+                            to="/predict_variables" 
+                            label="store1" />
 
-                    <q-btn 
-                    v-close-popup flat 
-                    color="primary"
-                    @click="store1"
-                    to="/predict_variables" 
-                    label="store1" />
-
-                    <q-btn 
-                    v-close-popup flat 
-                    color="primary"
-                    to="/predict_variables" 
-                    @click='store2'
-                    label="store2" />
-                    </q-card-actions>
-                </q-card>
+                            <q-btn 
+                            v-close-popup flat 
+                            color="primary"
+                            to="/predict_variables" 
+                            @click='store2'
+                            label="store2" />
+                        </q-card-actions>
+                    </q-card>
                 </q-dialog>
         </div>
     </q-page>       
@@ -151,15 +145,13 @@ export default {
 
         localStorage.store_code = '1';
 
-        // LocalStorage.set("store_code", this.textSetJson);
-        console.log(JSON.stringify(store_code['store_code']))
+
     },
 
     store2: function () {
 
         localStorage.store_code = '6';
 
-    //   LocalStorage.set("store_code", this.textSetJson);
     },
  }
 }
@@ -187,5 +179,8 @@ path:hover {
 .busanland{
   fill: #263238
 }
-
+.wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+  }
 </style>

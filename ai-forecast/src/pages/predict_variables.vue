@@ -309,7 +309,8 @@ export default {
         "event_info" : [this.event_mon, this.event_tue, this.event_wen, this.event_thu, this.event_fri, this.event_sat, 
                           this.event_sun],
         "break_info" : this.break_info,
-        "item_info" : this.item_info
+        "item_info" : this.item_info,
+        "store_code" : this.store_code
         // "break_info" : localStorage.getItem('break_1')
       }
 
