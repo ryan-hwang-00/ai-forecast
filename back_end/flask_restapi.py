@@ -106,7 +106,10 @@ def seven_days():
 
         result['day' + str(j)] = gg
 
+        result['Tday' + str(j)] = round(float(next_week_sales[i]), 2)
+
         startdt = startdt + addtime
+
     print('step 8>>>>>>>>>>>')
     # print(result)
 
