@@ -108,14 +108,14 @@
       
       </div> <!-- /div 2 -->
    
-
+<!-- 
       <div class="fit row justify-start" style="max-width:630px">
-      <!-- <q-chip color="indigo-10" text-color="white" icon="bookmark" >  할인요일 선택  </q-chip> -->
+      
       <q-btn color="white" text-color="black" label="할인 요일 선택" />
-      </div>
+      </div> -->
 
       <!-- div_6 -->
-    <div class="q-pa-md">
+    <!-- <div class="q-pa-md">
       <div class="q-gutter-sm">
         <q-checkbox v-model="selection" val=1 label="월요일" color="teal" />
         <q-checkbox v-model="selection" val=2 label="화요일" color="orange" />
@@ -130,7 +130,7 @@
       <div class="q-px-sm">
         할인 요일: <strong>{{ selection }}</strong>
       </div>
-    </div>
+    </div> -->
     <!--/div_6  -->
 
 
@@ -215,7 +215,6 @@
 import { date, LocalStorage } from "quasar";
 import BarChart from '../components/charts/BarChart'
 import Predict from '../pages/Predict'
-
 import axios from "axios";
 
 export default {
@@ -283,7 +282,6 @@ export default {
     break_day () {
 
       console.log('Clicked break_info')
-
       localStorage.break_1 = 1;
 
     },
@@ -294,24 +292,41 @@ export default {
       this.item_info = localStorage.getItem('item_1');
       this.event_info = localStorage.getItem('event_1');
       this.break_info = localStorage.getItem('break_1');
+      this.store_code = localStorage.getItem('store_code');
       // localStorage.event_222=test_variable
-      alert("예측 상품 : " + this.item_info + "  할인 정보 : " + this.event_info + "  휴무 정보 : " + this.break_info);
+
+      alert("매장:" + this.store_code + "예측 상품 : " + this.item_info + "  할인 정보 : " + this.event_info + "  휴무 정보 : " + this.break_info);
+
     },
 
     // for test
-    
+
     flask_alert : function () {
 
+        localStorage.event_mon=this.event_mon;
+        localStorage.event_tue=this.event_tue;
+        localStorage.event_wen=this.event_wen;
+        localStorage.event_thu=this.event_thu;
+        localStorage.event_fri=this.event_fri;
+        localStorage.event_sat=this.event_sat;
+        localStorage.event_sun=this.event_sun;
+
+        
+
       const data = {
-        
-        
+
         // "for_return" : this.day1_2,
-        "selected_date" : this.selected_date,
-        "event_info" : [this.event_mon, this.event_tue, this.event_wen, this.event_thu, this.event_fri, this.event_sat, 
-                          this.event_sun],
-        "break_info" : this.break_info,
-        "item_info" : this.item_info
-        // "break_info" : localStorage.getItem('break_1')
+        "selected_date" : this.model1,
+        "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
+                        '4' : localStorage.event_thu, '5': localStorage.event_fri, '6' : localStorage.event_sat,
+                        '7' : localStorage.event_sun},
+        // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
+        //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
+        // "break_info" : this.break_info,
+        "item_info" : localStorage.getItem('item_1'),
+        "store_info" : localStorage.getItem('store_code'),
+        "break_info" : localStorage.getItem('break_1')
+        
       }
 
       axios.post('http://127.0.0.1:5000/date_info',
@@ -346,10 +361,9 @@ export default {
         console.warn("ERROR!!!!! : ", ex)
 
       });
-      
-      
 
     },
+
     training : function () {
 
       const data = {
@@ -393,7 +407,7 @@ export default {
       
 
     },
-    
+
 
     // 로컬스토리지 이용하는 법 테스트를 위한 number store
     // number_store () {

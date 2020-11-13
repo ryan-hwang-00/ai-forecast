@@ -19,6 +19,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+@font-face {
+  font-family: "paybooc-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+span {font-family: "paybooc-Bold"}
+
 @keyframes text-in {
   0% {
     transform: translate(0, -20px);
@@ -33,11 +43,11 @@ export default {
   animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
 }
 
-.right_img::first-letter {
+.right_img {
   color: #34495E;
 }
 
-for co in 0 .. 12 {
+for co in 0 .. 13 {
   .delay-anime:nth-child({co + 1}) {
     animation-delay: co * 100ms + 200ms;
   }

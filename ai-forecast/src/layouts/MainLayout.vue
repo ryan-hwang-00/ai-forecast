@@ -5,7 +5,7 @@
       <q-toolbar>
         <q-toolbar-title class = "absolute-top-left">
 
-          <q-btn clickable to="/">
+          <q-btn class="large-screen-only" to="/">
             <img src="~assets/FMLogo1.svg" height="98px">
           </q-btn>
           
@@ -13,11 +13,9 @@
       </q-toolbar>
 
       <q-tabs align="right">
-        <!-- <q-route-tab to="/store" label="store" />
-        <q-route-tab to="/item" label="item" /> -->
         <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
+        <q-separator vertical inset color="white"/>
         <q-route-tab to="/login" label="로그인" style="max-width: 100px"/>
-        <!-- <q-route-tab to="/predict_variables" label="predic_variables" /> -->
       </q-tabs>
 
     </q-header>
@@ -26,28 +24,34 @@
       <router-view />
     </q-page-container>
 
-    <q-footer elevated class="bg-grey-8 text-white">
-      <q-toolbar>
-        <q-toolbar-title>
-          <!-- <q-avatar>
-            <img src="~assets/FMLogo.svg">
-          </q-avatar> -->
-          <!-- Title -->
-        </q-toolbar-title>
-      </q-toolbar>
+    <q-footer bordered class="bg-white text-primary">
+      <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
+        
+        <eva-icon name="github" 
+        animation="pulse" 
+        fill="limegreen"
+        @click='togithubpage'>
+        </eva-icon>
+
+      </q-tabs>
     </q-footer>
 
   </q-layout>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
 
+
+  export default {  
+    data () {
+      return {
+
+        togithubpage: function() {
+        location.href="https://github.com/ryan-hwang-00/ai-forecast"
+        }
+      }
     }
   }
-}
 </script>
 
 <!--
@@ -162,5 +166,7 @@ export default {
 </script>
 -->
 <style lang="sass">
-
+// .q-btn
+//   @media (min-width: $breakpoint-sm-min)
+//     height: 81px
 </style>

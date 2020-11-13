@@ -61,82 +61,71 @@
           padding
           arrows
           height="550px"
-          width="500px"
+          width="300px"
           class="bg-primary text-white shadow-1 rounded-borders"
         >
-          <q-carousel-slide
-            name="style"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
-                    </div>
-                </div>
-            </q-card-section>
-              <div>
-                <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+          <q-carousel-slide name="style" class="column no-wrap flex-center">
+              <div class="bg-white rounded-borders">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div>
+                      <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+                  </div>
               </div>
-          </div>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="Line"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center">Line Chart</div>
-                    </div>
-                </div>
-            </q-card-section>
-              <div style="width:800px">
-                <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+          <q-carousel-slide name="Line" class="column no-wrap flex-center">
+              <div class="bg-white rounded-borders">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">Line Chart</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div style="width:800px">
+                      <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+                  </div>
               </div>
-          </div>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="mixed"
-            class="column no-wrap flex-center"
-          >
-            <mixed-chart></mixed-chart>
+          <q-carousel-slide name="mixed" class="column no-wrap flex-center">
+              <mixed-chart></mixed-chart>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="ef"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center">Doughnut Chart</div>
-                    </div>
-                </div>
-            </q-card-section>
-            <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
-          </div>
+          <q-carousel-slide name="ef" class="column no-wrap flex-center">
+              <div class="bg-white rounded-borders">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">Doughnut Chart</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div>
+                      <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
+                  </div>
+              </div>
           </q-carousel-slide>
 
-          <q-carousel-slide
-            name="fe"
-            class="column no-wrap flex-center"
-          >
-          <div class="bg-white">
-            <q-card-section class="bg-primary">
-                <div class="row items-center no-wrap">
-                    <div class="col">
-                        <div class="text-h6 text-white text-center">Pie Chart</div>
-                    </div>
-                </div>
-            </q-card-section>
-            <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
-          </div>
+          <q-carousel-slide name="fe" class="column no-wrap flex-center">
+              <div class="bg-white rounded-borders">
+                  <q-card-section class="bg-primary">
+                      <div class="row items-center no-wrap">
+                          <div class="col">
+                              <div class="text-h6 text-white text-center text-Do-Hyeon">Pie Chart</div>
+                          </div>
+                      </div>
+                  </q-card-section>
+                  <div>
+                      <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
+                  </div>
+              </div>
           </q-carousel-slide>
 
         </q-carousel>
@@ -260,7 +249,7 @@ export default {
   },
 
   // mounted () {
-
+  //   this.onvariableClick()
   // },
 
   methods: {
@@ -293,7 +282,7 @@ export default {
               {
               ticks: {
                 min: 0,
-                max: 1000
+                // max: 1000
                 //stepSize : 250
               }
             }
@@ -330,7 +319,7 @@ export default {
               ticks: {
                 beginAtZero: true,
                 min: 0,
-                max: 1000
+                // max: 1000
                 //stepSize : 250
               },
               gridLines: {
@@ -367,7 +356,7 @@ export default {
             data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
           }
         ]
-      };
+      }
     },
 
     fillDataPie () {
@@ -392,16 +381,25 @@ export default {
       }
     },
 
-    onvariableClick: function () {
+    onvariableClick () {
       this.getdate = LocalStorage.getItem("date");
-      this.getstore = LocalStorage.getItem("store");
       this.getproduct = LocalStorage.getItem("item_1");
+      this.getshop = LocalStorage.getItem("store_code");
+      if (this.getshop == "1") {
+        this.getstore = "매장: 1호점"
+      } else if (this.getshop == "6") {
+        this.getstore = "매장: 6호점"
+      } else {
+        this.getstore = "매장"
+      };
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak == "1") {
-        this.getflag = "휴무: 일요일";        
-      } else {
+        this.getflag = "휴무: 일요일"
+      } else if (this.getbreak == "0") {
         this.getflag = "휴무: 휴무일 없음"
+      } else {
+        this.getflag = "휴무일"
       }
     },
 

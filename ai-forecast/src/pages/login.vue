@@ -61,8 +61,8 @@ export default {
   data () {
     return {
 
-      email: "bbbb",
-      password: "1234"
+      email: "",
+      password: ""
       
       }
   },
@@ -107,13 +107,13 @@ export default {
           title: 'Alert',
           message: '회원이 아닙니다!'
 
-        }).onOk(() => {
-          // console.log('OK')
-        }).onCancel(() => {
-          // console.log('Cancel')
-        }).onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
-        })    
+          }).onOk(() => {
+            // console.log('OK')
+          }).onCancel(() => {
+            // console.log('Cancel')
+          }).onDismiss(() => {
+            // console.log('I am triggered on both OK and Cancel')
+          })    
     }
   }
 }
