@@ -111,16 +111,31 @@ def seven_days():
 def trainer():
 
     arrived_data = request.get_json()
-    # print(arrived_data)
-    # start_date = arrived_data['selected_date']
-    start_date = "2020-01-01"
-    event_info = arrived_data['event_info']
-    # break_info = arrived_data['break_info']
-    break_info = 0
-    store_info = 6
-    product_info = '진라면멀티(순한맛)'
+    print('arrived_data : ', arrived_data)
 
-    # print(start_date, event_info, break_info)
+    start_date = arrived_data['selected_date']
+    print('start_data >>>>', start_date)
+
+    #     할인정보 시작
+    pre_event_info = arrived_data['event_info']
+    print('pre_event_info >>>>>>', pre_event_info)
+
+    event_info = []
+    for i in pre_event_info.keys():
+
+        if pre_event_info[i] == 'true':
+            event_info.append(i)
+
+    print('event_info >>>>', event_info)
+    #     할인정보 끝
+
+    break_info = arrived_data['break_info']
+    store_info = arrived_data['store_info']
+
+    print('break_info >>>>', break_info)
+    print('store_info>>> ', store_info)
+
+    product_info = arrived_data['item_info']
 
     return_df_7, merged_df = date_info(start_date, event_info, break_info)
 
