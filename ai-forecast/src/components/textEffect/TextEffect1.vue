@@ -40,15 +40,22 @@ span {font-family: "paybooc-Bold"}
   font-size: 5.5rem;
   animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
 }
-.right_img {
-  color: #34495E;
-}
+// .right_img {
+//   color: #34495E;
+// }
+
 for co in 0 .. 13 {
   .delay-anime:nth-child({co + 1}) {
     animation-delay: co * 100ms + 200ms;
   }
-  // .delay-color:nth-child({co + 1}) {
-  //   color: red;
-  // }
+  .delay-color:nth-child({co + 1}) {
+    if (co == 0){
+      color: red
+    } else if (co == 7) {
+      color: red
+    } else {
+      color: #34495E
+    }
+  }
 }
 </style>
