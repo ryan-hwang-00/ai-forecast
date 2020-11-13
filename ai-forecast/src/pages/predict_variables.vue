@@ -301,16 +301,29 @@ export default {
     
     flask_alert : function () {
 
+        localStorage.event_mon=this.event_mon;
+        localStorage.event_tue=this.event_tue;
+        localStorage.event_wen=this.event_wen;
+        localStorage.event_thu=this.event_thu;
+        localStorage.event_fri=this.event_fri;
+        localStorage.event_sat=this.event_sat;
+        localStorage.event_sun=this.event_sun;
+
+        
+
       const data = {
         
         
         // "for_return" : this.day1_2,
-        "selected_date" : this.selected_date,
-        "event_info" : [this.event_mon, this.event_tue, this.event_wen, this.event_thu, this.event_fri, this.event_sat, 
-                          this.event_sun],
-        "break_info" : this.break_info,
-        "item_info" : this.item_info
-        // "break_info" : localStorage.getItem('break_1')
+        "selected_date" : this.model1,
+        "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
+                        '4' : localStorage.event_thu, '5': localStorage.event_fri, '6' : localStorage.event_sat,
+                        '7' : localStorage.event_sun},
+        // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
+        //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
+        // "break_info" : this.break_info,
+        "item_info" : localStorage.getItem('item_1'),
+        "break_info" : localStorage.getItem('break_1')
       }
 
       axios.post('http://127.0.0.1:5000/date_info',
