@@ -200,6 +200,7 @@
         
         
         <q-btn push color="white" text-color="primary" label="get data" @click="flask_alert"/>
+        <q-btn push color="white" text-color="primary" label="training" @click="training"/>
         <!-- <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/> -->
         <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
         
@@ -325,6 +326,7 @@ export default {
         "item_info" : localStorage.getItem('item_1'),
         "store_info" : localStorage.getItem('store_code'),
         "break_info" : localStorage.getItem('break_1')
+        
       }
 
       axios.post('http://127.0.0.1:5000/date_info',
@@ -361,6 +363,51 @@ export default {
       });
 
     },
+
+    training : function () {
+
+      const data = {
+        
+        
+        // "for_return" : this.day1_2,
+        "selected_date" : this.selected_date,
+        "event_info" : [this.event_mon, this.event_tue, this.event_wen, this.event_thu, this.event_fri, this.event_sat, 
+                          this.event_sun],
+        "break_info" : this.break_info,
+        "item_info" : this.item_info
+        // "break_info" : localStorage.getItem('break_1')
+      }
+
+      axios.post('http://127.0.0.1:5000/training',
+
+        data
+
+      ).then(response => {
+
+        console.log(response)
+
+        localStorage.traing = JSON.stringify(response.data);
+        
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
+        
+        // alert(test_data);
+        setTimeout(function() { 
+          this.return1=localStorage.return1 }, 50);
+        setTimeout(function() { 
+          alert(this.return1) }, 100);
+          
+        // this.day1_1=localStorage.day1;
+
+      }).catch((ex) => {
+
+        console.warn("ERROR!!!!! : ", ex)
+
+      });
+      
+      
+
+    },
+
 
     // 로컬스토리지 이용하는 법 테스트를 위한 number store
     // number_store () {

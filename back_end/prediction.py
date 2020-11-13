@@ -1,21 +1,6 @@
 from modeling import create_model
 import numpy as np
-import data
 from tensorflow import keras
-
-
-# df, df_train, df_test, sale_qty, x_columns, x_1_columns = data.sep_data2()
-
-# (x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1,
-#  x_columns, x_1_columns, sale_qty) = data.scaled_origin()
-
-# x_test_scaled, x_test_1_scaled, y_test_scaled = data.scaled_data(
-#     df_train=df_test)
-
-
-# sequence_x = 180 * 4
-# sequence_y = 7
-# model = create_model(column_num_x, column_num_x_1, sequence_x, sequence_y)
 
 
 def prediction(x_test_scaled, x_test_1_scaled, y_scaler,

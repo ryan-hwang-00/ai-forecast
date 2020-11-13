@@ -1,29 +1,14 @@
-from sklearn.metrics import r2_score
+
 from sklearn.preprocessing import MinMaxScaler
-import os
-import tensorflow as tf
-import matplotlib.pyplot as plt
+
 import pandas as pd
 import numpy as np
 
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Input, Dense, LSTM, Bidirectional, Activation, LeakyReLU
-from tensorflow.keras.optimizers import RMSprop
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard, ReduceLROnPlateau
-from tensorflow.keras.backend import square, mean
 from collections import Counter
-from matplotlib import rc, font_manager
-from keras import optimizers
-from keras.wrappers.scikit_learn import KerasClassifier
-from tensorflow import keras
-from tensorflow.keras import layers
-from tensorflow.keras.utils import plot_model
-import graphviz
-
-import seaborn as sns
-from matplotlib import rc, font_manager
 
 from future7_dataframe import date_info
+
+
 
 
 def get_sequence(x_train, x_train_1, y_train, sequence_x=21, sequence_y=7):
