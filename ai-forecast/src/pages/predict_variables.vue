@@ -186,7 +186,9 @@
           </div>
         </div>
 
-        <q-date v-model="model1" mask="YYYY-MM-DD" />
+        <q-date v-model="model1" 
+        :options="optionsFn"
+         mask="YYYY-MM-DD" />
       </div>               
         <!-- /div 4 -->
         
@@ -291,6 +293,10 @@ export default {
       console.log('Clicked break_info')
       localStorage.break_1 = 1;
 
+    },
+
+    optionsFn (model1) {
+      return model1 >= '2020/01/01' && model1 <= '2020/03/31'
     },
 
 
