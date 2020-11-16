@@ -31,9 +31,9 @@
         color="purple-13"
         text-color="white"
         icon="notifications_active"
-        label="할인행사: "
+        label="할인행사:"
       >
-        {{geteventmon}} {{geteventtue}} {{geteventweb}} {{geteventthu}} {{geteventfri}} {{geteventsat}} {{geteventsun}}
+        {{geteventmon}}
       </q-chip>
       <q-chip
         size="18px"
@@ -161,7 +161,6 @@ import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
 import Mycanvas from '../components/canvas/Mycanvas.vue'
-
 export default {
   name: "Predict",
   components: {
@@ -188,6 +187,7 @@ export default {
       geteventfri: '',
       geteventsat: '',
       geteventsun: '',
+      geteventday: '',
       
       // Chart Data
       datacollectionBar: null,
@@ -217,40 +217,37 @@ export default {
         }
       ],
       data: [
-      //   getday1TableValue (), getday2TableValue (), getday3TableValue (),
-      // getday4TableValue (), getday5TableValue (), getday6TableValue (), getday7TableValue ()]
         {
-          Date: '2020-10-23',
-          Predict_Value: 118,
+          Date: this.getday1Date (),
+          Predict_Value: this.getday1Value (),
         },
         {
-          Date: '2020-10-24',
-          Predict_Value: 131,
+          Date: this.getday2Date (),
+          Predict_Value: this.getday2Value (),
         },
         {
-          Date: '2020-10-25',
-          Predict_Value: 159,
+          Date: this.getday3Date (),
+          Predict_Value: this.getday3Value (),
         },
         {
-          Date: '2020-10-26',
-          Predict_Value: 182,
+          Date: this.getday4Date (),
+          Predict_Value: this.getday4Value (),
         },
         {
-          Date: '2020-10-27',
-          Predict_Value: 159,
+          Date: this.getday5Date (),
+          Predict_Value: this.getday5Value (),
         },
         {
-          Date: '2020-10-28',
-          Predict_Value: 284,
+          Date: this.getday6Date (),
+          Predict_Value: this.getday6Value (),
         },
         {
-          Date: '2020-10-29',
-          Predict_Value: 568,
+          Date: this.getday7Date (),
+          Predict_Value: this.getday7Value (),
         },
       ]
     }
   },
-
   created () {
     this.fillDataBar()
     this.fillDataLine()
@@ -259,7 +256,6 @@ export default {
     this.onvariableClick()
     this.onDayClick ()
   },
-
   // mounted () {
   //   this.onvariableClick()
   // },
@@ -398,9 +394,9 @@ export default {
       this.getproduct = LocalStorage.getItem("item_1");
       this.getshop = LocalStorage.getItem("store_code");
       if (this.getshop == "1") {
-        this.getstore = "매장: 1호점"
+        this.getstore = "매장: 해운대점"
       } else if (this.getshop == "6") {
-        this.getstore = "매장: 6호점"
+        this.getstore = "매장: 광안리점"
       } else {
         this.getstore = "매장"
       };
@@ -427,25 +423,31 @@ export default {
         this.geteventmon = "월"
       };
       if (this.gettue == "ture") {
-        this.geteventtue = "화"
+        return this.geteventtue = "화"
       };
+      geteventweb ()
       if (this.getwen == "ture") {
-        this.geteventweb = "수"
+        return this.geteventweb = "수"
       };
+      geteventthu ()
       if (this.getthu == "ture") {
-        this.geteventthu = "목"
+        return this.geteventthu = "목"
       };
+      geteventfri ()
       if (this.getfri == "ture") {
-        this.geteventfri = "금"
+        return this.geteventfri = "금"
       };
+      geteventsat ()
       if (this.getsat == "ture") {
-        this.geteventsat = "토"
+        return this.geteventsat = "토"
       };
+      geteventsun ()
       if (this.getsun == "ture") {
-        this.geteventsun = "일"
+        return this.geteventsun = "일"
       };
     },
 
+    // Predict-Value Data
     getday1Value () {
       this.day1 = LocalStorage.getItem("Tday1")
       return this.day1
@@ -474,34 +476,35 @@ export default {
       this.day7 = LocalStorage.getItem("Tday7")
       return this.day7
     },
-    // Table Data
-    getday1TableValue () {
-      this.day1TV = LocalStorage.getItem("day1")
-      return this.day1TV
+
+    // Date Data
+    getday1Date () {
+      this.day1Date = LocalStorage.getItem("day1")
+      return this.day1Date
     },
-    getday2TableValue () {
-      this.day2TV = LocalStorage.getItem("day2")
-      return this.day2TV
+    getday2Date () {
+      this.day2Date = LocalStorage.getItem("day2")
+      return this.day2Date
     },
-    getday3TableValue () {
-      this.day3TV = LocalStorage.getItem("day3")
-      return this.day3TV
+    getday3Date () {
+      this.day3Date = LocalStorage.getItem("day3")
+      return this.day3Date
     },
-    getday4TableValue () {
-      this.day4TV = LocalStorage.getItem("day4")
-      return this.day4TV
+    getday4Date () {
+      this.day4Date = LocalStorage.getItem("day4")
+      return this.day4Date
     },
-    getday5TableValue () {
-      this.day5TV = LocalStorage.getItem("day5")
-      return this.day5TV
+    getday5Date () {
+      this.day5Date = LocalStorage.getItem("day5")
+      return this.day5Date
     },
-    getday6TableValue () {
-      this.day6TV = LocalStorage.getItem("day6")
-      return this.day6TV
+    getday6Date () {
+      this.day6Date = LocalStorage.getItem("day6")
+      return this.day6Date
     },
-    getday7TableValue () {
-      this.day7TV = LocalStorage.getItem("day7")
-      return this.day7TV
+    getday7Date () {
+      this.day7Date = LocalStorage.getItem("day7")
+      return this.day7Date
     }
   }
 }

@@ -72,16 +72,6 @@ def date_info(start_date, event_info, break_info):
 
     merged_df = pd.merge(df2, weather_df)
 
-    break_1_dict = {'day1': 10, 'day2': 20, 'day3': 30,
-                    'day4': 40, 'day5': 50, 'day6': 60, 'day7': 70}
-    break_0_dict = {'day1': 700, 'day2': 600, 'day3': 30,
-                    'day4': 40, 'day5': 50, 'day6': 60, 'day7': 70}
-
-    if break_info == '1':
-        return_data = break_1_dict
-    else:
-        return_data = break_0_dict
-
     print('7_dataframe finished >>>>>')
     # return_data = {}
     # return_data['day'] = int(df2['day'].iloc[5])

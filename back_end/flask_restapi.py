@@ -99,12 +99,12 @@ def seven_days():
 
     for i in range(0, 7):
         j = i + 1
-        gg = {}
+        # gg = {}
 
-        gg["Date"] = startdt.strftime('%Y-%m-%d')
-        gg["Predict_Value"] = round(float(next_week_sales[i]), 2)
+        # gg["Date"] = startdt.strftime('%Y-%m-%d')
+        # gg["Predict_Value"] = round(float(next_week_sales[i]), 2)
 
-        result['day' + str(j)] = gg
+        result['day' + str(j)] = startdt.strftime('%Y-%m-%d')
 
         result['Tday' + str(j)] = round(float(next_week_sales[i]), 2)
 

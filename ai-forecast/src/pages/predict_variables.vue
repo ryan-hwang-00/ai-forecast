@@ -12,7 +12,7 @@
         이 때 fit을 이용해서 해당 row에만 justify-evenly 적용할 수 있게 된다.   -->
 
 
-        <q-btn-dropdown color="red-10" size="17px" label="상품명">
+        <q-btn-dropdown color="red-10" size="16px" label="상품명">
         <q-list>
           <q-item clickable v-close-popup @click="bac_2l">
             <q-item-section>
@@ -64,7 +64,12 @@
       </q-btn-dropdown> -->
 
 
-        <q-btn-dropdown color="primary" size="17px" label="휴무">
+        <q-btn-dropdown color="primary" 
+        size="16px" 
+        label="휴무"
+        style="fontSize:17px"
+      
+        >
         <q-list>
           <q-item clickable v-close-popup @click="normal_state">
             <q-item-section>
@@ -81,11 +86,13 @@
       </q-btn-dropdown>
 
 
-      <div class="q-pa-md">
+      <div class="q-pa-md" >
         <q-btn-dropdown
-          class="glossy"
-          color="purple"
-          label="할인정보"
+          
+          color="primary"
+          label="할인요일"
+          size="18px"
+          
         >
           <div class="row no-wrap q-pa-md">
             <div class="column">
@@ -179,7 +186,9 @@
           </div>
         </div>
 
-        <q-date v-model="model1" mask="YYYY-MM-DD" />
+        <q-date v-model="model1" 
+        :options="optionsFn"
+         mask="YYYY-MM-DD" />
       </div>               
         <!-- /div 4 -->
         
@@ -214,7 +223,7 @@
 <script>
 import { date, LocalStorage } from "quasar";
 import BarChart from '../components/charts/BarChart'
-import Predict from '../pages/Predict'
+// import Predict from '../pages/Predict'
 import axios from "axios";
 
 export default {
@@ -224,7 +233,7 @@ export default {
       model1: '2020-01-01',
       // model2: '03-21-2019',
       selection: [ ],
-      test1_data : Predict.data().getflag,
+      // test1_data : Predict.data().getflag,
       event_mon: false,
       event_tue: false,
       event_wen: false,
@@ -325,13 +334,13 @@ export default {
         console.log(response)
 
         localStorage.origin_data = JSON.stringify(response.data);
-        localStorage.day1 = JSON.stringify(response.data['day1']);
-        localStorage.day2 = JSON.stringify(response.data['day2']);
-        localStorage.day3 = JSON.stringify(response.data['day3']);
-        localStorage.day4 = JSON.stringify(response.data['day4']);
-        localStorage.day5 = JSON.stringify(response.data['day5']);
-        localStorage.day6 = JSON.stringify(response.data['day6']);
-        localStorage.day7 = JSON.stringify(response.data['day7']);
+        localStorage.day1 = response.data['day1'];
+        localStorage.day2 = response.data['day2'];
+        localStorage.day3 = response.data['day3'];
+        localStorage.day4 = response.data['day4'];
+        localStorage.day5 = response.data['day5'];
+        localStorage.day6 = response.data['day6'];
+        localStorage.day7 = response.data['day7'];
         localStorage.Tday1 = JSON.stringify(response.data['Tday1']);
         localStorage.Tday2 = JSON.stringify(response.data['Tday2']);
         localStorage.Tday3 = JSON.stringify(response.data['Tday3']);
