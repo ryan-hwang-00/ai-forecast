@@ -412,7 +412,7 @@ export default {
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak == "1") {
-        this.getflag = "휴뮤: 일요일"
+        this.getflag = "휴무: 일요일"
       } else if (this.getbreak == "0") {
         this.getflag = "휴무: 휴무일 없음"
       } else {
