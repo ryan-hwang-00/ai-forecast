@@ -217,6 +217,8 @@ export default {
         }
       ],
       data: [
+      //   getday1TableValue (), getday2TableValue (), getday3TableValue (),
+      // getday4TableValue (), getday5TableValue (), getday6TableValue (), getday7TableValue ()]
         {
           Date: '2020-10-23',
           Predict_Value: 118,
@@ -445,32 +447,61 @@ export default {
     },
 
     getday1Value () {
-      this.day1 = LocalStorage.getItem("day1")
+      this.day1 = LocalStorage.getItem("Tday1")
       return this.day1
     },
     getday2Value () {
-      this.day2 = LocalStorage.getItem("day2")
+      this.day2 = LocalStorage.getItem("Tday2")
       return this.day2
     },
     getday3Value () {
-      this.day3 = LocalStorage.getItem("day3")
+      this.day3 = LocalStorage.getItem("Tday3")
       return this.day3
     },
     getday4Value () {
-      this.day4 = LocalStorage.getItem("day4")
+      this.day4 = LocalStorage.getItem("Tday4")
       return this.day4
     },
     getday5Value () {
-      this.day5 = LocalStorage.getItem("day5")
+      this.day5 = LocalStorage.getItem("Tday5")
       return this.day5
     },
     getday6Value () {
-      this.day6 = LocalStorage.getItem("day6")
+      this.day6 = LocalStorage.getItem("Tday6")
       return this.day6
     },
     getday7Value () {
-      this.day7 = LocalStorage.getItem("day7")
+      this.day7 = LocalStorage.getItem("Tday7")
       return this.day7
+    },
+    // Table Data
+    getday1TableValue () {
+      this.day1TV = LocalStorage.getItem("day1")
+      return this.day1TV
+    },
+    getday2TableValue () {
+      this.day2TV = LocalStorage.getItem("day2")
+      return this.day2TV
+    },
+    getday3TableValue () {
+      this.day3TV = LocalStorage.getItem("day3")
+      return this.day3TV
+    },
+    getday4TableValue () {
+      this.day4TV = LocalStorage.getItem("day4")
+      return this.day4TV
+    },
+    getday5TableValue () {
+      this.day5TV = LocalStorage.getItem("day5")
+      return this.day5TV
+    },
+    getday6TableValue () {
+      this.day6TV = LocalStorage.getItem("day6")
+      return this.day6TV
+    },
+    getday7TableValue () {
+      this.day7TV = LocalStorage.getItem("day7")
+      return this.day7TV
     }
   }
 }

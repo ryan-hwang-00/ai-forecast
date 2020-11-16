@@ -100,10 +100,16 @@ def seven_days():
     for i in range(0, 7):
         j = i + 1
         gg = {}
-        dt = startdt.strftime('%Y-%m-%d')
-        gg[dt] = round(float(next_week_sales[i]), 2)
+
+        gg["Date"] = startdt.strftime('%Y-%m-%d')
+        gg["Predict_Value"] = round(float(next_week_sales[i]), 2)
+
         result['day' + str(j)] = gg
+
+        result['Tday' + str(j)] = round(float(next_week_sales[i]), 2)
+
         startdt = startdt + addtime
+
     print('step 8>>>>>>>>>>>')
     # print(result)
 
