@@ -220,6 +220,7 @@ import axios from "axios";
 export default {
   data () {
     return {
+
       model1: '2020-01-01',
       // model2: '03-21-2019',
       selection: [ ],
@@ -232,11 +233,11 @@ export default {
       event_sat: false,
       event_sun: false
       
-      
     }
-      this.selected_date={model1}
-  },
 
+      this.selected_date={model1}
+
+  },
 
   methods: {
 
@@ -249,6 +250,7 @@ export default {
       console.log('Clicked item')
       localStorage.item_1 = '백산수500ml';
     },
+
     sin_ramyun () {
       console.log('Clicked item')
       localStorage.item_1 = '신라면멀티';
@@ -258,6 +260,7 @@ export default {
       console.log('Clicked item')
       localStorage.item_1 = '안성탕면멀티';
     },
+
     jin_ramyun () {
       console.log('Clicked item')
       localStorage.item_1 = '진라면멀티(순한맛)';
@@ -268,6 +271,7 @@ export default {
       console.log('Clicked event_info')
       localStorage.event_1 = '정상가';
     },
+
 
     event_on () {
       console.log('Clicked event_info')
@@ -280,12 +284,10 @@ export default {
     },
 
     break_day () {
-
       console.log('Clicked break_info')
       localStorage.break_1 = 1;
 
     },
-
 
     flask_alert : function () {
 
@@ -297,8 +299,7 @@ export default {
         localStorage.event_sat=this.event_sat;
         localStorage.event_sun=this.event_sun;
 
-        
-
+  
       const data = {
 
         // "for_return" : this.day1_2,
