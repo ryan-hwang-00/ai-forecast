@@ -3,15 +3,16 @@
     <!-- 예측 변수 정보 chip -->
     <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
-        size="18px"
+        size="16px"
         color="red-6"
         text-color="white"
         icon="date_range"
+        label="기준일:"
       >
         {{getdate}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="amber-10"
         text-color="white"
         icon="store"
@@ -19,15 +20,16 @@
         {{getstore}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="blue-12"
         text-color="white"
         icon="fastfood"
+        label="상품:"
       >
         {{getproduct}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="purple-13"
         text-color="white"
         icon="notifications_active"
@@ -36,11 +38,10 @@
         {{geteventmon}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="deep-purple-8"
         text-color="white"
         icon="beach_access"
-        label="휴무:"
       >
         {{getflag}}
       </q-chip>
@@ -403,9 +404,9 @@ export default {
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak == "1") {
-        this.getflag = "일요일"
+        this.getflag = "휴뮤: 일요일"
       } else if (this.getbreak == "0") {
-        this.getflag = "휴무일 없음"
+        this.getflag = "휴무: 휴무일 없음"
       } else {
         this.getflag = "휴무일"
       };
@@ -481,6 +482,10 @@ export default {
     getday1Date () {
       this.day1Date = LocalStorage.getItem("day1")
       return this.day1Date
+    },
+    getday1DateMMDD () {
+      this.day1DateMMDD = this.day1Date
+      return this.day1DateMMDD
     },
     getday2Date () {
       this.day2Date = LocalStorage.getItem("day2")
