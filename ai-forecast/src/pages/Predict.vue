@@ -143,6 +143,7 @@
           height="550px"
           width="500px"
           row-key="Date"
+          :pagination.sync="pagination"
         />
       </div>
 
@@ -246,7 +247,14 @@ export default {
           Date: this.getday7Date (),
           Predict_Value: this.getday7Value (),
         },
-      ]
+      ],
+      pagination: {
+        // sortBy: 'desc',
+        // descending: false,
+        page: 1,
+        rowsPerPage: 7,
+        // rowsNumber: 10
+      },
     }
   },
   created () {
@@ -264,7 +272,7 @@ export default {
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Value',
@@ -306,7 +314,7 @@ export default {
     
     fillDataLine () {
       this.datacollectionLine = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Predict Value',
@@ -357,7 +365,7 @@ export default {
 
     fillDataDoughnutChart () {
       this.datacollectionDoughnut = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'wnrk',
@@ -370,7 +378,7 @@ export default {
 
     fillDataPie () {
       this.datacollectionPie = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Value',
@@ -483,10 +491,6 @@ export default {
       this.day1Date = LocalStorage.getItem("day1")
       return this.day1Date
     },
-    getday1DateMMDD () {
-      this.day1DateMMDD = this.day1Date
-      return this.day1DateMMDD
-    },
     getday2Date () {
       this.day2Date = LocalStorage.getItem("day2")
       return this.day2Date
@@ -510,7 +514,36 @@ export default {
     getday7Date () {
       this.day7Date = LocalStorage.getItem("day7")
       return this.day7Date
-    }
+    },
+    // Date Data MMDD
+    getday1DateMMDD () {
+      this.day1DateMMDD = this.day1Date.substring(5,10)
+      return this.day1DateMMDD
+    },
+    getday2DateMMDD () {
+      this.day2DateMMDD = this.day2Date.substring(5,10)
+      return this.day2DateMMDD
+    },
+    getday3DateMMDD () {
+      this.day3DateMMDD = this.day3Date.substring(5,10)
+      return this.day3DateMMDD
+    },
+    getday4DateMMDD () {
+      this.day4DateMMDD = this.day4Date.substring(5,10)
+      return this.day4DateMMDD
+    },
+    getday5DateMMDD () {
+      this.day5DateMMDD = this.day5Date.substring(5,10)
+      return this.day5DateMMDD
+    },
+    getday6DateMMDD () {
+      this.day6DateMMDD = this.day6Date.substring(5,10)
+      return this.day6DateMMDD
+    },
+    getday7DateMMDD () {
+      this.day7DateMMDD = this.day7Date.substring(5,10)
+      return this.day7DateMMDD
+    },
   }
 }
 </script>
