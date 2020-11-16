@@ -15,7 +15,9 @@
     </div> -->
 
   <div class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly">
-    <text-effect-1></text-effect-1>
+    <ul>
+    <TextEffect1/>
+    </ul>
   </div>
 
     <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">

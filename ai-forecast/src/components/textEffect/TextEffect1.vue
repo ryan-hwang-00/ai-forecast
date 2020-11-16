@@ -1,6 +1,6 @@
 <template>
   <div class="TextEffect1">
-    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime delay-color"/>
+    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime right_img delay-color"/>
   </div>
 </template>
 
@@ -8,7 +8,11 @@
 export default {
   data() {
     return {
-      text: 'Foreca Machine'
+      text: 'Foreca Machine',
+      text1: 'F',
+      text2: 'oreca',
+      text3: 'M',
+      text4: 'achine'
     }
   }
 }
