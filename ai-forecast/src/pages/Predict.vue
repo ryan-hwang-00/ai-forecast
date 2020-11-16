@@ -31,9 +31,9 @@
         color="purple-13"
         text-color="white"
         icon="notifications_active"
-        label="할인행사:"
+        label="할인행사: "
       >
-        {{geteventmon}}
+        {{geteventmon}} {{geteventtue}} {{geteventweb}} {{geteventthu}} {{geteventfri}} {{geteventsat}} {{geteventsun}}
       </q-chip>
       <q-chip
         size="18px"
@@ -188,7 +188,6 @@ export default {
       geteventfri: '',
       geteventsat: '',
       geteventsun: '',
-      geteventday: '',
       
       // Chart Data
       datacollectionBar: null,
@@ -222,31 +221,31 @@ export default {
       // getday4TableValue (), getday5TableValue (), getday6TableValue (), getday7TableValue ()]
         {
           Date: '2020-10-23',
-          Predict_Value: this.getday1Value (),
+          Predict_Value: 118,
         },
         {
           Date: '2020-10-24',
-          Predict_Value: this.getday2Value (),
+          Predict_Value: 131,
         },
         {
           Date: '2020-10-25',
-          Predict_Value: this.getday3Value (),
+          Predict_Value: 159,
         },
         {
           Date: '2020-10-26',
-          Predict_Value: this.getday4Value (),
+          Predict_Value: 182,
         },
         {
           Date: '2020-10-27',
-          Predict_Value: this.getday5Value (),
+          Predict_Value: 159,
         },
         {
           Date: '2020-10-28',
-          Predict_Value: this.getday6Value (),
+          Predict_Value: 284,
         },
         {
           Date: '2020-10-29',
-          Predict_Value: this.getday7Value (),
+          Predict_Value: 568,
         },
       ]
     }
@@ -399,9 +398,9 @@ export default {
       this.getproduct = LocalStorage.getItem("item_1");
       this.getshop = LocalStorage.getItem("store_code");
       if (this.getshop == "1") {
-        this.getstore = "매장: 해운대점"
+        this.getstore = "매장: 1호점"
       } else if (this.getshop == "6") {
-        this.getstore = "매장: 광안리점"
+        this.getstore = "매장: 6호점"
       } else {
         this.getstore = "매장"
       };
@@ -428,27 +427,22 @@ export default {
         this.geteventmon = "월"
       };
       if (this.gettue == "ture") {
-        return this.geteventtue = "화"
+        this.geteventtue = "화"
       };
-      geteventweb ()
       if (this.getwen == "ture") {
-        return this.geteventweb = "수"
+        this.geteventweb = "수"
       };
-      geteventthu ()
       if (this.getthu == "ture") {
-        return this.geteventthu = "목"
+        this.geteventthu = "목"
       };
-      geteventfri ()
       if (this.getfri == "ture") {
-        return this.geteventfri = "금"
+        this.geteventfri = "금"
       };
-      geteventsat ()
       if (this.getsat == "ture") {
-        return this.geteventsat = "토"
+        this.geteventsat = "토"
       };
-      geteventsun ()
       if (this.getsun == "ture") {
-        return this.geteventsun = "일"
+        this.geteventsun = "일"
       };
     },
 
