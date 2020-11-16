@@ -1,5 +1,5 @@
 <template>
-    <q-page class="window-height window-width row justify-center items-center"        
+    <q-page class="text-center window-height window-width row justify-center items-center"        
     >
        <div class="col-auto window-height window-width row justify-center items-center">
         <div id = "app" square bordered class="text-weight-bolder">
@@ -69,27 +69,19 @@
             <g class="circles" />
             </svg>
            
-            <q-dialog
-            width="400px"  
-            height="400px" 
+            <q-dialog 
             v-model="card"
+            size="lg"
             >
-
                 <q-card 
                 class="my-card"
-                width="200px"  
-                height="200px">
-
+                >
                     <q-img src="../assets/busanbridge.jpg" />
 
-                    <q-card-section>
-                        <div class="row no-wrap items-center">
-                            <div class="col text-h6 ellipsis">
-                            부산 매장
-                            </div>
-
-                            <div class="col-auto text-grey  q-pt-md row no-wrap items-center">
-                            <q-icon name="place" />
+                    <q-card-section class=" q-px-md">
+                        <div class="row  items" >
+                            <div class="col text-h6 ellipsis full-width text-center">
+                                부산 매장
                             </div>
                         </div>
                     </q-card-section>
@@ -97,19 +89,20 @@
                     <q-separator />
 
                     <q-card-actions align="center">
+
                         <q-btn 
                         v-close-popup
                         color="primary"
                         @click="store1"
                         to="/predict_variables" 
-                        label="store1" />
+                        label="해운대점" />
 
                         <q-btn 
                         v-close-popup
                         color="primary"
                         to="/predict_variables" 
                         @click='store2'
-                        label="store2" />
+                        label="광안리점" />
                     
                     </q-card-actions>     
                 </q-card>
@@ -158,29 +151,33 @@ export default {
 </script>
 
 <style scoped>
-path {
-  fill: #FA6060;
-  cursor: pointer;
-  -webkit-transition: all 150ms;
-  -moz-transition: all 150ms;
-  -o-transition: all 150ms;
-  transition: all 150ms;
-}
-path:hover {
-  opacity: 0.85;
-}
-.land:hover {
-  stroke: #1a237e;
-  fill:#1a237e;
-  stroke-opacity: 1;
-  stroke-width: 5;
-}
-.busanland{
-  fill: #263238
-}
-.wrapper {
-    max-width: 400px;
-    margin: 10 auto;
-  }
 
+    path {
+    fill: #FA6060;
+    cursor: pointer;
+    -webkit-transition: all 150ms;
+    -moz-transition: all 150ms;
+    -o-transition: all 150ms;
+    transition: all 150ms;
+    }
+    path:hover {
+    opacity: 0.85;
+    }
+    .land:hover {
+    stroke: #1a237e;
+    fill:#1a237e;
+    stroke-opacity: 1;
+    stroke-width: 5;
+    }
+    .busanland{
+    fill: #263238
+    }
+    .wrapper {
+        max-width: 400px;
+        margin: 10 auto;
+    }
+    .q-card {
+    width: 300px;
+    max-width: 100%;
+    }
 </style>
