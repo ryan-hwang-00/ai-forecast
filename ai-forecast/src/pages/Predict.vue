@@ -31,9 +31,9 @@
         color="purple-13"
         text-color="white"
         icon="notifications_active"
-        label="할인행사: "
+        label="할인행사:"
       >
-        {{geteventmon}} {{geteventtue}} {{geteventweb}} {{geteventthu}} {{geteventfri}} {{geteventsat}} {{geteventsun}}
+        {{geteventmon}}
       </q-chip>
       <q-chip
         size="18px"
@@ -161,7 +161,6 @@ import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
 import Mycanvas from '../components/canvas/Mycanvas.vue'
-
 export default {
   name: "Predict",
   components: {
@@ -188,6 +187,7 @@ export default {
       geteventfri: '',
       geteventsat: '',
       geteventsun: '',
+      geteventday: '',
       
       // Chart Data
       datacollectionBar: null,
@@ -197,7 +197,6 @@ export default {
       datacollectionDoughnut: null,
       datacollectionPie: null,
       optionsPie: null,
-
       // Table Data
       columns: [
         {
@@ -221,36 +220,35 @@ export default {
       // getday4TableValue (), getday5TableValue (), getday6TableValue (), getday7TableValue ()]
         {
           Date: '2020-10-23',
-          Predict_Value: 118,
+          Predict_Value: this.getday1Value (),
         },
         {
           Date: '2020-10-24',
-          Predict_Value: 131,
+          Predict_Value: this.getday2Value (),
         },
         {
           Date: '2020-10-25',
-          Predict_Value: 159,
+          Predict_Value: this.getday3Value (),
         },
         {
           Date: '2020-10-26',
-          Predict_Value: 182,
+          Predict_Value: this.getday4Value (),
         },
         {
           Date: '2020-10-27',
-          Predict_Value: 159,
+          Predict_Value: this.getday5Value (),
         },
         {
           Date: '2020-10-28',
-          Predict_Value: 284,
+          Predict_Value: this.getday6Value (),
         },
         {
           Date: '2020-10-29',
-          Predict_Value: 568,
+          Predict_Value: this.getday7Value (),
         },
       ]
     }
   },
-
   created () {
     this.fillDataBar()
     this.fillDataLine()
@@ -259,11 +257,9 @@ export default {
     this.onvariableClick()
     this.onDayClick ()
   },
-
   // mounted () {
   //   this.onvariableClick()
   // },
-
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
@@ -357,7 +353,6 @@ export default {
         // },
       }
     },
-
     fillDataDoughnutChart () {
       this.datacollectionDoughnut = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
@@ -370,7 +365,6 @@ export default {
         ]
       }
     },
-
     fillDataPie () {
       this.datacollectionPie = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
@@ -392,15 +386,14 @@ export default {
         }
       }
     },
-
     onvariableClick () {
       this.getdate = LocalStorage.getItem("date");
       this.getproduct = LocalStorage.getItem("item_1");
       this.getshop = LocalStorage.getItem("store_code");
       if (this.getshop == "1") {
-        this.getstore = "매장: 1호점"
+        this.getstore = "매장: 해운대점"
       } else if (this.getshop == "6") {
-        this.getstore = "매장: 6호점"
+        this.getstore = "매장: 광안리점"
       } else {
         this.getstore = "매장"
       };
@@ -414,7 +407,6 @@ export default {
         this.getflag = "휴무일"
       };
     },
-
     onDayClick () {
       this.getmon = LocalStorage.getItem('event_mon')
       this.gettue = LocalStorage.getItem('event_tue')
@@ -427,25 +419,29 @@ export default {
         this.geteventmon = "월"
       };
       if (this.gettue == "ture") {
-        this.geteventtue = "화"
+        return this.geteventtue = "화"
       };
+      geteventweb ()
       if (this.getwen == "ture") {
-        this.geteventweb = "수"
+        return this.geteventweb = "수"
       };
+      geteventthu ()
       if (this.getthu == "ture") {
-        this.geteventthu = "목"
+        return this.geteventthu = "목"
       };
+      geteventfri ()
       if (this.getfri == "ture") {
-        this.geteventfri = "금"
+        return this.geteventfri = "금"
       };
+      geteventsat ()
       if (this.getsat == "ture") {
-        this.geteventsat = "토"
+        return this.geteventsat = "토"
       };
+      geteventsun ()
       if (this.getsun == "ture") {
-        this.geteventsun = "일"
+        return this.geteventsun = "일"
       };
     },
-
     getday1Value () {
       this.day1 = LocalStorage.getItem("Tday1")
       return this.day1

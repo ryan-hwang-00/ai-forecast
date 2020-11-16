@@ -221,7 +221,7 @@
 <script>
 import { date, LocalStorage } from "quasar";
 import BarChart from '../components/charts/BarChart'
-import Predict from '../pages/Predict'
+// import Predict from '../pages/Predict'
 import axios from "axios";
 
 export default {
@@ -230,7 +230,7 @@ export default {
       model1: '2020-01-01',
       // model2: '03-21-2019',
       selection: [ ],
-      test1_data : Predict.data().getflag,
+      // test1_data : Predict.data().getflag,
       event_mon: false,
       event_tue: false,
       event_wen: false,
