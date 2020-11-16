@@ -263,7 +263,7 @@ export default {
     this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
-    this.onDayClick ()
+    this.onEventClick ()
   },
   // mounted () {
   //   this.onvariableClick()
@@ -272,7 +272,7 @@ export default {
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
-        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
+        labels: [this.getday1Date (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Value',
@@ -314,7 +314,7 @@ export default {
     
     fillDataLine () {
       this.datacollectionLine = {
-        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
+        labels: [this.getday1Date (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Predict Value',
@@ -420,7 +420,7 @@ export default {
       };
     },
 
-    onDayClick () {
+    onEventClick () {
       this.getmon = LocalStorage.getItem('event_mon')
       this.gettue = LocalStorage.getItem('event_tue')
       this.getthu = LocalStorage.getItem('event_thu')
@@ -515,6 +515,7 @@ export default {
       this.day7Date = LocalStorage.getItem("day7")
       return this.day7Date
     },
+
     // Date Data MMDD
     getday1DateMMDD () {
       this.day1DateMMDD = this.day1Date.substring(5,10)
