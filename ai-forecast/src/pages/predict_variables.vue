@@ -12,7 +12,7 @@
         이 때 fit을 이용해서 해당 row에만 justify-evenly 적용할 수 있게 된다.   -->
 
 
-        <q-btn-dropdown color="red-10" size="17px" label="상품명">
+        <q-btn-dropdown color="red-10" size="16px" label="상품명">
         <q-list>
           <q-item clickable v-close-popup @click="bac_2l">
             <q-item-section>
@@ -64,7 +64,12 @@
       </q-btn-dropdown> -->
 
 
-        <q-btn-dropdown color="primary" size="17px" label="휴무">
+        <q-btn-dropdown color="primary" 
+        size="16px" 
+        label="휴무"
+        style="fontSize:17px"
+      
+        >
         <q-list>
           <q-item clickable v-close-popup @click="normal_state">
             <q-item-section>
@@ -81,11 +86,13 @@
       </q-btn-dropdown>
 
 
-      <div class="q-pa-md">
+      <div class="q-pa-md" >
         <q-btn-dropdown
-          class="glossy"
-          color="purple"
-          label="할인정보"
+          
+          color="primary"
+          label="할인요일"
+          size="18px"
+          
         >
           <div class="row no-wrap q-pa-md">
             <div class="column">
