@@ -1,6 +1,8 @@
 <template>
-  <div class="TextEffect1">
-    <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime delay-color"/>
+  <div class="TextEffect2">
+    <span class="item delay-anime delay-color">
+        Foreca Machine
+    </span>
   </div>
 </template>
 
@@ -24,6 +26,7 @@ export default {
   font-stretch: normal;
 }
 span {font-family: "paybooc-Bold"}
+
 @keyframes text-in {
   0% {
     transform: translate(0, -20px);
@@ -33,24 +36,21 @@ span {font-family: "paybooc-Bold"}
 .item {
   display: inline-block;
   min-width: 0.3em;
-  font-size: 5.5rem;
+  font-size: 3rem;
   animation: text-in 0.8s cubic-bezier(0.22, 0.15, 0.25, 1.43) 0s backwards;
 }
-// .right_img {
-//   color: #34495E;
-// }
 
 for co in 0 .. 13 {
-  .delay-anime:nth-child({co + 1}) {
-    animation-delay: co * 100ms + 200ms;
-  }
+//   .delay-anime:nth-child({co + 1}) {
+//     animation-delay: co * 100ms + 200ms;
+//   }
   .delay-color:nth-child({co + 1}) {
     if (co == 0){
       color: red
     } else if (co == 7) {
       color: red
     } else {
-      color: #34495E
+      color: white
     }
   }
 }
