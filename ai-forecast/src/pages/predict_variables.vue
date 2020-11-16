@@ -331,13 +331,13 @@ export default {
         console.log(response)
 
         localStorage.origin_data = JSON.stringify(response.data);
-        localStorage.day1 = JSON.stringify(response.data['day1']);
-        localStorage.day2 = JSON.stringify(response.data['day2']);
-        localStorage.day3 = JSON.stringify(response.data['day3']);
-        localStorage.day4 = JSON.stringify(response.data['day4']);
-        localStorage.day5 = JSON.stringify(response.data['day5']);
-        localStorage.day6 = JSON.stringify(response.data['day6']);
-        localStorage.day7 = JSON.stringify(response.data['day7']);
+        localStorage.day1 = response.data['day1'];
+        localStorage.day2 = response.data['day2'];
+        localStorage.day3 = response.data['day3'];
+        localStorage.day4 = response.data['day4'];
+        localStorage.day5 = response.data['day5'];
+        localStorage.day6 = response.data['day6'];
+        localStorage.day7 = response.data['day7'];
         localStorage.Tday1 = JSON.stringify(response.data['Tday1']);
         localStorage.Tday2 = JSON.stringify(response.data['Tday2']);
         localStorage.Tday3 = JSON.stringify(response.data['Tday3']);

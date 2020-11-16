@@ -197,6 +197,7 @@ export default {
       datacollectionDoughnut: null,
       datacollectionPie: null,
       optionsPie: null,
+
       // Table Data
       columns: [
         {
@@ -216,34 +217,32 @@ export default {
         }
       ],
       data: [
-      //   getday1TableValue (), getday2TableValue (), getday3TableValue (),
-      // getday4TableValue (), getday5TableValue (), getday6TableValue (), getday7TableValue ()]
         {
-          Date: '2020-10-23',
+          Date: this.getday1Date (),
           Predict_Value: this.getday1Value (),
         },
         {
-          Date: '2020-10-24',
+          Date: this.getday2Date (),
           Predict_Value: this.getday2Value (),
         },
         {
-          Date: '2020-10-25',
+          Date: this.getday3Date (),
           Predict_Value: this.getday3Value (),
         },
         {
-          Date: '2020-10-26',
+          Date: this.getday4Date (),
           Predict_Value: this.getday4Value (),
         },
         {
-          Date: '2020-10-27',
+          Date: this.getday5Date (),
           Predict_Value: this.getday5Value (),
         },
         {
-          Date: '2020-10-28',
+          Date: this.getday6Date (),
           Predict_Value: this.getday6Value (),
         },
         {
-          Date: '2020-10-29',
+          Date: this.getday7Date (),
           Predict_Value: this.getday7Value (),
         },
       ]
@@ -260,6 +259,7 @@ export default {
   // mounted () {
   //   this.onvariableClick()
   // },
+
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
@@ -353,6 +353,7 @@ export default {
         // },
       }
     },
+
     fillDataDoughnutChart () {
       this.datacollectionDoughnut = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
@@ -365,6 +366,7 @@ export default {
         ]
       }
     },
+
     fillDataPie () {
       this.datacollectionPie = {
         labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
@@ -386,6 +388,7 @@ export default {
         }
       }
     },
+
     onvariableClick () {
       this.getdate = LocalStorage.getItem("date");
       this.getproduct = LocalStorage.getItem("item_1");
@@ -407,6 +410,7 @@ export default {
         this.getflag = "휴무일"
       };
     },
+
     onDayClick () {
       this.getmon = LocalStorage.getItem('event_mon')
       this.gettue = LocalStorage.getItem('event_tue')
@@ -442,6 +446,8 @@ export default {
         return this.geteventsun = "일"
       };
     },
+
+    // Predict-Value Data
     getday1Value () {
       this.day1 = LocalStorage.getItem("Tday1")
       return this.day1
@@ -470,34 +476,35 @@ export default {
       this.day7 = LocalStorage.getItem("Tday7")
       return this.day7
     },
-    // Table Data
-    getday1TableValue () {
-      this.day1TV = LocalStorage.getItem("day1")
-      return this.day1TV
+
+    // Date Data
+    getday1Date () {
+      this.day1Date = LocalStorage.getItem("day1")
+      return this.day1Date
     },
-    getday2TableValue () {
-      this.day2TV = LocalStorage.getItem("day2")
-      return this.day2TV
+    getday2Date () {
+      this.day2Date = LocalStorage.getItem("day2")
+      return this.day2Date
     },
-    getday3TableValue () {
-      this.day3TV = LocalStorage.getItem("day3")
-      return this.day3TV
+    getday3Date () {
+      this.day3Date = LocalStorage.getItem("day3")
+      return this.day3Date
     },
-    getday4TableValue () {
-      this.day4TV = LocalStorage.getItem("day4")
-      return this.day4TV
+    getday4Date () {
+      this.day4Date = LocalStorage.getItem("day4")
+      return this.day4Date
     },
-    getday5TableValue () {
-      this.day5TV = LocalStorage.getItem("day5")
-      return this.day5TV
+    getday5Date () {
+      this.day5Date = LocalStorage.getItem("day5")
+      return this.day5Date
     },
-    getday6TableValue () {
-      this.day6TV = LocalStorage.getItem("day6")
-      return this.day6TV
+    getday6Date () {
+      this.day6Date = LocalStorage.getItem("day6")
+      return this.day6Date
     },
-    getday7TableValue () {
-      this.day7TV = LocalStorage.getItem("day7")
-      return this.day7TV
+    getday7Date () {
+      this.day7Date = LocalStorage.getItem("day7")
+      return this.day7Date
     }
   }
 }
