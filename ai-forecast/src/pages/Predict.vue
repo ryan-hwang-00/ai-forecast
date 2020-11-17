@@ -404,7 +404,7 @@ export default {
         ],
         datasets: [
           {
-            label: 'wnrk',
+            label: 'Value',
             backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
             data: [
                 this.getday1Value(),
@@ -481,53 +481,53 @@ export default {
     },
 
     onEventClick () {
-      this.getmon = LocalStorage.getItem('event_mon')
-      this.gettue = LocalStorage.getItem('event_tue')
-      this.getthu = LocalStorage.getItem('event_thu')
-      this.getwen = LocalStorage.getItem('event_wen')
-      this.getsat = LocalStorage.getItem('event_sat')
-      this.getsun = LocalStorage.getItem('event_sun')
-      this.getfri = LocalStorage.getItem('event_fri')
-      if (this.getmon == "true") {
-        this.geteventmon = "월요일"
-      } else {
-        this.geteventmon = ""
-      };
-      if (this.gettue == "true") {
-        this.geteventtue = "화요일"
-      } else {
-        this.geteventtue = ""
-      };
-      geteventweb ()
-      if (this.getwen == "true") {
-        this.geteventweb = "수요일"
-      } else {
-        this.geteventweb = ""
-      };
-      geteventthu ()
-      if (this.getthu == "true") {
-        this.geteventthu = "목요일"
-      } else {
-        this.geteventthu = ""
-      };
-      geteventfri ()
-      if (this.getfri == "true") {
-        this.geteventfri = "금요일"
-      } else {
-        this.geteventfri = ""
-      };
-      geteventsat ()
-      if (this.getsat == "true") {
-        this.geteventsat = "토요일"
-      } else {
-        this.geteventsat = ""
-      };
-      geteventsun ()
-      if (this.getsun == "true") {
-        this.geteventsun = "일요일"
-      } else {
-        this.geteventsun = ""
-      };
+      // this.getmon = LocalStorage.getItem('event_mon')
+      // this.gettue = LocalStorage.getItem('event_tue')
+      // this.getthu = LocalStorage.getItem('event_thu')
+      // this.getwen = LocalStorage.getItem('event_wen')
+      // this.getsat = LocalStorage.getItem('event_sat')
+      // this.getsun = LocalStorage.getItem('event_sun')
+      // this.getfri = LocalStorage.getItem('event_fri')
+      // if (this.getmon == "true") {
+      //   this.geteventmon = "월요일"
+      // } else {
+      //   this.geteventmon = ""
+      // };
+      // if (this.gettue == "true") {
+      //   this.geteventtue = "화요일"
+      // } else {
+      //   this.geteventtue = ""
+      // };
+      // geteventweb ()
+      // if (this.getwen == "true") {
+      //   this.geteventweb = "수요일"
+      // } else {
+      //   this.geteventweb = ""
+      // };
+      // geteventthu ()
+      // if (this.getthu == "true") {
+      //   this.geteventthu = "목요일"
+      // } else {
+      //   this.geteventthu = ""
+      // };
+      // geteventfri ()
+      // if (this.getfri == "true") {
+      //   this.geteventfri = "금요일"
+      // } else {
+      //   this.geteventfri = ""
+      // };
+      // geteventsat ()
+      // if (this.getsat == "true") {
+      //   this.geteventsat = "토요일"
+      // } else {
+      //   this.geteventsat = ""
+      // };
+      // geteventsun ()
+      // if (this.getsun == "true") {
+      //   this.geteventsun = "일요일"
+      // } else {
+      //   this.geteventsun = ""
+      // };
       var dayArr = [this.getmon, this.gettue, this.getwen, this.getthu, this.getfri, this.getsat, this.getsun]
       var days = [this.geteventmon (), this.geteventtue (), this.geteventweb (), this.geteventthu (), this.geteventfri (), this.geteventsat (), this.geteventsun ()]
       console.log("dayArr", dayArr[i])
@@ -535,6 +535,69 @@ export default {
         if (dayArr[i] == "true") {
           return this.getevent = days[i]
         }
+      };
+    },
+
+    getEventMon() {
+      this.getmon = LocalStorage.getItem('event_mon')
+      if (this.getmon == "true") {
+        this.getEventMon = "월요일"
+      } else {
+        this.getEventMon = ""
+      };
+    },
+
+    getEventTue() {
+      this.gettue = LocalStorage.getItem('event_tue')
+      if (this.getmon == "true") {
+        this.getEventTue = "화요일"
+      } else {
+        this.getEventTue = ""
+      };
+    },
+
+    getEventWen() {
+      this.getwen = LocalStorage.getItem('event_wen')
+      if (this.getwen == "true") {
+        this.getEventWen = "수요일"
+      } else {
+        this.getEventWen = ""
+      };
+    },
+
+    getEventThu() {
+      this.getthu = LocalStorage.getItem('event_thu')
+      if (this.getthu == "true") {
+        this.getEventThu = "목요일"
+      } else {
+        this.getEventThu = ""
+      };
+    },
+
+    getEventFri() {
+      this.getfri = LocalStorage.getItem('event_fri')
+      if (this.getfri == "true") {
+        this.getEventFri = "금요일"
+      } else {
+        this.getEventFri = ""
+      };
+    },
+
+    getEventSat() {
+      this.getsat = LocalStorage.getItem('event_sat')
+      if (this.getfri == "true") {
+        this.getEventSat = "토요일"
+      } else {
+        this.getEventSat = ""
+      };
+    },
+
+    getEventSun() {
+      this.getsun = LocalStorage.getItem('event_sun')
+      if (this.getsun == "true") {
+          this.getEventSun = "일요일"
+      } else {
+          this.getEventSun = ""
       };
     },
 
