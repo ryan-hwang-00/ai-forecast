@@ -309,41 +309,41 @@ export default {
         localStorage.event_sun=this.event_sun;
 
         if (this.event_mon === true) {
-        this.wday1 = "월"
+        this.wday1 = "월요일"
       };
         if (this.event_tue === true) {
-        this.wday2 = "화"
+        this.wday2 = "화요일"
       };
         if (this.event_wen === true) {
-        this.wday3 = "수"
+        this.wday3 = "수요일"
       };
         if (this.event_thu === true) {
-        this.wday4 = "목"
+        this.wday4 = "목요일"
       };
         if (this.event_fri === true) {
-        this.wday5 = "금"
+        this.wday5 = "금요일"
       };
         if (this.event_sat === true) {
-        this.wday6 = "토"
+        this.wday6 = "토요일"
       };
         if (this.event_sun === true) {
-        this.wday7 = "일"
+        this.wday7 = "일요일"
       };
 
       this.edays=[]
-      if (this.wday1 ==='월') { this.edays.push(this.wday1)     
+      if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
       };
-        if (this.wday2 ==='화') { this.edays.push(this.wday2)
+        if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
       };
-        if (this.wday3 ==='수') { this.edays.push(this.wday3)
+        if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
       };
-        if (this.wday4 ==='목') { this.edays.push(this.wday4)
+        if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
       };
-        if (this.wday5 ==='금') { this.edays.push(this.wday5)
+        if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
       };
-        if (this.wday6 ==='토') { this.edays.push(this.wday6)
+        if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
       };
-        if (this.wday7 ==='일') { this.edays.push(this.wday7)
+        if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
       };
         localStorage.edate=this.edays;
         
