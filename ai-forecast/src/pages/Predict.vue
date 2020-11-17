@@ -95,9 +95,9 @@
               </div>
           </q-carousel-slide>
 
-          <q-carousel-slide name="mixed" class="column no-wrap flex-center">
+          <!-- <q-carousel-slide name="mixed" class="column no-wrap flex-center">
               <mixed-chart></mixed-chart>
-          </q-carousel-slide>
+          </q-carousel-slide> -->
 
           <q-carousel-slide name="ef" class="column no-wrap flex-center">
               <div class="bg-white rounded-borders">
@@ -151,13 +151,12 @@
 </template> 
 
 <script>
-import MixedChart from '../components/charts/MixedChart.vue'
+// import MixedChart from '../components/charts/MixedChart.vue'
 import { LocalStorage } from "quasar";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
-import Mycanvas from '../components/canvas/Mycanvas.vue'
 
 export default {
   name: "Predict",
@@ -165,9 +164,7 @@ export default {
     BarChart,
     LineChart,
     PieChart,
-    MixedChart,
-    DoughnutChart,
-    Mycanvas
+    DoughnutChart
   },
   data () {
     return {
@@ -187,6 +184,8 @@ export default {
       // geteventsun: '',
       // geteventday: '',
       getEventDays: '',
+      Total: '',
+      Mean: '',
       
       // Chart Data
       datacollectionBar: null,
@@ -632,6 +631,14 @@ export default {
     getday7Value () {
       this.day7 = LocalStorage.getItem("Tday7")
       return this.day7
+    },
+    getTotal() {
+      this.Total = (this.getday1Value() + this.getday2Value() + this.getday3Value()+
+                    this.getday4Value() + this.getday5Value() + this.getday6Value() + this.getday7Value())
+    },
+    getMean() {
+      this.Mean = (this.getday1Value() + this.getday2Value() + this.getday3Value()+
+                    this.getday4Value() + this.getday5Value() + this.getday6Value() + this.getday7Value())/7
     },
 
     // Date Data

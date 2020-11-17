@@ -108,7 +108,7 @@ def seven_days():
 
         result['day' + str(j)] = startdt.strftime('%Y-%m-%d')
 
-        result['Tday' + str(j)] = round(float(next_week_sales[i]), 2)
+        result['Tday' + str(j)] = round(float(next_week_sales[i]), 0)
 
         startdt = startdt + addtime
 
