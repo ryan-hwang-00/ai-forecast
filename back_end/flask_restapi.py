@@ -84,14 +84,15 @@ def seven_days():
     print(merged_df)
     predict_addtime = timedelta(days=6)
     print('step 6>>>>>>>>')
+    # print('test1 >>>>>>', test1)
 
     predict_date = startdt + predict_addtime
-
+    print('bug1>>>>>')
     predict_date = predict_date.strftime('%Y-%m-%d')
-
+    print('bug2>>>>>')
     next_week_sales = predictor(merged_df, store_code=int(store_info),
                                 product_name=product_info, predict_date=predict_date)
-
+    print('bug3>>>>>')
     result = {}
 
     print('step 7>>>>>>>>>')

@@ -77,6 +77,7 @@ def date_info(start_date, event_info, break_info):
     df2['break'] = break_list_for_merge
 
     merged_df = pd.merge(df2, weather_df)
+    test_list = [1, 2, 3, 4, 5]
 
     print('7_dataframe finished >>>>>')
     # return_data = {}

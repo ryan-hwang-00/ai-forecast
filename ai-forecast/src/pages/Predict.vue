@@ -35,7 +35,7 @@
         icon="notifications_active"
         label="할인행사:"
       >
-        {{getevent}}
+        {{getEventDays}}
       </q-chip>
       <q-chip
         size="16px"
@@ -178,14 +178,15 @@ export default {
       getevent: '행사',
       getflag: '휴무일',
       slide: 'style',
-      geteventmon: '',
-      geteventtue: '',
-      geteventweb: '',
-      geteventthu: '',
-      geteventfri: '',
-      geteventsat: '',
-      geteventsun: '',
-      geteventday: '',
+      // geteventmon: '',
+      // geteventtue: '',
+      // geteventweb: '',
+      // geteventthu: '',
+      // geteventfri: '',
+      // geteventsat: '',
+      // geteventsun: '',
+      // geteventday: '',
+      getEventDays: '',
       
       // Chart Data
       datacollectionBar: null,
@@ -481,13 +482,13 @@ export default {
     },
 
     onEventClick () {
-      // this.getmon = LocalStorage.getItem('event_mon')
-      // this.gettue = LocalStorage.getItem('event_tue')
-      // this.getthu = LocalStorage.getItem('event_thu')
-      // this.getwen = LocalStorage.getItem('event_wen')
-      // this.getsat = LocalStorage.getItem('event_sat')
-      // this.getsun = LocalStorage.getItem('event_sun')
-      // this.getfri = LocalStorage.getItem('event_fri')
+      this.getmon = LocalStorage.getItem('eday1')
+      this.gettue = LocalStorage.getItem('eday2')
+      this.getthu = LocalStorage.getItem('eday3')
+      this.getwen = LocalStorage.getItem('eday4')
+      this.getsat = LocalStorage.getItem('eday5')
+      this.getsun = LocalStorage.getItem('eday6')
+      this.getfri = LocalStorage.getItem('eday7')
       // if (this.getmon == "true") {
       //   this.geteventmon = "월요일"
       // } else {
@@ -528,19 +529,21 @@ export default {
       // } else {
       //   this.geteventsun = ""
       // };
-      var dayArr = [this.getmon, this.gettue, this.getwen, this.getthu, this.getfri, this.getsat, this.getsun]
-      var days = [this.geteventmon (), this.geteventtue (), this.geteventweb (), this.geteventthu (), this.geteventfri (), this.geteventsat (), this.geteventsun ()]
-      console.log("dayArr", dayArr[i])
-      for (let i = 0; i < dayArr.length; i++) {
-        if (dayArr[i] == "true") {
-          return this.getevent = days[i]
-        }
-      };
+                this.getEventDays = localStorage.edate
+      // var dayArr = [this.getmon, this.gettue, this.getwen, this.getthu, this.getfri, this.getsat, this.getsun]
+      // this.days = [this.getEventMon, this.getEventTue, this.getEventWen, this.getEventThu, this.getEventFri, this.getEventSat, this.getEventSun]
+      // this.getEventDays = [this.getmon, this.gettue, this.getEventWen (), this.getEventThu (), this.getEventFri (), this.getEventSat (), this.getEventSun ()]
+      // for (let i = 0; i < dayArr.length; i++) {
+      //   if (dayArr[i] === true) {
+      //     this.getEventDays.push(this.days[i]) 
+      //   }
+      // };
     },
 
     getEventMon() {
+      this.boolean = new Boolean(true)
       this.getmon = LocalStorage.getItem('event_mon')
-      if (this.getmon == "true") {
+      if (this.getmon === this.boolean) {
         this.getEventMon = "월요일"
       } else {
         this.getEventMon = ""
@@ -549,7 +552,7 @@ export default {
 
     getEventTue() {
       this.gettue = LocalStorage.getItem('event_tue')
-      if (this.getmon == "true") {
+      if (this.getmon === true) {
         this.getEventTue = "화요일"
       } else {
         this.getEventTue = ""
@@ -558,7 +561,7 @@ export default {
 
     getEventWen() {
       this.getwen = LocalStorage.getItem('event_wen')
-      if (this.getwen == "true") {
+      if (this.getwen === true) {
         this.getEventWen = "수요일"
       } else {
         this.getEventWen = ""
@@ -567,7 +570,7 @@ export default {
 
     getEventThu() {
       this.getthu = LocalStorage.getItem('event_thu')
-      if (this.getthu == "true") {
+      if (this.getthu === true) {
         this.getEventThu = "목요일"
       } else {
         this.getEventThu = ""
@@ -576,7 +579,7 @@ export default {
 
     getEventFri() {
       this.getfri = LocalStorage.getItem('event_fri')
-      if (this.getfri == "true") {
+      if (this.getfri === true) {
         this.getEventFri = "금요일"
       } else {
         this.getEventFri = ""
@@ -585,7 +588,7 @@ export default {
 
     getEventSat() {
       this.getsat = LocalStorage.getItem('event_sat')
-      if (this.getfri == "true") {
+      if (this.getfri === true) {
         this.getEventSat = "토요일"
       } else {
         this.getEventSat = ""
@@ -594,7 +597,7 @@ export default {
 
     getEventSun() {
       this.getsun = LocalStorage.getItem('event_sun')
-      if (this.getsun == "true") {
+      if (this.getsun === true) {
           this.getEventSun = "일요일"
       } else {
           this.getEventSun = ""
