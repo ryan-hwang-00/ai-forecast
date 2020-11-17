@@ -76,7 +76,8 @@ def seven_days():
     print('product_info>>> ', product_info)
     # 11/13 오전 11시 45분 수정
 
-    merged_df, days_name = date_info(start_date, event_info, break_info)
+    # merged_df, days_name = date_info(start_date, event_info, break_info)
+    merged_df = date_info(start_date, event_info, break_info)
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
@@ -112,7 +113,7 @@ def seven_days():
 
     print('step 8>>>>>>>>>>>')
     # print(result)
-    result['days_name']=days_name
+    # result['days_name']=days_name
 
     return result
 

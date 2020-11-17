@@ -44,15 +44,13 @@ def date_info(start_date, event_info, break_info):
     for i in event_info:
         x = int(i)
         pre_event_list.append(x)
-    
 
-
-    days={1:'월요일', 2:'화요일', 3:'수요일', 4:'목요일', 5:'금요일', 6: '토요일', 7:'일요일'}
-    days_name=[]
+    days = {1: '월요일', 2: '화요일', 3: '수요일',
+            4: '목요일', 5: '금요일', 6: '토요일', 7: '일요일'}
+    days_name = []
     for i in pre_event_list:
         if i in days.keys():
             days_name.append(days[i])
-
 
     aa = 5
     for i in df2['weekday']:
@@ -85,4 +83,5 @@ def date_info(start_date, event_info, break_info):
     # return_data['day'] = int(df2['day'].iloc[5])
     # return_data['promotion'] = int(df2['promotion_flag'].iloc[3])
 
-    return merged_df, days_name
+    return merged_df
+    # return merged_df, days_name
