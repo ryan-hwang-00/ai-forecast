@@ -3,15 +3,16 @@
     <!-- 예측 변수 정보 chip -->
     <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
-        size="18px"
+        size="16px"
         color="red-6"
         text-color="white"
         icon="date_range"
+        label="기준일:"
       >
         {{getdate}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="amber-10"
         text-color="white"
         icon="store"
@@ -19,15 +20,16 @@
         {{getstore}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="blue-12"
         text-color="white"
         icon="fastfood"
+        label="상품:"
       >
         {{getproduct}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="purple-13"
         text-color="white"
         icon="notifications_active"
@@ -36,11 +38,10 @@
         {{geteventmon}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="deep-purple-8"
         text-color="white"
         icon="beach_access"
-        label="휴무:"
       >
         {{getflag}}
       </q-chip>
@@ -142,6 +143,7 @@
           height="550px"
           width="500px"
           row-key="Date"
+          :pagination.sync="pagination"
         />
       </div>
 
@@ -245,7 +247,14 @@ export default {
           Date: this.getday7Date (),
           Predict_Value: this.getday7Value (),
         },
-      ]
+      ],
+      pagination: {
+        // sortBy: 'desc',
+        // descending: false,
+        page: 1,
+        rowsPerPage: 7,
+        // rowsNumber: 10
+      },
     }
   },
   created () {
@@ -254,7 +263,7 @@ export default {
     this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
-    this.onDayClick ()
+    this.onEventClick ()
   },
   // mounted () {
   //   this.onvariableClick()
@@ -263,7 +272,7 @@ export default {
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1Date (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Value',
@@ -305,7 +314,7 @@ export default {
     
     fillDataLine () {
       this.datacollectionLine = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1Date (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Predict Value',
@@ -356,7 +365,7 @@ export default {
 
     fillDataDoughnutChart () {
       this.datacollectionDoughnut = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'wnrk',
@@ -369,7 +378,7 @@ export default {
 
     fillDataPie () {
       this.datacollectionPie = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [this.getday1DateMMDD (), this.getday2DateMMDD (), this.getday3DateMMDD (), this.getday4DateMMDD (), this.getday5DateMMDD (), this.getday6DateMMDD (), this.getday7DateMMDD ()],
         datasets: [
           {
             label: 'Value',
@@ -403,15 +412,15 @@ export default {
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak == "1") {
-        this.getflag = "일요일"
+        this.getflag = "휴무: 일요일"
       } else if (this.getbreak == "0") {
-        this.getflag = "휴무일 없음"
+        this.getflag = "휴무: 휴무일 없음"
       } else {
         this.getflag = "휴무일"
       };
     },
 
-    onDayClick () {
+    onEventClick () {
       this.getmon = LocalStorage.getItem('event_mon')
       this.gettue = LocalStorage.getItem('event_tue')
       this.getthu = LocalStorage.getItem('event_thu')
@@ -505,7 +514,37 @@ export default {
     getday7Date () {
       this.day7Date = LocalStorage.getItem("day7")
       return this.day7Date
-    }
+    },
+
+    // Date Data MMDD
+    getday1DateMMDD () {
+      this.day1DateMMDD = this.day1Date.substring(5,10)
+      return this.day1DateMMDD
+    },
+    getday2DateMMDD () {
+      this.day2DateMMDD = this.day2Date.substring(5,10)
+      return this.day2DateMMDD
+    },
+    getday3DateMMDD () {
+      this.day3DateMMDD = this.day3Date.substring(5,10)
+      return this.day3DateMMDD
+    },
+    getday4DateMMDD () {
+      this.day4DateMMDD = this.day4Date.substring(5,10)
+      return this.day4DateMMDD
+    },
+    getday5DateMMDD () {
+      this.day5DateMMDD = this.day5Date.substring(5,10)
+      return this.day5DateMMDD
+    },
+    getday6DateMMDD () {
+      this.day6DateMMDD = this.day6Date.substring(5,10)
+      return this.day6DateMMDD
+    },
+    getday7DateMMDD () {
+      this.day7DateMMDD = this.day7Date.substring(5,10)
+      return this.day7DateMMDD
+    },
   }
 }
 </script>
