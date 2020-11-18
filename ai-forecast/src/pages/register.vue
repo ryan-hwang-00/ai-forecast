@@ -7,7 +7,7 @@
       <div class="row">
         <q-card square class="shadow-24" style="width:300px;height:485px;">
           <q-card-section class="bg-primary">
-            <h4 class="text-h5 text-white q-my-md">Registration</h4>
+            <h4 class="text-grand-hotel text-white q-my-md">Registration</h4>
             <div class="absolute-bottom-right q-pr-md" 
                  style="transform: translateY(50%);">
             </div>
@@ -39,7 +39,7 @@
               <q-input square clearable 
               v-model="password1" 
               type="password" 
-              label="one more time">
+              label="Confirm Password">
                 <template v-slot:prepend>
                   <q-icon name="lock" />    
                 </template>
@@ -51,12 +51,12 @@
           <q-card-actions class="q-pa-md q-gutter-sm">
 
             <q-btn 
-            label="가입하기" 
+            label="register" 
             color="primary"
             @click="alert"
             type="submit" />
 
-            <q-btn label="뒤로" 
+            <q-btn label="back" 
             color="primary" 
             to="/login" /> 
 
@@ -78,7 +78,6 @@
             </q-dialog>
 
           </q-card-actions>
-
         </q-card>
       </div>
     </div>

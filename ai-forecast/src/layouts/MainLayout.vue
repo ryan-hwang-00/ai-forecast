@@ -1,15 +1,14 @@
 <template>
   <q-layout view="hHh LpR fff">
     <q-header bordered class="bg-primary text-white" height-hint="98">
-      
       <q-toolbar>
-        <q-toolbar-title class = "absolute-top-left">
-
-          <q-btn class="large-screen-only" to="/">
-            <img src="~assets/FMLogo1.svg" height="98px">
+          <q-btn
+            class="q-mr-sm"  
+            unelevated color="primary">
+            <q-toolbar inset>
+              <q-toolbar-title><strong>Foreca</strong>Machine</q-toolbar-title>
+            </q-toolbar>
           </q-btn>
-          
-        </q-toolbar-title>
       </q-toolbar>
 
       <q-tabs align="right">
@@ -19,19 +18,54 @@
       </q-tabs>
 
     </q-header>
+    <q-page-container class='bg-grey-1'>
 
-    <q-page-container class = 'bg-grey-1'>
       <router-view />
     </q-page-container>
 
-    <q-footer bordered class="bg-white text-primary">
-      <q-tabs no-caps active-color="primary" indicator-color="transparent" class="text-grey" v-model="tab">
+    <q-footer 
+    bordered class="bg-grey-4 text-primary"
+    >
+
+      <q-tabs 
+      no-caps active-color="primary" 
+      indicator-color="transparent" 
+      class="text-grey" 
+      v-model="tab"
+     
+      >
         
-        <eva-icon name="github" 
+        <eva-icon
+        class='q-pa-md' 
+        name="github" 
         animation="pulse" 
-        fill="limegreen"
-        @click='togithubpage'>
+        fill="#1D2758"
+        width='30px'
+        height='30px'
+        @click='togithubpage'
+        style="font-size:3px">
         </eva-icon>
+
+        <eva-icon
+        class='q-pa-md' 
+        name="facebook" 
+        animation="pulse" 
+        fill="#1D2758"
+        width='30px'
+        height='30px'
+        >
+        </eva-icon>
+
+        <eva-icon
+        class='q-pa-md' 
+        name="car" 
+        animation="pulse" 
+        fill="#1D2758"
+        width='30px'
+        height='30px'
+        >
+        </eva-icon>
+
 
       </q-tabs>
     </q-footer>
@@ -48,12 +82,21 @@
 
         togithubpage: function() {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
+        
         }
       }
     }
   }
 </script>
 
+<style scoped>
+
+</style>
+
+// .q-btn
+//   @media (min-width: $breakpoint-sm-min)
+//     height: 81px
+</style>
 <!--
 <template>
 
@@ -165,8 +208,3 @@ export default {
 
 </script>
 -->
-<style lang="sass">
-// .q-btn
-//   @media (min-width: $breakpoint-sm-min)
-//     height: 81px
-</style>

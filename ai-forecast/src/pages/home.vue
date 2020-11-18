@@ -35,7 +35,6 @@
 
       <!-- </q-card-section> -->
     </div>
-
   </main>
 </template>
 
