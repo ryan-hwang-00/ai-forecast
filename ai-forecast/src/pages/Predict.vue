@@ -144,9 +144,7 @@
           :pagination.sync="pagination"
         />
       </div>
-
     </div>
-
   </div>
 </template> 
 
@@ -170,6 +168,7 @@ export default {
   },
   data () {
     return {
+
       // Chip Data
       getdate: '날짜',
       getstore: '매장명',

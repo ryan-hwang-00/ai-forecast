@@ -9,8 +9,6 @@ from collections import Counter
 from future7_dataframe import date_info
 
 
-
-
 def get_sequence(x_train, x_train_1, y_train, sequence_x=21, sequence_y=7):
 
     m = len(x_train) - (sequence_x + sequence_y) + 1

@@ -1,11 +1,19 @@
 <template>
-  <q-page class="bg-light-white window-height window-width row justify-center items-center">
-    <div class="column">
-      <div class="text-grand-hotel text-weight-bolder">
-        <h3 class="full-width">Login</h3>
-      </div>
+  <q-page
+    class="window-height window-width row justify-center items-center"
+    style="background: linear-gradient(white, white);"
+  >
+    <div class="column q-pa-lg">
       <div class="row">
-        <q-card square bordered class="q-pa-lg shadow-1">
+        <q-card square class="shadow-24" style="width:300px;height:485px;">
+          <q-card-section class="bg-primary">
+            <h4 class="text-grand-hotel text-white q-my-md">login</h4>
+            <div class="absolute-bottom-right q-pr-md" 
+                 style="transform: translateY(50%);">
+            </div>
+          </q-card-section>
+
+
           <q-card-section>
             <q-form 
             class="q-gutter-md">
@@ -26,8 +34,7 @@
           </q-card-section>
 
           <q-card-actions 
-
-          class="text-grand-hotel q-pa-md">
+          class="q-pa-md">
            
             <q-btn
             push
@@ -41,12 +48,13 @@
           </q-card-actions>
 
           <q-card-section class="text-center q-pa-none" >
-            <p class="text-grand-hotel text-grey-10" >If you are not registered, please register first</p>
+            <p class=" text-grey-10" >If you are not registered, please register first</p>
             <q-btn rounded standout 
-            class = "text-grand-hoteltext-bold" 
+            class = "text-bold" 
             label="register" 
             to="/register" />
           </q-card-section>
+
         </q-card>
       </div>
     </div>
@@ -73,7 +81,7 @@ export default {
       const user = LocalStorage.getItem("user");
 
       if (this.email == user.email & this.password == user.password) {
-        location.href="http://localhost:8080/#/store";
+        location.href="http://localhost:8080/#/map";
       
           this.$q.dialog({
           title: 'Congratulation!',
