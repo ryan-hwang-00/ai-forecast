@@ -179,7 +179,7 @@
             <div>
               <div class="q-pb-sm q-gutter-sm">
                 <q-badge color="teal">
-                  시작일: {{ model1 }}
+                  기준일: {{ model1 }}
                 </q-badge>
                 <!-- <q-badge color="purple" text-color="white"> Mask: YYYY-MM-DD </q-badge> -->
             </div>
@@ -208,10 +208,10 @@
           <!-- div_5 -->
         
         
-        <q-btn push color="white" text-color="primary" label="예측하기" @click="flask_alert"/>
-        <q-btn push color="white" text-color="primary" label="training" @click="training"/>
+        <q-btn push color="primary" text-color="white" label="예측하기" @click="flask_alert"/>
+        <!-- <q-btn push color="white" text-color="primary" label="training" @click="training"/> -->
         <!-- <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/> -->
-        <q-btn push color="white" text-color="primary" label="예측 결과보기" to="/Predict"/>
+        <q-btn push color="primary" text-color="white" label="예측 결과보기" to="/Predict"/>
         
     </div>
         <!-- /div_5 -->

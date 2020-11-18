@@ -158,6 +158,8 @@ import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
 
+// api.openweathermap.org/data/2.5/weather?q=Busan&appid=a21ee35df7c2a4aec3f6efc14cd346bd
+
 export default {
   name: "Predict",
   components: {
@@ -175,14 +177,6 @@ export default {
       getevent: '행사',
       getflag: '휴무일',
       slide: 'style',
-      // geteventmon: '',
-      // geteventtue: '',
-      // geteventweb: '',
-      // geteventthu: '',
-      // geteventfri: '',
-      // geteventsat: '',
-      // geteventsun: '',
-      // geteventday: '',
       getEventDays: '',
       Total: '',
       Mean: '',
@@ -253,6 +247,7 @@ export default {
       },
     }
   },
+
   created () {
     this.fillDataBar()
     this.fillDataLine()
@@ -261,6 +256,7 @@ export default {
     this.onvariableClick()
     this.onEventClick ()
   },
+  
   // mounted () {
   //   this.onvariableClick()
   // },
