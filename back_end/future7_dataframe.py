@@ -45,8 +45,14 @@ def date_info(start_date, event_info, break_info):
         x = int(i)
         pre_event_list.append(x)
 
-    aa = 5
+    days = {1: '월요일', 2: '화요일', 3: '수요일',
+            4: '목요일', 5: '금요일', 6: '토요일', 7: '일요일'}
+    days_name = []
+    for i in pre_event_list:
+        if i in days.keys():
+            days_name.append(days[i])
 
+    aa = 5
     for i in df2['weekday']:
 
         if int(i) in pre_event_list:
@@ -71,6 +77,7 @@ def date_info(start_date, event_info, break_info):
     df2['break'] = break_list_for_merge
 
     merged_df = pd.merge(df2, weather_df)
+    test_list = [1, 2, 3, 4, 5]
 
     print('7_dataframe finished >>>>>')
     # return_data = {}
@@ -78,3 +85,4 @@ def date_info(start_date, event_info, break_info):
     # return_data['promotion'] = int(df2['promotion_flag'].iloc[3])
 
     return merged_df
+    # return merged_df, days_name

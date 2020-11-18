@@ -3,15 +3,16 @@
     <!-- 예측 변수 정보 chip -->
     <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
-        size="18px"
+        size="16px"
         color="red-6"
         text-color="white"
         icon="date_range"
+        label="기준일:"
       >
         {{getdate}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="amber-10"
         text-color="white"
         icon="store"
@@ -19,33 +20,31 @@
         {{getstore}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="blue-12"
         text-color="white"
         icon="fastfood"
+        label="상품:"
       >
         {{getproduct}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="purple-13"
         text-color="white"
         icon="notifications_active"
         label="할인행사:"
       >
-        {{geteventmon}}
+        {{getEventDays}}
       </q-chip>
       <q-chip
-        size="18px"
+        size="16px"
         color="deep-purple-8"
         text-color="white"
         icon="beach_access"
-        label="휴무:"
       >
         {{getflag}}
       </q-chip>
-
-      <!-- <q-btn color="white" text-color="black" label="예측 변수 정보 불러오기" @click="onvariableClick()"/> -->
     </div>
 
     <!-- 예측 값 그래프 및 테이블 -->
@@ -96,9 +95,9 @@
               </div>
           </q-carousel-slide>
 
-          <q-carousel-slide name="mixed" class="column no-wrap flex-center">
+          <!-- <q-carousel-slide name="mixed" class="column no-wrap flex-center">
               <mixed-chart></mixed-chart>
-          </q-carousel-slide>
+          </q-carousel-slide> -->
 
           <q-carousel-slide name="ef" class="column no-wrap flex-center">
               <div class="bg-white rounded-borders">
@@ -142,6 +141,7 @@
           height="550px"
           width="500px"
           row-key="Date"
+          :pagination.sync="pagination"
         />
       </div>
     </div>
@@ -149,25 +149,22 @@
 </template> 
 
 <script>
-// import PieChart from '../components/charts/PieChart.vue'
-import MixedChart from '../components/charts/MixedChart.vue'
-// import LineChart from '../components/charts/LineChart.vue'
-// import BarChart from '../components/charts/BarChart.vue'
+// import MixedChart from '../components/charts/MixedChart.vue'
 import { LocalStorage } from "quasar";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
-import Mycanvas from '../components/canvas/Mycanvas.vue'
+
+// api.openweathermap.org/data/2.5/weather?q=Busan&appid=a21ee35df7c2a4aec3f6efc14cd346bd
+
 export default {
   name: "Predict",
   components: {
     BarChart,
     LineChart,
     PieChart,
-    MixedChart,
-    DoughnutChart,
-    Mycanvas
+    DoughnutChart
   },
   data () {
     return {
@@ -179,14 +176,9 @@ export default {
       getevent: '행사',
       getflag: '휴무일',
       slide: 'style',
-      geteventmon: '',
-      geteventtue: '',
-      geteventweb: '',
-      geteventthu: '',
-      geteventfri: '',
-      geteventsat: '',
-      geteventsun: '',
-      geteventday: '',
+      getEventDays: '',
+      Total: '',
+      Mean: '',
       
       // Chart Data
       datacollectionBar: null,
@@ -244,17 +236,26 @@ export default {
           Date: this.getday7Date (),
           Predict_Value: this.getday7Value (),
         },
-      ]
+      ],
+      pagination: {
+        // sortBy: 'desc',
+        // descending: false,
+        page: 1,
+        rowsPerPage: 7,
+        // rowsNumber: 10
+      },
     }
   },
+
   created () {
     this.fillDataBar()
     this.fillDataLine()
     this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
-    this.onDayClick ()
+    this.onEventClick ()
   },
+  
   // mounted () {
   //   this.onvariableClick()
   // },
@@ -262,12 +263,28 @@ export default {
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels : [
+            this.getday1Date(),
+            this.getday2DateMMDD(),
+            this.getday3DateMMDD(),
+            this.getday4DateMMDD(),
+            this.getday5DateMMDD(),
+            this.getday6DateMMDD(),
+            this.getday7DateMMDD()
+        ],
         datasets: [
           {
             label: 'Value',
             backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+            data: [
+                this.getday1Value(),
+                this.getday2Value(),
+                this.getday3Value(),
+                this.getday4Value(),
+                this.getday5Value(),
+                this.getday6Value(),
+                this.getday7Value()
+            ]
           }
         ]
       },
@@ -304,7 +321,15 @@ export default {
     
     fillDataLine () {
       this.datacollectionLine = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [
+            this.getday1Date(),
+            this.getday2DateMMDD(),
+            this.getday3DateMMDD(),
+            this.getday4DateMMDD(),
+            this.getday5DateMMDD(),
+            this.getday6DateMMDD(),
+            this.getday7DateMMDD()
+        ],
         datasets: [
           {
             label: 'Predict Value',
@@ -315,7 +340,15 @@ export default {
             lineTension: 0.7,
             backgroundColor: '#34495E',
             pointBackgroundColor: 'white',
-            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+            data: [
+                this.getday1Value(),
+                this.getday2Value(),
+                this.getday3Value(),
+                this.getday4Value(),
+                this.getday5Value(),
+                this.getday6Value(),
+                this.getday7Value()
+            ]
           }
         ]
       },
@@ -355,12 +388,28 @@ export default {
 
     fillDataDoughnutChart () {
       this.datacollectionDoughnut = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [
+            this.getday1DateMMDD(),
+            this.getday2DateMMDD(),
+            this.getday3DateMMDD(),
+            this.getday4DateMMDD(),
+            this.getday5DateMMDD(),
+            this.getday6DateMMDD(),
+            this.getday7DateMMDD()
+        ],
         datasets: [
           {
-            label: 'wnrk',
+            label: 'Value',
             backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+            data: [
+                this.getday1Value(),
+                this.getday2Value(),
+                this.getday3Value(),
+                this.getday4Value(),
+                this.getday5Value(),
+                this.getday6Value(),
+                this.getday7Value()
+            ]
           }
         ]
       }
@@ -368,12 +417,28 @@ export default {
 
     fillDataPie () {
       this.datacollectionPie = {
-        labels: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+        labels: [
+            this.getday1DateMMDD(),
+            this.getday2DateMMDD(),
+            this.getday3DateMMDD(),
+            this.getday4DateMMDD(),
+            this.getday5DateMMDD(),
+            this.getday6DateMMDD(),
+            this.getday7DateMMDD()
+        ],
         datasets: [
           {
             label: 'Value',
             backgroundColor: ['#FA6060', '#FFD85B', '#D8F961', '#81D071', '#8193D5', '#6C349D', '#1D2758'],
-            data: [this.getday1Value (), this.getday2Value (), this.getday3Value (), this.getday4Value (), this.getday5Value (), this.getday6Value (), this.getday7Value ()]
+            data: [
+                this.getday1Value(),
+                this.getday2Value(),
+                this.getday3Value(),
+                this.getday4Value(),
+                this.getday5Value(),
+                this.getday6Value(),
+                this.getday7Value()
+            ]
           }
         ]
       },
@@ -392,7 +457,7 @@ export default {
       this.getdate = LocalStorage.getItem("date");
       this.getproduct = LocalStorage.getItem("item_1");
       this.getshop = LocalStorage.getItem("store_code");
-      if (this.getshop == "1") {
+      if (this.getshop === "1") {
         this.getstore = "매장: 해운대점"
       } else if (this.getshop == "6") {
         this.getstore = "매장: 광안리점"
@@ -401,48 +466,135 @@ export default {
       };
       this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
-      if (this.getbreak == "1") {
-        this.getflag = "일요일"
+      if (this.getbreak === "1") {
+        this.getflag = "휴무: 일요일"
       } else if (this.getbreak == "0") {
-        this.getflag = "휴무일 없음"
+        this.getflag = "휴무: 휴무일 없음"
       } else {
         this.getflag = "휴무일"
       };
     },
 
-    onDayClick () {
+    onEventClick () {
+      this.getmon = LocalStorage.getItem('eday1')
+      this.gettue = LocalStorage.getItem('eday2')
+      this.getthu = LocalStorage.getItem('eday3')
+      this.getwen = LocalStorage.getItem('eday4')
+      this.getsat = LocalStorage.getItem('eday5')
+      this.getsun = LocalStorage.getItem('eday6')
+      this.getfri = LocalStorage.getItem('eday7')
+      // if (this.getmon == "true") {
+      //   this.geteventmon = "월요일"
+      // } else {
+      //   this.geteventmon = ""
+      // };
+      // if (this.gettue == "true") {
+      //   this.geteventtue = "화요일"
+      // } else {
+      //   this.geteventtue = ""
+      // };
+      // geteventweb ()
+      // if (this.getwen == "true") {
+      //   this.geteventweb = "수요일"
+      // } else {
+      //   this.geteventweb = ""
+      // };
+      // geteventthu ()
+      // if (this.getthu == "true") {
+      //   this.geteventthu = "목요일"
+      // } else {
+      //   this.geteventthu = ""
+      // };
+      // geteventfri ()
+      // if (this.getfri == "true") {
+      //   this.geteventfri = "금요일"
+      // } else {
+      //   this.geteventfri = ""
+      // };
+      // geteventsat ()
+      // if (this.getsat == "true") {
+      //   this.geteventsat = "토요일"
+      // } else {
+      //   this.geteventsat = ""
+      // };
+      // geteventsun ()
+      // if (this.getsun == "true") {
+      //   this.geteventsun = "일요일"
+      // } else {
+      //   this.geteventsun = ""
+      // };
+                this.getEventDays = localStorage.edate
+      // var dayArr = [this.getmon, this.gettue, this.getwen, this.getthu, this.getfri, this.getsat, this.getsun]
+      // this.days = [this.getEventMon, this.getEventTue, this.getEventWen, this.getEventThu, this.getEventFri, this.getEventSat, this.getEventSun]
+      // this.getEventDays = [this.getmon, this.gettue, this.getEventWen (), this.getEventThu (), this.getEventFri (), this.getEventSat (), this.getEventSun ()]
+      // for (let i = 0; i < dayArr.length; i++) {
+      //   if (dayArr[i] === true) {
+      //     this.getEventDays.push(this.days[i]) 
+      //   }
+      // };
+    },
+
+    getEventMon() {
+      this.boolean = new Boolean(true)
       this.getmon = LocalStorage.getItem('event_mon')
+      if (this.getmon === this.boolean) {
+        this.getEventMon = "월요일"
+      } else {
+        this.getEventMon = ""
+      };
+    },
+
+    getEventTue() {
       this.gettue = LocalStorage.getItem('event_tue')
-      this.getthu = LocalStorage.getItem('event_thu')
+      if (this.getmon === true) {
+        this.getEventTue = "화요일"
+      } else {
+        this.getEventTue = ""
+      };
+    },
+
+    getEventWen() {
       this.getwen = LocalStorage.getItem('event_wen')
-      this.getsat = LocalStorage.getItem('event_sat')
-      this.getsun = LocalStorage.getItem('event_sun')
+      if (this.getwen === true) {
+        this.getEventWen = "수요일"
+      } else {
+        this.getEventWen = ""
+      };
+    },
+
+    getEventThu() {
+      this.getthu = LocalStorage.getItem('event_thu')
+      if (this.getthu === true) {
+        this.getEventThu = "목요일"
+      } else {
+        this.getEventThu = ""
+      };
+    },
+
+    getEventFri() {
       this.getfri = LocalStorage.getItem('event_fri')
-      if (this.getmon == "ture") {
-        this.geteventmon = "월"
+      if (this.getfri === true) {
+        this.getEventFri = "금요일"
+      } else {
+        this.getEventFri = ""
       };
-      if (this.gettue == "ture") {
-        return this.geteventtue = "화"
+    },
+
+    getEventSat() {
+      this.getsat = LocalStorage.getItem('event_sat')
+      if (this.getfri === true) {
+        this.getEventSat = "토요일"
+      } else {
+        this.getEventSat = ""
       };
-      geteventweb ()
-      if (this.getwen == "ture") {
-        return this.geteventweb = "수"
-      };
-      geteventthu ()
-      if (this.getthu == "ture") {
-        return this.geteventthu = "목"
-      };
-      geteventfri ()
-      if (this.getfri == "ture") {
-        return this.geteventfri = "금"
-      };
-      geteventsat ()
-      if (this.getsat == "ture") {
-        return this.geteventsat = "토"
-      };
-      geteventsun ()
-      if (this.getsun == "ture") {
-        return this.geteventsun = "일"
+    },
+
+    getEventSun() {
+      this.getsun = LocalStorage.getItem('event_sun')
+      if (this.getsun === true) {
+          this.getEventSun = "일요일"
+      } else {
+          this.getEventSun = ""
       };
     },
 
@@ -475,6 +627,14 @@ export default {
       this.day7 = LocalStorage.getItem("Tday7")
       return this.day7
     },
+    getTotal() {
+      this.Total = (this.getday1Value() + this.getday2Value() + this.getday3Value()+
+                    this.getday4Value() + this.getday5Value() + this.getday6Value() + this.getday7Value())
+    },
+    getMean() {
+      this.Mean = (this.getday1Value() + this.getday2Value() + this.getday3Value()+
+                    this.getday4Value() + this.getday5Value() + this.getday6Value() + this.getday7Value())/7
+    },
 
     // Date Data
     getday1Date () {
@@ -504,7 +664,37 @@ export default {
     getday7Date () {
       this.day7Date = LocalStorage.getItem("day7")
       return this.day7Date
-    }
+    },
+
+    // Date Data MMDD
+    getday1DateMMDD () {
+      this.day1DateMMDD = this.day1Date.substring(5,10)
+      return this.day1DateMMDD
+    },
+    getday2DateMMDD () {
+      this.day2DateMMDD = this.day2Date.substring(5,10)
+      return this.day2DateMMDD
+    },
+    getday3DateMMDD () {
+      this.day3DateMMDD = this.day3Date.substring(5,10)
+      return this.day3DateMMDD
+    },
+    getday4DateMMDD () {
+      this.day4DateMMDD = this.day4Date.substring(5,10)
+      return this.day4DateMMDD
+    },
+    getday5DateMMDD () {
+      this.day5DateMMDD = this.day5Date.substring(5,10)
+      return this.day5DateMMDD
+    },
+    getday6DateMMDD () {
+      this.day6DateMMDD = this.day6Date.substring(5,10)
+      return this.day6DateMMDD
+    },
+    getday7DateMMDD () {
+      this.day7DateMMDD = this.day7Date.substring(5,10)
+      return this.day7DateMMDD
+    },
   }
 }
 </script>

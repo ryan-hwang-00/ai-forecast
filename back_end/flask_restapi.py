@@ -76,6 +76,7 @@ def seven_days():
     print('product_info>>> ', product_info)
     # 11/13 오전 11시 45분 수정
 
+    # merged_df, days_name = date_info(start_date, event_info, break_info)
     merged_df = date_info(start_date, event_info, break_info)
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
@@ -83,14 +84,15 @@ def seven_days():
     print(merged_df)
     predict_addtime = timedelta(days=6)
     print('step 6>>>>>>>>')
+    # print('test1 >>>>>>', test1)
 
     predict_date = startdt + predict_addtime
-
+    print('bug1>>>>>')
     predict_date = predict_date.strftime('%Y-%m-%d')
-
+    print('bug2>>>>>')
     next_week_sales = predictor(merged_df, store_code=int(store_info),
                                 product_name=product_info, predict_date=predict_date)
-
+    print('bug3>>>>>')
     result = {}
 
     print('step 7>>>>>>>>>')
@@ -106,12 +108,13 @@ def seven_days():
 
         result['day' + str(j)] = startdt.strftime('%Y-%m-%d')
 
-        result['Tday' + str(j)] = round(float(next_week_sales[i]), 2)
+        result['Tday' + str(j)] = round(float(next_week_sales[i]), 0)
 
         startdt = startdt + addtime
 
     print('step 8>>>>>>>>>>>')
     # print(result)
+    # result['days_name']=days_name
 
     return result
 

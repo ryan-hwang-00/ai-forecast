@@ -179,7 +179,7 @@
             <div>
               <div class="q-pb-sm q-gutter-sm">
                 <q-badge color="teal">
-                  시작일: {{ model1 }}
+                  기준일: {{ model1 }}
                 </q-badge>
                 <!-- <q-badge color="purple" text-color="white"> Mask: YYYY-MM-DD </q-badge> -->
             </div>
@@ -208,10 +208,10 @@
           <!-- div_5 -->
         
         
-        <q-btn push color="white" text-color="primary" label="get data" @click="flask_alert"/>
-        <q-btn push color="white" text-color="primary" label="training" @click="training"/>
+        <q-btn push color="primary" text-color="white" label="예측하기" @click="flask_alert"/>
+        <!-- <q-btn push color="white" text-color="primary" label="training" @click="training"/> -->
         <!-- <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/> -->
-        <q-btn push color="white" text-color="primary" label="Predict>>" to="/Predict"/>
+        <q-btn push color="primary" text-color="white" label="예측 결과보기" to="/Predict"/>
         
     </div>
         <!-- /div_5 -->
@@ -307,6 +307,46 @@ export default {
         localStorage.event_fri=this.event_fri;
         localStorage.event_sat=this.event_sat;
         localStorage.event_sun=this.event_sun;
+
+        if (this.event_mon === true) {
+        this.wday1 = "월요일"
+      };
+        if (this.event_tue === true) {
+        this.wday2 = "화요일"
+      };
+        if (this.event_wen === true) {
+        this.wday3 = "수요일"
+      };
+        if (this.event_thu === true) {
+        this.wday4 = "목요일"
+      };
+        if (this.event_fri === true) {
+        this.wday5 = "금요일"
+      };
+        if (this.event_sat === true) {
+        this.wday6 = "토요일"
+      };
+        if (this.event_sun === true) {
+        this.wday7 = "일요일"
+      };
+
+      this.edays=[]
+      if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
+      };
+        if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
+      };
+        if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
+      };
+        if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
+      };
+        if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
+      };
+        if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
+      };
+        if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
+      };
+        localStorage.edate=this.edays;
+        
 
   
       const data = {
