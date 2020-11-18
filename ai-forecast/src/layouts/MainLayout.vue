@@ -4,7 +4,10 @@
       <q-toolbar>
           <q-btn
             class="q-mr-sm"  
-            unelevated color="primary">
+            unelevated color="primary"
+            to="/"
+            >
+            
             <q-toolbar inset>
               <q-toolbar-title><strong>Foreca</strong>Machine</q-toolbar-title>
             </q-toolbar>
