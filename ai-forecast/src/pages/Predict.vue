@@ -1,6 +1,7 @@
 <template>
   <div class="justify-center q-ma-sm">
     <!-- 예측 변수 정보 chip -->
+
     <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
         size="16px"
@@ -95,10 +96,6 @@
               </div>
           </q-carousel-slide>
 
-          <!-- <q-carousel-slide name="mixed" class="column no-wrap flex-center">
-              <mixed-chart></mixed-chart>
-          </q-carousel-slide> -->
-
           <q-carousel-slide name="ef" class="column no-wrap flex-center">
               <div class="bg-white rounded-borders">
                   <q-card-section class="bg-primary">
@@ -165,9 +162,6 @@
 
 
   </div>
-
-  
-
 </template> 
 
 <script>
@@ -505,55 +499,7 @@ export default {
       this.getsat = LocalStorage.getItem('eday5')
       this.getsun = LocalStorage.getItem('eday6')
       this.getfri = LocalStorage.getItem('eday7')
-      // if (this.getmon == "true") {
-      //   this.geteventmon = "월요일"
-      // } else {
-      //   this.geteventmon = ""
-      // };
-      // if (this.gettue == "true") {
-      //   this.geteventtue = "화요일"
-      // } else {
-      //   this.geteventtue = ""
-      // };
-      // geteventweb ()
-      // if (this.getwen == "true") {
-      //   this.geteventweb = "수요일"
-      // } else {
-      //   this.geteventweb = ""
-      // };
-      // geteventthu ()
-      // if (this.getthu == "true") {
-      //   this.geteventthu = "목요일"
-      // } else {
-      //   this.geteventthu = ""
-      // };
-      // geteventfri ()
-      // if (this.getfri == "true") {
-      //   this.geteventfri = "금요일"
-      // } else {
-      //   this.geteventfri = ""
-      // };
-      // geteventsat ()
-      // if (this.getsat == "true") {
-      //   this.geteventsat = "토요일"
-      // } else {
-      //   this.geteventsat = ""
-      // };
-      // geteventsun ()
-      // if (this.getsun == "true") {
-      //   this.geteventsun = "일요일"
-      // } else {
-      //   this.geteventsun = ""
-      // };
-                this.getEventDays = localStorage.edate
-      // var dayArr = [this.getmon, this.gettue, this.getwen, this.getthu, this.getfri, this.getsat, this.getsun]
-      // this.days = [this.getEventMon, this.getEventTue, this.getEventWen, this.getEventThu, this.getEventFri, this.getEventSat, this.getEventSun]
-      // this.getEventDays = [this.getmon, this.gettue, this.getEventWen (), this.getEventThu (), this.getEventFri (), this.getEventSat (), this.getEventSun ()]
-      // for (let i = 0; i < dayArr.length; i++) {
-      //   if (dayArr[i] === true) {
-      //     this.getEventDays.push(this.days[i]) 
-      //   }
-      // };
+      this.getEventDays = localStorage.edate
     },
 
     getEventMon() {
@@ -649,6 +595,7 @@ export default {
       this.day7 = LocalStorage.getItem("Tday7")
       return this.day7
     },
+
     getTotal() {
       this.Total = (this.getday1Value() + this.getday2Value() + this.getday3Value()+
                     this.getday4Value() + this.getday5Value() + this.getday6Value() + this.getday7Value())
