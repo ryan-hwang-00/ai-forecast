@@ -210,7 +210,7 @@
         
 
     </br>
-        <!-- div_10 -->
+    <!-- div_10 -->
     <div class="fit row q-col-gutter-sm  q-py-lg content-center items-center justify-end" style="max-width:360px">
       
       <!-- div_5 -->
@@ -225,21 +225,29 @@
           computing...
         </template>
         </q-btn>
-        <!-- <q-btn push color="white" text-color="primary" label="training" @click="training"/> -->
-        <!-- <q-btn push color="white" text-color="primary" label="summary" @click="summary_alert"/> -->
-        <q-btn push color="primary" text-color="white" size="14px" label="예측 결과보기" to="/Predict"/>
-        
       </div>
       <!-- /div_5 -->
+
+        
+        <!-- div21 -->
+        <div class="row q-py-sm">
+          <q-btn push color="primary" text-color="white" size="14px" label="예측 결과보기" to="/Predict"/>
+        </div>
+        <!-- /div21 -->
+        
     </div>
     <!-- /div_10 -->
+    
+    
 
-
+      <!-- div22 -->
       <div class="fit row q-py-xl justify-start" style="max-width:350px">
-        <!-- <div class='fit row q-py-md'> -->
+        <div class='fit row q-py-md'>
           <q-btn push color="primary" text-color="white" label="<< 매장선택" size="10px" to="/map"/>
-        <!-- </div> -->
+        
       </div>
+      </div>
+      <!-- /div22 -->
 
       
           
