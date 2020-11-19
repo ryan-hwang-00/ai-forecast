@@ -1,24 +1,24 @@
 <template>
   <q-layout view="hHh LpR fff">
     <q-header bordered class="bg-primary text-white" height-hint="98">
-      <q-toolbar>
-          <q-btn
-            class="q-mr-sm"  
-            unelevated color="primary"
-            to="/"
-            >
-            
-            <q-toolbar inset>
-              <q-toolbar-title><strong>Foreca</strong>Machine</q-toolbar-title>
-            </q-toolbar>
-          </q-btn>
-      </q-toolbar>
+      <div class="fit column inline justify-between">
+        <q-toolbar>
+          <q-toolbar-title class = "col absolute-top-left">
 
-      <q-tabs align="right">
-        <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
-        <q-separator vertical inset color="white"/>
-        <q-route-tab to="/login" label="로그인" style="max-width: 100px"/>
-      </q-tabs>
+            <q-btn to="/">
+              <img id="image_large" src="~assets/Logo-large.png" height="98px" alt="" class="img-responsive"/>
+              <img id="image_small" src="~assets/Logo-medium.png" height="50px" alt="" class="img-responsive"/>
+            </q-btn>
+            
+          </q-toolbar-title>
+        </q-toolbar>
+
+        <q-tabs class="col self-end">
+          <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
+          <q-separator vertical inset color="white"/>
+          <q-route-tab to="/login" label="로그인" style="max-width: 100px"/>
+        </q-tabs>
+      </div>
 
     </q-header>
     <q-page-container class='bg-grey-1'>
@@ -77,15 +77,11 @@
 </template>
 
 <script>
-
-
-  export default {  
+export default {  
     data () {
       return {
-
         togithubpage: function() {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
-        
         }
       }
     }
@@ -93,13 +89,26 @@
 </script>
 
 <style scoped>
-
+/* min-width = app->web */
+@media (min-width: 600px){ 
+    #image_large{
+        display: block
+    }
+    #image_small{
+        display: none
+    }
+}
+/* max-width = web->app */
+@media (max-width: 600px){ 
+    #image_large{
+        display: none
+    }
+    #image_small{
+        display: block
+    }
+}
 </style>
 
-// .q-btn
-//   @media (min-width: $breakpoint-sm-min)
-//     height: 81px
-</style>
 <!--
 <template>
 
