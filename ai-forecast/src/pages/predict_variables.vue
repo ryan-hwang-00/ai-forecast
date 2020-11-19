@@ -209,7 +209,7 @@
     
         
 
-    </br>
+  
     <!-- div_10 -->
     <div class="fit row q-col-gutter-sm  q-py-lg content-center items-center justify-end" style="max-width:360px">
       
@@ -281,10 +281,8 @@ export default {
       event_fri: false,
       event_sat: false,
       event_sun: false,
-
       loading: false,
       loading2: false,
-
       progress: false
       
     }
@@ -358,7 +356,7 @@ export default {
       }, 3500)
 
 
-      localStorage.event_mon=this.event_mon;
+        localStorage.event_mon=this.event_mon;
         localStorage.event_tue=this.event_tue;
         localStorage.event_wen=this.event_wen;
         localStorage.event_thu=this.event_thu;
@@ -405,8 +403,6 @@ export default {
       };
         localStorage.edate=this.edays;
         
-
-  
       const data = {
 
         // "for_return" : this.day1_2,
