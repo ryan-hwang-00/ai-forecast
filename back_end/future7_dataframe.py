@@ -34,7 +34,7 @@ def date_info(start_date, event_info, break_info):
     # arrived_data = request.get_json()  # json 데이터를 받아옴
     print('event_info222 >>>>', event_info)
     weather_df = weather2.weather_api(start_date)
-
+    print('weather_df>>>>', weather_df)
     pre_in_num = row_select(df1, 'date', start_date)
     index_start = int(pre_in_num[0])
     df2 = df1[index_start:index_start + 7]

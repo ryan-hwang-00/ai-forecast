@@ -144,8 +144,28 @@
           :pagination.sync="pagination"
         />
       </div>
+
+       
+        <!-- 락형 -->
+        </br>
+        <div class="fit column content-center items-center q-pa-sm" style="max-width:1185px">
+          <div class="fit row justify-start">
+            
+            <q-btn push color="primary" text-color="white" label="<<< 예측변수 선택하기" to="/predict_variables"/>
+          </div>
+        </div>
+    <!-- 락형 -->
+
     </div>
+
+   
+ 
+
+
   </div>
+
+  
+
 </template> 
 
 <script>

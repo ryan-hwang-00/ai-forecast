@@ -74,7 +74,7 @@ class start_train:
                 keras.losses.Huber(),  # MeanSquaredError,Huber
             ], metrics=['mse'])
 
-        filepath = './weight/' + model_name
+        filepath = './weight_test/' + model_name
 
         checkpoint_path = filepath
 
@@ -94,15 +94,15 @@ class start_train:
 
         callbacks_list = [checkpoint, earlystop]
 
-        model.fit(
+        history = model.fit(
             {"long": x_train_scaled, "short": x_train_1_scaled},
             {"prediction": y_train_scaled},
             epochs=2000, batch_size=32,
             callbacks=callbacks_list, validation_split=0.25, shuffle=False)
 
-        scores = model.evaluate(x=(x_train_scaled, x_train_1_scaled), y=y_train_scaled, verbose=0)
+        # scores = model.evaluate(x=(x_train_scaled, x_train_1_scaled), y=y_train_scaled, verbose=0)
 
-        return scores
+        return history
 
 # trainer()
 
