@@ -99,7 +99,7 @@
                 <q-card 
                 class="my-card"
                 >
-                    <q-img src="../assets/seoul.jpg" />
+                    <q-img src="../assets/kk.jpg" />
 
                     <q-card-section class=" q-px-md">
                         <div class="row  items" >
@@ -118,7 +118,7 @@
                 <q-card 
                 class="my-card"
                 >
-                    <q-img src="../assets/seoul.jpg" />
+                    <q-img src="../assets/ic.jpg" />
 
                     <q-card-section class=" q-px-md">
                         <div class="row  items" >
@@ -175,7 +175,7 @@
                 <q-card 
                 class="my-card"
                 >
-                    <q-img src="../assets/seoul.jpg" />
+                    <q-img src="../assets/daejeon.jpg" />
 
                     <q-card-section class=" q-px-md">
                         <div class="row  items" >
