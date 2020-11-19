@@ -7,9 +7,10 @@ from tensorflow import keras
 
 from modeling import create_model
 
+
 class start_train:
 
-    def __init__(self,merged_df,store_code,product_name,train_date,predict_date,sequence_x = 180 * 4,sequence_y = 7):
+    def __init__(self, merged_df, store_code, product_name, train_date, predict_date, sequence_x=180 * 4, sequence_y=7, filepath='./weight_test/1.hdf5'):
         self.merged_df = merged_df
         self.store_code = store_code
         self.product_name = product_name
@@ -17,7 +18,7 @@ class start_train:
         self.predict_date = predict_date
         self.sequence_x = sequence_x
         self.sequence_y = sequence_y
-
+        self.filepath = filepath
 
     def trainer(self):
 
@@ -74,7 +75,7 @@ class start_train:
                 keras.losses.Huber(),  # MeanSquaredError,Huber
             ], metrics=['mse'])
 
-        filepath = './weight_test/' + model_name
+        filepath = self.filepath
 
         checkpoint_path = filepath
 
