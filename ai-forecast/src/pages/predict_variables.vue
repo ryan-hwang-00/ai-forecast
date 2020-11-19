@@ -8,7 +8,7 @@
     
 
        <!-- div 2 -->
-        <div class="fit row q-col-gutter-sm  q-py-sm content-center items-center justify-center" style="max-width:360px">  
+        <div class="fit row q-col-gutter-sm  q-py-sm content-center items-center justify-center" style="max-width:320px">  
         <!-- 상위 div에서 column의 content를 center 정렬하라고 되어 있음 -->
         <!-- 위 div class에서 fit 지정해주지 않으면 
         justify-evenly가 적용되지 않고 공백 없이 3개 버튼이 붙어버림
@@ -16,7 +16,7 @@
 
 
           <div class="q-py-xl" style="min-height:50px">
-            <q-btn-dropdown color="red-10" size="14px" label="상품명">
+            <q-btn-dropdown color="red-10" size="12px" label="상품명">
               <q-list>
                 <q-item clickable v-close-popup @click="bac_2l">
                   <q-item-section>
@@ -70,7 +70,7 @@
 
       <div class="q-py-xl" style="min-height:50px">
         <q-btn-dropdown color="primary"
-        size="14px" 
+        size="12px" 
         label="휴무"
         
       
@@ -97,7 +97,7 @@
           
           color="primary"
           label="할인요일"
-          size="14px"
+          size="12px"
           
         >
           <!-- style="max-height:50px" -->
@@ -211,20 +211,23 @@
 
   
     <!-- div_10 -->
-    <div class="fit row q-col-gutter-sm  q-py-lg content-center items-center justify-end" style="max-width:360px">
+    <div class="fit row q-col-gutter-sm  q-py-lg content-center items-center justify-between" style="max-width:305px">
       
       <!-- div_5 -->
       <div class="row q-py-sm">
       
         
         <!-- <q-btn push color="primary" text-color="white" label="예측하기" @click="flask_alert"/> -->
-        <q-btn :loading="loading2" size="14px" color="primary" @click="simulateProgress(2)">
+        <!-- <q-btn :loading="loading2" size="14px" color="primary" @click="simulateProgress(2)">
+          
           
           예측하기
         <template v-slot:loading>
           computing...
         </template>
-        </q-btn>
+        </q-btn> -->
+        <q-btn label="예측하기" color="primary" size="14px" @click="showCustom" />
+
       </div>
       <!-- /div_5 -->
 
@@ -241,8 +244,8 @@
     
 
       <!-- div22 -->
-      <div class="fit row q-py-xl justify-start" style="max-width:350px">
-        <div class='fit row q-py-md'>
+      <div class="fit row q-pt-xl justify-start">
+        <div class='fit row q-pt-xl'>
           <q-btn push color="primary" text-color="white" label="<< 매장선택" size="10px" to="/map"/>
         
       </div>
@@ -261,6 +264,7 @@
 
 <script>
 import { date, LocalStorage } from "quasar";
+import { QSpinnerGears } from 'quasar'
 import BarChart from '../components/charts/BarChart'
 // import Predict from '../pages/Predict'
 import axios from "axios";
@@ -345,15 +349,7 @@ export default {
       return model1 >= '2019/11/01' && model1 <= '2019/12/31'
     },
 
-
-    simulateProgress(number) {
-      // we set loading state
-      this[`loading${number}`] = true
-      // simulate a delay
-      setTimeout(() => {
-        // we're done, we reset loading state
-        this[`loading${number}`] = false
-      }, 3500)
+    showCustom () {
 
 
         localStorage.event_mon=this.event_mon;
@@ -447,9 +443,8 @@ export default {
         
         // alert(test_data);
         setTimeout(function() { 
-          this.return1=localStorage.return1 }, 50);
-        setTimeout(function() { 
-          alert('예측완료') }, 100);
+          this.return1=localStorage.return1 }, 15);
+        
           
         // this.day1_1=localStorage.day1;
 
@@ -460,9 +455,84 @@ export default {
       });
 
 
+      const dialog = this.$q.dialog({
+        title: '판매량을 예측 하는중...',
+        dark: true,
+        message: '0%',
+        progress: {
+          spinner: QSpinnerGears,
+          color: 'amber'
+        },
+        persistent: true, // we want the user to not be able to close it
+        ok: false // we want the user to not be able to close it
+      })
 
+      // we simulate some progress here...
+      let percentage = 0
+      const interval = setInterval(() => {
+        percentage = Math.min(100, percentage + Math.floor(Math.random() * 7))
+        // *22가 원본
+
+        // we update the dialog
+        dialog.update({
+          message: `${percentage}%`
+        })
+        
+
+
+      //   if (!localStorage.day1) {
+          // setTimeout(function() {
+            
+          // console.log("not arrived")}, 1000);
+        
+      //       // if we are done...
+      // }
+        if (!localStorage.day1 || percentage !== 100) {
+          setTimeout(function() {
+            
+          console.log("not arrived")}, 400);
+        } 
+        else if (percentage === 100) {
+          clearInterval(interval)
+
+          dialog.update({
+            title: '예측완료!',
+            message: `예측결과보기를 눌러 확인하세요`,
+            progress: false,
+            ok: true
+          });
+        }
+      }, 100)
     },
-  
+
+
+
+    // let percentage = 0
+    //   const interval = setInterval(() => {
+    //     percentage = Math.min(100, percentage + Math.floor(Math.random() * 35))
+    //     // *22가 원본
+
+    //     // we update the dialog
+    //     dialog.update({
+    //       message: `${percentage}%`
+    //     })
+
+    //     // if we are done...
+    //     if (percentage === 100) {
+    //       clearInterval(interval)
+
+    //       dialog.update({
+    //         title: '예측완료!',
+    //         message: `예측결과보기를 눌러 확인하세요`,
+    //         progress: false,
+    //         ok: true
+    //       })
+    //     }
+    //   }, 500)
+    // },
+
+
+
 
 
 
@@ -569,7 +639,6 @@ export default {
         localStorage.Tday7 = JSON.stringify(response.data['Tday7']);
         localStorage.date = this.model1;
   
-        
 
       setTimeout(function() { 
         this.return1=localStorage.return1 }, 50);
@@ -632,76 +701,10 @@ export default {
         console.warn("ERROR!!!!! : ", ex)
       });
       
-      
-
+  
     },
-
-
-    // 로컬스토리지 이용하는 법 테스트를 위한 number store
-    // number_store () {
-    //   localStorage.day1 = 300;
-    //   localStorage.day2 = 555;
-    //   localStorage.day3 = 900;
-    //   localStorage.day4 = 600;
-    //   localStorage.day5 = 700;
-    //   localStorage.day6 = 400;
-    //   localStorage.day7 = 600;
-      
-      
-    // },
-
-    // searchparam () {
-    //   const data = {
-    //     "item": this.item_info,
-    //     "event": this.event_info,
-    //     "break": this.break_info 
-    //   }
-    //   axios.post('http:://localhost:3000/api/v1.0/forecast/sale',
-    //     data
-    //   ).then(response => {
-    //     console.log(response)
-    //     this.axiosPostResponseData = JSON.stringify(response.data)
-    //   }).catch((ex) => {
-    //     console.warn("ERROR!!!!! : ", ex)
-    //   })
-    // }
     
   },
 }
-
-
-// for test
-// flask_alert () {
-//       postAxios: function () {
-
-//       const data = {
-
-//         "name": "morpheus22",
-
-//         "job": "leader"
-
-//       }
-
-//       axios.post('http://127.0.0.1:5000/userLogin',
-
-//         data
-
-//       ).then(response => {
-
-//         console.log(response)
-
-//         this.axiosPostResponseData = JSON.stringify(response.data)
-
-//       }).catch((ex) => {
-
-//         console.warn("ERROR!!!!! : ", ex)
-
-//       })
-
-//     }
-
-//   },
-
-
 
 </script>

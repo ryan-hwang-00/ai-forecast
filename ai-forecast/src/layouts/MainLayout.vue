@@ -3,16 +3,27 @@
     <q-header bordered class="bg-primary text-white" height-hint="98">
       
       <q-toolbar>
+        <q-toolbar-title class = "absolute-top-left">
+
+          <q-btn to="/">
+            <img id="image_large" src="~assets/Logo-large.png" height="98px" alt="" class="img-responsive"/>
+            <img id="image_small" src="~assets/Logo-medium.png" height="50px" alt="" class="img-responsive"/>
+          </q-btn>
+          
+        </q-toolbar-title>
+      </q-toolbar>
+
+
+      <!-- <q-toolbar>
           <q-btn
-            class="q-mr-sm"  
-            unelevated color="primary"
+            class="q-mr-sm"
             to="/"
             >
             <q-toolbar inset>
               <q-toolbar-title><strong>Foreca  </strong>  Machine</q-toolbar-title>
             </q-toolbar>
           </q-btn>
-      </q-toolbar>
+      </q-toolbar> -->
 
       <q-tabs align="right">
         <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
@@ -77,15 +88,11 @@
 </template>
 
 <script>
-
-
-  export default {  
+export default {  
     data () {
       return {
-
         togithubpage: function() {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
-        
         }
       }
     }
@@ -93,13 +100,26 @@
 </script>
 
 <style scoped>
-
+/* min-width = app->web */
+@media (min-width: 600px){ 
+    #image_large{
+        display: block
+    }
+    #image_small{
+        display: none
+    }
+}
+/* max-width = web->app */
+@media (max-width: 600px){ 
+    #image_large{
+        display: none
+    }
+    #image_small{
+        display: block
+    }
+}
 </style>
 
-// .q-btn
-//   @media (min-width: $breakpoint-sm-min)
-//     height: 81px
-</style>
 <!--
 <template>
 
