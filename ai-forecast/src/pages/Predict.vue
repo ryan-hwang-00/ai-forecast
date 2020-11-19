@@ -149,16 +149,9 @@
             <q-btn push color="primary" text-color="white" label="<<< 예측변수 선택하기" to="/predict_variables"/>
           </div>
         </div>
-    <!-- 락형 -->
-
-   
- 
-
-
+    <!-- 락형 --> 
+</div>
   </div>
-
-  
-
 </template> 
 
 <script>
