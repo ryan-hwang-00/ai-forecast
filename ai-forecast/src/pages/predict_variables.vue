@@ -244,12 +244,12 @@
     
 
       <!-- div22 -->
-      <div class="fit row q-pt-xl justify-start">
+      <!-- <div class="fit row q-pt-xl justify-start">
         <div class='fit row q-pt-xl'>
           <q-btn push color="primary" text-color="white" label="<< 매장선택" size="10px" to="/map"/>
         
       </div>
-      </div>
+      </div> -->
       <!-- /div22 -->
 
       

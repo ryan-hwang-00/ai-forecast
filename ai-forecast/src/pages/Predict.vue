@@ -151,13 +151,13 @@
     </div>
 
     <!-- 락형 -->
-        </br>
+        <!-- </br>
         <div class="fit column q-pt-xl justify-start" style="max-width:1185px">
           <div class="fit row q-pt-md justify-start">
             
             <q-btn push color="primary" text-color="white" size="10px" label="<<< 예측변수 선택하기" to="/predict_variables"/>
           </div>
-        </div>
+        </div> -->
     <!-- 락형 -->
 
    
