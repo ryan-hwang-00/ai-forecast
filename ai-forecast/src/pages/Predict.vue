@@ -1,7 +1,7 @@
 <template>
   <div class="justify-center q-ma-sm">
     <!-- 예측 변수 정보 chip -->
-    
+
     <!-- <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
         size="16px"
@@ -150,8 +150,6 @@
           </div>
         </div>
     <!-- 락형 -->
-
-    </div>
 
    
  
