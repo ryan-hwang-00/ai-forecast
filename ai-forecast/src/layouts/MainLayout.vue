@@ -1,15 +1,15 @@
 <template>
   <q-layout view="hHh LpR fff">
     <q-header bordered class="bg-primary text-white" height-hint="98">
+      
       <q-toolbar>
           <q-btn
             class="q-mr-sm"  
             unelevated color="primary"
             to="/"
             >
-            
             <q-toolbar inset>
-              <q-toolbar-title><strong>Foreca</strong>Machine</q-toolbar-title>
+              <q-toolbar-title><strong>Foreca  </strong>  Machine</q-toolbar-title>
             </q-toolbar>
           </q-btn>
       </q-toolbar>

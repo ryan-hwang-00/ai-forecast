@@ -225,6 +225,7 @@ import { date, LocalStorage } from "quasar";
 import BarChart from '../components/charts/BarChart'
 // import Predict from '../pages/Predict'
 import axios from "axios";
+import { QSpinnerFacebook } from 'quasar'
 
 export default {
   data () {
@@ -300,6 +301,20 @@ export default {
 
     flask_alert : function () {
 
+      this.$q.loading.show({
+        spinner: QSpinnerFacebook,
+        spinnerColor: 'yellow',
+        spinnerSize: 140,
+        backgroundColor: 'blue',
+        message: 'Forecasting...',
+        messageColor: 'black'
+      })
+
+      this.timer = setTimeout(() => {
+        this.$q.loading.hide()
+        this.timer = void 0
+      }, 3000)
+
         localStorage.event_mon=this.event_mon;
         localStorage.event_tue=this.event_tue;
         localStorage.event_wen=this.event_wen;
@@ -350,7 +365,6 @@ export default {
 
   
       const data = {
-
         // "for_return" : this.day1_2,
         "selected_date" : this.model1,
         "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
@@ -362,13 +376,10 @@ export default {
         "item_info" : localStorage.getItem('item_1'),
         "store_info" : localStorage.getItem('store_code'),
         "break_info" : localStorage.getItem('break_1')
-        
       }
 
       axios.post('http://127.0.0.1:5000/date_info',
-
         data
-
       ).then(response => {
 
         console.log(response)
@@ -389,26 +400,29 @@ export default {
         localStorage.Tday6 = JSON.stringify(response.data['Tday6']);
         localStorage.Tday7 = JSON.stringify(response.data['Tday7']);
         localStorage.date = this.model1;
-        // localStorage.return2 = JSON.stringify(response.data['promotion']);
+  
         
-        // alert(test_data);
-        setTimeout(function() { 
-          this.return1=localStorage.return1 }, 50);
-        setTimeout(function() { 
-          alert('예측완료') }, 100);
+
+      setTimeout(function() { 
+        this.return1=localStorage.return1 }, 50);
+
+      setTimeout(function() { 
+        alert('예측완료') }, 150);
           
-        // this.day1_1=localStorage.day1;
-
       }).catch((ex) => {
-
         console.warn("ERROR!!!!! : ", ex)
-
       });
 
     },
 
-    training : function () {
+    beforeDestroy () {
+      if (this.timer !== void 0) {
+        clearTimeout(this.timer)
+        this.$q.loading.hide()
+      }
+    },
 
+    training : function () {
       const data = {
 
         // "for_return" : this.day1_2,
@@ -439,16 +453,15 @@ export default {
         
         // alert(test_data);
         setTimeout(function() { 
-          this.return1=localStorage.return1 }, 50);
+          this.return1 = localStorage.return1 }, 50);
+
         setTimeout(function() { 
           alert(this.return1) }, 100);
           
         // this.day1_1=localStorage.day1;
 
       }).catch((ex) => {
-
         console.warn("ERROR!!!!! : ", ex)
-
       });
       
       

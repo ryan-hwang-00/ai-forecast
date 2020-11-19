@@ -106,20 +106,13 @@ export default {
           message: '비밀번호를 입력해주세요!'
 
           }).onOk(() => {
-            // console.log('OK')
           }).onCancel(() => {
-            // console.log('Cancel')
           }).onDismiss(() => {
-            // console.log('I am triggered on both OK and Cancel')
+  
           })
        }
     
-        // else if {
-        //   this.$q.dialog({
-        //     title: 'Alert',
-        //     message: '비밀번호를 입력해주세요!'
-        // }
-
+ 
         else if (this.password == this.password1) {
           
           this.$q.dialog({
@@ -127,11 +120,8 @@ export default {
           message: '가입되었습니다!'
           
           }).onOk(() => {
-            // console.log('OK')
           }).onCancel(() => {
-            // console.log('Cancel')
           }).onDismiss(() => {
-            // console.log('I am triggered on both OK and Cancel')
           })
 
           const user = {
@@ -149,11 +139,8 @@ export default {
           message: '비밀번호를 확인해주세요!'
 
         }).onOk(() => {
-          // console.log('OK')
         }).onCancel(() => {
-          // console.log('Cancel')
         }).onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
         })
         }
     }
