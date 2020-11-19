@@ -6,14 +6,26 @@
 .text-Rubik
     font-family: 'Rubik', sans-serif
 
-.small-screen-only
-    @media (max-width: $breakpoint-xs-max)
-        display: block
-    @media (min-width: $breakpoint-sm-min)
-        display: none
+// .small-screen-only
+//     @media (min-width: $breakpoint-sm-min) // min-width = app->web
+//         display: block
+//     @media (max-width: $breakpoint-xs-max) // max-width = web->app
+//         display: none
 
-.large-screen-only
-    @media (max-width: $breakpoint-xs-max)
-        display: none
-    @media (min-width: $breakpoint-sm-min)
-        display: block
+// .small-screen-only
+//     @media (min-width: $breakpoint-sm-min) // min-width = app->web
+//         #image_large
+//             display: block
+//         #image_small
+//             display: none
+//     @media (max-width: $breakpoint-xs-max) // max-width = web->app
+//         #image_large
+//             display: none
+//         #image_small
+//             display: block
+
+// .large-screen-only
+//     @media (max-width: $breakpoint-xs-max)
+//         display: none
+//     @media (min-width: $breakpoint-sm-min)
+//         display: block
