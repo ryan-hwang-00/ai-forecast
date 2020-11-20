@@ -226,11 +226,6 @@
 
   </div>
   
-    
-
-
-
-
 
    </template>
     </q-field>
@@ -277,39 +272,6 @@
 
 
   <div class="q-pa-md"></div>
-
-  
-
-<!-- sample border -->
-  <!-- <div class="q-pa-md">
-    <div class="q-gutter-md" style="width: 500px">
-
-
-    <q-field outlined label="Outlined" stack-label>
-        <template v-slot:control>
-          <div class="self-center full-width no-outline" tabindex="0">Field content</div>
-
-          <div class="row q-pa-sm">
-          <q-btn color="primary" text-color="white" size='15px' style="width : 126px" label="예측 결과보기" to="/Predict"/>
-        </div>
-
-
-        <div class="row q-pa-sm">
-      
-        <q-btn label="예측하기" color="red-10" size="15px" style="width : 126px" @click="showCustom" />
-
-      </div>
-
-
-        </template>
-    </q-field>
-    </div>
-  </div> -->
-  <!-- sample border -->
-
-
-
-
 
 
    
