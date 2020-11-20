@@ -2,39 +2,37 @@
   <q-layout view="hHh LpR fff">
     
     <q-header bordered class="bg-primary text-white" height-hint="98">
-      <div class="fit column inline justify-between">
-        <q-toolbar>
+        <q-toolbar class="fit column inline justify-between">
           <!-- 로고 -->
           <q-toolbar-title class = "col absolute-top-left">
-            <q-btn to="/">
-              <img id="image_large" src="~assets/Logo-large.png" height="98px" alt="" class="img-responsive"/>
-              <img id="image_small" src="~assets/Logo-medium.png" height="50px" alt="" class="img-responsive"/>
+            <q-btn flat to="/">
+              <img id="image_large" src="~assets/Logo-large.png" height="50px" alt="" class="img-responsive"/>
+              <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
             </q-btn>
           </q-toolbar-title>
+          <!-- 로그인/회원가입 -->
+          <q-tabs class="col self-end">
+            <q-route-tab to="/register" label="회원가입" style="max-width: 70px"/>
+            <!-- <q-separator vertical inset color="white"/> -->
+            <q-route-tab to="/login" label="로그인" style="max-width: 70px"/>
+          </q-tabs>
         </q-toolbar>
-        <!-- 로그인/회원가입 -->
-        <q-tabs class="col self-end">
-          <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
-          <q-separator vertical inset color="white"/>
-          <q-route-tab to="/login" label="로그인" style="max-width: 100px"/>
-        </q-tabs>
-      </div>
     </q-header>
     
     <q-page-container class='bg-grey-1'>
       <router-view />
     </q-page-container>
 
-    <q-footer bordered class="bg-grey-4 text-primary">
-      <q-toolbar>
-        <q-tabs 
-          no-caps active-color="primary" 
-          indicator-color="transparent" 
-          class="text-grey" 
-          v-model="tab"
-        >
+
+    <q-footer bordered class="bg-grey-4 text-primary justify-center">
+      <q-tabs 
+      no-caps active-color="primary" 
+      indicator-color="transparent" 
+      class="text-grey" 
+      v-model="tab"
+      >
           <eva-icon
-            class='q-pa-md' 
+            class='q-pa-md center' 
             name="github" 
             animation="pulse" 
             fill="#1D2758"
@@ -45,7 +43,7 @@
           </eva-icon>
 
           <eva-icon
-            class='q-pa-md' 
+            class='q-pa-md center' 
             name="facebook" 
             animation="pulse" 
             fill="#1D2758"
@@ -64,7 +62,6 @@
           >
           </eva-icon>
         </q-tabs>
-      </q-toolbar>
     </q-footer>
   </q-layout>
 </template>

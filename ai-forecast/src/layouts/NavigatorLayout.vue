@@ -2,37 +2,52 @@
   <q-layout view="hHh LpR fff">
     <q-header bordered="bordered" class="bg-primary text-white" height-hint="98">
       <div class="fit column inline justify-between">
-        <q-toolbar>
-          <q-toolbar-title class="col absolute-top-left">
-            <q-btn to="/">
-              <img id="image_large" src="~assets/Logo-large.png" height="98px" alt="" class="img-responsive"/>
-              <img id="image_small" src="~assets/Logo-medium.png" height="50px" alt="" class="img-responsive"/>
+        <q-toolbar class="fit column inline justify-between">
+          <!-- 로고 -->
+          <q-toolbar-title class = "col absolute-top-left">
+            <q-btn flat to="/">
+              <img id="image_large" src="~assets/Logo-large.png" height="50px" alt="" class="img-responsive"/>
+              <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
             </q-btn>
           </q-toolbar-title>
+          <!-- 로그인/회원가입 -->
+          <q-tabs class="col self-end">
+            <q-route-tab to="/register" label="회원가입" style="max-width: 70px"/>
+            <!-- <q-separator vertical inset color="white"/> -->
+            <q-route-tab to="/login" label="로그인" style="max-width: 70px"/>
+          </q-tabs>
         </q-toolbar>
 
         <q-drawer
           v-model="drawer"
           show-if-above="show-if-above"
           content-class="bg-grey-4"
-          :width="300"
+          :width="350"
           :breakpoint="400"
           >
-            <div class="fit column content-center" style = "padding: 10px 3px 2px 3px;">
+            <div class="fit column content-center" 
+              style = "padding: 10px 10px 2px 10px;">
+
             <q-btn
+            
               standout
               color="primary"
+              size="15px" 
+              style="width : 300px"
               label="예측정보 정의"
               to="/predict_variables"
-              size="13px"
+              
             />
+
             <br>
             <q-btn
               standout
               color="primary"
+              size="15px" 
+              style="width : 300px"
               label="예측결과 조회"
               to="/Predict"
-              size="13px"
+              
             />
 
             <br>
@@ -89,7 +104,8 @@
             active-color="primary"
             indicator-color="transparent"
             class="text-grey absolute-bottom"
-            v-model="tab">
+            v-model="tab"
+          >
 
             <div class="fit row justify-center">
 
@@ -126,13 +142,6 @@
           </q-tabs>
 
         </q-drawer>
-
-
-        <q-tabs class="col-auto self-end">
-          <q-route-tab to="/register" label="회원가입" style="max-width: 1000px"/>
-          <q-separator vertical="vertical" inset="inset" color="white"/>
-          <q-route-tab to="/login" label="로그인" style="max-width: 1000px"/>
-        </q-tabs>
       </div>
     </q-header>
     
@@ -197,6 +206,7 @@ export default {
       Predict,
     },
     data () {
+      console.log("jy      data", )
       if (LocalStorage.getItem("break_1") === "1") {
         this.getflag2 = "일요일";
       } else if (LocalStorage.getItem("break_1")  === "0") {
@@ -207,7 +217,9 @@ export default {
         this.getstore2 = "해운대점";
       } else if (LocalStorage.getItem("store_code")  === "6") {
         this.getstore2 = "광안리점";
-      }
+      };
+
+      this.getdate2 = LocalStorage.getItem("date");
 
       return {
         drawer: false,
@@ -263,6 +275,46 @@ export default {
           rowsPerPage: 5,
           // rowsNumber: 10
         },
+      }
+    },
+
+    created() {
+      console.log("jy    created", )
+      data ()
+      console.log(this.getstore2)
+    },
+    updated () {
+      console.log("jy      updated", )
+      updateArray ()
+      // data()
+      // this.getflag2
+      // this.getdate2
+      // this.getstore2
+       if (LocalStorage.getItem("break_1") === "1") {
+        this.getflag2 = "일요일";
+      } else if (LocalStorage.getItem("break_1")  === "0") {
+        this.getflag2 = "휴무일 없음";
+      };
+
+      if (LocalStorage.getItem("store_code") === "1") {
+        this.getstore2 = "해운대점";
+      } else if (LocalStorage.getItem("store_code")  === "6") {
+        this.getstore2 = "광안리점";
+      };
+
+      this.getdate2 = LocalStorage.getItem("date");
+
+
+      console.log(this.getstore2)
+    },
+    methods: {
+      updateArray () {
+          this.NavigatorData[2]       
+          if (this.NavigatorData[2] === "1") {
+          this.getstore2 = "해운대점";
+          } else if (this.NavigatorData[2]  === "6") {
+            this.getstore2 = "광안리점";
+          };
       }
     }
   }
