@@ -1,8 +1,8 @@
 <template>
-  <!-- <div class="justify-center q-ma-sm"> -->
+  <div class="justify-center q-ma-sm">
     <!-- 예측 변수 정보 chip -->
-
-    <!-- <div class="row justify-center q-col-gutter-sm q-py-sm">
+<!-- 
+    <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
         size="16px"
         color="red-6"
@@ -57,7 +57,8 @@
           :columns="columns"
           row-key="Date"
           :pagination.sync="pagination"
-          class="col my-sticky-header-table"
+          class="bg-grey-1 col my-sticky-header-table"
+          style = "padding: 10px 3px 2px 3px;"
         />
       <!-- 예측 값 그래프 캐롯셀 -->
         <q-carousel
@@ -70,10 +71,10 @@
           navigation
           padding
           arrows
-          class="col bg-dark text-white rounded-borders my-sticky-header-chart"
+          class="col bg-grey-1 text-white rounded-borders my-sticky-header-chart"
         >
           <q-carousel-slide name="style" class="column no-wrap flex-center">
-              <div class="bg-white rounded-borders">
+              <div class="bg-grey-1 rounded-borders">
                   <q-card-section class="bg-primary">
                           <div class="col">
                               <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
@@ -84,7 +85,7 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="Line" class="column no-wrap flex-center">
-              <div class="bg-white rounded-borders">
+              <div class="bg-grey-1 rounded-borders">
                   <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
@@ -99,7 +100,7 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="ef" class="column no-wrap flex-center">
-              <div class="bg-white rounded-borders">
+              <div class="bg-grey-1 rounded-borders">
                   <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
@@ -114,7 +115,7 @@
           </q-carousel-slide>
 
           <q-carousel-slide name="fe" class="column no-wrap flex-center">
-              <div class="bg-white rounded-borders">
+              <div class="bg-grey-1 rounded-borders">
                   <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
@@ -130,7 +131,7 @@
 
         </q-carousel>
     </div>
-  <!-- </div> -->
+  </div>
 </template> 
 
 <script>
@@ -158,10 +159,9 @@ export default {
       getdate: '날짜',
       getstore: '매장명',
       getproduct: '상품명',
-      getevent: '행사',
+      getEventDays: '없음',
       getflag: '휴무일',
       slide: 'style',
-      getEventDays: '',
       Total: '',
       Mean: '',
       
@@ -182,7 +182,9 @@ export default {
           label: 'Date',
           align: 'left',
           field: 'Date',
-          sortable: true
+          sortable: true,
+          // classes: 'bg-grey-2 ellipsis',
+          // headerClasses: 'bg-grey-2 ellipsis'
         },
         {
           name: 'Predict_Value',
@@ -238,7 +240,6 @@ export default {
     this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
-    this.onEventClick ()
   },
   
   // mounted () {
@@ -449,7 +450,6 @@ export default {
       } else {
         this.getstore = "매장"
       };
-      this.getevent = LocalStorage.getItem("event_1");
       this.getbreak = LocalStorage.getItem("break_1");
       if (this.getbreak === "1") {
         this.getflag = "휴무: 일요일"
@@ -458,81 +458,7 @@ export default {
       } else {
         this.getflag = "휴무일"
       };
-    },
-
-    onEventClick () {
-      this.getmon = LocalStorage.getItem('eday1')
-      this.gettue = LocalStorage.getItem('eday2')
-      this.getthu = LocalStorage.getItem('eday3')
-      this.getwen = LocalStorage.getItem('eday4')
-      this.getsat = LocalStorage.getItem('eday5')
-      this.getsun = LocalStorage.getItem('eday6')
-      this.getfri = LocalStorage.getItem('eday7')
-      this.getEventDays = localStorage.edate
-    },
-
-    getEventMon() {
-      this.boolean = new Boolean(true)
-      this.getmon = LocalStorage.getItem('event_mon')
-      if (this.getmon === this.boolean) {
-        this.getEventMon = "월요일"
-      } else {
-        this.getEventMon = ""
-      };
-    },
-
-    getEventTue() {
-      this.gettue = LocalStorage.getItem('event_tue')
-      if (this.getmon === true) {
-        this.getEventTue = "화요일"
-      } else {
-        this.getEventTue = ""
-      };
-    },
-
-    getEventWen() {
-      this.getwen = LocalStorage.getItem('event_wen')
-      if (this.getwen === true) {
-        this.getEventWen = "수요일"
-      } else {
-        this.getEventWen = ""
-      };
-    },
-
-    getEventThu() {
-      this.getthu = LocalStorage.getItem('event_thu')
-      if (this.getthu === true) {
-        this.getEventThu = "목요일"
-      } else {
-        this.getEventThu = ""
-      };
-    },
-
-    getEventFri() {
-      this.getfri = LocalStorage.getItem('event_fri')
-      if (this.getfri === true) {
-        this.getEventFri = "금요일"
-      } else {
-        this.getEventFri = ""
-      };
-    },
-
-    getEventSat() {
-      this.getsat = LocalStorage.getItem('event_sat')
-      if (this.getfri === true) {
-        this.getEventSat = "토요일"
-      } else {
-        this.getEventSat = ""
-      };
-    },
-
-    getEventSun() {
-      this.getsun = LocalStorage.getItem('event_sun')
-      if (this.getsun === true) {
-          this.getEventSun = "일요일"
-      } else {
-          this.getEventSun = ""
-      };
+      this.getEventDays = LocalStorage.getItem('edate')
     },
 
     // Predict-Value Data
@@ -640,9 +566,10 @@ export default {
 <style lang="sass">
 .my-sticky-header-table
   /* height or max-height is important */
-  // overflow: auto
+  overflow: auto
   height: 540px
-  width: 400px
+  // width: 350px
+  max-width: 20rem
 .my-sticky-header-chart
   /* height or max-height is important */
   // overflow: auto
