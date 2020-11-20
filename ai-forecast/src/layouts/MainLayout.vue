@@ -14,9 +14,9 @@
         </q-toolbar>
 
         <q-tabs class="col self-end">
-          <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
+          <q-route-tab to="/register" label="회원가입" style="max-width: 1000px"/>
           <q-separator vertical inset color="white"/>
-          <q-route-tab to="/login" label="로그인" style="max-width: 100px"/>
+          <q-route-tab to="/login" label="로그인" style="max-width: 1000px"/>
         </q-tabs>
       </div>
 
