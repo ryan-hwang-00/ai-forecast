@@ -23,6 +23,7 @@
       <router-view />
     </q-page-container>
 
+
     <q-footer bordered class="bg-grey-4 text-primary justify-center">
       <q-tabs 
       no-caps active-color="primary" 
@@ -31,7 +32,7 @@
       v-model="tab"
       >
           <eva-icon
-            class='q-pa-md' 
+            class='q-pa-md center' 
             name="github" 
             animation="pulse" 
             fill="#1D2758"
@@ -42,7 +43,7 @@
           </eva-icon>
 
           <eva-icon
-            class='q-pa-md' 
+            class='q-pa-md center' 
             name="facebook" 
             animation="pulse" 
             fill="#1D2758"
