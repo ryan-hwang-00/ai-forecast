@@ -21,8 +21,8 @@
          <!-- div_31 -->
           <div class="q-py-lg" style="min-height:50px">
             <q-btn-dropdown color="primary" 
-              size="16px"
-              style='width:115px' 
+              size="18px"
+              style='width:170px' 
               label="상품명">
               <q-list>
                 <q-item clickable v-close-popup @click="bac_2l">
@@ -67,8 +67,8 @@
         <q-btn-dropdown color="primary"
         
         label="휴무"        
-        size="16px"
-        style='width:115px'
+        size="18px"
+        style='width:170px'
         
       
         >
@@ -94,8 +94,8 @@
           
           color="primary"
           label="할인요일"
-          size="16px"
-          style='width:115px'
+          size="18px"
+          style='width:170px'
           
         >
           <!-- style="max-height:50px" -->
@@ -125,8 +125,8 @@
           
           color="primary"
           label="대량주문"
-          size="16px"
-          style='width:115px'
+          size="18px"
+          style='width:170px'
           
         >
           <!-- style="max-height:50px" -->
@@ -160,10 +160,12 @@
 <!-- 달력  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
         <!-- div 3 -->
         <div class="fit row justify-center content-center" style="max-width:350px">
+          <div class='row q-py-sm'></div>
         
 
         <!-- div 4 -->
         <div class="q-pa-sm">
+          <div class='row q-py-sm'></div>
           <div class="q-gutter-md row items-start">
             <div>
               <div class="q-pb-sm q-gutter-sm">
@@ -223,6 +225,9 @@
     <!-- /div_10 -->
     </div>
     <!-- /div_30 -->
+   
+    </div>
+    
 
   </main>
 </template>
