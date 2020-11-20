@@ -15,7 +15,7 @@
         <q-btn
           rounded
           standout
-          color="primary"
+          color="pink-9"
           label="Start"
           to="/map"
           size="20px"
@@ -28,6 +28,9 @@
 
 <script>
 import TextEffect1 from '../components/textEffect/TextEffect1.vue'
+import { colors } from 'quasar'
+
+colors.setBrand('pink-9', '#456D91')
 
 export default {
   name: "home",
