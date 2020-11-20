@@ -49,7 +49,7 @@
     </div> -->
 
     <!-- 예측 값 그래프 및 테이블 -->
-    <div class="row justify-center q-row-gutter-xs q-py-sm">
+    <div class="row justify-center q-row-gutter-xs q-py-sm bg-grey-1" style = "padding: 50px 3px 50px 3px;">
       <!-- 예측 값 테이블 -->
         <q-table
           title="주간 예측량"
