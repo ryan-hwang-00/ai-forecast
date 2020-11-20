@@ -8,7 +8,7 @@
     
 
        <!-- div 2 -->
-        <div class="fit row q-col-gutter-sm  q-py-sm content-center items-center justify-center" style="max-width:320px">  
+        <div class="fit row q-col-gutter-sm  q-py-sm content-center items-center justify-center" style="max-width:400px">  
         <!-- 상위 div에서 column의 content를 center 정렬하라고 되어 있음 -->
         <!-- 위 div class에서 fit 지정해주지 않으면 
         justify-evenly가 적용되지 않고 공백 없이 3개 버튼이 붙어버림
@@ -16,7 +16,7 @@
 
 
           <div class="q-py-xl" style="min-height:50px">
-            <q-btn-dropdown color="red-10" size="12px" label="상품명">
+            <q-btn-dropdown color="red-10" size="10px" label="상품명">
               <q-list>
                 <q-item clickable v-close-popup @click="bac_2l">
                   <q-item-section>
@@ -70,7 +70,7 @@
 
       <div class="q-py-xl" style="min-height:50px">
         <q-btn-dropdown color="primary"
-        size="12px" 
+        size="10px" 
         label="휴무"
         
       
@@ -91,13 +91,13 @@
         </q-btn-dropdown>
       </div>
 
-
+      <!-- div_25 -->
       <div class="q-py-xl" style="min-height:50px">
         <q-btn-dropdown
           
           color="primary"
           label="할인요일"
-          size="12px"
+          size="10px"
           
         >
           <!-- style="max-height:50px" -->
@@ -117,6 +117,37 @@
           </div>
         </q-btn-dropdown>
       </div>
+      <!-- /div_25 -->
+
+
+
+      <!-- div_26 -->
+      <div class="q-py-xl" style="min-height:50px">
+        <q-btn-dropdown
+          
+          color="primary"
+          label="대량주문"
+          size="10px"
+          
+        >
+          <!-- style="max-height:50px" -->
+          <div class="row no-wrap q-pa-md" >
+            <div class="column">
+              <div class="text-h6 q-mb-lg" >출하 요일 선택</div>
+              <q-toggle v-model="s_event_mon" label="월요일 할인" />
+              <q-toggle v-model="s_event_tue" label="화요일 할인" />
+              <q-toggle v-model="s_event_wen" label="수요일 할인" />
+              <q-toggle v-model="s_event_thu" label="목요일 할인" />
+              <q-toggle v-model="s_event_fri" label="금요일 할인" />
+              <q-toggle v-model="s_event_sat" label="토요일 할인" />
+              <q-toggle v-model="s_event_sun" label="일요일 할인" />
+
+            </div>
+
+          </div>
+        </q-btn-dropdown>
+      </div>
+      <!-- /div_26 -->
 
 
       
@@ -209,7 +240,7 @@
     
         
 
-  
+    </br>
     <!-- div_10 -->
     <div class="fit row q-col-gutter-sm  q-py-lg content-center items-center justify-between" style="max-width:305px">
       
@@ -268,7 +299,6 @@ import { QSpinnerGears } from 'quasar'
 import BarChart from '../components/charts/BarChart'
 // import Predict from '../pages/Predict'
 import axios from "axios";
-import { QSpinnerFacebook } from 'quasar'
 
 export default {
   data () {
@@ -285,8 +315,18 @@ export default {
       event_fri: false,
       event_sat: false,
       event_sun: false,
+
+      s_event_mon: false,
+      s_event_tue: false,
+      s_event_wen: false,
+      s_event_thu: false,
+      s_event_fri: false,
+      s_event_sat: false,
+      s_event_sun: false,
+
       loading: false,
       loading2: false,
+
       progress: false
       
     }
@@ -352,13 +392,13 @@ export default {
     showCustom () {
 
 
-        localStorage.event_mon=this.event_mon;
-        localStorage.event_tue=this.event_tue;
-        localStorage.event_wen=this.event_wen;
-        localStorage.event_thu=this.event_thu;
-        localStorage.event_fri=this.event_fri;
-        localStorage.event_sat=this.event_sat;
-        localStorage.event_sun=this.event_sun;
+      localStorage.event_mon=this.event_mon;
+      localStorage.event_tue=this.event_tue;
+      localStorage.event_wen=this.event_wen;
+      localStorage.event_thu=this.event_thu;
+      localStorage.event_fri=this.event_fri;
+      localStorage.event_sat=this.event_sat;
+      localStorage.event_sun=this.event_sun;
 
         if (this.event_mon === true) {
         this.wday1 = "월요일"
@@ -399,6 +439,8 @@ export default {
       };
         localStorage.edate=this.edays;
         
+
+  
       const data = {
 
         // "for_return" : this.day1_2,
@@ -539,20 +581,6 @@ export default {
 
     flask_alert : function () {
 
-      this.$q.loading.show({
-        spinner: QSpinnerFacebook,
-        spinnerColor: 'yellow',
-        spinnerSize: 140,
-        backgroundColor: 'blue',
-        message: 'Forecasting...',
-        messageColor: 'black'
-      })
-
-      this.timer = setTimeout(() => {
-        this.$q.loading.hide()
-        this.timer = void 0
-      }, 3000)
-
         localStorage.event_mon=this.event_mon;
         localStorage.event_tue=this.event_tue;
         localStorage.event_wen=this.event_wen;
@@ -603,6 +631,7 @@ export default {
 
   
       const data = {
+
         // "for_return" : this.day1_2,
         "selected_date" : this.model1,
         "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
@@ -614,10 +643,13 @@ export default {
         "item_info" : localStorage.getItem('item_1'),
         "store_info" : localStorage.getItem('store_code'),
         "break_info" : localStorage.getItem('break_1')
+        
       }
 
       axios.post('http://127.0.0.1:5000/date_info',
+
         data
+
       ).then(response => {
 
         console.log(response)
@@ -638,28 +670,25 @@ export default {
         localStorage.Tday6 = JSON.stringify(response.data['Tday6']);
         localStorage.Tday7 = JSON.stringify(response.data['Tday7']);
         localStorage.date = this.model1;
-  
-
-      setTimeout(function() { 
-        this.return1=localStorage.return1 }, 50);
-
-      setTimeout(function() { 
-        alert('예측완료') }, 150);
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
+        
+        // alert(test_data);
+        setTimeout(function() { 
+          this.return1=localStorage.return1 }, 50);
+        
           
+        // this.day1_1=localStorage.day1;
+
       }).catch((ex) => {
+
         console.warn("ERROR!!!!! : ", ex)
+
       });
 
     },
 
-    beforeDestroy () {
-      if (this.timer !== void 0) {
-        clearTimeout(this.timer)
-        this.$q.loading.hide()
-      }
-    },
-
     training : function () {
+
       const data = {
 
         // "for_return" : this.day1_2,
@@ -690,15 +719,16 @@ export default {
         
         // alert(test_data);
         setTimeout(function() { 
-          this.return1 = localStorage.return1 }, 50);
-
+          this.return1=localStorage.return1 }, 50);
         setTimeout(function() { 
           alert(this.return1) }, 100);
           
         // this.day1_1=localStorage.day1;
 
       }).catch((ex) => {
+
         console.warn("ERROR!!!!! : ", ex)
+
       });
       
   
