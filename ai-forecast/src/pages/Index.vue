@@ -1,7 +1,6 @@
 <template>
   <div class="q-pa-md">
     
-
     <q-btn-dropdown
       color="primary"
       label="Dropdown Button"
@@ -11,7 +10,7 @@
           clickable
           v-close-popup
           @click="onItemClick"
-        >
+      >
           <q-item-section>
             <q-item-label>Photos</q-item-label>
           </q-item-section>
@@ -171,7 +170,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
