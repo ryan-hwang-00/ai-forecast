@@ -46,7 +46,7 @@
               hide-bottom
               :pagination.sync="NavigatorPagination"
               class= "q-pa-md"
-              style = "padding: 7px 10px 7px 10px;"
+              style = "padding: 7px 1px 7px 1px;"
             />
             
             </div>
