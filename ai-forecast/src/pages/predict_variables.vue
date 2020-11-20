@@ -1,17 +1,47 @@
 <template>
+
+  
+          
+
   <main class="q-page q-pa-sm fit column content-center items-center" style="min-height: 704px;">
 
-    <div class="row q-pa-lg"></div>
+
+
+    <div class="q-pa-xm">
+      <div class="q-pa-md"></div>
+      
+    <div class="q-gutter-md" style="width: 1100px">
+
+
+    <q-field outlined label="" stack-label>
+        <template v-slot:control>
+          <div class="self-center full-width no-outline" tabindex="0"></div>
+
+
+    
+
+    
+    <div class="row q-pa-sm"></div>
+    
     <!-- 여백 조절 -->
 
+    <div class="q-pl-md column content-center items-center" style="width : 1000px">
+    
+    <!-- <div class="column q-pa-lg"></div> -->
+    <div class="column q-pa-sm"></div>
+
+    </div>
+
     <!-- div 0 -->
-    <div class="row justify-evenly" style="width : 750px">
+    <div class="row justify-evenly" style="width : 1000px">
 
     
     <!-- div 1 -->
     <div class="fit column content-center items-center justify-evenly" style="max-width:350px">
       <!-- 전체 가운데 정렬 -->
     
+    
+    <div class="row q-pa-md"></div>
  
 
        <!-- div 2 -->
@@ -19,7 +49,7 @@
         
         <div class="row q-pa-lg"></div>
          <!-- div_31 -->
-          <div class="q-py-lg" style="min-height:50px">
+          <div class="q-py-md" style="min-height:50px">
             <q-btn-dropdown color="primary" 
               size="18px"
               style='width:170px' 
@@ -63,7 +93,7 @@
 
 
       
-      <div class="q-py-lg" style="min-height:50px">
+      <div class="q-py-md" style="min-height:50px">
         <q-btn-dropdown color="primary"
         
         label="휴무"        
@@ -89,7 +119,7 @@
       </div>
 
       <!-- div_25 -->
-      <div class="q-py-lg" style="min-height:50px">
+      <div class="q-py-md" style="min-height:50px">
         <q-btn-dropdown
           
           color="primary"
@@ -120,7 +150,7 @@
 
 
       <!-- div_26 -->
-      <div class="q-py-lg" style="min-height:50px">
+      <div class="q-py-md" style="min-height:50px">
         <q-btn-dropdown
           
           color="primary"
@@ -186,20 +216,38 @@
         </div>         
         <!-- /div_3 -->
 
-
-
-          
-    
     </div>
     <!-- /div 0 -->
 
+  <div class="q-pl-md column content-center items-center" style="width : 1000px">
+    
+    <div class="column q-pa-lg"></div>
+    <div class="column q-pa-xs"></div>
 
-    <div class="row q-pa-lg"></div>
-    <div class="row q-pa-lg"></div>
+  </div>
+  
+    
+
+
+
+
+
+   </template>
+    </q-field>
+    </div>
+  </div>
+
+  <div class="q-pl-md column content-center items-center" style="width : 1000px">
+    
+    <div class="column q-pa-md"></div>
+    
+    <!-- <div class="row q-pa-xs">2</div> -->
     <!-- 여백 조절 -->
 
     <!-- div_30 -->
-    <div class="row content-center items-center justify-evenly">
+    <!-- <div class="row content-center items-center justify-evenly"> -->
+
+      <!-- <div class="row justify-evenly" style="width : 750px"> -->
     
     <!-- div_10 -->
     <div class="row q-col-gutter-sm q-py-lg content-center items-center justify-between" style="width:350px">
@@ -207,9 +255,7 @@
       <!-- div_5 -->
       <div class="row q-pa-sm">
       
-
-      
-        <q-btn label="예측하기" color="red-10" size="15px" style="width : 126px" @click="showCustom" />
+        <q-btn label="예측하기" color="red-10" size="15px" style="width : 140px" @click="showCustom" />
 
       </div>
       <!-- /div_5 -->
@@ -217,14 +263,58 @@
         
         <!-- div21 -->
         <div class="row q-pa-sm">
-          <q-btn color="primary" text-color="white" size='15px' style="width : 126px" label="예측 결과보기" to="/Predict"/>
+          <q-btn color="primary" text-color="white" size='15px' style="width : 140px" label="예측 결과보기" to="/Predict"/>
         </div>
         <!-- /div21 -->
         
     </div>
     <!-- /div_10 -->
-    </div>
+    <!-- </div> -->
     <!-- /div_30 -->
+    </div>
+    <div class="column q-pa-md"></div>
+    
+
+
+
+
+
+  <div class="q-pa-md"></div>
+
+  
+
+<!-- sample border -->
+  <!-- <div class="q-pa-md">
+    <div class="q-gutter-md" style="width: 500px">
+
+
+    <q-field outlined label="Outlined" stack-label>
+        <template v-slot:control>
+          <div class="self-center full-width no-outline" tabindex="0">Field content</div>
+
+          <div class="row q-pa-sm">
+          <q-btn color="primary" text-color="white" size='15px' style="width : 126px" label="예측 결과보기" to="/Predict"/>
+        </div>
+
+
+        <div class="row q-pa-sm">
+      
+        <q-btn label="예측하기" color="red-10" size="15px" style="width : 126px" @click="showCustom" />
+
+      </div>
+
+
+        </template>
+    </q-field>
+    </div>
+  </div> -->
+  <!-- sample border -->
+
+
+
+
+
+
    
     
     
