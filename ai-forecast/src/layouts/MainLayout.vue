@@ -25,16 +25,23 @@
       <router-view />
     </q-page-container>
 
-    <q-footer bordered class="bg-grey-4 text-primary">
-      <q-toolbar>
+    <q-footer
+      bordered class="bg-grey-4 text-primary"
+    >
+
+      <q-toolbar
+        class="q-pa-md justify-center"
+      >
+
         <q-tabs 
           no-caps active-color="primary" 
           indicator-color="transparent" 
           class="text-grey" 
           v-model="tab"
         >
+
           <eva-icon
-            class='q-pa-md' 
+            class='q-pa-md center' 
             name="github" 
             animation="pulse" 
             fill="#1D2758"
@@ -45,7 +52,7 @@
           </eva-icon>
 
           <eva-icon
-            class='q-pa-md' 
+            class='q-pa-md center' 
             name="facebook" 
             animation="pulse" 
             fill="#1D2758"
@@ -64,6 +71,7 @@
           >
           </eva-icon>
         </q-tabs>
+
       </q-toolbar>
     </q-footer>
   </q-layout>

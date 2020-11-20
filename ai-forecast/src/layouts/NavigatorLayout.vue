@@ -15,24 +15,32 @@
           v-model="drawer"
           show-if-above="show-if-above"
           content-class="bg-grey-4"
-          :width="300"
+          :width="350"
           :breakpoint="400"
           >
-            <div class="fit column content-center" style = "padding: 10px 3px 2px 3px;">
+            <div class="fit column content-center" 
+              style = "padding: 10px 10px 2px 10px;">
+
             <q-btn
+            
               standout
               color="primary"
+              size="15px" 
+              style="width : 300px"
               label="예측정보 정의"
               to="/predict_variables"
-              size="13px"
+              
             />
+
             <br>
             <q-btn
               standout
               color="primary"
+              size="15px" 
+              style="width : 300px"
               label="예측결과 조회"
               to="/Predict"
-              size="13px"
+              
             />
 
             <br>
@@ -89,7 +97,8 @@
             active-color="primary"
             indicator-color="transparent"
             class="text-grey absolute-bottom"
-            v-model="tab">
+            v-model="tab"
+          >
 
             <div class="fit row justify-center">
 
