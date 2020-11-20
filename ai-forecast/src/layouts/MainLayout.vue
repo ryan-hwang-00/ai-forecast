@@ -30,25 +30,6 @@
       class="text-grey" 
       v-model="tab"
       >
-        <eva-icon
-        class='q-pa-md' 
-        name="github" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
-        @click='togithubpage'
-        style="font-size:3px">
-        </eva-icon>
-
-        <eva-icon
-        class='q-pa-md' 
-        name="facebook" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
-        >
           <eva-icon
             class='q-pa-md' 
             name="github" 
@@ -80,7 +61,6 @@
           >
           </eva-icon>
         </q-tabs>
-      </q-toolbar>
     </q-footer>
   </q-layout>
 </template>
