@@ -29,6 +29,8 @@ def row_select(dataframe, column, value):
     return index_num
 
 
+# 바꿔줄 때 : date_info 함수에 special_info 입력변수 넣기
+# 데이터 프레임에 'outlier' 컬럼 추가하기
 def date_info(start_date, event_info, break_info):
 
     # arrived_data = request.get_json()  # json 데이터를 받아옴
@@ -39,6 +41,7 @@ def date_info(start_date, event_info, break_info):
     index_start = int(pre_in_num[0])
     df2 = df1[index_start:index_start + 7]
 
+    # 이벤트(할인정보) 시작
     pre_event_list = []
     event_info_for_merge = []
     for i in event_info:
@@ -65,6 +68,34 @@ def date_info(start_date, event_info, break_info):
 
     df2['promotion_flag'] = event_info_for_merge
 
+    # 대량주문(outlier special_order)시작
+    # pre_special_list = []
+    # special_info_for_merge = []
+    # for i in special_info:
+    #     x = int(i)
+    #     pre_special_list.append(x)
+
+    # so_days = {1: '월요일', 2: '화요일', 3: '수요일',
+    #            4: '목요일', 5: '금요일', 6: '토요일', 7: '일요일'}
+    # so_days_name = []
+    # for i in pre_special_list:
+    #     if i in so_days.keys():
+    #         so_days_name.append(days[i])
+
+    # aa = 5
+    # for i in df2['weekday']:
+
+    #     if int(i) in pre_special_list:
+
+    #         aa = 1
+    #     else:
+    #         aa = 0
+
+    #     special_info_for_merge.append(aa)
+
+    # df2['outlier'] = special_info_for_merge
+
+    # 휴일정보 시작
     break_list_for_merge = [0, 0, 0, 0, 0, 0]
     if break_info == '1':
         break_list_for_merge.append(1)
