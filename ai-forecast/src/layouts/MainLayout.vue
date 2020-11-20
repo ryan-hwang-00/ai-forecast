@@ -5,7 +5,7 @@
         <q-toolbar>
           <q-toolbar-title
             class ="col absolute-top-left">
-
+          
             <q-drawer
               v-model="drawer"
               show-if-above
@@ -13,14 +13,40 @@
               :breakpoint="400"
             >
 
-            <q-scroll-area bordered class="bg-grey-4 text-primary"
-                           style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-              <q-list padding>
-                <!-- <q-item clickable v-ripple>
-                  <q-item-section avatar>
-                    <q-icon name="inbox" />
-                  </q-item-section>
-                </q-item> -->
+            <q-scroll-area 
+              bordered class="bg-grey-4 text-primary"
+              style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+
+              <q-list
+              class='q-gutter-md'
+              padding>
+
+                <q-card
+              
+                  flat bordered
+                  class="col-auto bg-grey-4"
+                  >
+
+                  <q-card-section>
+                    <div class="text-h6">예측결과 조회조건</div>
+                  </q-card-section>
+
+                  <q-separator inset />
+
+                  <q-card-section>
+
+          
+                    
+                    <div class="text-subtitle2">기 준 일  : </div>
+                    <div class="text-subtitle2">매    장  : {{ store_name }} </div>
+                    <div class="text-subtitle2">상    품  : 신라면</div>
+                    <div class="text-subtitle2">할인행사  : 월요일</div>
+                    <div class="text-subtitle2">휴 무 일  : 일요일</div>
+
+             
+                  </q-card-section>
+                </q-card>
+
               </q-list>
             </q-scroll-area>
 
@@ -36,13 +62,13 @@
                 <div class="text-black">Navigator</div>
               </div>
             </q-img>
-
-          <q-tabs 
-            no-caps active-color="primary" 
-            indicator-color="transparent" 
-            class="text-grey absolute-bottom" 
-            v-model="tab"
-          >
+              
+              <q-tabs 
+                no-caps active-color="primary" 
+                indicator-color="transparent" 
+                class="text-grey absolute-bottom" 
+            
+              >
         
             <eva-icon
               class='q-pa-md' 
@@ -88,7 +114,9 @@
 
         <q-tabs class="col-auto self-end">
           <q-route-tab to="/register" label="회원가입" style="max-width: 1000px"/>
+
           <q-separator vertical inset color="white"/>
+
           <q-route-tab to="/login" label="로그인" style="max-width: 1000px"/>
         </q-tabs>
       </div>
@@ -149,22 +177,34 @@
 </template>
 
 <script>
+
+import predict_variables from '../pages/predict_variables.vue';
+import map from '../pages/map.vue';
+import { LocalStorage } from "quasar";
+
 export default { 
 
-    data () {
-      return {
-        
-        drawer: false,
-        leftDrawerOpen: false,
-        essentialLinks: linksData,
+  data () {
 
-        togithubpage: function() {
-        location.href="https://github.com/ryan-hwang-00/ai-forecast"
-        }
+    return {
 
-      }
+      store_name: store_name1,
+      drawer: false,
+      leftDrawerOpen: false,
+      essentialLinks: linksData
+       
+    },
+      store_name1 = localStorage.getItem('store_name') 
+      
+  },  
+
+  methods: {
+    togithubpage: function() {
+      location.href="https://github.com/ryan-hwang-00/ai-forecast"
     }
   }
+
+}
 
 </script>
 
