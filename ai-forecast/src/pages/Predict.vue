@@ -1,8 +1,8 @@
 <template>
-  <div class="justify-center q-ma-sm">
+  <!-- <div class="justify-center q-ma-sm"> -->
     <!-- 예측 변수 정보 chip -->
 
-    <div class="row justify-center q-col-gutter-sm q-py-sm">
+    <!-- <div class="row justify-center q-col-gutter-sm q-py-sm">
       <q-chip
         size="16px"
         color="red-6"
@@ -46,38 +46,40 @@
       >
         {{getflag}}
       </q-chip>
-    </div>
+    </div> -->
 
     <!-- 예측 값 그래프 및 테이블 -->
-    <div class="row justify-center q-col-gutter-sm q-py-sm">
+    <div class="row justify-center q-row-gutter-xs q-py-sm">
+      <!-- 예측 값 테이블 -->
+        <q-table
+          title="주간 예측량"
+          :data="data"
+          :columns="columns"
+          row-key="Date"
+          :pagination.sync="pagination"
+          class="col my-sticky-header-table"
+        />
       <!-- 예측 값 그래프 캐롯셀 -->
-      <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
         <q-carousel
           v-model="slide"
           transition-prev="scale"
           transition-next="scale"
           swipeable
           animated
-          control-color="white"
+          control-color="primary"
           navigation
           padding
           arrows
-          height="550px"
-          width="300px"
-          class="bg-primary text-white shadow-1 rounded-borders"
+          class="col bg-dark text-white rounded-borders my-sticky-header-chart"
         >
           <q-carousel-slide name="style" class="column no-wrap flex-center">
               <div class="bg-white rounded-borders">
                   <q-card-section class="bg-primary">
-                      <div class="row items-center no-wrap">
                           <div class="col">
                               <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
                           </div>
-                      </div>
                   </q-card-section>
-                  <div>
-                      <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
-                  </div>
+                  <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
               </div>
           </q-carousel-slide>
 
@@ -90,7 +92,7 @@
                           </div>
                       </div>
                   </q-card-section>
-                  <div style="width:800px">
+                  <div>
                       <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
                   </div>
               </div>
@@ -127,31 +129,8 @@
           </q-carousel-slide>
 
         </q-carousel>
-
-      </div>
-      <!-- 예측 값 테이블 -->
-      <div class="col-md-4 col-md-6 col-lg-6 col-lg-10 col-xs-12 q-pa-sm">
-        <q-table
-          title="주간 예측량"
-          :data="data"
-          :columns="columns"
-          height="550px"
-          width="500px"
-          row-key="Date"
-          :pagination.sync="pagination"
-        />
-      </div>
-
-       
-        <!-- 락형 -->
-        <div class="fit column content-center items-center q-pa-sm" style="max-width:1185px">
-          <div class="fit row justify-start">
-            <q-btn push color="primary" text-color="white" label="<<< 예측변수 선택하기" to="/predict_variables"/>
-          </div>
-        </div>
-    <!-- 락형 --> 
-</div>
-  </div>
+    </div>
+  <!-- </div> -->
 </template> 
 
 <script>
@@ -659,4 +638,15 @@ export default {
 </script>
 
 <style lang="sass">
+.my-sticky-header-table
+  /* height or max-height is important */
+  // overflow: auto
+  height: 540px
+  width: 400px
+.my-sticky-header-chart
+  /* height or max-height is important */
+  // overflow: auto
+  height: 542px
+  width: 600px
+  max-width: 60rem
 </style>
