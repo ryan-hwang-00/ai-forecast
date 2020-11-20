@@ -26,45 +26,46 @@
     </q-page-container>
 
     <q-footer bordered class="bg-grey-4 text-primary">
-      <q-tabs 
-      no-caps active-color="primary" 
-      indicator-color="transparent" 
-      class="text-grey" 
-      v-model="tab"
-      >
-        <eva-icon
-        class='q-pa-md' 
-        name="github" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
-        @click='togithubpage'
-        style="font-size:3px">
-        </eva-icon>
-
-        <eva-icon
-        class='q-pa-md' 
-        name="facebook" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
+      <q-toolbar>
+        <q-tabs 
+          no-caps active-color="primary" 
+          indicator-color="transparent" 
+          class="text-grey" 
+          v-model="tab"
         >
-        </eva-icon>
+          <eva-icon
+            class='q-pa-md' 
+            name="github" 
+            animation="pulse" 
+            fill="#1D2758"
+            width='30px'
+            height='30px'
+            @click='togithubpage'
+            style="font-size:3px">
+          </eva-icon>
 
-        <eva-icon
-        class='q-pa-md' 
-        name="car" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
-        >
-        </eva-icon>
-      </q-tabs>
+          <eva-icon
+            class='q-pa-md' 
+            name="facebook" 
+            animation="pulse" 
+            fill="#1D2758"
+            width='30px'
+            height='30px'
+          >
+          </eva-icon>
+
+          <eva-icon
+            class='q-pa-md' 
+            name="car" 
+            animation="pulse" 
+            fill="#1D2758"
+            width='30px'
+            height='30px'
+          >
+          </eva-icon>
+        </q-tabs>
+      </q-toolbar>
     </q-footer>
-
   </q-layout>
 </template>
 

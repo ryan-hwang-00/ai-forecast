@@ -24,7 +24,7 @@
               color="primary"
               label="예측정보 정의"
               to="/predict_variables"
-              size="18px"
+              size="13px"
             />
             <br>
             <q-btn
@@ -32,7 +32,7 @@
               color="primary"
               label="예측결과 조회"
               to="/Predict"
-              size="18px"
+              size="13px"
             />
 
             <br>
@@ -42,9 +42,11 @@
               :data="NavigatorData"
               :columns="NavigatorColumns"
               row-key="attribute"
+              hide-header
+              hide-bottom
               :pagination.sync="NavigatorPagination"
-              class="bg-grey-1 col my-sticky-header-table"
-              style = "padding: 10px 3px 2px 3px;"
+              class= "q-pa-md"
+              style = "padding: 7px 10px 7px 10px;"
             />
             
             </div>
@@ -69,18 +71,18 @@
 
 
 
-<!-- <q-img
-bordered="bordered"
-class="bg-grey-4 text-primary absolute-top"
-style="height: 150px">
-<div class="absolute-bottom bg-transparent">
-<q-avatar size="50px" class="q-mb-sm">
-<img src="../assets/Logo.png"></q-avatar>
+            <!-- <q-img
+            bordered="bordered"
+            class="bg-grey-4 text-primary absolute-top"
+            style="height: 150px">
+            <div class="absolute-bottom bg-transparent">
+            <q-avatar size="50px" class="q-mb-sm">
+            <img src="../assets/Logo.png"></q-avatar>
 
-<div class="text-black">TEAM NEOGURI</div>
-<div class="text-black">Navigator</div>
-</div>
-</q-img> -->
+            <div class="text-black">TEAM NEOGURI</div>
+            <div class="text-black">Navigator</div>
+            </div>
+            </q-img> -->
 
           <q-tabs
             no-caps="no-caps"
@@ -88,7 +90,9 @@ style="height: 150px">
             indicator-color="transparent"
             class="text-grey absolute-bottom"
             v-model="tab">
+
             <div class="fit row justify-center">
+
               <eva-icon
                 class='q-pa-md'
                 name="github"
@@ -99,6 +103,7 @@ style="height: 150px">
                 @click='togithubpage'
                 style="font-size:3px">
               </eva-icon>
+
               <eva-icon
                 class='q-pa-md'
                 name="facebook"
@@ -107,6 +112,7 @@ style="height: 150px">
                 width='30px'
                 height='30px'>
               </eva-icon>
+
               <eva-icon
                 class='q-pa-md'
                 name="car"
@@ -115,6 +121,7 @@ style="height: 150px">
                 width='30px'
                 height='30px'>
               </eva-icon>
+
             </div>
           </q-tabs>
 
@@ -204,9 +211,11 @@ export default {
 
       return {
         drawer: false,
+
         togithubpage: function() {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
         },
+
         NavigatorColumns: [
         {
           name: 'attribute',
@@ -224,6 +233,7 @@ export default {
           sortable: true
         }
         ],
+
         NavigatorData: [
           {
             attribute: "기준일",
