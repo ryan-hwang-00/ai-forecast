@@ -36,7 +36,7 @@
               style="width : 300px"
               label="예측정보 정의"
               to="/predict_variables"
-              
+
             />
 
             <br>
@@ -47,7 +47,6 @@
               style="width : 300px"
               label="예측결과 조회"
               to="/Predict"
-              
             />
 
             <br>
