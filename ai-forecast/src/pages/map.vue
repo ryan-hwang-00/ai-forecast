@@ -342,18 +342,20 @@
                     <q-card-actions align="center">
 
                         <q-btn 
-                        v-close-popup
-                        color="primary"
-                        @click="store1"
-                        to="/predict_variables" 
-                        label="해운대점" />
+                            v-close-popup
+                            color="primary"
+                            to="/predict_variables"
+                            @click="store1" 
+                            label="해운대점" 
+                        />
 
                         <q-btn 
-                        v-close-popup
-                        color="primary"
-                        to="/predict_variables" 
-                        @click='store2'
-                        label="광안리점" />
+                            v-close-popup
+                            color="primary"
+                            to="/predict_variables" 
+                            @click='store2'
+                            label="광안리점" 
+                        />
                     
                     </q-card-actions>     
                 </q-card>
@@ -368,13 +370,13 @@ import { Dialog } from 'quasar'
 import { LocalStorage } from "quasar";
 import axios from "axios";
 
+
 export default {
   data() {
     return {  
         title: '',
         id: '',
         store_code: '',
-
         card: false,
         card_seoul: false,
         card_kyeonggi:false,
@@ -403,15 +405,16 @@ export default {
     },
 
     store1: function() {
-
+        
         localStorage.store_code = '1';
-
+        localStorage.store_name = '해운대점';
+        
     },
 
     store2: function () {
 
         localStorage.store_code = '6';
-
+        localStorage.store_name = '광안리점';
     },
  }
 }

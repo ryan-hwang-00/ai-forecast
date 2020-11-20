@@ -49,7 +49,7 @@
     </div> -->
 
     <!-- 예측 값 그래프 및 테이블 -->
-    <div class="row justify-center q-row-gutter-xs q-py-sm">
+    <div class="row justify-center q-row-gutter-xs q-py-sm bg-grey-1" style = "padding: 50px 3px 50px 3px;">
       <!-- 예측 값 테이블 -->
         <q-table
           title="주간 예측량"
@@ -146,12 +146,14 @@ import DoughnutChart from '../components/charts/DoughnutChart.js'
 
 export default {
   name: "Predict",
+
   components: {
     BarChart,
     LineChart,
     PieChart,
     DoughnutChart
   },
+
   data () {
     return {
 
@@ -176,6 +178,7 @@ export default {
 
       // Table Data
       columns: [
+
         {
           name: 'Date',
           required: true,
@@ -194,6 +197,7 @@ export default {
           sortable: true
         }
       ],
+
       data: [
         {
           Date: this.getday1Date (),
@@ -224,6 +228,7 @@ export default {
           Predict_Value: this.getday7Value (),
         },
       ],
+
       pagination: {
         // sortBy: 'desc',
         // descending: false,
@@ -249,6 +254,7 @@ export default {
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
+        
         labels : [
             this.getday1Date(),
             this.getday2DateMMDD(),
@@ -258,6 +264,7 @@ export default {
             this.getday6DateMMDD(),
             this.getday7DateMMDD()
         ],
+
         datasets: [
           {
             label: 'Value',

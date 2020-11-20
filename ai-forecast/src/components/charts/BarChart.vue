@@ -65,10 +65,12 @@ export default {
                 }
             }]
           },
+
           title: {
             display: true,
             text: 'Predict Value'
           }
+          
         }
       })
       return myChart
