@@ -15,7 +15,7 @@
         <q-btn
           rounded
           standout
-          color="Navigator"
+          color="primary"
           label="Start"
           to="/map"
           size="20px"

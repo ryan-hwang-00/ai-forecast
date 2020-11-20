@@ -31,7 +31,8 @@
               color="primary"
               label="예측정보 정의"
               to="/predict_variables"
-              size="13px"
+              size="18px"
+              style='width:250px'
             />
             <br>
             <q-btn
@@ -39,7 +40,8 @@
               color="primary"
               label="예측결과 조회"
               to="/Predict"
-              size="13px"
+              size="18px"
+              style='width:250px'
             />
 
             <br>
