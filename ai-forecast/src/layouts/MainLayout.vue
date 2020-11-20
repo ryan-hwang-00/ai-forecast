@@ -3,20 +3,93 @@
     <q-header bordered class="bg-primary text-white" height-hint="98">
       <div class="fit column inline justify-between">
         <q-toolbar>
-          <q-toolbar-title class = "col absolute-top-left">
+          <q-toolbar-title
+            class ="col absolute-top-left">
 
-            <q-btn to="/">
-              <img id="image_large" src="~assets/Logo-large.png" height="98px" alt="" class="img-responsive"/>
-              <img id="image_small" src="~assets/Logo-medium.png" height="50px" alt="" class="img-responsive"/>
-            </q-btn>
+            <q-drawer
+              v-model="drawer"
+              show-if-above
+              :width="200"
+              :breakpoint="400"
+            >
+
+            <q-scroll-area bordered class="bg-grey-4 text-primary"
+                           style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+              <q-list padding>
+                <!-- <q-item clickable v-ripple>
+                  <q-item-section avatar>
+                    <q-icon name="inbox" />
+                  </q-item-section>
+                </q-item> -->
+              </q-list>
+            </q-scroll-area>
+
+            <q-img 
+              bordered class="bg-grey-4 text-primary absolute-top"
+              style="height: 150px">
+              <div class="absolute-bottom bg-transparent">
+                <q-avatar size="50px" class="q-mb-sm">
+                  <img src="../assets/Logo.png">
+                </q-avatar>
+                
+                <div class="text-black">TEAM NEOGURI</div>
+                <div class="text-black">Navigator</div>
+              </div>
+            </q-img>
+
+          <q-tabs 
+            no-caps active-color="primary" 
+            indicator-color="transparent" 
+            class="text-grey absolute-bottom" 
+            v-model="tab"
+          >
+        
+            <eva-icon
+              class='q-pa-md' 
+              name="github" 
+              animation="pulse" 
+              fill="#1D2758"
+              width='30px'
+              height='30px'
+              @click='togithubpage'
+              style="font-size:3px">
+            </eva-icon>
+
+            <eva-icon
+              class='q-pa-md' 
+              name="facebook" 
+              animation="pulse" 
+              fill="#1D2758"
+              width='30px'
+              height='30px'
+            >
+            </eva-icon>
+
+            <eva-icon
+              class='q-pa-md' 
+              name="car" 
+              animation="pulse" 
+              fill="#1D2758"
+              width='30px'
+              height='30px'
+              >
+            </eva-icon>
+
+          </q-tabs>
+        </q-drawer>
+           
+          <q-btn to="/">
+            <img id="image_large" src="~assets/Logo-large.png" height="98px" alt="" class="img-responsive"/>
+            <img id="image_small" src="~assets/Logo-medium.png" height="50px" alt="" class="img-responsive"/>
+          </q-btn>
             
           </q-toolbar-title>
         </q-toolbar>
 
-        <q-tabs class="col self-end">
-          <q-route-tab to="/register" label="회원가입" style="max-width: 100px"/>
+        <q-tabs class="col-auto self-end">
+          <q-route-tab to="/register" label="회원가입" style="max-width: 1000px"/>
           <q-separator vertical inset color="white"/>
-          <q-route-tab to="/login" label="로그인" style="max-width: 100px"/>
+          <q-route-tab to="/login" label="로그인" style="max-width: 1000px"/>
         </q-tabs>
       </div>
 
@@ -26,7 +99,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer 
+    <!-- <q-footer 
     bordered class="bg-grey-4 text-primary"
     >
 
@@ -69,23 +142,30 @@
         >
         </eva-icon>
 
-
       </q-tabs>
-    </q-footer>
+    </q-footer> -->
 
   </q-layout>
 </template>
 
 <script>
-export default {  
+export default { 
+
     data () {
       return {
+        
+        drawer: false,
+        leftDrawerOpen: false,
+        essentialLinks: linksData,
+
         togithubpage: function() {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
         }
+
       }
     }
   }
+
 </script>
 
 <style scoped>

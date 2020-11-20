@@ -5,7 +5,7 @@
     <div class="fit column content-center items-center justify-evenly"> 
       <!-- 전체 가운데 정렬 -->
     
-    
+ 
 
        <!-- div 2 -->
         <div class="fit row q-col-gutter-sm  q-py-sm content-center items-center justify-center" style="max-width:320px">  
@@ -68,6 +68,7 @@
         </q-list>
       </q-btn-dropdown> -->
 
+      
       <div class="q-py-xl" style="min-height:50px">
         <q-btn-dropdown color="primary"
         size="12px" 
@@ -244,12 +245,12 @@
     
 
       <!-- div22 -->
-      <div class="fit row q-pt-xl justify-start">
+      <!-- <div class="fit row q-pt-xl justify-start">
         <div class='fit row q-pt-xl'>
           <q-btn push color="primary" text-color="white" label="<< 매장선택" size="10px" to="/map"/>
         
       </div>
-      </div>
+      </div> -->
       <!-- /div22 -->
 
       

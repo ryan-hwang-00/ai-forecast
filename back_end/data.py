@@ -185,6 +185,7 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
     for sale in sales_columns:
         Outliers_to_drop = detect_outliers(df, 0, [sale])
         df.loc[Outliers_to_drop, sale] = np.percentile(df[[sale]], 75)*2
+        df.loc[Outliers_to_drop, 'outlier'+sale] = 1
 
     df_train = df.loc[:df[df['date'] == train_date].index[0]]
     df_test = df.loc[:df[df['date'] == predict_date].index[0]]
@@ -224,7 +225,12 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
                  'promotion_flag_1_ans', 'sale_qty_1_ans',
                  'promotion_flag_6_ans', 'sale_qty_6_ans',
                  'promotion_flag_1_jin', 'sale_qty_1_jin',
-                 'promotion_flag_6_jin', 'sale_qty_6_jin']
+                 'promotion_flag_6_jin', 'sale_qty_6_jin',
+                 'outliersale_qty_1_bac_2','outliersale_qty_6_bac_2',
+                 'outliersale_qty_1_bac_5','outliersale_qty_6_bac_5',
+                 'outliersale_qty_1_sin','outliersale_qty_6_sin',
+                 'outliersale_qty_1_ans','outliersale_qty_6_ans',
+                 'outliersale_qty_1_jin','outliersale_qty_6_jin']
 
     x_1_columns = ['year_1_bac_2', 'month_1_bac_2', 'day_1_bac_2',
                    'weekday_1_bac_2', 'weeknum_1_bac_2', 'weekend_1_bac_2', 'national_holiday_1_bac_2',
@@ -249,7 +255,7 @@ def sep_data(datasets='AI_Sale_ver3.0.csv',
                    'holi_name_추석_1_bac_2', 'holi_name_한글날_1_bac_2',
                    'holi_name_현충일_1_bac_2',
                    promotion]
-    # df.to_csv('AI_Sale_ver4.0.csv', encoding='euc-kr', columns=x_columns)
+    df.to_csv('AI_Sale_ver5.0.csv', encoding='euc-kr', columns=x_columns)
     return df, df_train, df_test, sale_qty, x_columns, x_1_columns
 
 
@@ -263,31 +269,36 @@ def sep_data2(train='AI_Sale_ver4.0.csv', test=merged_df,
               predict_date='2020-01-07'):
 
     meta_index = pd.DataFrame(
-        data=[[1, '백산수2.0L', 'promotion_flag_1_bac_2', 'sale_qty_1_bac_2', '1_bac2.hdf5'],
+        data=[[1, '백산수2.0L', 'promotion_flag_1_bac_2',
+               'sale_qty_1_bac_2', '1_bac2.hdf5','outliersale_qty_1_bac_2'],
               [1, '백산수500ml', 'promotion_flag_1_bac_5',
-               'sale_qty_1_bac_5', '1_bac5.hdf5'],
+               'sale_qty_1_bac_5', '1_bac5.hdf5','outliersale_qty_1_bac_5'],
               [1, '신라면멀티', 'promotion_flag_1_sin',
-               'sale_qty_1_sin', '1_sin.hdf5'],
+               'sale_qty_1_sin', '1_sin.hdf5','outliersale_qty_1_sin'],
               [1, '안성탕면멀티', 'promotion_flag_1_ans',
-               'sale_qty_1_ans', '1_ans.hdf5'],
+               'sale_qty_1_ans', '1_ans.hdf5','outliersale_qty_1_ans'],
               [1, '진라면멀티(순한맛)', 'promotion_flag_1_jin',
-               'sale_qty_1_jin', '1_jin.hdf5'],
+               'sale_qty_1_jin', '1_jin.hdf5','outliersale_qty_1_jin'],
               [6, '백산수2.0L', 'promotion_flag_6_bac_2',
-               'sale_qty_6_bac_2', '6_bac2.hdf5'],
+               'sale_qty_6_bac_2', '6_bac2.hdf5','outliersale_qty_6_bac_2'],
               [6, '백산수500ml', 'promotion_flag_6_bac_5',
-               'sale_qty_6_bac_5', '6_bac5.hdf5'],
+               'sale_qty_6_bac_5', '6_bac5.hdf5','outliersale_qty_6_bac_5'],
               [6, '신라면멀티', 'promotion_flag_6_sin',
-               'sale_qty_6_sin', ' 6_sin.hdf5'],
+               'sale_qty_6_sin', ' 6_sin.hdf5','outliersale_qty_6_sin'],
               [6, '안성탕면멀티', 'promotion_flag_6_ans',
-               'sale_qty_6_ans', '6_ans.hdf5'],
-              [6, '진라면멀티(순한맛)', 'promotion_flag_6_jin', 'sale_qty_6_jin', '6_jin.hdf5']],
-        columns=['store', 'product', 'promotion', 'sale', 'weight'])
+               'sale_qty_6_ans', '6_ans.hdf5','outliersale_qty_6_ans'],
+              [6, '진라면멀티(순한맛)', 'promotion_flag_6_jin',
+               'sale_qty_6_jin', '6_jin.hdf5','outliersale_qty_6_jin']],
+        columns=['store', 'product', 'promotion', 'sale', 'weight','outlier'])
 
     sale_qty = meta_index[(meta_index['store'] == store_code) & (
         meta_index['product'] == product_name)].iloc[0]['sale']
 
     promotion = meta_index[(meta_index['store'] == store_code) & (
         meta_index['product'] == product_name)].iloc[0]['promotion']
+
+    outlier = meta_index[(meta_index['store'] == store_code) & (
+        meta_index['product'] == product_name)].iloc[0]['outlier']
 
     past = pd.read_csv(train, encoding='euc-kr', index_col=0)
 
@@ -358,7 +369,12 @@ def sep_data2(train='AI_Sale_ver4.0.csv', test=merged_df,
                  'promotion_flag_1_ans', 'sale_qty_1_ans',
                  'promotion_flag_6_ans', 'sale_qty_6_ans',
                  'promotion_flag_1_jin', 'sale_qty_1_jin',
-                 'promotion_flag_6_jin', 'sale_qty_6_jin']
+                 'promotion_flag_6_jin', 'sale_qty_6_jin',
+                 'outliersale_qty_1_bac_2', 'outliersale_qty_6_bac_2',
+                 'outliersale_qty_1_bac_5', 'outliersale_qty_6_bac_5',
+                 'outliersale_qty_1_sin', 'outliersale_qty_6_sin',
+                 'outliersale_qty_1_ans', 'outliersale_qty_6_ans',
+                 'outliersale_qty_1_jin', 'outliersale_qty_6_jin']
 
     x_1_columns = ['year', 'month', 'day',
                    'weekday', 'weeknum', 'weekend', 'national_holiday',
@@ -382,7 +398,7 @@ def sep_data2(train='AI_Sale_ver4.0.csv', test=merged_df,
                    'holi_name_임시공휴일', 'holi_name_전국동시지방선거',
                    'holi_name_추석', 'holi_name_한글날',
                    'holi_name_현충일',
-                   promotion]
+                   promotion, outlier]
 
     return df, df_train, df_test, sale_qty, x_columns, x_1_columns
 
