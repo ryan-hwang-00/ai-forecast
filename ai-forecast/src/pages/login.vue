@@ -84,6 +84,7 @@ export default {
         location.href="http://localhost:8080/#/map";
       
           this.$q.dialog({
+            
           title: 'Congratulation!',
           message: '포커머신에 오신 것을 환영합니다!'
         

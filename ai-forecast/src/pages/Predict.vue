@@ -146,12 +146,14 @@ import DoughnutChart from '../components/charts/DoughnutChart.js'
 
 export default {
   name: "Predict",
+
   components: {
     BarChart,
     LineChart,
     PieChart,
     DoughnutChart
   },
+
   data () {
     return {
 
@@ -176,6 +178,7 @@ export default {
 
       // Table Data
       columns: [
+
         {
           name: 'Date',
           required: true,
@@ -194,6 +197,7 @@ export default {
           sortable: true
         }
       ],
+
       data: [
         {
           Date: this.getday1Date (),
@@ -224,6 +228,7 @@ export default {
           Predict_Value: this.getday7Value (),
         },
       ],
+
       pagination: {
         // sortBy: 'desc',
         // descending: false,
@@ -249,6 +254,7 @@ export default {
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
+        
         labels : [
             this.getday1Date(),
             this.getday2DateMMDD(),
@@ -258,6 +264,7 @@ export default {
             this.getday6DateMMDD(),
             this.getday7DateMMDD()
         ],
+
         datasets: [
           {
             label: 'Value',

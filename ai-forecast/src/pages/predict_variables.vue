@@ -213,22 +213,17 @@
 
       </div>
       <!-- /div_5 -->
-
-        
         <!-- div21 -->
         <div class="row q-pa-sm">
           <q-btn color="primary" text-color="white" size='15px' style="width : 126px" label="예측 결과보기" to="/Predict"/>
         </div>
         <!-- /div21 -->
-        
     </div>
     <!-- /div_10 -->
     </div>
     <!-- /div_30 -->
    
     
-    
-
   </main>
 </template>
 
@@ -283,6 +278,7 @@ export default {
     bac_2l () {
       console.log('Clicked item')
       localStorage.item_1 = '백산수2.0L';
+      store_
     },
 
     bac_500ml () {
