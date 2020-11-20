@@ -11,7 +11,7 @@
       <canvas id="horizontal-bar-chart"></canvas>
     </q-card-section>
   </q-card>
-</template>
+</template>``
 
 <script>
 import Chart from 'chart.js'
