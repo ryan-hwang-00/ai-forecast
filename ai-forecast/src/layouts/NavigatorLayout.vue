@@ -199,6 +199,7 @@
 <script>
 import { LocalStorage } from "quasar";
 import Predict from '../pages/Predict.vue'
+import predict_variables from '../pages/predict_variables.vue'
 
 export default { 
     components: {
