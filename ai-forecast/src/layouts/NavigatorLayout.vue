@@ -4,7 +4,7 @@
       <div class="fit column inline justify-between">
         <q-toolbar class="fit column inline justify-between">
           <!-- 로고 -->
-          <q-toolbar-title class = "col absolute-top-left">
+          <q-toolbar-title class = "col absolute-left">
             <q-btn flat to="/">
               <img id="image_large" src="~assets/Logo-large.png" height="50px" alt="" class="img-responsive"/>
               <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
