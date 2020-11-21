@@ -4,7 +4,7 @@
     style="min-height: 500px;"
   >
 
-  <div class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly" style = "padding: 180px 3px 80px 3px;">
+  <div class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly" style = "padding: 120px 3px 80px 3px;">
     <ul>
     <text-effect-1 ></text-effect-1>
     </ul>
