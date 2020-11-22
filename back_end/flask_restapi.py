@@ -12,7 +12,7 @@ from predictor import predictor
 
 from matplotlib import pyplot
 
-from testtrainer import start_train
+from testtrainer2 import start_train
 
 url = 'http://apis.data.go.kr/1360000/AsosDalyInfoService/getWthrDataList'
 key = "NnpxwR7oA3LxPCsLEMG2CcvrkIZRLw0%2BHmz2ClUcOfaKvAMlySAiadvjQKqyQu0HorPtqAGZpj%2Bxfe6iSFyDKw%3D%3D"
@@ -90,7 +90,7 @@ def seven_days():
     # 11/13 오전 11시 45분 수정
 
     # merged_df, days_name = date_info(start_date, event_info, break_info)
-    merged_df = date_info(start_date, event_info, break_info)
+    merged_df = date_info(start_date, event_info, break_info, special_info)
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
@@ -136,6 +136,7 @@ def seven_days():
 def trainer():
 
     arrived_data = request.get_json()
+
     print('arrived_data : ', arrived_data)
 
     start_date = arrived_data['selected_date']
@@ -154,6 +155,19 @@ def trainer():
     print('event_info >>>>', event_info)
     #     할인정보 끝
 
+    #     대량주문 정보 시작
+    pre_special_info = arrived_data['special_info']
+    print('pre_special_info >>>>>>', pre_special_info)
+
+    special_info = []
+    for i in pre_special_info.keys():
+
+        if pre_special_info[i] == 'true':
+            special_info.append(i)
+
+    print('special_info >>>>', special_info)
+    #     대량주문 정보 끝
+
     break_info = arrived_data['break_info']
     store_info = arrived_data['store_info']
 
@@ -161,8 +175,13 @@ def trainer():
     print('store_info>>> ', store_info)
 
     product_info = arrived_data['item_info']
+    print('product_info>>> ', product_info)
+    # 11/13 오전 11시 45분 수정
 
-    merged_df = date_info(start_date, event_info, break_info)
+    # merged_df, days_name = date_info(start_date, event_info, break_info)
+    merged_df = date_info(start_date, event_info, break_info, special_info)
+
+    # print(merged_df)
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
@@ -185,6 +204,7 @@ def trainer():
     score = ready_train.trainer()
 
     return {'loss': score[0], 'mse': score[1]}
+    # return 'flask end'
 
 
 if __name__ == "__main__":
