@@ -366,10 +366,10 @@
 </template>
 
 <script>
-import { Dialog } from 'quasar'
+import { Dialog } from 'quasar';
 import { LocalStorage } from "quasar";
 import axios from "axios";
-
+import EventBus from '../components/eventBus.js';
 
 export default {
   data() {
@@ -408,6 +408,10 @@ export default {
         
         localStorage.store_code = '1';
         localStorage.store_name = '해운대점';
+        console.log('Clicked item')
+
+        const store1 = '해운대점';
+        EventBus.$emit("pushData_1", store1);
         
     },
 
@@ -415,6 +419,9 @@ export default {
 
         localStorage.store_code = '6';
         localStorage.store_name = '광안리점';
+
+        const store2 = '광안리점';
+        EventBus.$emit("pushData_2", store2);
     },
  }
 }
