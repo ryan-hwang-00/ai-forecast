@@ -200,13 +200,9 @@
 
 <script>
 import { LocalStorage } from "quasar";
-<<<<<<< HEAD
 import Predict from '../pages/Predict.vue'
 import predict_variables from '../pages/predict_variables.vue'
-=======
-import Predict from '../pages/Predict.vue';
 import EventBus from '../components/eventBus.js';
->>>>>>> 3912b52448e0f0c523fe13ef3840f10f2e9149c1
 
 export default { 
 
@@ -274,7 +270,7 @@ export default {
 
           {
             attribute: "상품명",
-            Value: LocalStorage.getItem("item_1"),
+            Value: '',
           },
 
           {
@@ -284,7 +280,7 @@ export default {
 
           {
             attribute: "휴일 구분",
-            Value: this.getflag2,
+            Value: '',
           }
         ],
 
@@ -319,6 +315,19 @@ export default {
       
       },
     );
+
+
+        // console.log('NavigatorData', this.NavigatorData)
+        EventBus.$on("product_bus", bus_product => {
+        console.log('product_bus>>>>>', bus_product);
+        this.NavigatorData[2].Value = bus_product;
+    });
+
+         EventBus.$on("break_bus", bus_break => {
+        console.log('break_bus>>>>>', bus_break);
+        this.NavigatorData[4].Value = bus_break;
+    });
+
     
   },
     

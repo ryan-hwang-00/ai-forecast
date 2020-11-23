@@ -286,6 +286,7 @@ import { QSpinnerGears } from 'quasar'
 import BarChart from '../components/charts/BarChart'
 // import Predict from '../pages/Predict'
 import axios from "axios";
+import EventBus from '../components/eventBus.js';
 
 export default {
   data () {
@@ -354,25 +355,74 @@ export default {
 
     },
 
-    no_event () {
-      console.log('Clicked event_info')
-      localStorage.event_1 = '정상가';
+
+
+    bac_2l () {
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수2.0L';
+      const item_1 = '백산수2.0L';
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    bac_500ml () {
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수500ml';
+      const item_1 = '백산수500ml';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    sin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '신라면멀티';
+      const item_1 = '신라면멀티';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    ansung_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '안성탕면멀티';
+      const item_1 = '안성탕면멀티';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    jin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '진라면멀티(순한맛)';
+      const item_1 = '진라면멀티(순한맛)';
+      
+      EventBus.$emit("product_bus", item_1);
+
     },
 
 
-    event_on () {
-      console.log('Clicked event_info')
-      localStorage.event_1 = '할인진행';
-    },
+
+    // no_event () {
+    //   console.log('Clicked event_info')
+    //   localStorage.event_1 = '정상가';
+    // },
+
+
+    // event_on () {
+    //   console.log('Clicked event_info')
+    //   localStorage.event_1 = '할인진행';
+    // },
 
     normal_state () {
       console.log('Clicked break_info')
       localStorage.break_1 = 0;
+      const break_bus = '정상영업';      
+      EventBus.$emit("break_bus", break_bus);
     },
 
     break_day () {
       console.log('Clicked break_info')
       localStorage.break_1 = 1;
+
+      const break_bus = '일요휴무';      
+      EventBus.$emit("break_bus", break_bus);
 
     },
 
