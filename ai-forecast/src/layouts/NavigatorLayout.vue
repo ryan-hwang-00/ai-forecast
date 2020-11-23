@@ -63,7 +63,9 @@
             indicator-color="transparent"
             class="text-grey absolute-bottom"
           >
+
             <div class="fit row justify-center">
+
               <eva-icon
                 class='q-pa-md'
                 name="github"
@@ -156,6 +158,7 @@ export default {
       Predict,
     },
     data () {
+
       console.log("jy      data", )
       if (LocalStorage.getItem("break_1") === "1") {
         this.getflag2 = "일요일";
@@ -168,6 +171,7 @@ export default {
         this.getstore2 = "광안리점";
       };
       this.getdate2 = LocalStorage.getItem("date");
+
       return {
         drawer: false,
         togithubpage: function() {
