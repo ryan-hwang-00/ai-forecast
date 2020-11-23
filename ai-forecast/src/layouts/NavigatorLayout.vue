@@ -234,6 +234,11 @@ export default {
           {
             attribute: "휴일 구분",
             Value: '',
+          },
+          
+          {
+            attribute: "대량 주문",
+            Value: '',
           }
         ],
 

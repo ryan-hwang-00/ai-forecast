@@ -55,85 +55,84 @@
     <div class="fit row  justify-around q-row-gutter-xs q-py-sm bg-grey-1">
       <!-- 예측 값 테이블 -->
         <div class="row bg-grey-1 q-pa-md">
-        <q-table  
-          :data="data"
-          :columns="columns"
-          row-key="Date"
-          hide-bottom
-          :pagination.sync="pagination"
-          class="bg-grey-1 my-sticky-table q-pa-md shadow-3"
-          style = "padding: 10px 3px 2px 3px;"
-        />
+          <q-table  
+            :data="data"
+            :columns="columns"
+            row-key="Date"
+            hide-bottom
+            :pagination.sync="pagination"
+            class="bg-grey-1 my-sticky-table q-pa-md shadow-3"
+          />
         </div>
       <!-- 예측 값 그래프 캐롯셀 -->
         <div class="row bg-grey-1 q-pa-md">
-        <q-carousel
-          v-model="slide"
-          transition-prev="scale"
-          transition-next="scale"
-          swipeable
-          animated
-          control-color="primary"
-          navigation
-          padding
-          arrows
-          class="bg-grey-1 text-white shadow-3 rounded-borders my-sticky-carousel q-pa-sm"
-        >
-          <q-carousel-slide name="style" class="row justify-center items-center">
-              <!-- <div class="bg-grey-1 rounded-borders"> -->
-                  <!-- <q-card-section class="bg-primary">
-                          <div class="col">
-                              <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
-                          </div>
-                  </q-card-section> -->
-                  <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
-              <!-- </div> -->
-          </q-carousel-slide>
+          <q-carousel
+            v-model="slide"
+            transition-prev="scale"
+            transition-next="scale"
+            swipeable
+            animated
+            control-color="primary"
+            navigation
+            padding
+            arrows
+            class="bg-grey-1 text-white shadow-3 rounded-borders my-sticky-carousel q-pa-sm"
+          >
+            <q-carousel-slide name="style" class="row justify-center items-center">
+                <!-- <div class="bg-grey-1 rounded-borders"> -->
+                    <!-- <q-card-section class="bg-primary">
+                            <div class="col">
+                                <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
+                            </div>
+                    </q-card-section> -->
+                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+                <!-- </div> -->
+            </q-carousel-slide>
 
-          <q-carousel-slide name="Line" class="column flex-center">
-              <div class="bg-grey-1 rounded-borders">
-                  <!-- <q-card-section class="bg-primary">
-                      <div class="row items-center no-wrap">
-                          <div class="col">
-                              <div class="text-h6 text-white text-center text-Do-Hyeon">Line Chart</div>
-                          </div>
-                      </div>
-                  </q-card-section> -->
-                  <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
-              </div>
-          </q-carousel-slide>
+            <q-carousel-slide name="Line" class="column flex-center">
+                <div class="bg-grey-1 rounded-borders">
+                    <!-- <q-card-section class="bg-primary">
+                        <div class="row items-center no-wrap">
+                            <div class="col">
+                                <div class="text-h6 text-white text-center text-Do-Hyeon">Line Chart</div>
+                            </div>
+                        </div>
+                    </q-card-section> -->
+                    <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+                </div>
+            </q-carousel-slide>
 
-          <q-carousel-slide name="ef" class="column no-wrap flex-center">
-              <div class="bg-grey-1 rounded-borders">
-                  <!-- <q-card-section class="bg-primary">
-                      <div class="row items-center no-wrap">
-                          <div class="col">
-                              <div class="text-h6 text-white text-center text-Do-Hyeon">Doughnut Chart</div>
-                          </div>
-                      </div>
-                  </q-card-section> -->
-                  <div>
-                      <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
-                  </div>
-              </div>
-          </q-carousel-slide>
+            <q-carousel-slide name="ef" class="column no-wrap flex-center">
+                <div class="bg-grey-1 rounded-borders">
+                    <!-- <q-card-section class="bg-primary">
+                        <div class="row items-center no-wrap">
+                            <div class="col">
+                                <div class="text-h6 text-white text-center text-Do-Hyeon">Doughnut Chart</div>
+                            </div>
+                        </div>
+                    </q-card-section> -->
+                    <div>
+                        <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
+                    </div>
+                </div>
+            </q-carousel-slide>
 
-          <q-carousel-slide name="fe" class="column no-wrap flex-center">
-              <div class="bg-grey-1 rounded-borders">
-                  <!-- <q-card-section class="bg-primary">
-                      <div class="row items-center no-wrap">
-                          <div class="col">
-                              <div class="text-h6 text-white text-center text-Do-Hyeon">Pie Chart</div>
-                          </div>
-                      </div>
-                  </q-card-section> -->
-                  <div>
-                      <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
-                  </div>
-              </div>
-          </q-carousel-slide>
+            <q-carousel-slide name="fe" class="column no-wrap flex-center">
+                <div class="bg-grey-1 rounded-borders">
+                    <!-- <q-card-section class="bg-primary">
+                        <div class="row items-center no-wrap">
+                            <div class="col">
+                                <div class="text-h6 text-white text-center text-Do-Hyeon">Pie Chart</div>
+                            </div>
+                        </div>
+                    </q-card-section> -->
+                    <div>
+                        <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
+                    </div>
+                </div>
+            </q-carousel-slide>
 
-        </q-carousel>
+          </q-carousel>
         </div>
     </div>
   </div>
@@ -212,7 +211,6 @@ export default {
 
         },
       ],
-
       data: [
         {
           Date: this.getday1Date (),
@@ -250,7 +248,6 @@ export default {
           // Weather: A,
         },
       ],
-
       pagination: {
         // sortBy: 'desc',
         // descending: false,
@@ -276,7 +273,6 @@ export default {
   methods: {
     fillDataBar () {
       this.datacollectionBar = {
-        
         labels : [
             this.getday1Date(),
             this.getday2DateMMDD(),
@@ -286,7 +282,6 @@ export default {
             this.getday6DateMMDD(),
             this.getday7DateMMDD()
         ],
-
         datasets: [
           {
             label: 'Value',
@@ -596,13 +591,13 @@ export default {
 .my-sticky-table
   /* height or max-height is important */
   // overflow: auto
-  height: 550px
+  height: 520px
   width: 300px
   // max-width: 15rem
 .my-sticky-carousel
   /* height or max-height is important */
   // overflow: auto
-  height: 550px
+  height: 520px
   width: 700px
   // max-width: 60rem
 .my-sticky-chart
