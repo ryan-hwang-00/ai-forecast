@@ -226,7 +226,7 @@
       </div>               
         <!-- /div 4 -->
         
-        </div>         
+        </div>
         <!-- /div_3 -->
 
     </div>
@@ -287,7 +287,6 @@
   <div class="q-pa-md"></div>
 
 
-   
     
   </main>
 </template>
@@ -301,7 +300,17 @@ import BarChart from '../components/charts/BarChart'
 import axios from "axios";
 import EventBus from '../components/eventBus.js';
 
+// document.onclick = processClick;
+
+
+
+
+
+
 export default {
+
+
+
   data () {
     return {
 
@@ -337,6 +346,10 @@ export default {
   },
 
   methods: {
+
+    processClick () {
+      console.log('>>>>>>>>>mouse_clicked')
+    },
 
     bac_2l () {
       console.log('Clicked item')
@@ -439,6 +452,10 @@ export default {
     optionsFn (model1) {
       return model1 >= '2019/11/01' && model1 <= '2019/12/31'
     },
+
+    
+
+    
 
 
 
