@@ -148,6 +148,7 @@ import DoughnutChart from '../components/charts/DoughnutChart.js'
 
 // api.openweathermap.org/data/2.5/weather?q=Busan&appid=a21ee35df7c2a4aec3f6efc14cd346bd
 
+
 export default {
   name: "Predict",
 
@@ -271,6 +272,13 @@ export default {
   // },
 
   methods: {
+    getAxios: function () {
+      axios.get('api.openweathermap.org/data/2.5/weather?q=Busan&appid=a21ee35df7c2a4aec3f6efc14cd346bd&units=metric')
+        .then((response) => {
+          this.axiosGetData = JSON.stringify(response.data)
+        })
+    },
+
     fillDataBar () {
       this.datacollectionBar = {
         labels : [
