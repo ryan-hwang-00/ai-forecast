@@ -25,7 +25,7 @@
           show-if-above="show-if-above"
           content-class="bg-grey-4"
           :width="350"
-          :breakpoint="400"
+          :breakpoint="444"
           >
             <div class="fit column content-center" 
               style = "padding: 10px 10px 2px 10px;">
