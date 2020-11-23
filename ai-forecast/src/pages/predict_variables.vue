@@ -169,13 +169,13 @@
           <div class="row no-wrap q-pa-md" >
             <div class="column">
               <div class="text-h6 q-mb-lg" >출하 요일 선택</div>
-              <q-toggle v-model="so_event_mon" label="월요일 할인" />
-              <q-toggle v-model="so_event_tue" label="화요일 할인" />
-              <q-toggle v-model="so_event_wen" label="수요일 할인" />
-              <q-toggle v-model="so_event_thu" label="목요일 할인" />
-              <q-toggle v-model="so_event_fri" label="금요일 할인" />
-              <q-toggle v-model="so_event_sat" label="토요일 할인" />
-              <q-toggle v-model="so_event_sun" label="일요일 할인" />
+              <q-toggle v-model="so_event_mon" label="월요일" />
+              <q-toggle v-model="so_event_tue" label="화요일" />
+              <q-toggle v-model="so_event_wen" label="수요일" />
+              <q-toggle v-model="so_event_thu" label="목요일" />
+              <q-toggle v-model="so_event_fri" label="금요일" />
+              <q-toggle v-model="so_event_sat" label="토요일" />
+              <q-toggle v-model="so_event_sun" label="일요일" />
 
             </div>
 
