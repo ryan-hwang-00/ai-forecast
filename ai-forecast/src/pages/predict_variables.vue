@@ -320,9 +320,6 @@ export default {
     }
 
       this.selected_date={model1}
-      this.rak_size='15px'
-      this.test_size='20px'
-      this.test_size2='5px'
 
   },
 
