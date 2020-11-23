@@ -4,7 +4,9 @@
       <div class="fit column inline justify-between">
         <q-toolbar class="fit column inline justify-between">
           <!-- 로고 -->
+
           <q-toolbar-title class = "col absolute-left">
+
             <q-btn flat to="/">
               <img id="image_large" src="~assets/Logo-large.png" height="50px" alt="" class="img-responsive"/>
               <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
@@ -198,13 +200,17 @@
 
 <script>
 import { LocalStorage } from "quasar";
-import Predict from '../pages/Predict.vue'
+import Predict from '../pages/Predict.vue';
+import EventBus from '../components/eventBus.js';
 
 export default { 
+
     components: {
       Predict,
     },
+
     data () {
+
       console.log("jy      data", )
       if (LocalStorage.getItem("break_1") === "1") {
         this.getflag2 = "일요일";
@@ -227,7 +233,9 @@ export default {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
         },
 
+
         NavigatorColumns: [
+
         {
           name: 'attribute',
           required: true,
@@ -237,36 +245,44 @@ export default {
           // classes: 'bg-grey-2 ellipsis',
           // headerClasses: 'bg-grey-2 ellipsis'
         },
+
         {
           name: 'Value',
-          align: 'left',
+          align: 'right',
           field: 'Value',
           sortable: true
         }
+
         ],
 
         NavigatorData: [
+
           {
             attribute: "기준일",
             Value: LocalStorage.getItem("date"),
           },
+
           {
             attribute: "매장명",
-            Value: this.getstore2,
+            Value: '',
           },
+
           {
             attribute: "상품명",
             Value: LocalStorage.getItem("item_1"),
           },
+
           {
             attribute: "행사 구분",
             Value: LocalStorage.getItem("edate"),
           },
+
           {
             attribute: "휴일 구분",
             Value: this.getflag2,
           }
         ],
+
         pagination: {
           // sortBy: 'desc',
           // descending: false,
@@ -278,44 +294,65 @@ export default {
     },
 
     created() {
-      console.log("jy    created", )
-      data ()
-      console.log(this.getstore2)
-    },
-    updated () {
-      console.log("jy      updated", )
-      updateArray ()
-      // data()
-      // this.getflag2
-      // this.getdate2
-      // this.getstore2
-       if (LocalStorage.getItem("break_1") === "1") {
-        this.getflag2 = "일요일";
-      } else if (LocalStorage.getItem("break_1")  === "0") {
-        this.getflag2 = "휴무일 없음";
-      };
-
-      if (LocalStorage.getItem("store_code") === "1") {
-        this.getstore2 = "해운대점";
-      } else if (LocalStorage.getItem("store_code")  === "6") {
-        this.getstore2 = "광안리점";
-      };
-
-      this.getdate2 = LocalStorage.getItem("date");
 
 
-      console.log(this.getstore2)
-    },
-    methods: {
-      updateArray () {
-          this.NavigatorData[2]       
-          if (this.NavigatorData[2] === "1") {
-          this.getstore2 = "해운대점";
-          } else if (this.NavigatorData[2]  === "6") {
-            this.getstore2 = "광안리점";
-          };
-      }
-    }
+      console.log('NavigatorData', this.NavigatorData)
+
+      EventBus.$on("pushData_1", payload => {
+
+        console.log('payload', payload);
+        this.NavigatorData[1].Value = payload;
+      
+      },
+      
+    );
+
+      EventBus.$on("pushData_2", payload => {
+
+        console.log('payload', payload);
+        this.NavigatorData[1].Value = payload;
+      
+      },
+    );
+    
+  },
+    
+    // updated () {
+    //   console.log("jy      updated", )
+    //   updateArray ()
+    //   // data()
+    //   // this.getflag2
+    //   // this.getdate2
+    //   // this.getstore2
+    //    if (LocalStorage.getItem("break_1") === "1") {
+    //     this.getflag2 = "일요일";
+    //    } else if (LocalStorage.getItem("break_1")  === "0") {
+    //     this.getflag2 = "휴무일 없음";
+    //    };
+
+    //    if (LocalStorage.getItem("store_code") === "1") {
+    //     this.getstore2 = "해운대점";
+    //    } else if (LocalStorage.getItem("store_code")  === "6") {
+    //     this.getstore2 = "광안리점";
+    //    };
+
+    //    this.getdate2 = LocalStorage.getItem("date");
+
+
+    //   console.log(this.getstore2)
+    // },
+
+    // methods: {
+    //   updateArray () {
+    //       this.NavigatorData[2]       
+    //       if (this.NavigatorData[2] === "1") {
+    //       this.getstore2 = "해운대점";
+    //       } else if (this.NavigatorData[2]  === "6") {
+    //         this.getstore2 = "광안리점";
+    //       };
+    //   }
+    // }
+
   }
 </script>
 

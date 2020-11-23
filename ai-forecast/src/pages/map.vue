@@ -400,57 +400,68 @@
 </template>
 
 <script>
-    import {Dialog} from 'quasar'
-    import {LocalStorage} from "quasar";
-    import axios from "axios";
 
-    export default {
-        data() {
-            return {
-                title: '',
-                id: '',
-                store_code: '',
-                card: false,
-                card_seoul: false,
-                card_kyeonggi: false,
-                card_daegu: false,
-                card_kyeongsangdo: false,
-                card_jeju: false,
-                card_jeonla: false,
-                card_daejeon: false,
-                card_chungcheong: false,
-                card_kangwon: false,
-                card_incheon: false,
-                card_kyeonggi: false,
-                card_ulsan: false,
-                card_sejong: false,
-                card_kwangju: false
+import { Dialog } from 'quasar';
+import { LocalStorage } from "quasar";
+import axios from "axios";
+import EventBus from '../components/eventBus.js';
 
-            }
-        },
-
-        methods: {
-
-            getInfo(e) {
-
-                this.title = e.target.id
-
-            },
-
-            store1: function () {
-
-                localStorage.store_code = '1';
-                localStorage.store_name = '해운대점';
-
-            },
-
-            store2: function () {
-
-                localStorage.store_code = '6';
-                localStorage.store_name = '광안리점';
-            }
-        }
+export default {
+  data() {
+    return {  
+        title: '',
+        id: '',
+        store_code: '',
+        card: false,
+        card_seoul: false,
+        card_kyeonggi:false,
+        card_daegu:false,
+        card_kyeongsangdo:false,
+        card_jeju:false,
+        card_jeonla:false,
+        card_daejeon:false,
+        card_chungcheong:false,
+        card_kangwon:false,
+        card_incheon:false,
+        card_kyeonggi:false,
+        card_ulsan:false,
+        card_sejong:false,
+        card_kwangju:false
+    
     }
+  },
+
+  methods: {
+      
+    getInfo(e) {
+
+      this.title = e.target.id
+      
+    },
+
+    store1: function() {
+        
+        localStorage.store_code = '1';
+        localStorage.store_name = '해운대점';
+        console.log('Clicked item')
+
+        const store1 = '해운대점';
+        EventBus.$emit("pushData_1", store1);
+        
+    },
+
+    store2: function () {
+
+        localStorage.store_code = '6';
+        localStorage.store_name = '광안리점';
+
+        const store2 = '광안리점';
+        EventBus.$emit("pushData_2", store2);
+    },
+ }
+}
+
+
 </script>
 
 <style scoped="scoped">
