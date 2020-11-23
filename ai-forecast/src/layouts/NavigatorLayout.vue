@@ -62,7 +62,6 @@
             active-color="primary"
             indicator-color="transparent"
             class="text-grey absolute-bottom"
-            v-model="tab"
           >
             <div class="fit row justify-center">
               <eva-icon

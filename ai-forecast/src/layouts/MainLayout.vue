@@ -27,8 +27,7 @@
       <q-tabs 
       no-caps active-color="primary" 
       indicator-color="transparent" 
-      class="text-grey" 
-      v-model="tab"
+      class="text-grey"
       >
           <eva-icon
             class='q-pa-md center' 
