@@ -85,7 +85,7 @@
                                 <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
                             </div>
                     </q-card-section> -->
-                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar" style="width : 400px"></bar-chart>
                 <!-- </div> -->
             </q-carousel-slide>
 
