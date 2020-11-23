@@ -246,7 +246,7 @@ export default {
           // sortBy: 'desc',
           // descending: false,
           page: 1,
-          rowsPerPage: 5,
+          rowsPerPage: 6,
           // rowsNumber: 10
         },
       }
