@@ -182,12 +182,9 @@ export default {
 
       return {
         drawer: false,
-
         togithubpage: function() {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
         },
-
-
         NavigatorColumns: [
         {
           name: 'attribute',
@@ -231,7 +228,6 @@ export default {
             Value: '',
           }
         ],
-
         NavigatorPagination: {
           // sortBy: 'desc',
           // descending: false,
@@ -243,79 +239,29 @@ export default {
     },
 
     created() {
-
-
-      console.log('NavigatorData', this.NavigatorData)
-
+      // console.log('NavigatorData', this.NavigatorData)
       EventBus.$on("pushData_1", payload => {
-
         console.log('payload', payload);
         this.NavigatorData[1].Value = payload;
-      
       },
-      
     );
-
       EventBus.$on("pushData_2", payload => {
-
         console.log('payload', payload);
         this.NavigatorData[1].Value = payload;
-      
       },
     );
-
-
-        // console.log('NavigatorData', this.NavigatorData)
-        EventBus.$on("product_bus", bus_product => {
+      EventBus.$on("product_bus", bus_product => {
         console.log('product_bus>>>>>', bus_product);
         this.NavigatorData[2].Value = bus_product;
-    });
-
-         EventBus.$on("break_bus", bus_break => {
+      },
+    );
+      EventBus.$on("break_bus", bus_break => {
         console.log('break_bus>>>>>', bus_break);
         this.NavigatorData[4].Value = bus_break;
-    });
-
-    
+      },
+    );
   },
-    
-    // updated () {
-    //   console.log("jy      updated", )
-    //   updateArray ()
-    //   // data()
-    //   // this.getflag2
-    //   // this.getdate2
-    //   // this.getstore2
-    //    if (LocalStorage.getItem("break_1") === "1") {
-    //     this.getflag2 = "일요일";
-    //    } else if (LocalStorage.getItem("break_1")  === "0") {
-    //     this.getflag2 = "휴무일 없음";
-    //    };
-
-    //    if (LocalStorage.getItem("store_code") === "1") {
-    //     this.getstore2 = "해운대점";
-    //    } else if (LocalStorage.getItem("store_code")  === "6") {
-    //     this.getstore2 = "광안리점";
-    //    };
-
-    //    this.getdate2 = LocalStorage.getItem("date");
-
-
-    //   console.log(this.getstore2)
-    // },
-
-    // methods: {
-    //   updateArray () {
-    //       this.NavigatorData[2]       
-    //       if (this.NavigatorData[2] === "1") {
-    //       this.getstore2 = "해운대점";
-    //       } else if (this.NavigatorData[2]  === "6") {
-    //         this.getstore2 = "광안리점";
-    //       };
-    //   }
-    // }
-
-  }
+}
 </script>
 
 <style scoped> 
