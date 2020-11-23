@@ -2,17 +2,17 @@
   <q-layout view="hHh LpR fff">
     <q-header bordered="bordered" class="bg-primary text-white" height-hint="98">
       <div class="fit column inline justify-between">
-        <q-toolbar class="fit column inline justify-between">
+        <q-toolbar class="fit column inline justify-between" height="70px">
           <!-- 로고 -->
-          <q-toolbar-title class = "col absolute-left">
+         <q-toolbar-title class = "col absolute-left">
             <q-btn flat to="/">
-              <img id="image_large" src="~assets/Logo-large.png" height="50px" alt="" class="img-responsive"/>
-              <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
+              <img id="image_large" src="~assets/Logo-white.png" height="40px" alt="" class="img-responsive"/>
+              <img id="image_small" src="~assets/Logo-layout.png" height="25px" alt="" class="img-responsive"/>
             </q-btn>
           </q-toolbar-title>
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
-            <q-route-tab to="/register" label="회원가입" style="max-width: 70px"/>
+            <q-route-tab to="/register" label="회원가입" style="max-width: 70px; height: 85px;"/>
             <!-- <q-separator vertical inset color="white"/> -->
             <q-route-tab to="/login" label="로그인" style="max-width: 70px"/>
           </q-tabs>
@@ -23,22 +23,17 @@
           show-if-above="show-if-above"
           content-class="bg-grey-4"
           :width="350"
-          :breakpoint="400"
+          :breakpoint="444"
           >
-            <div class="fit column content-center" 
-              style = "padding: 10px 10px 2px 10px;">
-
+          <div class="fit column content-center" style = "padding: 10px 10px 2px 10px;">
             <q-btn
-            
               standout
               color="primary"
               size="15px" 
               style="width : 300px"
               label="예측정보 정의"
               to="/predict_variables"
-
             />
-
             <br>
             <q-btn
               standout
@@ -48,10 +43,8 @@
               label="예측결과 조회"
               to="/Predict"
             />
-
             <br>
             <span class="text-h6 text-dark">조회조건</span>
-            
             <q-table
               :data="NavigatorData"
               :columns="NavigatorColumns"
@@ -62,48 +55,13 @@
               class= "q-pa-md"
               style = "padding: 7px 1px 7px 1px;"
             />
-            
-            </div>
-            <!-- <div
-              rounded
-              standout
-              class="">
-              <span>
-              {{getstore}}
-              </span>
-            </div> -->
-          <!-- <q-scroll-area
-            bordered="bordered"
-            class="bg-grey-4 text-primary"
-            style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-            <q-list padding="padding">
-                <q-item clickable v-ripple> <q-item-section avatar> <q-icon name="inbox" />
-                </q-item-section> </q-item> -->
-            <!-- </q-list> -->
-
-          <!-- </q-scroll-area> -->
-
-
-
-            <!-- <q-img
-            bordered="bordered"
-            class="bg-grey-4 text-primary absolute-top"
-            style="height: 150px">
-            <div class="absolute-bottom bg-transparent">
-            <q-avatar size="50px" class="q-mb-sm">
-            <img src="../assets/Logo.png"></q-avatar>
-
-            <div class="text-black">TEAM NEOGURI</div>
-            <div class="text-black">Navigator</div>
-            </div>
-            </q-img> -->
+          </div>
 
           <q-tabs
             no-caps="no-caps"
             active-color="primary"
             indicator-color="transparent"
             class="text-grey absolute-bottom"
-            v-model="tab"
           >
 
             <div class="fit row justify-center">
@@ -136,10 +94,8 @@
                 width='30px'
                 height='30px'>
               </eva-icon>
-
             </div>
           </q-tabs>
-
         </q-drawer>
       </div>
     </q-header>
@@ -151,7 +107,6 @@
     <!-- <q-footer 
     bordered class="bg-grey-4 text-primary"
     >
-
       <q-tabs 
       no-caps active-color="primary" 
       indicator-color="transparent" 
@@ -170,7 +125,6 @@
         @click='togithubpage'
         style="font-size:3px">
         </eva-icon>
-
         <eva-icon
         class='q-pa-md' 
         name="facebook" 
@@ -180,7 +134,6 @@
         height='30px'
         >
         </eva-icon>
-
         <eva-icon
         class='q-pa-md' 
         name="car" 
@@ -190,7 +143,6 @@
         height='30px'
         >
         </eva-icon>
-
       </q-tabs>
     </q-footer> -->
   </q-layout>
@@ -199,34 +151,16 @@
 <script>
 import { LocalStorage } from "quasar";
 import Predict from '../pages/Predict.vue'
+import predict_variables from '../pages/predict_variables.vue'
+import EventBus from '../components/eventBus.js';
 
 export default { 
-    components: {
-      Predict,
-    },
     data () {
-      console.log("jy      data", )
-      if (LocalStorage.getItem("break_1") === "1") {
-        this.getflag2 = "일요일";
-      } else if (LocalStorage.getItem("break_1")  === "0") {
-        this.getflag2 = "휴무일 없음";
-      };
-
-      if (LocalStorage.getItem("store_code") === "1") {
-        this.getstore2 = "해운대점";
-      } else if (LocalStorage.getItem("store_code")  === "6") {
-        this.getstore2 = "광안리점";
-      };
-
-      this.getdate2 = LocalStorage.getItem("date");
-
       return {
         drawer: false,
-
         togithubpage: function() {
         location.href="https://github.com/ryan-hwang-00/ai-forecast"
         },
-
         NavigatorColumns: [
         {
           name: 'attribute',
@@ -239,12 +173,11 @@ export default {
         },
         {
           name: 'Value',
-          align: 'left',
+          align: 'right',
           field: 'Value',
           sortable: true
         }
         ],
-
         NavigatorData: [
           {
             attribute: "기준일",
@@ -252,71 +185,70 @@ export default {
           },
           {
             attribute: "매장명",
-            Value: this.getstore2,
+            Value: '',
           },
           {
             attribute: "상품명",
-            Value: LocalStorage.getItem("item_1"),
-          },
-          {
-            attribute: "행사 구분",
-            Value: LocalStorage.getItem("edate"),
+            Value: '',
           },
           {
             attribute: "휴일 구분",
-            Value: this.getflag2,
+            Value: '',
+          },
+          {
+            attribute: "행사 구분",
+            Value: '',
+          },
+          {
+            attribute: "대량 주문",
+            Value: '',
           }
         ],
-        pagination: {
+        NavigatorPagination: {
           // sortBy: 'desc',
           // descending: false,
           page: 1,
-          rowsPerPage: 5,
+          rowsPerPage: 6,
           // rowsNumber: 10
         },
       }
     },
 
     created() {
-      console.log("jy    created", )
-      data ()
-      console.log(this.getstore2)
-    },
-    updated () {
-      console.log("jy      updated", )
-      updateArray ()
-      // data()
-      // this.getflag2
-      // this.getdate2
-      // this.getstore2
-       if (LocalStorage.getItem("break_1") === "1") {
-        this.getflag2 = "일요일";
-      } else if (LocalStorage.getItem("break_1")  === "0") {
-        this.getflag2 = "휴무일 없음";
-      };
+      // console.log('NavigatorData', this.NavigatorData)
+      EventBus.$on("pushData_1", payload => {
+        console.log('payload', payload);
+        this.NavigatorData[1].Value = payload;
+      },
+    );
+      EventBus.$on("pushData_2", payload => {
+        console.log('payload', payload);
+        this.NavigatorData[1].Value = payload;
+      },
+    );
+      EventBus.$on("product_bus", bus_product => {
+        console.log('product_bus>>>>>', bus_product);
+        this.NavigatorData[2].Value = bus_product;
+    });
 
-      if (LocalStorage.getItem("store_code") === "1") {
-        this.getstore2 = "해운대점";
-      } else if (LocalStorage.getItem("store_code")  === "6") {
-        this.getstore2 = "광안리점";
-      };
+        EventBus.$on("event_bus", bus_event => {
+        console.log('event_bus>>>>>', bus_event);
+        this.NavigatorData[4].Value = bus_event;
+    });
 
-      this.getdate2 = LocalStorage.getItem("date");
+        EventBus.$on("break_bus", bus_break => {
+        console.log('break_bus>>>>>', bus_break);
+        this.NavigatorData[3].Value = bus_break;
+    });
 
+        EventBus.$on("special_order_bus", bus_special_order => {
+        console.log('special_order_bus>>>>>', bus_special_order);
+        this.NavigatorData[5].Value = bus_special_order;
+    });
 
-      console.log(this.getstore2)
-    },
-    methods: {
-      updateArray () {
-          this.NavigatorData[2]       
-          if (this.NavigatorData[2] === "1") {
-          this.getstore2 = "해운대점";
-          } else if (this.NavigatorData[2]  === "6") {
-            this.getstore2 = "광안리점";
-          };
-      }
-    }
-  }
+    
+  },
+}
 </script>
 
 <style scoped> 

@@ -143,6 +143,12 @@
             </div>
 
           </div>
+
+          <div class="row q-pa-sm justify-end">
+      
+            <q-btn label="적용" color="red-10" size="12px" style="width : 95px" @click="toggle_bus1"/>
+
+          </div>
         </q-btn-dropdown>
       </div>
       <!-- /div_25 -->
@@ -174,6 +180,13 @@
             </div>
 
           </div>
+
+          <div class="row q-pa-sm justify-end">
+      
+            <q-btn label="적용" color="red-10" size="12px" style="width : 90px" @click="toggle_bus2"/>
+
+          </div>
+
         </q-btn-dropdown>
       </div>
       <!-- /div_26 -->
@@ -267,16 +280,9 @@
     </div>
     <div class="column q-pa-md"></div>
     
-
-
-
-
-
   <div class="q-pa-md"></div>
 
 
-   
-    
   </main>
 </template>
 
@@ -287,6 +293,7 @@ import { QSpinnerGears } from 'quasar'
 import BarChart from '../components/charts/BarChart'
 // import Predict from '../pages/Predict'
 import axios from "axios";
+import EventBus from '../components/eventBus.js';
 
 export default {
   data () {
@@ -320,9 +327,6 @@ export default {
     }
 
       this.selected_date={model1}
-      this.rak_size='15px'
-      this.test_size='20px'
-      this.test_size2='5px'
 
   },
 
@@ -355,30 +359,196 @@ export default {
 
     },
 
-    no_event () {
-      console.log('Clicked event_info')
-      localStorage.event_1 = '정상가';
+
+
+    bac_2l () {
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수2.0L';
+      const item_1 = '백산수2.0L';
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    bac_500ml () {
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수500ml';
+      const item_1 = '백산수500ml';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    sin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '신라면멀티';
+      const item_1 = '신라면멀티';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    ansung_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '안성탕면멀티';
+      const item_1 = '안성탕면멀티';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    jin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '진라면멀티(순한맛)';
+      const item_1 = '진라면멀티(순한맛)';
+      
+      EventBus.$emit("product_bus", item_1);
+
     },
 
 
-    event_on () {
-      console.log('Clicked event_info')
-      localStorage.event_1 = '할인진행';
-    },
+
+    // no_event () {
+    //   console.log('Clicked event_info')
+    //   localStorage.event_1 = '정상가';
+    // },
+
+
+    // event_on () {
+    //   console.log('Clicked event_info')
+    //   localStorage.event_1 = '할인진행';
+    // },
 
     normal_state () {
       console.log('Clicked break_info')
       localStorage.break_1 = 0;
+      const break_bus = '정상영업';      
+      EventBus.$emit("break_bus", break_bus);
     },
 
     break_day () {
       console.log('Clicked break_info')
       localStorage.break_1 = 1;
 
+      const break_bus = '일요휴무';      
+      EventBus.$emit("break_bus", break_bus);
+
     },
 
     optionsFn (model1) {
       return model1 >= '2019/11/01' && model1 <= '2019/12/31'
+    },
+
+
+
+    toggle_bus1 () {
+      console.log('clicked toggle special_order')
+      
+
+      localStorage.event_mon=this.event_mon;
+      localStorage.event_tue=this.event_tue;
+      localStorage.event_wen=this.event_wen;
+      localStorage.event_thu=this.event_thu;
+      localStorage.event_fri=this.event_fri;
+      localStorage.event_sat=this.event_sat;
+      localStorage.event_sun=this.event_sun;
+
+
+      this.edays=[]
+
+        if (this.event_mon === true) {
+        this.wday1 = "월";
+        this.edays.push(this.wday1)
+        this.edays.push(',')
+      };
+        if (this.event_tue === true) {
+        this.wday2 = "화"
+        this.edays.push(this.wday2)
+        this.edays.push(',')
+      };
+        if (this.event_wen === true) {
+        this.wday3 = "수"
+        this.edays.push(this.wday3)
+        this.edays.push(',')
+      };
+        if (this.event_thu === true) {
+        this.wday4 = "목"
+        this.edays.push(this.wday4)
+        this.edays.push(',')
+      };
+        if (this.event_fri === true) {
+        this.wday5 = "금"
+        this.edays.push(this.wday5)
+        this.edays.push(',')
+      };
+        if (this.event_sat === true) {
+        this.wday6 = "토"
+        this.edays.push(this.wday6)
+        this.edays.push(',')
+      };
+        if (this.event_sun === true) {
+        this.wday7 = "일"
+        this.edays.push(this.wday7)
+        this.edays.push(',')
+      };
+      
+      this.edays.pop();
+      EventBus.$emit("event_bus", this.edays);
+     
+
+    },
+
+
+
+    toggle_bus2 () {
+      console.log('clicked toggle special_order')
+      
+
+      localStorage.so_event_mon=this.so_event_mon;
+      localStorage.so_event_tue=this.so_event_tue;
+      localStorage.so_event_wen=this.so_event_wen;
+      localStorage.so_event_thu=this.so_event_thu;
+      localStorage.so_event_fri=this.so_event_fri;
+      localStorage.so_event_sat=this.so_event_sat;
+      localStorage.so_event_sun=this.so_event_sun;
+
+
+      this.so_days=[]
+
+        if (this.so_event_mon === true) {
+        this.so_day1 = "월";
+        this.so_days.push(this.so_day1)
+        this.so_days.push(',')
+      };
+        if (this.so_event_tue === true) {
+        this.so_day2 = "화"
+        this.so_days.push(this.so_day2)
+        this.so_days.push(',')
+      };
+        if (this.so_event_wen === true) {
+        this.so_day3 = "수"
+        this.so_days.push(this.so_day3)
+        this.so_days.push(',')
+      };
+        if (this.so_event_thu === true) {
+        this.so_day4 = "목"
+        this.so_days.push(this.so_day4)
+        this.so_days.push(',')
+      };
+        if (this.so_event_fri === true) {
+        this.so_day5 = "금"
+        this.so_days.push(this.so_day5)
+        this.so_days.push(',')
+      };
+        if (this.so_event_sat === true) {
+        this.so_day6 = "토"
+        this.so_days.push(this.so_day6)
+        this.so_days.push(',')
+      };
+        if (this.so_event_sun === true) {
+        this.so_day7 = "일"
+        this.so_days.push(this.so_day7)
+        this.so_days.push(',')
+      };
+      this.so_days.pop();
+      EventBus.$emit("special_order_bus", this.so_days);
+      
+
     },
 
     showCustom () {
@@ -409,38 +579,44 @@ export default {
       };
         if (this.event_tue === true) {
         this.wday2 = "화요일"
+        this.edays.push(this.wday2)
       };
         if (this.event_wen === true) {
         this.wday3 = "수요일"
+        this.edays.push(this.wday3)
       };
         if (this.event_thu === true) {
         this.wday4 = "목요일"
+        this.edays.push(this.wday4)
       };
         if (this.event_fri === true) {
         this.wday5 = "금요일"
+        this.edays.push(this.wday5)
       };
         if (this.event_sat === true) {
         this.wday6 = "토요일"
+        this.edays.push(this.wday6)
       };
         if (this.event_sun === true) {
         this.wday7 = "일요일"
+        this.edays.push(this.wday7)
       };
 
       
       // if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
       // };
-        if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
-      };
-        if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
-      };
-        if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
-      };
-        if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
-      };
-        if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
-      };
-        if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
-      };
+      //   if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
+      // };
+      //   if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
+      // };
+      //   if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
+      // };
+      //   if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
+      // };
+      //   if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
+      // };
+      //   if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
+      // };
         localStorage.edate=this.edays;
 
 
@@ -515,9 +691,11 @@ export default {
         
       }
 
+
       axios.post('http://127.0.0.1:5000/date_info',
 
         data
+
 
       ).then(response => {
 
