@@ -4,7 +4,9 @@
       <div class="fit column inline justify-between">
         <q-toolbar class="fit column inline justify-between">
           <!-- 로고 -->
-          <q-toolbar-title class = "col absolute-top-left">
+
+          <q-toolbar-title class = "col absolute-left">
+
             <q-btn flat to="/">
               <img id="image_large" src="~assets/Logo-large.png" height="50px" alt="" class="img-responsive"/>
               <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
@@ -208,20 +210,21 @@ export default {
     },
 
     data () {
-      // console.log("jy      data", )
-      // if (LocalStorage.getItem("break_1") === "1") {
-      //   this.getflag2 = "일요일";
-      // } else if (LocalStorage.getItem("break_1")  === "0") {
-      //   this.getflag2 = "휴무일 없음";
-      // };
 
-      // if (LocalStorage.getItem("store_code") === "1") {
-      //   this.getstore2 = "해운대점";
-      // } else if (LocalStorage.getItem("store_code")  === "6") {
-      //   this.getstore2 = "광안리점";
-      // };
+      console.log("jy      data", )
+      if (LocalStorage.getItem("break_1") === "1") {
+        this.getflag2 = "일요일";
+      } else if (LocalStorage.getItem("break_1")  === "0") {
+        this.getflag2 = "휴무일 없음";
+      };
 
-      // this.getdate2 = LocalStorage.getItem("date");
+      if (LocalStorage.getItem("store_code") === "1") {
+        this.getstore2 = "해운대점";
+      } else if (LocalStorage.getItem("store_code")  === "6") {
+        this.getstore2 = "광안리점";
+      };
+
+      this.getdate2 = LocalStorage.getItem("date");
 
       return {
         drawer: false,
@@ -292,6 +295,7 @@ export default {
 
     created() {
 
+
       console.log('NavigatorData', this.NavigatorData)
 
       EventBus.$on("pushData_1", payload => {
@@ -348,6 +352,7 @@ export default {
     //       };
     //   }
     // }
+
   }
 </script>
 

@@ -46,9 +46,9 @@ for co in 0 .. 13 {
   }
   .delay-color:nth-child({co + 1}) {
     if (co == 0){
-      color: red
+      color: #FF6600
     } else if (co == 7) {
-      color: red
+      color: #FF6600
     } else {
       color: #34495E
     }

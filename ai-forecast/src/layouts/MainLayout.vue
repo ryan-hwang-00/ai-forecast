@@ -2,19 +2,22 @@
   <q-layout view="hHh LpR fff">
     
     <q-header bordered class="bg-primary text-white" height-hint="98">
-        <q-toolbar class="fit column inline justify-between">
+
+        <q-toolbar class="fit column inline justify-between" height="70px">
           <!-- 로고 -->
-          <q-toolbar-title class = "col absolute-top-left">
+         <q-toolbar-title class = "col absolute-left">
             <q-btn flat to="/">
-              <img id="image_large" src="~assets/Logo-large.png"  alt="" class="img-responsive" style="padding: 70px"/>
-              <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
+              <img id="image_large" src="~assets/Logo-layout.png" height="80px" alt="" class="img-responsive"/>
+              <img id="image_small" src="~assets/Logo-layout.png" height="25px" alt="" class="img-responsive"/>
+
             </q-btn>
           </q-toolbar-title>
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
-            <q-route-tab to="/register" label="회원가입" style="height: 100px"/>
+
+            <q-route-tab to="/register" label="회원가입" style="max-width: 70px; height: 85px;"/>
             <!-- <q-separator vertical inset color="white"/> -->
-            <q-route-tab to="/login" label="로그인" style="width: 70px"/>
+            <q-route-tab to="/login" label="로그인" style="max-width: 70px"/>
           </q-tabs>
         </q-toolbar>
     </q-header>
