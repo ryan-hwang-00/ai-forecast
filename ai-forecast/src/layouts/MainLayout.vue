@@ -12,9 +12,16 @@
           </q-toolbar-title>
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
+
             <q-route-tab to="/register" label="회원가입" style="max-width: 70px; height: 85px;"/>
+
             <!-- <q-separator vertical inset color="white"/> -->
-            <q-route-tab to="/login" label="로그인" style="max-width: 70px"/>
+
+            <q-route-tab 
+              to="/login" 
+              label="로그인" 
+              style="max-width: 70px"/>
+
           </q-tabs>
         </q-toolbar>
     </q-header>
@@ -23,43 +30,46 @@
       <router-view />
     </q-page-container>
 
+
     <q-footer bordered class="bg-grey-4 text-primary justify-center">
       <q-tabs 
       no-caps active-color="primary" 
       indicator-color="transparent" 
       class="text-grey"
+
       >
-          <eva-icon
-            class='q-pa-md center' 
-            name="github" 
-            animation="pulse" 
-            fill="#1D2758"
-            width='30px'
-            height='30px'
-            @click='togithubpage'
-            style="font-size:3px">
-          </eva-icon>
+        <eva-icon
+          class='q-pa-md' 
+          name="github" 
+          animation='pulse' 
+          fill="#1D2758"
+          width='30px'
+          height='30px'
+          @click='togithubpage'
+          style="font-size:3px">
+        </eva-icon>
 
-          <eva-icon
-            class='q-pa-md center' 
-            name="facebook" 
-            animation="pulse" 
-            fill="#1D2758"
-            width='30px'
-            height='30px'
-          >
-          </eva-icon>
+        <eva-icon
+          class='q-pa-md' 
+          name="facebook" 
+          animation="pulse" 
+          fill="#1D2758"
+          width='30px'
+          height='30px'
+        >
+        </eva-icon>
 
-          <eva-icon
-            class='q-pa-md' 
-            name="car" 
-            animation="pulse" 
-            fill="#1D2758"
-            width='30px'
-            height='30px'
-          >
-          </eva-icon>
-        </q-tabs>
+        <eva-icon
+          class='q-pa-md' 
+          name="car"
+          animation="pulse" 
+          fill="#1D2758"
+          width='30px'
+          height='30px'
+        >
+        </eva-icon>
+
+      </q-tabs>
     </q-footer>
   </q-layout>
 </template>
@@ -95,4 +105,8 @@ export default {
         display: block
     }
 }
+
+
+
+
 </style>

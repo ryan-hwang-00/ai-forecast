@@ -90,7 +90,7 @@ def seven_days():
     # 11/13 오전 11시 45분 수정
 
     # merged_df, days_name = date_info(start_date, event_info, break_info)
-    merged_df = date_info(start_date, event_info, break_info)
+    merged_df = date_info(start_date, event_info, break_info, special_info)
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 

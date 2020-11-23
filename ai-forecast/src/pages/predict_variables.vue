@@ -279,16 +279,9 @@
     </div>
     <div class="column q-pa-md"></div>
     
-
-
-
-
-
   <div class="q-pa-md"></div>
 
 
-   
-    
   </main>
 </template>
 
@@ -677,64 +670,64 @@ export default {
 // 나중에 주석 해제 할 것
   
 
-      // const data = {
+      const data = {
 
-      //   // "for_return" : this.day1_2,
-      //   "selected_date" : this.model1,
-      //   "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
-      //                   '4' : localStorage.event_thu, '5': localStorage.event_fri, '6' : localStorage.event_sat,
-      //                   '7' : localStorage.event_sun},
+        // "for_return" : this.day1_2,
+        "selected_date" : this.model1,
+        "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
+                        '4' : localStorage.event_thu, '5': localStorage.event_fri, '6' : localStorage.event_sat,
+                        '7' : localStorage.event_sun},
 
-      //   "special_info" : {'1': localStorage.so_event_mon, '2' : localStorage.so_event_tue, '3' : localStorage.so_event_wen,
-      //                   '4' : localStorage.so_event_thu, '5': localStorage.so_event_fri, '6' : localStorage.so_event_sat,
-      //                   '7' : localStorage.so_event_sun},
-      //   // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
-      //   //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
-      //   // "break_info" : this.break_info,
-      //   "item_info" : localStorage.getItem('item_1'),
-      //   "store_info" : localStorage.getItem('store_code'),
-      //   "break_info" : localStorage.getItem('break_1')
+        "special_info" : {'1': localStorage.so_event_mon, '2' : localStorage.so_event_tue, '3' : localStorage.so_event_wen,
+                        '4' : localStorage.so_event_thu, '5': localStorage.so_event_fri, '6' : localStorage.so_event_sat,
+                        '7' : localStorage.so_event_sun},
+        // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
+        //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
+        // "break_info" : this.break_info,
+        "item_info" : localStorage.getItem('item_1'),
+        "store_info" : localStorage.getItem('store_code'),
+        "break_info" : localStorage.getItem('break_1')
         
-      // }
+      }
 
-      // axios.post('http://127.0.0.1:5000/date_info',
+      axios.post('http://127.0.0.1:5000/date_info',
 
-      //   data
+        data
 
-      // ).then(response => {
+      ).then(response => {
 
-      //   console.log(response)
+        console.log(response)
 
-      //   localStorage.origin_data = JSON.stringify(response.data);
-      //   localStorage.day1 = response.data['day1'];
-      //   localStorage.day2 = response.data['day2'];
-      //   localStorage.day3 = response.data['day3'];
-      //   localStorage.day4 = response.data['day4'];
-      //   localStorage.day5 = response.data['day5'];
-      //   localStorage.day6 = response.data['day6'];
-      //   localStorage.day7 = response.data['day7'];
-      //   localStorage.Tday1 = JSON.stringify(response.data['Tday1']);
-      //   localStorage.Tday2 = JSON.stringify(response.data['Tday2']);
-      //   localStorage.Tday3 = JSON.stringify(response.data['Tday3']);
-      //   localStorage.Tday4 = JSON.stringify(response.data['Tday4']);
-      //   localStorage.Tday5 = JSON.stringify(response.data['Tday5']);
-      //   localStorage.Tday6 = JSON.stringify(response.data['Tday6']);
-      //   localStorage.Tday7 = JSON.stringify(response.data['Tday7']);
-      //   localStorage.date = this.model1;
-      //   // localStorage.return2 = JSON.stringify(response.data['promotion']);
+        localStorage.origin_data = JSON.stringify(response.data);
+        localStorage.day1 = response.data['day1'];
+        localStorage.day2 = response.data['day2'];
+        localStorage.day3 = response.data['day3'];
+        localStorage.day4 = response.data['day4'];
+        localStorage.day5 = response.data['day5'];
+        localStorage.day6 = response.data['day6'];
+        localStorage.day7 = response.data['day7'];
+        localStorage.Tday1 = JSON.stringify(response.data['Tday1']);
+        localStorage.Tday2 = JSON.stringify(response.data['Tday2']);
+        localStorage.Tday3 = JSON.stringify(response.data['Tday3']);
+        localStorage.Tday4 = JSON.stringify(response.data['Tday4']);
+        localStorage.Tday5 = JSON.stringify(response.data['Tday5']);
+        localStorage.Tday6 = JSON.stringify(response.data['Tday6']);
+        localStorage.Tday7 = JSON.stringify(response.data['Tday7']);
+        localStorage.date = this.model1;
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
         
-      //   // alert(test_data);
-      //   setTimeout(function() { 
-      //     this.return1=localStorage.return1 }, 15);
+        // alert(test_data);
+        setTimeout(function() { 
+          this.return1=localStorage.return1 }, 15);
         
           
-      //   // this.day1_1=localStorage.day1;
+        // this.day1_1=localStorage.day1;
 
-      // }).catch((ex) => {
+      }).catch((ex) => {
 
-      //   console.warn("ERROR!!!!! : ", ex)
+        console.warn("ERROR!!!!! : ", ex)
 
-      // });
+      });
 
   // 주석 해제 여기까지
 

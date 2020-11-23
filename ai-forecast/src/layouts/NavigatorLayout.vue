@@ -63,7 +63,9 @@
             indicator-color="transparent"
             class="text-grey absolute-bottom"
           >
+
             <div class="fit row justify-center">
+
               <eva-icon
                 class='q-pa-md'
                 name="github"
