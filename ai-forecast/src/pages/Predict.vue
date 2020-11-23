@@ -49,18 +49,24 @@
     </div> -->
 
     <!-- 예측 값 그래프 및 테이블 -->
-    <div class="row justify-center q-row-gutter-xs q-py-sm bg-grey-1" style = "padding: 50px 3px 50px 3px;">
+    <div class="content-center" style="max-height: 30px;">
+      <span class="text-center"><h4> 주간 수요예측량</h4></span>
+    </div>
+    <div class="fit row  justify-around q-row-gutter-xs q-py-sm bg-grey-1">
       <!-- 예측 값 테이블 -->
-        <q-table
-          title="주간 예측량"
+        <div class="row bg-grey-1 q-pa-md">
+        <q-table  
           :data="data"
           :columns="columns"
           row-key="Date"
+          hide-bottom
           :pagination.sync="pagination"
-          class="bg-grey-1 col my-sticky-header-table"
+          class="bg-grey-1 my-sticky-table q-pa-md shadow-3"
           style = "padding: 10px 3px 2px 3px;"
         />
+        </div>
       <!-- 예측 값 그래프 캐롯셀 -->
+        <div class="row bg-grey-1 q-pa-md">
         <q-carousel
           v-model="slide"
           transition-prev="scale"
@@ -71,43 +77,41 @@
           navigation
           padding
           arrows
-          class="col bg-grey-1 text-white rounded-borders my-sticky-header-chart"
+          class="bg-grey-1 text-white shadow-3 rounded-borders my-sticky-carousel q-pa-sm"
         >
-          <q-carousel-slide name="style" class="column no-wrap flex-center">
-              <div class="bg-grey-1 rounded-borders">
-                  <q-card-section class="bg-primary">
+          <q-carousel-slide name="style" class="row justify-center items-center">
+              <!-- <div class="bg-grey-1 rounded-borders"> -->
+                  <!-- <q-card-section class="bg-primary">
                           <div class="col">
                               <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
                           </div>
-                  </q-card-section>
+                  </q-card-section> -->
                   <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
-              </div>
+              <!-- </div> -->
           </q-carousel-slide>
 
-          <q-carousel-slide name="Line" class="column no-wrap flex-center">
+          <q-carousel-slide name="Line" class="column flex-center">
               <div class="bg-grey-1 rounded-borders">
-                  <q-card-section class="bg-primary">
+                  <!-- <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
                               <div class="text-h6 text-white text-center text-Do-Hyeon">Line Chart</div>
                           </div>
                       </div>
-                  </q-card-section>
-                  <div>
-                      <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
-                  </div>
+                  </q-card-section> -->
+                  <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
               </div>
           </q-carousel-slide>
 
           <q-carousel-slide name="ef" class="column no-wrap flex-center">
               <div class="bg-grey-1 rounded-borders">
-                  <q-card-section class="bg-primary">
+                  <!-- <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
                               <div class="text-h6 text-white text-center text-Do-Hyeon">Doughnut Chart</div>
                           </div>
                       </div>
-                  </q-card-section>
+                  </q-card-section> -->
                   <div>
                       <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
                   </div>
@@ -116,13 +120,13 @@
 
           <q-carousel-slide name="fe" class="column no-wrap flex-center">
               <div class="bg-grey-1 rounded-borders">
-                  <q-card-section class="bg-primary">
+                  <!-- <q-card-section class="bg-primary">
                       <div class="row items-center no-wrap">
                           <div class="col">
                               <div class="text-h6 text-white text-center text-Do-Hyeon">Pie Chart</div>
                           </div>
                       </div>
-                  </q-card-section>
+                  </q-card-section> -->
                   <div>
                       <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
                   </div>
@@ -130,6 +134,7 @@
           </q-carousel-slide>
 
         </q-carousel>
+        </div>
     </div>
   </div>
 </template> 
@@ -158,11 +163,11 @@ export default {
     return {
 
       // Chip Data
-      getdate: '날짜',
-      getstore: '매장명',
-      getproduct: '상품명',
-      getEventDays: '없음',
-      getflag: '휴무일',
+      // getdate: '날짜',
+      // getstore: '매장명',
+      // getproduct: '상품명',
+      // getEventDays: '없음',
+      // getflag: '휴무일',
       slide: 'style',
       Total: '',
       Mean: '',
@@ -178,7 +183,6 @@ export default {
 
       // Table Data
       columns: [
-
         {
           name: 'Date',
           required: true,
@@ -186,46 +190,64 @@ export default {
           align: 'left',
           field: 'Date',
           sortable: true,
-          // classes: 'bg-grey-2 ellipsis',
+          classes: 'bg-grey-2',
+          style: 'height: 58px;',
           // headerClasses: 'bg-grey-2 ellipsis'
+        },
+        {
+          name: 'Weather',
+          label: '날씨',
+          align: 'left',
+          field: 'Weather',
+          sortable: false
         },
         {
           name: 'Predict_Value',
           label: '예측 수량',
           align: 'right',
           field: 'Predict_Value',
-          sortable: true
-        }
+          sortable: true,
+          classes: 'bg-grey-2',
+          style: 'width: 100px;',
+
+        },
       ],
 
       data: [
         {
           Date: this.getday1Date (),
           Predict_Value: this.getday1Value (),
+          // Weather: A,
         },
         {
           Date: this.getday2Date (),
           Predict_Value: this.getday2Value (),
+          // Weather: A,
         },
         {
           Date: this.getday3Date (),
           Predict_Value: this.getday3Value (),
+          // Weather: A,
         },
         {
           Date: this.getday4Date (),
           Predict_Value: this.getday4Value (),
+          // Weather: A,
         },
         {
           Date: this.getday5Date (),
           Predict_Value: this.getday5Value (),
+          // Weather: A,
         },
         {
           Date: this.getday6Date (),
           Predict_Value: this.getday6Value (),
+          // Weather: A,
         },
         {
           Date: this.getday7Date (),
           Predict_Value: this.getday7Value (),
+          // Weather: A,
         },
       ],
 
@@ -571,16 +593,24 @@ export default {
 </script>
 
 <style lang="sass">
-.my-sticky-header-table
-  /* height or max-height is important */
-  overflow: auto
-  height: 540px
-  // width: 350px
-  max-width: 20rem
-.my-sticky-header-chart
+.my-sticky-table
   /* height or max-height is important */
   // overflow: auto
-  height: 542px
-  width: 600px
-  max-width: 60rem
+  height: 550px
+  width: 300px
+  // max-width: 15rem
+.my-sticky-carousel
+  /* height or max-height is important */
+  // overflow: auto
+  height: 550px
+  width: 700px
+  // max-width: 60rem
+.my-sticky-chart
+  /* height or max-height is important */
+  // overflow: auto
+  height: 450px
+  width: 550px
+  // max-width: 60rem
+
+
 </style>
