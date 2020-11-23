@@ -66,6 +66,19 @@ def seven_days():
     print('event_info >>>>', event_info)
     #     할인정보 끝
 
+    #     대량주문 정보 시작
+    pre_special_info = arrived_data['special_info']
+    print('pre_special_info >>>>>>', pre_special_info)
+
+    special_info = []
+    for i in pre_special_info.keys():
+
+        if pre_special_info[i] == 'true':
+            special_info.append(i)
+
+    print('special_info >>>>', special_info)
+    #     대량주문 정보 끝
+
     break_info = arrived_data['break_info']
     store_info = arrived_data['store_info']
 
