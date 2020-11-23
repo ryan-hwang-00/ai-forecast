@@ -264,7 +264,7 @@
       <div class="row q-pa-sm">
       
         <q-btn label="예측하기" color="red-10" size="15px" style="width : 140px" @click="showCustom" />
-        <q-btn label="학습시키기" color="red-10" size="15px" style="width : 140px" @click="showCustomTraining" />
+        <!-- <q-btn label="학습시키기" color="red-10" size="15px" style="width : 140px" @click="showCustomTraining" /> -->
 
       </div>
       <!-- /div_5 -->
@@ -572,7 +572,7 @@ export default {
 
     showCustom () {
 
-
+      EventBus.$emit("Date_bus", this.model1)
       localStorage.event_mon=this.event_mon;
       localStorage.event_tue=this.event_tue;
       localStorage.event_wen=this.event_wen;
@@ -788,12 +788,12 @@ export default {
       // }
 
 // if 구문 주석 해제 하고 else if로 넣을 것
-        // if (!localStorage.day1 || percentage !== 100) {
-        //   setTimeout(function() {
+        if (!localStorage.day1 || percentage !== 100) {
+          setTimeout(function() {
             
-        //   console.log("not arrived")}, 400);
-        // } 
-        if (percentage === 100) {
+          console.log("not arrived")}, 400);
+        } 
+        else if (percentage === 100) {
           clearInterval(interval)
 
           dialog.update({

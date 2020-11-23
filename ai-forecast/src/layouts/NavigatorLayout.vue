@@ -181,7 +181,7 @@ export default {
         NavigatorData: [
           {
             attribute: "기준일",
-            Value: LocalStorage.getItem("date"),
+            Value: '',
           },
           {
             attribute: "매장명",
@@ -216,6 +216,14 @@ export default {
 
     created() {
       // console.log('NavigatorData', this.NavigatorData)
+
+
+      EventBus.$on("Date_bus", bus_date => {
+        console.log('Date_bus', bus_date);
+        this.NavigatorData[0].Value = bus_date;
+      },
+    );
+
       EventBus.$on("pushData_1", payload => {
         console.log('payload', payload);
         this.NavigatorData[1].Value = payload;
