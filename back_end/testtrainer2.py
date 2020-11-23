@@ -46,23 +46,22 @@ class start_train:
         model_name = meta_index[(meta_index['store'] == self.store_code) & (
             meta_index['product'] == self.product_name)].iloc[0]['weight']
 
-        df, df_train, df_test, sale_qty, x_columns, x_1_columns = prepareData(merged_df=self.merged_df).sep_data2(train='AI_Sale_ver4.0.csv',
-                                                                                                                  product_name=self.product_name,
-                                                                                                                  store_code=self.store_code,
-                                                                                                                  train_date=self.train_date,
-                                                                                                                  predict_date=self.predict_date)
+        prepareData1 = prepareData(merged_df=self.merged_df,
+                                   product_name=self.product_name,
+                                   store_code=self.store_code,
+                                   train_date=self.train_date,
+                                   predict_date=self.predict_date,
+                                   sequence_x=self.sequence_x,
+                                   sequence_y=self.sequence_y)
+
+        df, df_train, df_test, sale_qty, x_columns, x_1_columns = prepareData1.sep_data2()
 
         (x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1,
-         x_columns, x_1_columns, sale_qty) = prepareData(merged_df=self.merged_df).scaled_origin(sequence_x=self.sequence_x,
-                                                                                                 sequence_y=self.sequence_y,
-                                                                                                 product_name=self.product_name,
-                                                                                                 store_code=self.store_code)
+         x_columns, x_1_columns, sale_qty) = prepareData1.scaled_origin()
 
-        x_train_scaled, x_train_1_scaled, y_train_scaled = prepareData(merged_df=self.merged_df).scaled_data(df_train=df_train, sequence_x=self.sequence_x,
-                                                                                                             sequence_y=self.sequence_y,
-                                                                                                             product_name=self.product_name,
-                                                                                                             store_code=self.store_code
-                                                                                                             )
+        print(df_train)
+
+        x_train_scaled, x_train_1_scaled, y_train_scaled = prepareData1.scaled_data(df_train=df_train)
 
         model = create_model(
             column_num_x, column_num_x_1, self.sequence_x, self.sequence_y)

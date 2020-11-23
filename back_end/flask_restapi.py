@@ -8,7 +8,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 from future7_dataframe import date_info, row_select
 
-from predictor import predictor
+from predictor import start_predict
 
 from matplotlib import pyplot
 
@@ -95,6 +95,13 @@ def seven_days():
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
     print(merged_df)
+
+    train_subtracttime = timedelta(days=1)
+
+    train_date = startdt - train_subtracttime
+
+    train_date = train_date.strftime('%Y-%m-%d')
+
     predict_addtime = timedelta(days=6)
     print('step 6>>>>>>>>')
     # print('test1 >>>>>>', test1)
@@ -103,8 +110,10 @@ def seven_days():
     print('bug1>>>>>')
     predict_date = predict_date.strftime('%Y-%m-%d')
     print('bug2>>>>>')
-    next_week_sales = predictor(merged_df, store_code=int(store_info),
-                                product_name=product_info, predict_date=predict_date)
+    startPredict = start_predict(merged_df, int(store_info), product_info, train_date,
+                              predict_date)
+
+    next_week_sales = startPredict.predictor()
     print('bug3>>>>>')
     result = {}
 
@@ -197,6 +206,7 @@ def trainer():
 
     predict_date = predict_date.strftime('%Y-%m-%d')
     print("training init")
+    print(merged_df)
 
     ready_train = start_train(merged_df, int(store_info), product_info, train_date,
                               predict_date)
