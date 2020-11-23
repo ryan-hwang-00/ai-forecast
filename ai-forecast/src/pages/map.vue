@@ -1,5 +1,5 @@
 <template>
-    <q-page class="q-page q-pa-sm" style="min-height: 500px; padding: 80px 2px 80px 2px;">
+    <q-page class="q-page q-pa-sm justify-center items-center" style="max-height: 500px; padding: 70px 2px 80px 2px;">
     <!-- class="text-center window-height window-width row justify-center items-center" -->
         <div class="fit column  justify-center items-center content-center">
             <div

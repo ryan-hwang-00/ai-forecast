@@ -143,6 +143,12 @@
             </div>
 
           </div>
+
+          <div class="row q-pa-sm justify-end">
+      
+            <q-btn label="적용" color="red-10" size="12px" style="width : 95px" @click="toggle_bus1"/>
+
+          </div>
         </q-btn-dropdown>
       </div>
       <!-- /div_25 -->
@@ -174,6 +180,13 @@
             </div>
 
           </div>
+
+          <div class="row q-pa-sm justify-end">
+      
+            <q-btn label="적용" color="red-10" size="12px" style="width : 90px" @click="toggle_bus2"/>
+
+          </div>
+
         </q-btn-dropdown>
       </div>
       <!-- /div_26 -->
@@ -279,6 +292,7 @@ import { QSpinnerGears } from 'quasar'
 import BarChart from '../components/charts/BarChart'
 // import Predict from '../pages/Predict'
 import axios from "axios";
+import EventBus from '../components/eventBus.js';
 
 export default {
   data () {
@@ -312,9 +326,6 @@ export default {
     }
 
       this.selected_date={model1}
-      this.rak_size='15px'
-      this.test_size='20px'
-      this.test_size2='5px'
 
   },
 
@@ -347,30 +358,196 @@ export default {
 
     },
 
-    no_event () {
-      console.log('Clicked event_info')
-      localStorage.event_1 = '정상가';
+
+
+    bac_2l () {
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수2.0L';
+      const item_1 = '백산수2.0L';
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    bac_500ml () {
+      console.log('Clicked item')
+      localStorage.item_1 = '백산수500ml';
+      const item_1 = '백산수500ml';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    sin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '신라면멀티';
+      const item_1 = '신라면멀티';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    ansung_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '안성탕면멀티';
+      const item_1 = '안성탕면멀티';
+      
+      EventBus.$emit("product_bus", item_1);
+    },
+
+    jin_ramyun () {
+      console.log('Clicked item')
+      localStorage.item_1 = '진라면멀티(순한맛)';
+      const item_1 = '진라면멀티(순한맛)';
+      
+      EventBus.$emit("product_bus", item_1);
+
     },
 
 
-    event_on () {
-      console.log('Clicked event_info')
-      localStorage.event_1 = '할인진행';
-    },
+
+    // no_event () {
+    //   console.log('Clicked event_info')
+    //   localStorage.event_1 = '정상가';
+    // },
+
+
+    // event_on () {
+    //   console.log('Clicked event_info')
+    //   localStorage.event_1 = '할인진행';
+    // },
 
     normal_state () {
       console.log('Clicked break_info')
       localStorage.break_1 = 0;
+      const break_bus = '정상영업';      
+      EventBus.$emit("break_bus", break_bus);
     },
 
     break_day () {
       console.log('Clicked break_info')
       localStorage.break_1 = 1;
 
+      const break_bus = '일요휴무';      
+      EventBus.$emit("break_bus", break_bus);
+
     },
 
     optionsFn (model1) {
       return model1 >= '2019/11/01' && model1 <= '2019/12/31'
+    },
+
+
+
+    toggle_bus1 () {
+      console.log('clicked toggle special_order')
+      
+
+      localStorage.event_mon=this.event_mon;
+      localStorage.event_tue=this.event_tue;
+      localStorage.event_wen=this.event_wen;
+      localStorage.event_thu=this.event_thu;
+      localStorage.event_fri=this.event_fri;
+      localStorage.event_sat=this.event_sat;
+      localStorage.event_sun=this.event_sun;
+
+
+      this.edays=[]
+
+        if (this.event_mon === true) {
+        this.wday1 = "월";
+        this.edays.push(this.wday1)
+        this.edays.push(',')
+      };
+        if (this.event_tue === true) {
+        this.wday2 = "화"
+        this.edays.push(this.wday2)
+        this.edays.push(',')
+      };
+        if (this.event_wen === true) {
+        this.wday3 = "수"
+        this.edays.push(this.wday3)
+        this.edays.push(',')
+      };
+        if (this.event_thu === true) {
+        this.wday4 = "목"
+        this.edays.push(this.wday4)
+        this.edays.push(',')
+      };
+        if (this.event_fri === true) {
+        this.wday5 = "금"
+        this.edays.push(this.wday5)
+        this.edays.push(',')
+      };
+        if (this.event_sat === true) {
+        this.wday6 = "토"
+        this.edays.push(this.wday6)
+        this.edays.push(',')
+      };
+        if (this.event_sun === true) {
+        this.wday7 = "일"
+        this.edays.push(this.wday7)
+        this.edays.push(',')
+      };
+      
+      this.edays.pop();
+      EventBus.$emit("event_bus", this.edays);
+     
+
+    },
+
+
+
+    toggle_bus2 () {
+      console.log('clicked toggle special_order')
+      
+
+      localStorage.so_event_mon=this.so_event_mon;
+      localStorage.so_event_tue=this.so_event_tue;
+      localStorage.so_event_wen=this.so_event_wen;
+      localStorage.so_event_thu=this.so_event_thu;
+      localStorage.so_event_fri=this.so_event_fri;
+      localStorage.so_event_sat=this.so_event_sat;
+      localStorage.so_event_sun=this.so_event_sun;
+
+
+      this.so_days=[]
+
+        if (this.so_event_mon === true) {
+        this.so_day1 = "월";
+        this.so_days.push(this.so_day1)
+        this.so_days.push(',')
+      };
+        if (this.so_event_tue === true) {
+        this.so_day2 = "화"
+        this.so_days.push(this.so_day2)
+        this.so_days.push(',')
+      };
+        if (this.so_event_wen === true) {
+        this.so_day3 = "수"
+        this.so_days.push(this.so_day3)
+        this.so_days.push(',')
+      };
+        if (this.so_event_thu === true) {
+        this.so_day4 = "목"
+        this.so_days.push(this.so_day4)
+        this.so_days.push(',')
+      };
+        if (this.so_event_fri === true) {
+        this.so_day5 = "금"
+        this.so_days.push(this.so_day5)
+        this.so_days.push(',')
+      };
+        if (this.so_event_sat === true) {
+        this.so_day6 = "토"
+        this.so_days.push(this.so_day6)
+        this.so_days.push(',')
+      };
+        if (this.so_event_sun === true) {
+        this.so_day7 = "일"
+        this.so_days.push(this.so_day7)
+        this.so_days.push(',')
+      };
+      this.so_days.pop();
+      EventBus.$emit("special_order_bus", this.so_days);
+      
+
     },
 
     showCustom () {
@@ -401,38 +578,44 @@ export default {
       };
         if (this.event_tue === true) {
         this.wday2 = "화요일"
+        this.edays.push(this.wday2)
       };
         if (this.event_wen === true) {
         this.wday3 = "수요일"
+        this.edays.push(this.wday3)
       };
         if (this.event_thu === true) {
         this.wday4 = "목요일"
+        this.edays.push(this.wday4)
       };
         if (this.event_fri === true) {
         this.wday5 = "금요일"
+        this.edays.push(this.wday5)
       };
         if (this.event_sat === true) {
         this.wday6 = "토요일"
+        this.edays.push(this.wday6)
       };
         if (this.event_sun === true) {
         this.wday7 = "일요일"
+        this.edays.push(this.wday7)
       };
 
       
       // if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
       // };
-        if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
-      };
-        if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
-      };
-        if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
-      };
-        if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
-      };
-        if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
-      };
-        if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
-      };
+      //   if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
+      // };
+      //   if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
+      // };
+      //   if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
+      // };
+      //   if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
+      // };
+      //   if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
+      // };
+      //   if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
+      // };
         localStorage.edate=this.edays;
 
 
@@ -487,64 +670,64 @@ export default {
 // 나중에 주석 해제 할 것
   
 
-      // const data = {
+      const data = {
 
-      //   // "for_return" : this.day1_2,
-      //   "selected_date" : this.model1,
-      //   "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
-      //                   '4' : localStorage.event_thu, '5': localStorage.event_fri, '6' : localStorage.event_sat,
-      //                   '7' : localStorage.event_sun},
+        // "for_return" : this.day1_2,
+        "selected_date" : this.model1,
+        "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
+                        '4' : localStorage.event_thu, '5': localStorage.event_fri, '6' : localStorage.event_sat,
+                        '7' : localStorage.event_sun},
 
-      //   "special_info" : {'1': localStorage.so_event_mon, '2' : localStorage.so_event_tue, '3' : localStorage.so_event_wen,
-      //                   '4' : localStorage.so_event_thu, '5': localStorage.so_event_fri, '6' : localStorage.so_event_sat,
-      //                   '7' : localStorage.so_event_sun},
-      //   // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
-      //   //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
-      //   // "break_info" : this.break_info,
-      //   "item_info" : localStorage.getItem('item_1'),
-      //   "store_info" : localStorage.getItem('store_code'),
-      //   "break_info" : localStorage.getItem('break_1')
+        "special_info" : {'1': localStorage.so_event_mon, '2' : localStorage.so_event_tue, '3' : localStorage.so_event_wen,
+                        '4' : localStorage.so_event_thu, '5': localStorage.so_event_fri, '6' : localStorage.so_event_sat,
+                        '7' : localStorage.so_event_sun},
+        // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
+        //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
+        // "break_info" : this.break_info,
+        "item_info" : localStorage.getItem('item_1'),
+        "store_info" : localStorage.getItem('store_code'),
+        "break_info" : localStorage.getItem('break_1')
         
-      // }
+      }
 
-      // axios.post('http://127.0.0.1:5000/date_info',
+      axios.post('http://127.0.0.1:5000/date_info',
 
-      //   data
+        data
 
-      // ).then(response => {
+      ).then(response => {
 
-      //   console.log(response)
+        console.log(response)
 
-      //   localStorage.origin_data = JSON.stringify(response.data);
-      //   localStorage.day1 = response.data['day1'];
-      //   localStorage.day2 = response.data['day2'];
-      //   localStorage.day3 = response.data['day3'];
-      //   localStorage.day4 = response.data['day4'];
-      //   localStorage.day5 = response.data['day5'];
-      //   localStorage.day6 = response.data['day6'];
-      //   localStorage.day7 = response.data['day7'];
-      //   localStorage.Tday1 = JSON.stringify(response.data['Tday1']);
-      //   localStorage.Tday2 = JSON.stringify(response.data['Tday2']);
-      //   localStorage.Tday3 = JSON.stringify(response.data['Tday3']);
-      //   localStorage.Tday4 = JSON.stringify(response.data['Tday4']);
-      //   localStorage.Tday5 = JSON.stringify(response.data['Tday5']);
-      //   localStorage.Tday6 = JSON.stringify(response.data['Tday6']);
-      //   localStorage.Tday7 = JSON.stringify(response.data['Tday7']);
-      //   localStorage.date = this.model1;
-      //   // localStorage.return2 = JSON.stringify(response.data['promotion']);
+        localStorage.origin_data = JSON.stringify(response.data);
+        localStorage.day1 = response.data['day1'];
+        localStorage.day2 = response.data['day2'];
+        localStorage.day3 = response.data['day3'];
+        localStorage.day4 = response.data['day4'];
+        localStorage.day5 = response.data['day5'];
+        localStorage.day6 = response.data['day6'];
+        localStorage.day7 = response.data['day7'];
+        localStorage.Tday1 = JSON.stringify(response.data['Tday1']);
+        localStorage.Tday2 = JSON.stringify(response.data['Tday2']);
+        localStorage.Tday3 = JSON.stringify(response.data['Tday3']);
+        localStorage.Tday4 = JSON.stringify(response.data['Tday4']);
+        localStorage.Tday5 = JSON.stringify(response.data['Tday5']);
+        localStorage.Tday6 = JSON.stringify(response.data['Tday6']);
+        localStorage.Tday7 = JSON.stringify(response.data['Tday7']);
+        localStorage.date = this.model1;
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
         
-      //   // alert(test_data);
-      //   setTimeout(function() { 
-      //     this.return1=localStorage.return1 }, 15);
+        // alert(test_data);
+        setTimeout(function() { 
+          this.return1=localStorage.return1 }, 15);
         
           
-      //   // this.day1_1=localStorage.day1;
+        // this.day1_1=localStorage.day1;
 
-      // }).catch((ex) => {
+      }).catch((ex) => {
 
-      //   console.warn("ERROR!!!!! : ", ex)
+        console.warn("ERROR!!!!! : ", ex)
 
-      // });
+      });
 
   // 주석 해제 여기까지
 
