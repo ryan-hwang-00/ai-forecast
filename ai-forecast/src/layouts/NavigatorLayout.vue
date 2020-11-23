@@ -2,19 +2,17 @@
   <q-layout view="hHh LpR fff">
     <q-header bordered="bordered" class="bg-primary text-white" height-hint="98">
       <div class="fit column inline justify-between">
-        <q-toolbar class="fit column inline justify-between">
+        <q-toolbar class="fit column inline justify-between" height="70px">
           <!-- 로고 -->
-
-          <q-toolbar-title class = "col absolute-left">
-
+         <q-toolbar-title class = "col absolute-left">
             <q-btn flat to="/">
-              <img id="image_large" src="~assets/Logo-large.png" height="50px" alt="" class="img-responsive"/>
-              <img id="image_small" src="~assets/Logo-medium.png" height="35px" alt="" class="img-responsive"/>
+              <img id="image_large" src="~assets/Logo-white.png" height="40px" alt="" class="img-responsive"/>
+              <img id="image_small" src="~assets/Logo-layout.png" height="25px" alt="" class="img-responsive"/>
             </q-btn>
           </q-toolbar-title>
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
-            <q-route-tab to="/register" label="회원가입" style="max-width: 70px"/>
+            <q-route-tab to="/register" label="회원가입" style="max-width: 70px; height: 85px;"/>
             <!-- <q-separator vertical inset color="white"/> -->
             <q-route-tab to="/login" label="로그인" style="max-width: 70px"/>
           </q-tabs>
@@ -27,20 +25,15 @@
           :width="350"
           :breakpoint="444"
           >
-            <div class="fit column content-center" 
-              style = "padding: 10px 10px 2px 10px;">
-
+          <div class="fit column content-center" style = "padding: 10px 10px 2px 10px;">
             <q-btn
-            
               standout
               color="primary"
               size="15px" 
               style="width : 300px"
               label="예측정보 정의"
               to="/predict_variables"
-
             />
-
             <br>
             <q-btn
               standout
@@ -50,10 +43,8 @@
               label="예측결과 조회"
               to="/Predict"
             />
-
             <br>
             <span class="text-h6 text-dark">조회조건</span>
-            
             <q-table
               :data="NavigatorData"
               :columns="NavigatorColumns"
@@ -64,41 +55,7 @@
               class= "q-pa-md"
               style = "padding: 7px 1px 7px 1px;"
             />
-            
-            </div>
-            <!-- <div
-              rounded
-              standout
-              class="">
-              <span>
-              {{getstore}}
-              </span>
-            </div> -->
-          <!-- <q-scroll-area
-            bordered="bordered"
-            class="bg-grey-4 text-primary"
-            style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-            <q-list padding="padding">
-                <q-item clickable v-ripple> <q-item-section avatar> <q-icon name="inbox" />
-                </q-item-section> </q-item> -->
-            <!-- </q-list> -->
-
-          <!-- </q-scroll-area> -->
-
-
-
-            <!-- <q-img
-            bordered="bordered"
-            class="bg-grey-4 text-primary absolute-top"
-            style="height: 150px">
-            <div class="absolute-bottom bg-transparent">
-            <q-avatar size="50px" class="q-mb-sm">
-            <img src="../assets/Logo.png"></q-avatar>
-
-            <div class="text-black">TEAM NEOGURI</div>
-            <div class="text-black">Navigator</div>
-            </div>
-            </q-img> -->
+          </div>
 
           <q-tabs
             no-caps="no-caps"
@@ -107,9 +64,7 @@
             class="text-grey absolute-bottom"
             v-model="tab"
           >
-
             <div class="fit row justify-center">
-
               <eva-icon
                 class='q-pa-md'
                 name="github"
@@ -138,10 +93,8 @@
                 width='30px'
                 height='30px'>
               </eva-icon>
-
             </div>
           </q-tabs>
-
         </q-drawer>
       </div>
     </q-header>
