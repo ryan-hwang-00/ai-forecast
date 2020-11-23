@@ -5,7 +5,10 @@
   >
     <div class="column q-pa-lg">
       <div class="row">
-        <q-card square class="shadow-24" style="width:300px;height:485px;">
+        <q-card 
+          square class="shadow-24" 
+          style="width:300px;height:485px;"
+        >
           <q-card-section class="bg-primary">
             <h4 class="text-grand-hotel text-white q-my-md">login</h4>
             <div class="absolute-bottom-right q-pr-md" 
@@ -18,17 +21,19 @@
             <q-form 
             class="q-gutter-md">
 
-              <q-input square filled clearable 
-              v-model="email"
-              :rules="[val => val && val.length > 0  ||  'e-mail is wrong!']"
-              type="e-mail" 
-              label="e-mail" />
+              <q-input 
+                square filled clearable 
+                v-model="email"
+                :rules="[val => val && val.length > 0  ||  'e-mail is wrong!']"
+                type="e-mail" 
+                label="e-mail" />
 
-              <q-input square filled clearable 
-              v-model="password" 
-              type="password" 
-              :rules="[val => val && val.length > 0  ||  'password is wrong!']"
-              label="password" />
+              <q-input 
+                square filled clearable 
+                v-model="password" 
+                type="password" 
+                :rules="[val => val && val.length > 0  ||  'password is wrong!']"
+                label="password" />
 
             </q-form>
           </q-card-section>
@@ -48,11 +53,12 @@
           </q-card-actions>
 
           <q-card-section class="text-center q-pa-none" >
-            <p class=" text-grey-10" >If you are not registered, please register first</p>
-            <q-btn rounded standout 
-            class = "text-bold" 
-            label="register" 
-            to="/register" />
+            <p class="text-grey-10" >If you are not registered, please register first</p>
+              <q-btn 
+                rounded standout 
+                class = "text-bold" 
+                label="register" 
+                to="/register" />
           </q-card-section>
 
         </q-card>

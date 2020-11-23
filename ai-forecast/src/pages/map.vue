@@ -442,9 +442,6 @@ export default {
     store1: function() {
         
         localStorage.store_code = '1';
-        localStorage.store_name = '해운대점';
-        console.log('Clicked item')
-
         const store1 = '해운대점';
         EventBus.$emit("pushData_1", store1);
         
@@ -453,8 +450,6 @@ export default {
     store2: function () {
 
         localStorage.store_code = '6';
-        localStorage.store_name = '광안리점';
-
         const store2 = '광안리점';
         EventBus.$emit("pushData_2", store2);
     },

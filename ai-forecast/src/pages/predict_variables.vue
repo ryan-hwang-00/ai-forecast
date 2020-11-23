@@ -266,16 +266,9 @@
     </div>
     <div class="column q-pa-md"></div>
     
-
-
-
-
-
   <div class="q-pa-md"></div>
 
 
-   
-    
   </main>
 </template>
 

@@ -108,7 +108,7 @@
             v-model="tab"
           >
 
-            <div class="fit row justify-center">
+            <div class="fit row">
 
               <eva-icon
                 class='q-pa-md'
@@ -211,20 +211,20 @@ export default {
 
     data () {
 
-      console.log("jy      data", )
-      if (LocalStorage.getItem("break_1") === "1") {
-        this.getflag2 = "일요일";
-      } else if (LocalStorage.getItem("break_1")  === "0") {
-        this.getflag2 = "휴무일 없음";
-      };
+      // console.log("jy      data", )
+      // if (LocalStorage.getItem("break_1") === "1") {
+      //   this.getflag2 = "일요일";
+      // } else if (LocalStorage.getItem("break_1")  === "0") {
+      //   this.getflag2 = "휴무일 없음";
+      // };
 
-      if (LocalStorage.getItem("store_code") === "1") {
-        this.getstore2 = "해운대점";
-      } else if (LocalStorage.getItem("store_code")  === "6") {
-        this.getstore2 = "광안리점";
-      };
+      // if (LocalStorage.getItem("store_code") === "1") {
+      //   this.getstore2 = "해운대점";
+      // } else if (LocalStorage.getItem("store_code")  === "6") {
+      //   this.getstore2 = "광안리점";
+      // };
 
-      this.getdate2 = LocalStorage.getItem("date");
+      // this.getdate2 = LocalStorage.getItem("date");
 
       return {
         drawer: false,
