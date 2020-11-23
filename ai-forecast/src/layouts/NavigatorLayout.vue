@@ -189,7 +189,6 @@ export default {
 
 
         NavigatorColumns: [
-
         {
           name: 'attribute',
           required: true,
@@ -199,50 +198,41 @@ export default {
           // classes: 'bg-grey-2 ellipsis',
           // headerClasses: 'bg-grey-2 ellipsis'
         },
-
         {
           name: 'Value',
           align: 'right',
           field: 'Value',
           sortable: true
         }
-
         ],
-
         NavigatorData: [
-
           {
             attribute: "기준일",
             Value: LocalStorage.getItem("date"),
           },
-
           {
             attribute: "매장명",
             Value: '',
           },
-
           {
             attribute: "상품명",
             Value: '',
           },
-
           {
             attribute: "행사 구분",
             Value: LocalStorage.getItem("edate"),
           },
-
           {
             attribute: "휴일 구분",
             Value: '',
           },
-          
           {
             attribute: "대량 주문",
             Value: '',
           }
         ],
 
-        pagination: {
+        NavigatorPagination: {
           // sortBy: 'desc',
           // descending: false,
           page: 1,
