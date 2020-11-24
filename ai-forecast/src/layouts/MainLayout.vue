@@ -2,7 +2,7 @@
   <q-layout view="hHh LpR fff">
     
     <q-header bordered class="bg-primary text-white " height-hint="98">
-        <q-toolbar class="fit column inline justify-between" height="50px">
+<q-toolbar class="fit column inline justify-between" height="70px">
           <!-- 로고 -->
          <q-toolbar-title class = "col absolute-left">
             <q-btn flat to="/">
@@ -12,19 +12,15 @@
           </q-toolbar-title>
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
-
             <q-route-tab 
               to="/register" 
-              label="회원가입"
-              style="padding : 18px 5px; max-width: 100px; height : 90px;"/>
-
+              label="회원가입" 
+              style="padding: 18px 5px; max-width: 70px; height: 85px;"/>
             <!-- <q-separator vertical inset color="white"/> -->
-
             <q-route-tab 
-              to="/login"
+              to="/login" 
               label="로그인" 
-              style="padding: 18px 5px; max-width: 100px; height: 90px;"/>
-
+              style="padding: 18px 5px; max-width: 70px; height: 85px;"/>
           </q-tabs>
         </q-toolbar>
     </q-header>

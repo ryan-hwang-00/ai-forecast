@@ -7,7 +7,7 @@
                 square="square"
                 bordered="bordered"
                 class="text-center content-center">
-                <h2 class="text-gugi">지역을 선택해주세요.</h2>
+                <h2 class="text-jua item-start">지역을 선택해주세요.</h2>
             </div>
 
             <svg
@@ -460,6 +460,17 @@ export default {
 </script>
 
 <style scoped="scoped">
+@font-face {
+    font-family: 'Jua';
+    src: url(../assets/Jua-Regular.ttf);
+}
+.text-jua {
+  font-size: 30px;
+  font-family: 'Jua';
+ 
+  line-height: 4px;
+  font-weight: 100;
+}
 
     path {
         fill: #FA6060;

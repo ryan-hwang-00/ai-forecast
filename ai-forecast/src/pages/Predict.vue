@@ -61,7 +61,7 @@
             row-key="Date"
             hide-bottom
             :pagination.sync="pagination"
-            class="bg-grey-1 my-sticky-table q-pa-md shadow-3"
+            class="bg-info my-sticky-table q-pa-md shadow-3"
           />
         </div>
       <!-- 예측 값 그래프 캐롯셀 -->
@@ -76,7 +76,7 @@
             navigation
             padding
             arrows
-            class="bg-grey-1 text-white shadow-3 rounded-borders my-sticky-carousel q-pa-sm"
+            class="bg-info text-white shadow-3 rounded-borders my-sticky-carousel q-pa-sm"
           >
             <q-carousel-slide name="style" class="row justify-center items-center">
                 <!-- <div class="bg-grey-1 rounded-borders"> -->
@@ -85,7 +85,9 @@
                                 <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
                             </div>
                     </q-card-section> -->
-                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar" style="width : 400px"></bar-chart>
+                    <div class="bg-grey-1">
+                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+                    </div>
                 <!-- </div> -->
             </q-carousel-slide>
 
@@ -98,7 +100,9 @@
                             </div>
                         </div>
                     </q-card-section> -->
+                    <div style="width: 580px">
                     <line-chart :chart-data="datacollectionLine" :options="optionsLine"></line-chart>
+                    </div>
                 </div>
             </q-carousel-slide>
 
@@ -111,8 +115,8 @@
                             </div>
                         </div>
                     </q-card-section> -->
-                    <div>
-                        <Doughnut-chart :chart-data="datacollectionDoughnut"></Doughnut-chart>
+                    <div class="bg-info"> 
+                        <Doughnut-chart :chart-data="datacollectionDoughnut" :options="optionsDoughnut"></Doughnut-chart>
                     </div>
                 </div>
             </q-carousel-slide>
@@ -126,7 +130,7 @@
                             </div>
                         </div>
                     </q-card-section> -->
-                    <div>
+                    <div class="bg-info">
                         <Pie-chart :chart-data="datacollectionPie" :options="optionsPie"></Pie-chart>
                     </div>
                 </div>
@@ -142,7 +146,8 @@
 // import MixedChart from '../components/charts/MixedChart.vue'
 import { LocalStorage } from "quasar";
 import axios from "axios";
-import $ from 'jquery';
+// import $ from 'jquery';
+// import { mapGetters } from "vuex";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
@@ -207,63 +212,66 @@ export default {
           align: 'left',
           field: 'Date',
           sortable: true,
-          classes: 'bg-grey-2',
+          // classes: 'bg-grey-2',
           style: 'height: 58px;',
           // headerClasses: 'bg-grey-2 ellipsis'
         },
-        {
-          name: 'Weather',
-          label: '날씨',
-          align: 'left',
-          field: 'Weather',
-          sortable: false
-        },
+        // {
+        //   name: 'Weather',
+        //   label: '날씨',
+        //   align: 'left',
+        //   field: 'Weather',
+        //   sortable: false,
+        //   html: true,
+        //   render: function (data, type, full, meta) {
+        //       return "<img src=\"" + data + "\" height=\"50\"/>";
+        //   },
+        // },
         {
           name: 'Predict_Value',
           label: '예측 수량',
           align: 'right',
           field: 'Predict_Value',
           sortable: true,
-          classes: 'bg-grey-2',
+          // classes: 'bg-grey-2',
           style: 'width: 100px;',
-
         },
       ],
       data: [
         {
           Date: this.getday1Date (),
+          // Weather: "http://openweathermap.org/img/wn/10d@2x.png",
           Predict_Value: this.getday1Value (),
-          Weather: this.getDay1WeatherIcon,
         },
         {
           Date: this.getday2Date (),
           Predict_Value: this.getday2Value (),
-          Weather: this.getDay2WeatherIcon,
+          // Weather: this.getDay2WeatherIcon,
         },
         {
           Date: this.getday3Date (),
           Predict_Value: this.getday3Value (),
-          Weather: this.getDay3WeatherIcon,
+          // Weather: this.getDay3WeatherIcon,
         },
         {
           Date: this.getday4Date (),
           Predict_Value: this.getday4Value (),
-          Weather: this.getDay4WeatherIcon,
+          // Weather: this.getDay4WeatherIcon,
         },
         {
           Date: this.getday5Date (),
           Predict_Value: this.getday5Value (),
-          Weather: this.getDay5WeatherIcon,
+          // Weather: this.getDay5WeatherIcon,
         },
         {
           Date: this.getday6Date (),
           Predict_Value: this.getday6Value (),
-          Weather: this.getDay6WeatherIcon,
+          // Weather: this.getDay6WeatherIcon,
         },
         {
           Date: this.getday7Date (),
           Predict_Value: this.getday7Value (),
-          Weather: this.getDay7WeatherIcon,
+          // Weather: this.getDay7WeatherIcon,
         },
       ],
       pagination: {
@@ -282,8 +290,7 @@ export default {
     this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
-    this.getWeather()
-    getJSON
+    // this.getWeather()
   },
   
   // mounted () {
@@ -291,19 +298,19 @@ export default {
   // },
 
   methods: {
-    getWeather () {
-      axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=35.1333&lon=129.05&exclude=minutely&appid=a21ee35df7c2a4aec3f6efc14cd346bd&units=metric&lang=kr')
-        .then((response) => {
-          this.getDay1WeatherIcon= JSON.stringify(response.daily)
-          // this.getDay2WeatherIcon= JSON.stringify(response.daily[1].weather[0].icon)
-          // this.getDay3WeatherIcon= JSON.stringify(response.daily[2].weather[0].description)
-          // this.getDay4WeatherIcon= JSON.stringify(response.daily[3].weather[0].description)
-          // this.getDay5WeatherIcon= JSON.stringify(response.daily[4].weather[0].description)
-          // this.getDay6WeatherIcon= JSON.stringify(response.daily[5].weather[0].description)
-          // this.getDay7WeatherIcon= JSON.stringify(response.daily[6].weather[0].description)
-          // console.log("Day1WWWWICON",this.getDay1WeatherIcon )
-        })
-    },
+    // getWeather () {
+    //   axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=35.1333&lon=129.05&exclude=minutely&appid=a21ee35df7c2a4aec3f6efc14cd346bd&units=metric&lang=kr')
+    //     .then((response) => {
+    //       this.getDay1WeatherIcon= JSON.stringify(response.daily)
+    //       this.getDay2WeatherIcon= JSON.stringify(response.daily[1].weather[0].icon)
+    //       this.getDay3WeatherIcon= JSON.stringify(response.daily[2].weather[0].description)
+    //       this.getDay4WeatherIcon= JSON.stringify(response.daily[3].weather[0].description)
+    //       this.getDay5WeatherIcon= JSON.stringify(response.daily[4].weather[0].description)
+    //       this.getDay6WeatherIcon= JSON.stringify(response.daily[5].weather[0].description)
+    //       this.getDay7WeatherIcon= JSON.stringify(response.daily[6].weather[0].description)
+    //       console.log("Day1WWWWICON",this.getDay1WeatherIcon )
+    //     })
+    // },
 
     //'<img src="~assets/Weather/' + 아이콘 + '.png" alt=""/>'
 
@@ -336,7 +343,11 @@ export default {
       },
       this.optionsBar = {
         legend: {
-          display: false
+          display: false,
+          labels: {
+            usePointStyle: true,
+            boxWidth: 5
+          }
         },
         scales: {
           // xAxes: [{
@@ -354,6 +365,16 @@ export default {
                 min: 0,
                 // max: 1000
                 //stepSize : 250
+              },
+              gridLines : {
+                display: true
+              }
+            }
+          ],
+          xAxes: [
+              {
+              gridLines : {
+                display: false
               }
             }
           ]
@@ -382,7 +403,7 @@ export default {
             fill: false,
             borderColor: '#34495E',
             pointBorderColor: '#249EBF',
-            borderWidth: 1,
+            borderWidth: 2.4,
             lineTension: 0.7,
             backgroundColor: '#34495E',
             pointBackgroundColor: 'white',
@@ -458,6 +479,15 @@ export default {
             ]
           }
         ]
+      },
+      this.optionsDoughnut = {
+        legend: {
+          display: true
+        },
+        title: {
+          display: true,
+          text: 'Predict Value'
+        }
       }
     },
 
