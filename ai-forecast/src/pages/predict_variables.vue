@@ -57,31 +57,31 @@
               <q-list>
                 <q-item clickable v-close-popup @click="bac_2l">
                   <q-item-section>
-                    <q-item-label>백산수 2L</q-item-label>                      <!-- 1 -->
+                    <q-item-label>생수 2L</q-item-label>                      <!-- 1 -->
                   </q-item-section>
                 </q-item>
 
                 <q-item clickable v-close-popup @click="bac_500ml">
                   <q-item-section>
-                    <q-item-label>백산수 500ml</q-item-label>                   <!-- 2 -->
+                    <q-item-label>생수 500ml</q-item-label>                   <!-- 2 -->
                   </q-item-section>
                 </q-item>
 
                 <q-item clickable v-close-popup @click="sin_ramyun">
                   <q-item-section>
-                    <q-item-label>신라면 멀티</q-item-label>                    <!-- 3 -->
+                    <q-item-label>라면A</q-item-label>                    <!-- 3 -->
                   </q-item-section>
                 </q-item>
 
                 <q-item clickable v-close-popup @click="ansung_ramyun">
                   <q-item-section>
-                    <q-item-label>안성탕면 멀티</q-item-label>                  <!-- 4 -->
+                    <q-item-label>라면B</q-item-label>                  <!-- 4 -->
                   </q-item-section>
                 </q-item>
 
                 <q-item clickable v-close-popup @click="jin_ramyun">
                   <q-item-section>
-                    <q-item-label>진라면 멀티(순한맛)</q-item-label>            <!-- 5 -->
+                    <q-item-label>라면C</q-item-label>            <!-- 5 -->
                   </q-item-section>
                 </q-item>   
               </q-list>
@@ -282,12 +282,15 @@
     <!-- /div_30 -->
     </div>
     <div class="column q-pa-md"></div>
-    
+      <!-- <task proptest = 'test111'></task> -->
+    <!-- <task> v-for=" (task) in tasks"      </task> -->
   <div class="q-pa-md"></div>
 
 
     
   </main>
+  
+  
 </template>
 
 
@@ -298,6 +301,7 @@ import BarChart from '../components/charts/BarChart'
 // import Predict from '../pages/Predict'
 import axios from "axios";
 import EventBus from '../components/eventBus.js';
+import Predict from '../pages/Predict.vue';
 
 // document.onclick = processClick;
 
@@ -307,11 +311,29 @@ import EventBus from '../components/eventBus.js';
 
 
 export default {
+  
+  // name: 'Child',
+  // components: {
+  //   ChildAndChild
+  // },
 
 
 
   data () {
     return {
+
+      tasks : [
+        {
+          name : 'Go to shop',
+          dudate : '2019/05/12',
+          duetime: '18:00'
+        },
+        {
+          name : 'test2',
+          dudate : '2020/01/23',
+          dutime : '19:00'
+        }
+      ],
 
       model1: '2019-12-01',
       // model2: '03-21-2019',
@@ -342,6 +364,10 @@ export default {
 
       this.selected_date={model1}
 
+  },
+
+  components : {
+    'task' : Predict
   },
 
   methods: {
@@ -382,14 +408,14 @@ export default {
     bac_2l () {
       console.log('Clicked item')
       localStorage.item_1 = '백산수2.0L';
-      const item_1 = '백산수2.0L';
+      const item_1 = '생수 2.0L';
       EventBus.$emit("product_bus", item_1);
     },
 
     bac_500ml () {
       console.log('Clicked item')
       localStorage.item_1 = '백산수500ml';
-      const item_1 = '백산수500ml';
+      const item_1 = '생수 500ml';
       
       EventBus.$emit("product_bus", item_1);
     },
@@ -397,7 +423,7 @@ export default {
     sin_ramyun () {
       console.log('Clicked item')
       localStorage.item_1 = '신라면멀티';
-      const item_1 = '신라면멀티';
+      const item_1 = '라면A';
       
       EventBus.$emit("product_bus", item_1);
     },
@@ -405,7 +431,7 @@ export default {
     ansung_ramyun () {
       console.log('Clicked item')
       localStorage.item_1 = '안성탕면멀티';
-      const item_1 = '안성탕면멀티';
+      const item_1 = '라면B';
       
       EventBus.$emit("product_bus", item_1);
     },
@@ -413,7 +439,7 @@ export default {
     jin_ramyun () {
       console.log('Clicked item')
       localStorage.item_1 = '진라면멀티(순한맛)';
-      const item_1 = '진라면멀티(순한맛)';
+      const item_1 = '라면C';
       
       EventBus.$emit("product_bus", item_1);
 

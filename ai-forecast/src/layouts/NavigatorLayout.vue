@@ -1,3 +1,4 @@
+
 <template>
   <q-layout view="hHh LpR fff">
     <q-header bordered="bordered" class="bg-primary text-white" height-hint="98">
@@ -136,6 +137,15 @@ import { LocalStorage } from "quasar";
 import Predict from '../pages/Predict.vue'
 import predict_variables from '../pages/predict_variables.vue'
 import EventBus from '../components/eventBus.js';
+import Vue from "vue";
+
+Vue.component('child', {
+  // props 정의
+  props: ['message'],
+  // 데이터와 마찬가지로 props는 템플릿 내부에서 사용할 수 있습니다
+  // data 속성에서 사용할 땐 vm => ({vm.message})로 사용할 수 있습니다.
+  template: '<span>{{ message }}</span>'
+})
 
 export default { 
     data () {
