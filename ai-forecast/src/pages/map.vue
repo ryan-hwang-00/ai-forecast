@@ -7,7 +7,7 @@
                 square="square"
                 bordered="bordered"
                 class="text-center content-center">
-                <h4>지역을 선택해주세요.</h4>
+                <h2 class="text-gugi">지역을 선택해주세요.</h2>
             </div>
 
             <svg
@@ -498,4 +498,15 @@ export default {
         width: 300px;
         max-width: 100%;
     }
+
+    @font-face {
+    font-family: 'Kirang Haerang';
+    src: url(../assets/KirangHaerang-Regular.ttf);
+    }
+
+    .text-gugi {
+    font-family: 'Kirang Haerang';
+    }
+
+
 </style>
