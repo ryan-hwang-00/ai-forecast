@@ -223,7 +223,7 @@
         <q-date 
           v-model="model1" 
           :options="optionsFn"
-          mask="YYYY-MM-DD" />
+          mask="YYYY-MM-DD" @input="clickDate"/>
         </div>               
         <!-- /div 4 -->
         
@@ -345,6 +345,11 @@ export default {
   },
 
   methods: {
+
+    clickDate () {
+      EventBus.$emit("Date_bus", this.model1)
+
+    },
 
     processClick () {
       console.log('>>>>>>>>>mouse_clicked')

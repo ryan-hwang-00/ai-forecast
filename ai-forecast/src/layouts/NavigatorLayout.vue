@@ -165,7 +165,7 @@ export default {
         NavigatorData: [
           {
             attribute: "기준일",
-            Value: '',
+            Value: '2019-12-01',
           },
           {
             attribute: "매장명",
