@@ -1225,10 +1225,12 @@ export default {
 
 .block {
   font-family: 'Jua';
-  font-size:'20px'
+  font-size:'28px'
 }
 
 .q-date__header {
    font-family: 'Jua';
 }
+
+
 </style>

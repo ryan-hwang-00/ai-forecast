@@ -32,13 +32,12 @@
           :breakpoint="444"
           >
 
-          <div class="fit column content-center" style = "padding: 10px 10px 2px 10px;">
-
+          <div class="fit column content-center" style = "padding: 30px 10px 2px 10px;">
 
             <q-btn
               standout
               color="primary"
-              size="15px" 
+              size="18px" 
               style="width : 300px"
               label="예측정보 정의"
               to="/predict_variables"
@@ -48,16 +47,15 @@
             <q-btn
               standout
               color="primary"
-              size="15px" 
-              style="width : 300px"
+              size="18px" 
+              style="font:'Wemakeprice-Regular'; width : 300px;"
               label="예측결과 조회"
               to="/Predict"
             />
             <br>
             <span 
-            class="text-h6 text-dark"
-            style="padding: 40px 0px 0px 0px;"
-
+              class="text-h6 text-dark"
+              style="padding: 40px 0px 0px 0px;"
             >조회조건</span>
 
             <q-table
@@ -67,8 +65,8 @@
               hide-header
               hide-bottom
               :pagination.sync="NavigatorPagination"
-              class= "q-pa-md text-left"
-              style = "padding: 7px 1px 7px 1px;"
+              class="text-left"
+              style="padding: 1px 1px 1px 1px;"
             />
             
           </div>
@@ -279,13 +277,8 @@ export default {
 
 
 @font-face {
-    font-family: 'Kirang Haerang';
-    src: url(../assets/KirangHaerang-Regular.ttf);
-}
-
-@font-face {
     font-family: 'Wemakeprice-Regular';
-    src: url(../assets/Wemakeprice-SemiBold.ttf);
+    src: url(../assets/Wemakeprice-Regular.ttf);
  
 }
 
@@ -296,7 +289,7 @@ export default {
  
   line-height: 4px;
   font-weight: 100;
-  
+
 }
 
 .text-h6 {
@@ -305,15 +298,22 @@ export default {
  
 }
 
-.block {
-
-    font-family: 'Wemakeprice-Regular';
-}
-
-.q-pa-md{
-
+.text-left {
+  
   font-family: 'Jua';
-
+  font-size: 20px;
+  padding: 2px 2px;
+ 
 }
 
+.q-btn {
+  font-size: 34px;
+}
+
+.text-left td {
+
+  padding: 2px 16px;
+  background-color: inherit;
+
+}
 </style>
