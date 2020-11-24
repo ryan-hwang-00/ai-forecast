@@ -289,41 +289,33 @@ export default {
 @font-face {
     font-family: 'Wemakeprice-Regular';
     src: url(../assets/Wemakeprice-Regular.ttf);
- 
 }
 
 .q-tab {
-
   font-size: 30px;
   font-family: 'Jua';
  
   line-height: 4px;
   font-weight: 100;
-
 }
 
 .text-h6 {
-  
   font-family: 'Wemakeprice-Regular';
- 
 }
 
 .text-left {
-  
   font-family: 'Jua';
-  font-size: 20px;
+  font-size: 15px;
   padding: 2px 2px;
- 
 }
 
 .q-btn {
   font-size: 34px;
 }
 
-.text-left td {
 
-  padding: 2px 16px;
-  background-color: inherit;
-
+.q-table tbody td {
+    font-size: 16px;
 }
+
 </style>
