@@ -286,6 +286,13 @@ class prepareData:
 
         past = pd.read_csv(self.train, encoding='euc-kr', index_col=0)
 
+        if past.iloc[-1, 0] >= self.train_date:
+
+            past = past.loc[:past[past['date'] == self.train_date].index[0]]
+
+        else:
+            past = past
+
         future = self.merged_df
 
         future['sin_month'] = np.sin(2*np.pi*future.month/12)
