@@ -50,7 +50,7 @@
 
     <!-- 예측 값 그래프 및 테이블 -->
     <div class="content-center" style="max-height: 30px;">
-      <span class="text-center"><h4> 주간 수요예측량</h4></span>
+      <span class="text-Jua text-center"><h4> 주간 수요예측량</h4></span>
     </div>
     <div class="fit row  justify-around q-row-gutter-xs q-py-sm bg-grey-1">
       <!-- 예측 값 테이블 -->
@@ -61,7 +61,7 @@
             row-key="Date"
             hide-bottom
             :pagination.sync="pagination"
-            class="bg-info my-sticky-table q-pa-md shadow-3"
+            class="bg-info my-sticky-table q-pa-md shadow-3 text-Jua"
           />
         </div>
       <!-- 예측 값 그래프 캐롯셀 -->
@@ -85,8 +85,8 @@
                                 <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
                             </div>
                     </q-card-section> -->
-                    <div class="bg-grey-1">
-                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+                    <div class="bg-grey-1" style="width: 580px">
+                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar" :styles="myStyles"></bar-chart>
                     </div>
                 <!-- </div> -->
             </q-carousel-slide>
@@ -346,6 +346,11 @@ export default {
           }
         ]
       },
+      this.myStyles = {height: '400px',
+        width: '100%',
+        position: 'relative',
+
+      },
       this.optionsBar = {
         legend: {
           display: false,
@@ -387,7 +392,10 @@ export default {
         title: {
           display: true,
           text: 'Predict Value'
-        }
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        height: 100,
       }
     },
     
@@ -677,6 +685,6 @@ export default {
   height: 450px
   width: 550px
   // max-width: 60rem
-
+  
 
 </style>

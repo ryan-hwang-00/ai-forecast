@@ -2,14 +2,20 @@
   <q-layout view="hHh LpR fff">
     
     <q-header bordered class="bg-primary text-white " height-hint="98">
-<q-toolbar class="fit column inline justify-between" height="70px">
+
+      <q-toolbar class="fit column inline justify-between" height="70px">
+
           <!-- 로고 -->
-         <q-toolbar-title class = "col absolute-left">
-            <q-btn flat to="/">
-              <img id="image_large" src="~assets/Logo-white.png" height="40px" alt="" class="img-responsive"/>
-              <img id="image_small" src="~assets/Logo-layout.png" height="25px" alt="" class="img-responsive"/>
-            </q-btn>
-          </q-toolbar-title>
+         <q-toolbar-title 
+         class = "col absolute-left"    
+         >
+
+          <q-btn flat to="/">
+            <img id="image_large" src="~assets/Logo-white.png" height="40px" alt="" class="img-responsive"/>
+            <img id="image_small" src="~assets/Logo-layout.png" height="25px" alt="" class="img-responsive"/>
+          </q-btn>
+
+        </q-toolbar-title>
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
             <q-route-tab 
@@ -132,9 +138,16 @@ export default {
     font-family: 'Jua';
     src: url(../assets/Jua-Regular.ttf);
 }
+
+@font-face {
+    font-family: 'Wemakeprice-Regular';
+    src: url(../assets/Wemakeprice-Regular.ttf);
+ 
+}
+
 .q-tab {
   font-size: 30px;
-  font-family: 'Jua';
+  font-family: 'Wemakeprice-Regular';
  
   line-height: 4px;
   font-weight: 100;
@@ -144,5 +157,9 @@ export default {
     font-size: 20px;
     line-height: 14px;
     font-weight: 500;
+}
+
+.q-btn {
+  font-size: 34px;
 }
 </style>

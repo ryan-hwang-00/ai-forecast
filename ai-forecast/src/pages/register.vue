@@ -7,7 +7,7 @@
       <div class="row">
         <q-card square class="shadow-24" style="width:300px;height:485px;">
           <q-card-section class="bg-primary">
-            <h4 class="text-grand-hotel text-white q-my-md">Registration</h4>
+            <h4 class="text-Gugi text-white q-my-md">Registration</h4>
             <div class="absolute-bottom-right q-pr-md" 
                  style="transform: translateY(50%);">
             </div>
@@ -148,3 +148,22 @@ export default {
 }
 
 </script>
+<style>
+
+@font-face {
+    font-family: 'Wemakeprice-Regular';
+    src: url(../assets/Wemakeprice-Regular.ttf);
+ 
+}
+
+.text-Gugi {
+
+  font-size: 30px;
+  font-family: 'Wemakeprice-Regular';
+ 
+  line-height: 4px;
+  font-weight: 100;
+
+}
+
+</style>

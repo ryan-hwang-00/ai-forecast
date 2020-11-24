@@ -3,7 +3,7 @@
   
           
 
-  <main class="q-page q-pa-sm fit column content-center items-center" style="min-height: 704px;">
+  <main class="q-page q-pa-sm fit column content-center items-center" style="max-height: 720px;">
 
 
 
@@ -1251,6 +1251,12 @@ export default {
 
 .block {
   font-family: 'Jua';
-  font-size:'20px'
+  font-size:'28px'
 }
+
+.q-date__header {
+   font-family: 'Jua';
+}
+
+
 </style>

@@ -1,9 +1,8 @@
 <template>
   <main
     class="q-page q-pa-sm"
-    style="min-height: 500px;"
+    style="padding: 60px 3px 30px 3px; min-height: 500px;"
   >
-
 
     <div 
       class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly" 
@@ -22,6 +21,7 @@
         standout
         color="primary"
         label="Start"
+        style = "padding: 1px 0px 0px 0px;"
         to="/map"
         size="20px"
       />
