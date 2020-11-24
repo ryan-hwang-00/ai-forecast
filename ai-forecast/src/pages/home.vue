@@ -14,11 +14,12 @@
     </div>
 
     <div 
-      class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">
+      class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly">
 
       <q-btn
         rounded
         standout
+        class='text-a'
         color="primary"
         label="Start"
         style = "padding: 1px 0px 0px 0px;"
@@ -28,8 +29,6 @@
 
     <!-- </q-card-section> -->
     </div>
-
-
   </main>
 </template>
 
@@ -49,10 +48,9 @@ export default {
 
 <style>
 
-
-.block {
-    display: block !important;
-    font-family: 'Goldman';
+.text-a {
+  display: block !important;
+  font-family: 'Jua';
 }
 
 
