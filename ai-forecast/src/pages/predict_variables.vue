@@ -606,35 +606,50 @@ export default {
       console.log('clicked predict>>>>>', this.model1);
       localStorage.removeItem('day1');
 
+
+      this.test_day=localStorage.getItem('event_mon')
+      console.log('step0>>>>>>>', this.test_day)
+
       this.edays=[]
+
       console.log('stpe1>>>>>>')
-        if (localStorage.event_mon === true) {
-        this.wday1 = "월요일"
-        // this.edays.push(this.wday1)
-        // console.log('wday1>>>>>>>>>', this.wday1)
+      if (this.test_day === true) {
+      this.wday1 = "월요일"
+      console.log('step1-1>>>>>>')
+  
       };
+
       console.log('stpe2>>>>>>');
         if (localStorage.event_tue === true) {
         this.wday2 = "화요일"
         this.edays.push(this.wday2)
       };
+
       console.log('stpe3>>>>>>');
         if (localStorage.event_wen === true) {
         this.wday3 = "수요일"
         // this.edays.push(this.wday3)
       };
+
+      console.log('stpe4>>>>>>');
         if (localStorage.event_thu === true) {
         this.wday4 = "목요일"
         // this.edays.push(this.wday4)
       };
+
+      console.log('stpe5>>>>>>');
         if (localStorage.event_fri === true) {
         this.wday5 = "금요일"
         // this.edays.push(this.wday5)
       };
+
+      console.log('stpe6>>>>>>');
         if (localStorage.event_sat === true) {
         this.wday6 = "토요일"
         // this.edays.push(this.wday6)
       };
+
+      console.log('stpe7>>>>>>');
         if (localStorage.event_sun === true) {
         this.wday7 = "일요일"
         // this.edays.push(this.wday7)
