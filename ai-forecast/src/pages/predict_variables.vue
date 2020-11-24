@@ -596,123 +596,120 @@ export default {
       };
       this.so_days.pop();
       EventBus.$emit("special_order_bus", this.so_days);
+      // console.log('so_days>>>>>>', this.so_days)
       
 
     },
 
     showCustom () {
 
-      // EventBus.$emit("Date_bus", this.model1)
+      console.log('clicked predict>>>>>', this.model1);
       localStorage.removeItem('day1');
 
-      localStorage.event_mon=this.event_mon;
-      localStorage.event_tue=this.event_tue;
-      localStorage.event_wen=this.event_wen;
-      localStorage.event_thu=this.event_thu;
-      localStorage.event_fri=this.event_fri;
-      localStorage.event_sat=this.event_sat;
-      localStorage.event_sun=this.event_sun;
-
-      localStorage.so_event_mon=this.so_event_mon;
-      localStorage.so_event_tue=this.so_event_tue;
-      localStorage.so_event_wen=this.so_event_wen;
-      localStorage.so_event_thu=this.so_event_thu;
-      localStorage.so_event_fri=this.so_event_fri;
-      localStorage.so_event_sat=this.so_event_sat;
-      localStorage.so_event_sun=this.so_event_sun;
-
-
       this.edays=[]
-
-        if (this.event_mon === true) {
-        this.wday1 = "월요일";
-        this.edays.push(this.wday1)
+      console.log('stpe1>>>>>>')
+        if (localStorage.event_mon === true) {
+        this.wday1 = "월요일"
+        // this.edays.push(this.wday1)
+        // console.log('wday1>>>>>>>>>', this.wday1)
       };
-        if (this.event_tue === true) {
+      console.log('stpe2>>>>>>');
+        if (localStorage.event_tue === true) {
         this.wday2 = "화요일"
         this.edays.push(this.wday2)
       };
-        if (this.event_wen === true) {
+      console.log('stpe3>>>>>>');
+        if (localStorage.event_wen === true) {
         this.wday3 = "수요일"
-        this.edays.push(this.wday3)
+        // this.edays.push(this.wday3)
       };
-        if (this.event_thu === true) {
+        if (localStorage.event_thu === true) {
         this.wday4 = "목요일"
-        this.edays.push(this.wday4)
+        // this.edays.push(this.wday4)
       };
-        if (this.event_fri === true) {
+        if (localStorage.event_fri === true) {
         this.wday5 = "금요일"
-        this.edays.push(this.wday5)
+        // this.edays.push(this.wday5)
       };
-        if (this.event_sat === true) {
+        if (localStorage.event_sat === true) {
         this.wday6 = "토요일"
-        this.edays.push(this.wday6)
+        // this.edays.push(this.wday6)
       };
-        if (this.event_sun === true) {
+        if (localStorage.event_sun === true) {
         this.wday7 = "일요일"
-        this.edays.push(this.wday7)
+        // this.edays.push(this.wday7)
       };
+      // console.log('edays>>>>>>>', this.wday1)
 
       
-      // if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
-      // };
-      //   if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
-      // };
-      //   if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
-      // };
-      //   if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
-      // };
-      //   if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
-      // };
-      //   if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
-      // };
-      //   if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
-      // };
+        if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
+      };
+        if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
+      };
+        if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
+      };
+        if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
+      };
+        if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
+      };
+        if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
+      };
+        if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
+      };
         localStorage.edate=this.edays;
+        console.log('edays>>>>>>', this.edays)
+        
 
 
         // 대량주문 정보 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
       this.so_days=[]
-        if (this.so_event_mon === true) {
+        if (localStorage.so_event_mon === true) {
         this.so_day1 = "월요일";
         this.so_days.push(this.so_day1)
       };
-        if (this.so_event_tue === true) {
-        this.so_day2 = "화요일"
+        if (localStorage.so_event_tue === true) {
+        this.so_day2 = "화요일";
+        this.so_days.push(this.so_day2)
       };
-        if (this.so_event_wen === true) {
+        if (localStorage.so_event_wen === true) {
         this.so_day3 = "수요일"
+        this.so_days.push(this.so_day3)
       };
-        if (this.so_event_thu === true) {
+        if (localStorage.so_event_thu === true) {
         this.so_day4 = "목요일"
+        this.so_days.push(this.so_day4)
       };
-        if (this.so_event_fri === true) {
+        if (localStorage.so_event_fri === true) {
         this.so_day5 = "금요일"
+        this.so_days.push(this.so_day5)
       };
-        if (this.so_event_sat === true) {
+        if (localStorage.so_event_sat === true) {
         this.so_day6 = "토요일"
+        this.so_days.push(this.so_day6)
       };
-        if (this.so_event_sun === true) {
+        if (localStorage.so_event_sun === true) {
         this.so_day7 = "일요일"
+        this.so_days.push(this.so_day7)
       };
+      localStorage.so_date=this.so_days;
 
       
       // if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
       // };
-        if (this.so_day2 ==='화요일') { this.so_days.push(this.so_day2)
-      };
-        if (this.so_day3 ==='수요일') { this.so_days.push(this.so_day3)
-      };
-        if (this.so_day4 ==='목요일') { this.so_days.push(this.so_day4)
-      };
-        if (this.so_day5 ==='금요일') { this.so_days.push(this.so_day5)
-      };
-        if (this.so_day6 ==='토요일') { this.so_days.push(this.so_day6)
-      };
-        if (this.so_day7 ==='일요일') { this.so_days.push(this.so_day7)
-      };
-        localStorage.so_date=this.so_days;
+      //   if (this.so_day2 ==='화요일') { this.so_days.push(this.so_day2)
+      // };
+      //   if (this.so_day3 ==='수요일') { this.so_days.push(this.so_day3)
+      // };
+      //   if (this.so_day4 ==='목요일') { this.so_days.push(this.so_day4)
+      // };
+      //   if (this.so_day5 ==='금요일') { this.so_days.push(this.so_day5)
+      // };
+      //   if (this.so_day6 ==='토요일') { this.so_days.push(this.so_day6)
+      // };
+      //   if (this.so_day7 ==='일요일') { this.so_days.push(this.so_day7)
+      // };
+        
 
 
 
