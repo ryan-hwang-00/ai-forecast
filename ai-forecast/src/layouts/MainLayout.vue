@@ -155,8 +155,8 @@ export default {
     font-weight: 500;
 }
 
-
 .q-btn {
   font-size: 34px;
 }
+
 </style>

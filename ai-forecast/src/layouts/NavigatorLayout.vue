@@ -295,7 +295,7 @@ export default {
 .q-tab {
 
   font-size: 30px;
-  font-family: 'Wemakeprice-Regular';
+  font-family: 'Jua';
  
   line-height: 4px;
   font-weight: 100;
