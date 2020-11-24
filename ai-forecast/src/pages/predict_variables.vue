@@ -132,13 +132,13 @@
           <div class="row no-wrap q-pa-md" >
             <div class="column">
               <div class="text-h6 q-mb-lg" >할인 요일 선택</div>
-              <q-toggle v-model="event_mon" label="월요일 할인" />
-              <q-toggle v-model="event_tue" label="화요일 할인" />
-              <q-toggle v-model="event_wen" label="수요일 할인" />
-              <q-toggle v-model="event_thu" label="목요일 할인" />
-              <q-toggle v-model="event_fri" label="금요일 할인" />
-              <q-toggle v-model="event_sat" label="토요일 할인" />
-              <q-toggle v-model="event_sun" label="일요일 할인" />
+              <q-toggle v-model="event_mon" label="월요일 할인" @input="event_toggle"/>
+              <q-toggle v-model="event_tue" label="화요일 할인" @input="event_toggle"/>
+              <q-toggle v-model="event_wen" label="수요일 할인" @input="event_toggle"/>
+              <q-toggle v-model="event_thu" label="목요일 할인" @input="event_toggle"/>
+              <q-toggle v-model="event_fri" label="금요일 할인" @input="event_toggle"/>
+              <q-toggle v-model="event_sat" label="토요일 할인" @input="event_toggle"/>
+              <q-toggle v-model="event_sun" label="일요일 할인" @input="event_toggle"/>
 
             </div>
 
@@ -146,7 +146,7 @@
 
           <div class="row q-pa-sm justify-end">
       
-            <q-btn label="적용" color="red-10" size="12px" style="width : 95px" @click="toggle_bus1"/>
+            <!-- <q-btn label="적용" color="red-10" size="12px" style="width : 95px" @click="toggle_bus1"/> -->
 
           </div>
         </q-btn-dropdown>
@@ -169,13 +169,14 @@
           <div class="row no-wrap q-pa-md" >
             <div class="column">
               <div class="text-h6 q-mb-lg" >출하 요일 선택</div>
-              <q-toggle v-model="so_event_mon" label="월요일" />
-              <q-toggle v-model="so_event_tue" label="화요일" />
-              <q-toggle v-model="so_event_wen" label="수요일" />
-              <q-toggle v-model="so_event_thu" label="목요일" />
-              <q-toggle v-model="so_event_fri" label="금요일" />
-              <q-toggle v-model="so_event_sat" label="토요일" />
-              <q-toggle v-model="so_event_sun" label="일요일" />
+              <q-toggle v-model="so_event_mon" label="월요일" @input="so_toggle1"/>
+              <!-- <q-toggle v-model="so_event_mon" label="월요일" /> -->
+              <q-toggle v-model="so_event_tue" label="화요일" @input="so_toggle1"/>
+              <q-toggle v-model="so_event_wen" label="수요일" @input="so_toggle1"/>
+              <q-toggle v-model="so_event_thu" label="목요일" @input="so_toggle1"/>
+              <q-toggle v-model="so_event_fri" label="금요일" @input="so_toggle1"/>
+              <q-toggle v-model="so_event_sat" label="토요일" @input="so_toggle1"/>
+              <q-toggle v-model="so_event_sun" label="일요일" @input="so_toggle1"/>
 
             </div>
 
@@ -183,7 +184,7 @@
 
           <div class="row q-pa-sm justify-end">
       
-            <q-btn label="적용" color="red-10" size="12px" style="width : 90px" @click="toggle_bus2"/>
+            <!-- <q-btn label="적용" color="red-10" size="12px" style="width : 90px" @click="toggle_bus2"/> -->
 
           </div>
 
@@ -223,7 +224,7 @@
         <q-date 
           v-model="model1" 
           :options="optionsFn"
-          mask="YYYY-MM-DD" @input="clickDate"/>
+          mask="YYYY-MM-DD" @click="clickDate"/>
         </div>               
         <!-- /div 4 -->
         
@@ -376,6 +377,10 @@ export default {
       EventBus.$emit("Date_bus", this.model1)
 
     },
+    // so_toggle1 () {
+    //   EventBus.$emit("special_order_bus", this.so_event_mon)
+
+    // },
 
     processClick () {
       console.log('>>>>>>>>>mouse_clicked')
@@ -487,7 +492,7 @@ export default {
 
 
 
-    toggle_bus1 () {
+    event_toggle () {
       console.log('clicked toggle special_order')
       
 
@@ -546,8 +551,9 @@ export default {
 
 
 
-    toggle_bus2 () {
+    so_toggle1 () {
       console.log('clicked toggle special_order')
+      // console.log('boolean>>>>', this.so_event_mon)
       
 
       localStorage.so_event_mon=this.so_event_mon;
