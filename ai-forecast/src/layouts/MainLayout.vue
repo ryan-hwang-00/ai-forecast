@@ -129,10 +129,6 @@ export default {
     }
 }
 
-@font-face {
-    font-family: 'Kirang Haerang';
-    src: url(../assets/KirangHaerang-Regular.ttf);
-}
 
 @font-face {
     font-family: 'Jua';
@@ -147,7 +143,7 @@ export default {
 
 .q-tab {
   font-size: 30px;
-  font-family: 'Wemakeprice-Regular';
+  font-family: 'Jua';
  
   line-height: 4px;
   font-weight: 100;
@@ -158,6 +154,7 @@ export default {
     line-height: 14px;
     font-weight: 500;
 }
+
 
 .q-btn {
   font-size: 34px;
