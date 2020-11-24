@@ -139,7 +139,9 @@
           </q-carousel>
         </div>
     </div>
+    
   </div>
+
 </template> 
 
 <script>
@@ -163,7 +165,10 @@ function(data){
 })
 
 export default {
+  
   name: "Predict",
+
+  
 
   components: {
     BarChart,

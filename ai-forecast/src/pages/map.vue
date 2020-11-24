@@ -517,7 +517,11 @@ export default {
     src: url(../assets/KirangHaerang-Regular.ttf);
     }
 
-    
+    @font-face {
+    font-family: 'Wemakeprice-Regular';
+    src: url(../assets/Wemakeprice-SemiBold.ttf);
+ 
+    }
     @font-face {
     font-family: 'BMEuljiro10yearslater';
     src: url(../assets/BMEuljiro10yearslater.ttf);
@@ -529,8 +533,10 @@ export default {
     }
 
     .text-gugi {
-    font-family: 'KOTRA_BOLD';
-    font-size:'10px'
+    font-family: 'Wemakeprice-Regular';
+
     }
+
+
 
 </style>
