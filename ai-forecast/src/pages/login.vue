@@ -1,6 +1,6 @@
 <template>
   <q-page
-    class="window-height window-width row justify-center items-center"
+    class="q-page q-pt-sm row justify-center items-center"
     style="background: linear-gradient(white, white);"
   >
     <div class="column q-pa-lg">
@@ -40,20 +40,22 @@
           </q-card-section>
 
           <q-card-actions 
-          class="q-pa-md">
+            class="q-pa-md">
            
             <q-btn
-            push
-            unelevated color="primary" 
-            type="submit"
-            size="lg" 
-            class="full-width"
-            @click="userCheck"
-            label = 'login'/>
+              push
+              unelevated color="primary" 
+              type="submit"
+              size="lg" 
+              class="full-width"
+              @click="userCheck"
+              label = 'login'
+            />
 
           </q-card-actions>
 
-          <q-card-section class="text-center q-pa-none" >
+          <q-card-section
+            class="text-center q-pa-none" >
             <p class="text-grey-10" >If you are not registered, please register first</p>
               <q-btn 
                 rounded standout 
@@ -140,20 +142,15 @@ export default {
 <style>
 
 @font-face {
-    font-family: 'Wemakeprice-Regular';
-    src: url(../assets/Wemakeprice-Regular.ttf);
+  font-family: 'Jua';
+  src: url(../assets/Jua-Regular.ttf);
  
 }
 
 .text-Gugi {
 
-  font-size: 30px;
-  font-family: 'Wemakeprice-Regular';
+  font-family: 'Jua';
  
-  line-height: 4px;
-  font-weight: 100;
-
 }
-
 
 </style>
