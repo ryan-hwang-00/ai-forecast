@@ -1,4 +1,4 @@
-import data
+from data import prepareData
 
 import pandas as pd
 
@@ -10,7 +10,7 @@ from modeling import create_model
 
 class start_train:
 
-    def __init__(self, merged_df, store_code, product_name, train_date, predict_date, sequence_x=180 * 4, sequence_y=7, filepath='./weight_test/1.hdf5'):
+    def __init__(self, merged_df, store_code, product_name, train_date, predict_date, sequence_x=180 * 4, sequence_y=7):
         self.merged_df = merged_df
         self.store_code = store_code
         self.product_name = product_name
@@ -18,7 +18,6 @@ class start_train:
         self.predict_date = predict_date
         self.sequence_x = sequence_x
         self.sequence_y = sequence_y
-        self.filepath = filepath
 
     def trainer(self):
 
@@ -47,24 +46,22 @@ class start_train:
         model_name = meta_index[(meta_index['store'] == self.store_code) & (
             meta_index['product'] == self.product_name)].iloc[0]['weight']
 
-        df, df_train, df_test, sale_qty, x_columns, x_1_columns = data.sep_data2(train='AI_Sale_ver4.0.csv', test=self.merged_df,
-                                                                                 product_name=self.product_name,
-                                                                                 store_code=self.store_code,
-                                                                                 train_date=self.train_date,
-                                                                                 predict_date=self.predict_date)
+        prepareData1 = prepareData(merged_df=self.merged_df,
+                                   product_name=self.product_name,
+                                   store_code=self.store_code,
+                                   train_date=self.train_date,
+                                   predict_date=self.predict_date,
+                                   sequence_x=self.sequence_x,
+                                   sequence_y=self.sequence_y)
+
+        df, df_train, df_test, sale_qty, x_columns, x_1_columns = prepareData1.sep_data2()
 
         (x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1,
-         x_columns, x_1_columns, sale_qty) = data.scaled_origin(sequence_x=self.sequence_x,
-                                                                sequence_y=self.sequence_y,
-                                                                product_name=self.product_name,
-                                                                store_code=self.store_code)
+         x_columns, x_1_columns, sale_qty) = prepareData1.scaled_origin()
 
-        x_train_scaled, x_train_1_scaled, y_train_scaled = data.scaled_data(sequence_x=self.sequence_x,
-                                                                            sequence_y=self.sequence_y,
-                                                                            df_train=df_train,
-                                                                            product_name=self.product_name,
-                                                                            store_code=self.store_code
-                                                                            )
+        print(df_train)
+
+        x_train_scaled, x_train_1_scaled, y_train_scaled = prepareData1.scaled_data(df_train=df_train)
 
         model = create_model(
             column_num_x, column_num_x_1, self.sequence_x, self.sequence_y)
@@ -75,7 +72,7 @@ class start_train:
                 keras.losses.Huber(),  # MeanSquaredError,Huber
             ], metrics=['mse'])
 
-        filepath = self.filepath
+        filepath = './weight/'+model_name
 
         checkpoint_path = filepath
 
@@ -101,9 +98,11 @@ class start_train:
             epochs=2000, batch_size=32,
             callbacks=callbacks_list,  shuffle=False)
 
-        # scores = model.evaluate(x=(x_train_scaled, x_train_1_scaled), y=y_train_scaled, verbose=0)
+        scores = model.evaluate(
+            x=(x_train_scaled, x_train_1_scaled), y=y_train_scaled, verbose=0)
 
-        return history
+        # return history
+        return scores
 
 # trainer()
 

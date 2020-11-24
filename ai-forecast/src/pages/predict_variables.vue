@@ -169,13 +169,13 @@
           <div class="row no-wrap q-pa-md" >
             <div class="column">
               <div class="text-h6 q-mb-lg" >출하 요일 선택</div>
-              <q-toggle v-model="so_event_mon" label="월요일 할인" />
-              <q-toggle v-model="so_event_tue" label="화요일 할인" />
-              <q-toggle v-model="so_event_wen" label="수요일 할인" />
-              <q-toggle v-model="so_event_thu" label="목요일 할인" />
-              <q-toggle v-model="so_event_fri" label="금요일 할인" />
-              <q-toggle v-model="so_event_sat" label="토요일 할인" />
-              <q-toggle v-model="so_event_sun" label="일요일 할인" />
+              <q-toggle v-model="so_event_mon" label="월요일" />
+              <q-toggle v-model="so_event_tue" label="화요일" />
+              <q-toggle v-model="so_event_wen" label="수요일" />
+              <q-toggle v-model="so_event_thu" label="목요일" />
+              <q-toggle v-model="so_event_fri" label="금요일" />
+              <q-toggle v-model="so_event_sat" label="토요일" />
+              <q-toggle v-model="so_event_sun" label="일요일" />
 
             </div>
 
@@ -227,7 +227,7 @@
         </div>               
         <!-- /div 4 -->
         
-        </div>         
+        </div>
         <!-- /div_3 -->
 
     </div>
@@ -267,6 +267,7 @@
       <div class="row q-pa-sm">
       
         <q-btn label="예측하기" color="red-10" size="15px" style="width : 140px" @click="showCustom" />
+        <!-- <q-btn label="학습시키기" color="red-10" size="15px" style="width : 140px" @click="showCustomTraining" /> -->
 
       </div>
       <!-- /div_5 -->
@@ -285,6 +286,7 @@
   <div class="q-pa-md"></div>
 
 
+    
   </main>
 </template>
 
@@ -297,7 +299,17 @@ import BarChart from '../components/charts/BarChart'
 import axios from "axios";
 import EventBus from '../components/eventBus.js';
 
+// document.onclick = processClick;
+
+
+
+
+
+
 export default {
+
+
+
   data () {
     return {
 
@@ -333,6 +345,10 @@ export default {
   },
 
   methods: {
+
+    processClick () {
+      console.log('>>>>>>>>>mouse_clicked')
+    },
 
     bac_2l () {
       console.log('Clicked item')
@@ -433,6 +449,10 @@ export default {
     optionsFn (model1) {
       return model1 >= '2019/11/01' && model1 <= '2019/12/31'
     },
+
+    
+
+    
 
 
 
@@ -553,7 +573,7 @@ export default {
 
     showCustom () {
 
-
+      EventBus.$emit("Date_bus", this.model1)
       localStorage.event_mon=this.event_mon;
       localStorage.event_tue=this.event_tue;
       localStorage.event_wen=this.event_wen;
@@ -691,9 +711,11 @@ export default {
         
       }
 
+
       axios.post('http://127.0.0.1:5000/date_info',
 
         data
+
 
       ).then(response => {
 
@@ -767,12 +789,12 @@ export default {
       // }
 
 // if 구문 주석 해제 하고 else if로 넣을 것
-        // if (!localStorage.day1 || percentage !== 100) {
-        //   setTimeout(function() {
+        if (!localStorage.day1 || percentage !== 100) {
+          setTimeout(function() {
             
-        //   console.log("not arrived")}, 400);
-        // } 
-        if (percentage === 100) {
+          console.log("not arrived")}, 400);
+        } 
+        else if (percentage === 100) {
           clearInterval(interval)
 
           dialog.update({
@@ -812,7 +834,220 @@ export default {
     // },
 
 
+    // 여기서부터 트레이닝 버튼
+    showCustomTraining () {
 
+
+      localStorage.event_mon=this.event_mon;
+      localStorage.event_tue=this.event_tue;
+      localStorage.event_wen=this.event_wen;
+      localStorage.event_thu=this.event_thu;
+      localStorage.event_fri=this.event_fri;
+      localStorage.event_sat=this.event_sat;
+      localStorage.event_sun=this.event_sun;
+
+      localStorage.so_event_mon=this.so_event_mon;
+      localStorage.so_event_tue=this.so_event_tue;
+      localStorage.so_event_wen=this.so_event_wen;
+      localStorage.so_event_thu=this.so_event_thu;
+      localStorage.so_event_fri=this.so_event_fri;
+      localStorage.so_event_sat=this.so_event_sat;
+      localStorage.so_event_sun=this.so_event_sun;
+
+
+      this.edays=[]
+
+        if (this.event_mon === true) {
+        this.wday1 = "월요일";
+        this.edays.push(this.wday1)
+      };
+        if (this.event_tue === true) {
+        this.wday2 = "화요일"
+      };
+        if (this.event_wen === true) {
+        this.wday3 = "수요일"
+      };
+        if (this.event_thu === true) {
+        this.wday4 = "목요일"
+      };
+        if (this.event_fri === true) {
+        this.wday5 = "금요일"
+      };
+        if (this.event_sat === true) {
+        this.wday6 = "토요일"
+      };
+        if (this.event_sun === true) {
+        this.wday7 = "일요일"
+      };
+
+      
+      // if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
+      // };
+        if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
+      };
+        if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
+      };
+        if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
+      };
+        if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
+      };
+        if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
+      };
+        if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
+      };
+        localStorage.edate=this.edays;
+
+
+        // 대량주문 정보 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+      this.so_days=[]
+        if (this.so_event_mon === true) {
+        this.so_day1 = "월요일";
+        this.so_days.push(this.so_day1)
+      };
+        if (this.so_event_tue === true) {
+        this.so_day2 = "화요일"
+      };
+        if (this.so_event_wen === true) {
+        this.so_day3 = "수요일"
+      };
+        if (this.so_event_thu === true) {
+        this.so_day4 = "목요일"
+      };
+        if (this.so_event_fri === true) {
+        this.so_day5 = "금요일"
+      };
+        if (this.so_event_sat === true) {
+        this.so_day6 = "토요일"
+      };
+        if (this.so_event_sun === true) {
+        this.so_day7 = "일요일"
+      };
+
+      
+      // if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
+      // };
+        if (this.so_day2 ==='화요일') { this.so_days.push(this.so_day2)
+      };
+        if (this.so_day3 ==='수요일') { this.so_days.push(this.so_day3)
+      };
+        if (this.so_day4 ==='목요일') { this.so_days.push(this.so_day4)
+      };
+        if (this.so_day5 ==='금요일') { this.so_days.push(this.so_day5)
+      };
+        if (this.so_day6 ==='토요일') { this.so_days.push(this.so_day6)
+      };
+        if (this.so_day7 ==='일요일') { this.so_days.push(this.so_day7)
+      };
+        localStorage.so_date=this.so_days;
+
+
+
+
+
+        
+// 나중에 주석 해제 할 것
+  
+
+      const data = {
+
+        // "for_return" : this.day1_2,
+        "selected_date" : this.model1,
+        "event_info" : {'1': localStorage.event_mon, '2' : localStorage.event_tue, '3' : localStorage.event_wen,
+                        '4' : localStorage.event_thu, '5': localStorage.event_fri, '6' : localStorage.event_sat,
+                        '7' : localStorage.event_sun},
+
+        "special_info" : {'1': localStorage.so_event_mon, '2' : localStorage.so_event_tue, '3' : localStorage.so_event_wen,
+                        '4' : localStorage.so_event_thu, '5': localStorage.so_event_fri, '6' : localStorage.so_event_sat,
+                        '7' : localStorage.so_event_sun},
+        // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
+        //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
+        // "break_info" : this.break_info,
+        "item_info" : localStorage.getItem('item_1'),
+        "store_info" : localStorage.getItem('store_code'),
+        "break_info" : localStorage.getItem('break_1')
+        
+      }
+
+      axios.post('http://127.0.0.1:5000/training',
+
+        data
+
+      ).then(response => {
+
+        console.log(response)
+
+        localStorage.origin_data = JSON.stringify(response.data);
+        // localStorage.return2 = JSON.stringify(response.data['promotion']);
+        
+        // alert(test_data);
+        setTimeout(function() { 
+          this.return1=localStorage.return1 }, 15);
+        
+          
+        // this.day1_1=localStorage.day1;
+
+      }).catch((ex) => {
+
+        console.warn("ERROR!!!!! : ", ex)
+
+      });
+
+  // 주석 해제 여기까지
+
+
+      const dialog = this.$q.dialog({
+        title: '판매량을 예측 하는중...',
+        dark: true,
+        message: '0%',
+        progress: {
+          spinner: QSpinnerGears,
+          color: 'amber'
+        },
+        persistent: true, // we want the user to not be able to close it
+        ok: false // we want the user to not be able to close it
+      })
+
+      // we simulate some progress here...
+      let percentage = 0
+      const interval = setInterval(() => {
+        percentage = Math.min(100, percentage + Math.floor(Math.random() * 7))
+        // *22가 원본
+
+        // we update the dialog
+        dialog.update({
+          message: `${percentage}%`
+        })
+        
+
+
+      //   if (!localStorage.day1) {
+          // setTimeout(function() {
+            
+          // console.log("not arrived")}, 1000);
+        
+      //       // if we are done...
+      // }
+
+// if 구문 주석 해제 하고 else if로 넣을 것
+        if (!localStorage.day1 || percentage !== 100) {
+          setTimeout(function() {
+            
+          console.log("not arrived")}, 400);
+        } 
+        else if (percentage === 100) {
+          clearInterval(interval)
+
+          dialog.update({
+            title: '예측완료!',
+            message: `예측결과보기를 눌러 확인하세요`,
+            progress: false,
+            ok: true
+          });
+        }
+      }, 100)
+    },
+    // 트레이닝 버튼 끝
 
 
 

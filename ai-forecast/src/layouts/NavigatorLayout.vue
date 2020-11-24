@@ -136,25 +136,9 @@ import { LocalStorage } from "quasar";
 import Predict from '../pages/Predict.vue'
 import predict_variables from '../pages/predict_variables.vue'
 import EventBus from '../components/eventBus.js';
+
 export default { 
-    components: {
-      Predict,
-    },
     data () {
-
-      console.log("jy      data", )
-      if (LocalStorage.getItem("break_1") === "1") {
-        this.getflag2 = "일요일";
-      } else if (LocalStorage.getItem("break_1")  === "0") {
-        this.getflag2 = "휴무일 없음";
-      };
-      if (LocalStorage.getItem("store_code") === "1") {
-        this.getstore2 = "해운대점";
-      } else if (LocalStorage.getItem("store_code")  === "6") {
-        this.getstore2 = "광안리점";
-      };
-      this.getdate2 = LocalStorage.getItem("date");
-
       return {
         drawer: false,
         togithubpage: function() {
@@ -180,7 +164,7 @@ export default {
         NavigatorData: [
           {
             attribute: "기준일",
-            Value: LocalStorage.getItem("date"),
+            Value: '',
           },
           {
             attribute: "매장명",
@@ -215,6 +199,14 @@ export default {
 
     created() {
       // console.log('NavigatorData', this.NavigatorData)
+
+
+      EventBus.$on("Date_bus", bus_date => {
+        console.log('Date_bus', bus_date);
+        this.NavigatorData[0].Value = bus_date;
+      },
+    );
+
       EventBus.$on("pushData_1", payload => {
         console.log('payload', payload);
         this.NavigatorData[1].Value = payload;

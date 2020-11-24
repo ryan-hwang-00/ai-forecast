@@ -141,12 +141,21 @@
 <script>
 // import MixedChart from '../components/charts/MixedChart.vue'
 import { LocalStorage } from "quasar";
+import axios from "axios";
+import $ from 'jquery';
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
 import DoughnutChart from '../components/charts/DoughnutChart.js'
 
-// api.openweathermap.org/data/2.5/weather?q=Busan&appid=a21ee35df7c2a4aec3f6efc14cd346bd
+// 날씨 API URL
+// https://api.openweathermap.org/data/2.5/onecall?lat=35.1333&lon=129.05&exclude=minutely&appid=a21ee35df7c2a4aec3f6efc14cd346bd&units=metric&lang=kr'
+
+$.getJSON('https://api.openweathermap.org/data/2.5/onecall?lat=35.1333&lon=129.05&exclude=minutely&appid=a21ee35df7c2a4aec3f6efc14cd346bd&units=metric&lang=kr', 
+function(data){
+    this.getDay1WeatherIcon= response.daily[0].weather[0].icon
+    console.log(this.getDay1WeatherIcon)
+})
 
 export default {
   name: "Predict",
@@ -171,6 +180,15 @@ export default {
       Total: '',
       Mean: '',
       
+      // Weather Data
+      getDay1WeatherIcon: '',
+      getDay2WeatherIcon: '',
+      getDay3WeatherIcon: '',
+      getDay4WeatherIcon: '',
+      getDay5WeatherIcon: '',
+      getDay6WeatherIcon: '',
+      getDay7WeatherIcon: '',
+
       // Chart Data
       datacollectionBar: null,
       optionsBar: null,
@@ -215,37 +233,37 @@ export default {
         {
           Date: this.getday1Date (),
           Predict_Value: this.getday1Value (),
-          // Weather: A,
+          Weather: this.getDay1WeatherIcon,
         },
         {
           Date: this.getday2Date (),
           Predict_Value: this.getday2Value (),
-          // Weather: A,
+          Weather: this.getDay2WeatherIcon,
         },
         {
           Date: this.getday3Date (),
           Predict_Value: this.getday3Value (),
-          // Weather: A,
+          Weather: this.getDay3WeatherIcon,
         },
         {
           Date: this.getday4Date (),
           Predict_Value: this.getday4Value (),
-          // Weather: A,
+          Weather: this.getDay4WeatherIcon,
         },
         {
           Date: this.getday5Date (),
           Predict_Value: this.getday5Value (),
-          // Weather: A,
+          Weather: this.getDay5WeatherIcon,
         },
         {
           Date: this.getday6Date (),
           Predict_Value: this.getday6Value (),
-          // Weather: A,
+          Weather: this.getDay6WeatherIcon,
         },
         {
           Date: this.getday7Date (),
           Predict_Value: this.getday7Value (),
-          // Weather: A,
+          Weather: this.getDay7WeatherIcon,
         },
       ],
       pagination: {
@@ -264,6 +282,8 @@ export default {
     this.fillDataPie()
     this.fillDataDoughnutChart()
     this.onvariableClick()
+    this.getWeather()
+    getJSON
   },
   
   // mounted () {
@@ -271,6 +291,22 @@ export default {
   // },
 
   methods: {
+    getWeather () {
+      axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=35.1333&lon=129.05&exclude=minutely&appid=a21ee35df7c2a4aec3f6efc14cd346bd&units=metric&lang=kr')
+        .then((response) => {
+          this.getDay1WeatherIcon= JSON.stringify(response.daily)
+          // this.getDay2WeatherIcon= JSON.stringify(response.daily[1].weather[0].icon)
+          // this.getDay3WeatherIcon= JSON.stringify(response.daily[2].weather[0].description)
+          // this.getDay4WeatherIcon= JSON.stringify(response.daily[3].weather[0].description)
+          // this.getDay5WeatherIcon= JSON.stringify(response.daily[4].weather[0].description)
+          // this.getDay6WeatherIcon= JSON.stringify(response.daily[5].weather[0].description)
+          // this.getDay7WeatherIcon= JSON.stringify(response.daily[6].weather[0].description)
+          // console.log("Day1WWWWICON",this.getDay1WeatherIcon )
+        })
+    },
+
+    //'<img src="~assets/Weather/' + 아이콘 + '.png" alt=""/>'
+
     fillDataBar () {
       this.datacollectionBar = {
         labels : [
