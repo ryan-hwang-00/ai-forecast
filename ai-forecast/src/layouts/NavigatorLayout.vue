@@ -31,7 +31,7 @@
           :width="350"
           :breakpoint="444"
           >
-          <div class="fit column content-center" style = "padding: 10px 10px 2px 10px;">
+          <div class="fit column content-center" style = "padding: 18px 10px 2px 10px;">
             <q-btn
               standout
               color="primary"
