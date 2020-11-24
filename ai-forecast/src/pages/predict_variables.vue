@@ -1222,4 +1222,9 @@ export default {
 .text-h6 {
   font-family: 'Jua';
 }
+
+.block {
+  font-family: 'Jua';
+  font-size:'20px'
+}
 </style>
