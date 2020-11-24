@@ -59,7 +59,7 @@
               hide-header
               hide-bottom
               :pagination.sync="NavigatorPagination"
-              class= "q-pa-md"
+              class= "q-pa-md text-left"
               style = "padding: 7px 1px 7px 1px;"
             />
             
@@ -268,6 +268,7 @@ export default {
     font-family: 'Jua';
     src: url(../assets/Jua-Regular.ttf);
 }
+
 
 @font-face {
     font-family: 'Kirang Haerang';

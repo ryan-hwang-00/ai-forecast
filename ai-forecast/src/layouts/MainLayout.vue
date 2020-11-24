@@ -2,7 +2,9 @@
   <q-layout view="hHh LpR fff">
     
     <q-header bordered class="bg-primary text-white " height-hint="98">
-        <q-toolbar class="fit column inline justify-between" height="70px">
+
+<q-toolbar class="fit column inline justify-between" height="70px">
+
           <!-- 로고 -->
          <q-toolbar-title class = "col absolute-left">
             <q-btn flat to="/">
