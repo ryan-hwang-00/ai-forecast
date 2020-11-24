@@ -12,9 +12,15 @@
           </q-toolbar-title>
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
-            <q-route-tab to="/register" label="회원가입" style="max-width: 70px; height: 85px;"/>
+            <q-route-tab 
+              to="/register" 
+              label="회원가입" 
+              style="padding: 18px 5px; max-width: 70px; height: 85px;"/>
             <!-- <q-separator vertical inset color="white"/> -->
-            <q-route-tab to="/login" label="로그인" style="max-width: 70px"/>
+            <q-route-tab 
+              to="/login" 
+              label="로그인" 
+              style="padding: 18px 5px; max-width: 70px; height: 85px;"/>
           </q-tabs>
         </q-toolbar>
 
@@ -55,8 +61,16 @@
               class= "q-pa-md"
               style = "padding: 7px 1px 7px 1px;"
             />
+            
           </div>
 
+            <div
+              class="row q-ma-none text-grey absolute-bottom row justify-center"
+            ><h6.5>ⓒ Team NEOGURI</h6.5>
+            </div>
+
+        <!-- <div
+          class='row q-col-gutter-sm content-center items-center justify-evenly row justify-center'></div>
           <q-tabs
             no-caps="no-caps"
             active-color="primary"
@@ -67,35 +81,45 @@
             <div class="fit row justify-center">
 
               <eva-icon
-                class='q-pa-md'
-                name="github"
-                animation="pulse"
-                fill="#1D2758"
-                width='30px'
-                height='30px'
-                @click='togithubpage'
-                style="font-size:3px">
-              </eva-icon>
+              class='q-pa-xs' 
+              name="github" 
+              animation='pulse' 
+              fill="#1D2758"
+              width='30px'
+              height='30px'
+              @click='togithubpage'
+              style = "padding: 1px 15px 1px 15px;">
+            </eva-icon>
 
-              <eva-icon
-                class='q-pa-md'
-                name="facebook"
-                animation="pulse"
-                fill="#1D2758"
-                width='30px'
-                height='30px'>
-              </eva-icon>
+            <eva-icon
+              class='q-px-xs' 
+              name="facebook" 
+              animation="pulse" 
+              fill="#1D2758"
+              width='30px'
+              height='30px'
+              style = "padding: 1px 15px 1px 15px;"
+            >
+            </eva-icon>
 
-              <eva-icon
-                class='q-pa-md'
-                name="car"
-                animation="pulse"
-                fill="#1D2758"
-                width='30px'
-                height='30px'>
-              </eva-icon>
+            <eva-icon
+              class='q-pa-xs' 
+              name="car"
+              animation="pulse" 
+              fill="#1D2758"
+              width='30px'
+              height='30px'
+              style = "padding: 1px 15px 1px 15px;"
+            >
+            </eva-icon>
+
+            <div
+              class="row q-ma-none content-center items-center row justify-center"
+            ><h6.5>ⓒ Team NEOGURI</h6.5>
             </div>
-          </q-tabs>
+
+            </div>
+          </q-tabs> -->
         </q-drawer>
       </div>
     </q-header>
@@ -104,47 +128,6 @@
       <router-view />
     </q-page-container>
 
-    <!-- <q-footer 
-    bordered class="bg-grey-4 text-primary"
-    >
-      <q-tabs 
-      no-caps active-color="primary" 
-      indicator-color="transparent" 
-      class="text-grey" 
-      v-model="tab"
-     
-      >
-        
-        <eva-icon
-        class='q-pa-md' 
-        name="github" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
-        @click='togithubpage'
-        style="font-size:3px">
-        </eva-icon>
-        <eva-icon
-        class='q-pa-md' 
-        name="facebook" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
-        >
-        </eva-icon>
-        <eva-icon
-        class='q-pa-md' 
-        name="car" 
-        animation="pulse" 
-        fill="#1D2758"
-        width='30px'
-        height='30px'
-        >
-        </eva-icon>
-      </q-tabs>
-    </q-footer> -->
   </q-layout>
 </template>
 
@@ -285,6 +268,40 @@ export default {
     #image_small{
         display: block
     }
+}
+
+
+@font-face {
+    font-family: 'Jua';
+    src: url(../assets/Jua-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Kirang Haerang';
+    src: url(../assets/KirangHaerang-Regular.ttf);
+}
+
+.q-tab {
+  font-size: 30px;
+  font-family: 'Jua';
+ 
+  line-height: 4px;
+  font-weight: 100;
+}
+
+.text-left {
+  font-size: 30px;
+  font-family: 'Jua';
+ 
+  line-height: 4px;
+  font-weight: 100;
+}
+
+.block {
+    font-family: 'Kirang Haerang';
+    font-size: 30px;
+    line-height: 4px;
+    font-weight: 100;
 }
 </style>
 

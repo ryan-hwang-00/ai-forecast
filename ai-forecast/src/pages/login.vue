@@ -5,17 +5,18 @@
   >
     <div class="column q-pa-lg">
       <div class="row">
+
         <q-card 
           square class="shadow-24" 
           style="width:300px;height:485px;"
         >
+
           <q-card-section class="bg-primary">
             <h4 class="text-grand-hotel text-white q-my-md">login</h4>
             <div class="absolute-bottom-right q-pr-md" 
                  style="transform: translateY(50%);">
             </div>
           </q-card-section>
-
 
           <q-card-section>
             <q-form 

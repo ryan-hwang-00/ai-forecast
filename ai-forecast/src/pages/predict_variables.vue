@@ -220,10 +220,11 @@
           </div>
         </div>
 
-        <q-date v-model="model1" 
-        :options="optionsFn"
-         mask="YYYY-MM-DD" />
-      </div>               
+        <q-date 
+          v-model="model1" 
+          :options="optionsFn"
+          mask="YYYY-MM-DD" />
+        </div>               
         <!-- /div 4 -->
         
         </div>         
@@ -232,7 +233,9 @@
     </div>
     <!-- /div 0 -->
 
-  <div class="q-pl-md column content-center items-center" style="width : 1000px">
+  <div 
+    class="q-pl-md column content-center items-center" 
+    style="width : 1000px">
     
     <div class="column q-pa-lg"></div>
     <div class="column q-pa-xs"></div>
@@ -399,8 +402,6 @@ export default {
       EventBus.$emit("product_bus", item_1);
 
     },
-
-
 
     // no_event () {
     //   console.log('Clicked event_info')
@@ -975,3 +976,15 @@ export default {
 }
 
 </script>
+
+<style>
+
+@font-face {
+    font-family: 'Jua';
+    src: url(../assets/Jua-Regular.ttf);
+}
+
+.text-h6 {
+  font-family: 'Jua';
+}
+</style>

@@ -5,26 +5,31 @@
   >
 
 
-  <div class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly" style = "padding: 120px 3px 80px 3px;">
+    <div 
+      class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly" 
+      style = "padding: 120px 3px 80px 3px;">
 
-    <ul>
-    <text-effect-1 ></text-effect-1>
-    </ul>
-  </div>
-
-    <div class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">
-
-        <q-btn
-          rounded
-          standout
-          color="primary"
-          label="Start"
-          to="/map"
-          size="20px"
-        />
-
-      <!-- </q-card-section> -->
+      <ul>
+      <text-effect-1 ></text-effect-1>
+      </ul>
     </div>
+
+    <div 
+      class="row  q-col-gutter-sm  q-py-xl content-center items-center justify-evenly">
+
+      <q-btn
+        rounded
+        standout
+        color="primary"
+        label="Start"
+        to="/map"
+        size="20px"
+      />
+
+    <!-- </q-card-section> -->
+    </div>
+
+
   </main>
 </template>
 
@@ -43,4 +48,12 @@ export default {
 </script>
 
 <style>
+
+
+.block {
+    display: block !important;
+    font-family: 'Goldman';
+}
+
+
 </style>

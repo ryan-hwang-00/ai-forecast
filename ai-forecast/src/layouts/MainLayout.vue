@@ -2,7 +2,7 @@
   <q-layout view="hHh LpR fff">
     
     <q-header bordered class="bg-primary text-white " height-hint="98">
-        <q-toolbar class="fit column inline justify-between" height="70px">
+        <q-toolbar class="fit column inline justify-between" height="50px">
           <!-- 로고 -->
          <q-toolbar-title class = "col absolute-left">
             <q-btn flat to="/">
@@ -13,14 +13,17 @@
           <!-- 로그인/회원가입 -->
           <q-tabs class="col self-end">
 
-            <q-route-tab to="/register" label="회원가입" style="max-width: 70px; height: 85px;"/>
+            <q-route-tab 
+              to="/register" 
+              label="회원가입"
+              style="padding : 18px 5px; max-width: 100px; height : 90px;"/>
 
             <!-- <q-separator vertical inset color="white"/> -->
 
             <q-route-tab 
-              to="/login" 
+              to="/login"
               label="로그인" 
-              style="max-width: 70px"/>
+              style="padding: 18px 5px; max-width: 100px; height: 90px;"/>
 
           </q-tabs>
         </q-toolbar>
@@ -31,45 +34,63 @@
     </q-page-container>
 
 
-    <q-footer bordered class="bg-grey-4 text-primary justify-center">
-      <q-tabs 
-      no-caps active-color="primary" 
-      indicator-color="transparent" 
-      class="text-grey"
-
-      >
-        <eva-icon
-          class='q-pa-md' 
-          name="github" 
-          animation='pulse' 
-          fill="#1D2758"
-          width='30px'
-          height='30px'
-          @click='togithubpage'
-          style="font-size:3px">
-        </eva-icon>
-
-        <eva-icon
-          class='q-pa-md' 
-          name="facebook" 
-          animation="pulse" 
-          fill="#1D2758"
-          width='30px'
-          height='30px'
+    <q-footer 
+      class="q-page q-pa-sm bg-grey-4 text-primary">
+      
+        <div 
+          class="row q-col-gutter-sm content-center items-center justify-evenly row justify-center"
+          style = "padding: 0px 0px 0px 10px;"
         >
-        </eva-icon>
 
-        <eva-icon
-          class='q-pa-md' 
-          name="car"
-          animation="pulse" 
-          fill="#1D2758"
-          width='30px'
-          height='30px'
-        >
-        </eva-icon>
+          <q-tabs 
+            no-caps active-color="primary" 
+            indicator-color="transparent" 
+            class="content-center text-grey"
+            style="padding:1px 1px 1px 1px"
+          >
 
-      </q-tabs>
+            <eva-icon
+              class='q-pa-xs' 
+              name="github" 
+              animation='pulse' 
+              fill="#1D2758"
+              width='40px'
+              height='40px'
+              @click='togithubpage'
+              style="padding: 10px 10px 1px 10px;">
+            </eva-icon>
+
+            <eva-icon
+              class='q-px-xs' 
+              name="facebook" 
+              animation="pulse" 
+              fill="#1D2758"
+              width='40px'
+              height='40px'
+              style = "padding: 10px 20px 1px 17px;"
+            >
+            </eva-icon>
+
+            <eva-icon
+              class='q-pa-xs' 
+              name="car"
+              animation="pulse" 
+              fill="#1D2758"
+              width='40px'
+              height='40px'
+              style="padding: 10px 10px 1px 10px;"
+            >
+            </eva-icon>
+
+          </q-tabs>
+        </div>
+ 
+        <div
+          class="row q-ma-none content-center items-center justify-evenly"
+        ><h6.5>ⓒ Team NEOGURI</h6.5>
+       </div>
+      
+
     </q-footer>
   </q-layout>
 </template>
@@ -106,7 +127,23 @@ export default {
     }
 }
 
+@font-face {
+    font-family: 'Kirang Haerang';
+    src: url(../assets/KirangHaerang-Regular.ttf);
+}
 
 
+.q-tab {
+  font-size: 30px;
+  font-family: 'Kirang Haerang';
+ 
+  line-height: 4px;
+  font-weight: 100;
+}
 
+.q-tab__label {
+    font-size: 20px;
+    line-height: 14px;
+    font-weight: 500;
+}
 </style>
