@@ -268,6 +268,9 @@
       </div>
       <!-- /div_5 -->
         <!-- div21 -->
+
+
+
         <div class="row q-pa-sm">
           <q-btn color="primary" text-color="white" size='15px' style="width : 140px" label="예측 결과보기" to="/Predict"/>
         </div>
@@ -479,11 +482,6 @@ export default {
     },
 
     
-
-    
-
-
-
     event_toggle () {
       console.log('clicked toggle special_order')
       
@@ -540,7 +538,6 @@ export default {
      
 
     },
-
 
 
     so_toggle1 () {
@@ -601,6 +598,7 @@ export default {
 
     },
 
+
     showCustom () {
 
       console.log('clicked predict>>>>>', this.model1);
@@ -610,7 +608,7 @@ export default {
       this.test_day=localStorage.getItem('event_mon')
       console.log('step0>>>>>>>', this.test_day)
 
-      this.edays=[]
+      this.edays1=[]
 
       console.log('stpe1>>>>>>')
       if (this.test_day === true) {
@@ -657,24 +655,23 @@ export default {
       // console.log('edays>>>>>>>', this.wday1)
 
       
-        if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
+        if(this.wday1 ==='월요일') { this.edays1.push(this.wday1)     
       };
-        if (this.wday2 ==='화요일') { this.edays.push(this.wday2)
+        if (this.wday2 ==='화요일') { this.edays1.push(this.wday2)
       };
-        if (this.wday3 ==='수요일') { this.edays.push(this.wday3)
+        if (this.wday3 ==='수요일') { this.edays1.push(this.wday3)
       };
-        if (this.wday4 ==='목요일') { this.edays.push(this.wday4)
+        if (this.wday4 ==='목요일') { this.edays1.push(this.wday4)
       };
-        if (this.wday5 ==='금요일') { this.edays.push(this.wday5)
+        if (this.wday5 ==='금요일') { this.edays1.push(this.wday5)
       };
-        if (this.wday6 ==='토요일') { this.edays.push(this.wday6)
+        if (this.wday6 ==='토요일') { this.edays1.push(this.wday6)
       };
-        if (this.wday7 ==='일요일') { this.edays.push(this.wday7)
+        if (this.wday7 ==='일요일') { this.edays1.push(this.wday7)
       };
-        localStorage.edate=this.edays;
-        console.log('edays>>>>>>', this.edays)
+        localStorage.edate=this.edays1;
+        console.log('edays>>>>>>', this.edays1)
         
-
 
         // 대량주문 정보 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -880,7 +877,6 @@ export default {
     // 여기서부터 트레이닝 버튼
     showCustomTraining () {
 
-
       localStorage.event_mon=this.event_mon;
       localStorage.event_tue=this.event_tue;
       localStorage.event_wen=this.event_wen;
@@ -896,7 +892,6 @@ export default {
       localStorage.so_event_fri=this.so_event_fri;
       localStorage.so_event_sat=this.so_event_sat;
       localStorage.so_event_sun=this.so_event_sun;
-
 
       this.edays=[]
 
@@ -967,9 +962,9 @@ export default {
         this.so_day7 = "일요일"
       };
 
-      
       // if (this.wday1 ==='월요일') { this.edays.push(this.wday1)     
       // };
+
         if (this.so_day2 ==='화요일') { this.so_days.push(this.so_day2)
       };
         if (this.so_day3 ==='수요일') { this.so_days.push(this.so_day3)
@@ -984,14 +979,8 @@ export default {
       };
         localStorage.so_date=this.so_days;
 
-
-
-
-
-        
 // 나중에 주석 해제 할 것
   
-
       const data = {
 
         // "for_return" : this.day1_2,
@@ -1006,6 +995,7 @@ export default {
         // "event_info" : [localStorage.event_mon, localStorage.event_tue, localStorage.event_wen, localStorage.event_thu, 
         //                 localStorage.event_fri, localStorage.event_sat, localStorage.event_sun,],
         // "break_info" : this.break_info,
+
         "item_info" : localStorage.getItem('item_1'),
         "store_info" : localStorage.getItem('store_code'),
         "break_info" : localStorage.getItem('break_1')
@@ -1062,8 +1052,6 @@ export default {
           message: `${percentage}%`
         })
         
-
-
       //   if (!localStorage.day1) {
           // setTimeout(function() {
             
@@ -1077,7 +1065,8 @@ export default {
           setTimeout(function() {
             
           console.log("not arrived")}, 400);
-        } 
+        }
+
         else if (percentage === 100) {
           clearInterval(interval)
 
