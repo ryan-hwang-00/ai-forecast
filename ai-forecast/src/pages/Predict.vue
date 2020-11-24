@@ -146,8 +146,8 @@
 // import MixedChart from '../components/charts/MixedChart.vue'
 import { LocalStorage } from "quasar";
 import axios from "axios";
-// import $ from 'jquery';
-// import { mapGetters } from "vuex";
+import $ from 'jquery';
+import { mapGetters } from "vuex";
 import LineChart from '../components/charts/LineChart.js'
 import BarChart from '../components/charts/BarChart.js'
 import PieChart from '../components/charts/PieChart.js'
