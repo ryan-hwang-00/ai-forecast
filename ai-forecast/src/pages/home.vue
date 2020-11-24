@@ -21,7 +21,7 @@
         standout
         color="primary"
         label="Start"
-        style = "padding: 0px 0px 0px 0px;"
+        style = "padding: 1px 0px 0px 0px;"
         to="/map"
         size="20px"
       />
