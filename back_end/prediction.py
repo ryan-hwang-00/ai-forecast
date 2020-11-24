@@ -1,6 +1,7 @@
-from modeling import create_model
+
 import numpy as np
 from tensorflow import keras
+import tensorflow as tf
 
 
 def prediction(x_test_scaled, x_test_1_scaled, y_scaler,
@@ -15,6 +16,8 @@ def prediction(x_test_scaled, x_test_1_scaled, y_scaler,
 
     print('successed load weights')
     print('predicting...')
+
+    tf.function(experimental_relax_shapes=True)
 
     y_test_predict = model.predict(
         x=(x_test_scaled, x_test_1_scaled))  # ,batch_size=1)

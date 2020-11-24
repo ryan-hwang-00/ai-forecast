@@ -3,7 +3,6 @@ from data import prepareData
 from prediction import prediction
 import pandas as pd
 import numpy as np
-from future7_dataframe import date_info
 
 
 class start_predict:
