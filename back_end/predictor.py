@@ -74,7 +74,7 @@ class start_predict:
 
         print(x_test_scaled.shape, x_test_1_scaled.shape)
 
-        next_week_sales = prediction(x_test_scaled[900:-1, :, :], x_test_1_scaled[900:-1, :, :],
+        next_week_sales = prediction(x_test_scaled[-2:, :, :], x_test_1_scaled[-2:, :, :],
                                      y_scaler, weight=weight, model=model)
 
         # print(next_week_sales)
