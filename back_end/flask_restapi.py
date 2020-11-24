@@ -94,7 +94,7 @@ def seven_days():
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
-    print(merged_df)
+    # print(merged_df)
 
     train_subtracttime = timedelta(days=1)
 

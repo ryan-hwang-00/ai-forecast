@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from future7_dataframe import date_info
 
+
 class start_predict:
 
     def __init__(self, merged_df, store_code, product_name, train_date, predict_date, sequence_x=180 * 4, sequence_y=7):
@@ -41,7 +42,6 @@ class start_predict:
 
 #'백산수2.0L', '백산수500ml', '신라면멀티', '안성탕면멀티', '진라면멀티(순한맛)'
 
-
     def predictor(self):
 
         weight = self.meta_index[(self.meta_index['store'] == self.store_code) & (
@@ -52,7 +52,7 @@ class start_predict:
 
         weight = './weight/' + weight
 
-        prepareData1=prepareData(merged_df=self.merged_df,
+        prepareData1 = prepareData(merged_df=self.merged_df,
                                    product_name=self.product_name,
                                    store_code=self.store_code,
                                    train_date=self.train_date,
@@ -64,13 +64,17 @@ class start_predict:
 
         x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_columns, x_1_columns, sale_qty = prepareData1.scaled_origin()
 
-        x_test_scaled, x_test_1_scaled, y_test_scaled = prepareData1.scaled_data(df_train=df_test)
+        x_test_scaled, x_test_1_scaled, y_test_scaled = prepareData1.scaled_data(
+            df_train=df_test)
 
-        model = create_model(column_num_x, column_num_x_1, self.sequence_x, self.sequence_y)
+        model = create_model(column_num_x, column_num_x_1,
+                             self.sequence_x, self.sequence_y)
 
         np.nan_to_num(x_test_1_scaled, copy=False)
 
-        next_week_sales = prediction(x_test_scaled, x_test_1_scaled,
+        print(x_test_scaled.shape, x_test_1_scaled.shape)
+
+        next_week_sales = prediction(x_test_scaled[900:-1, :, :], x_test_1_scaled[900:-1, :, :],
                                      y_scaler, weight=weight, model=model)
 
         # print(next_week_sales)
