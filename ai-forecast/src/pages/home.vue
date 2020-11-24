@@ -1,9 +1,8 @@
 <template>
   <main
     class="q-page q-pa-sm"
-    style="min-height: 500px;"
+    style="padding:80px 3px 78px 3px; min-height: 500px;"
   >
-
 
     <div 
       class="row q-col-gutter-sm q-py-xl content-center items-center justify-evenly" 

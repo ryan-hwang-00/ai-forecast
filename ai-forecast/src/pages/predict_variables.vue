@@ -1227,4 +1227,8 @@ export default {
   font-family: 'Jua';
   font-size:'20px'
 }
+
+.q-date__header {
+   font-family: 'Jua';
+}
 </style>

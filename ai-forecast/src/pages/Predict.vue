@@ -50,7 +50,7 @@
 
     <!-- 예측 값 그래프 및 테이블 -->
     <div class="content-center" style="max-height: 30px;">
-      <span class="text-center"><h4> 주간 수요예측량</h4></span>
+      <span class="text-Jua text-center"><h4> 주간 수요예측량</h4></span>
     </div>
     <div class="fit row  justify-around q-row-gutter-xs q-py-sm bg-grey-1">
       <!-- 예측 값 테이블 -->
@@ -642,6 +642,6 @@ export default {
   height: 450px
   width: 550px
   // max-width: 60rem
-
+  
 
 </style>
