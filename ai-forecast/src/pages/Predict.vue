@@ -61,7 +61,7 @@
             row-key="Date"
             hide-bottom
             :pagination.sync="pagination"
-            class="bg-info my-sticky-table q-pa-md shadow-3"
+            class="bg-info my-sticky-table q-pa-md shadow-3 text-Jua"
           />
         </div>
       <!-- 예측 값 그래프 캐롯셀 -->
