@@ -61,7 +61,7 @@
             row-key="Date"
             hide-bottom
             :pagination.sync="pagination"
-            class="bg-info my-sticky-table q-pa-md shadow-3"
+            class="bg-info my-sticky-table q-pa-md shadow-3 text-Jua"
           />
         </div>
       <!-- 예측 값 그래프 캐롯셀 -->
@@ -85,8 +85,8 @@
                                 <div class="text-h6 text-white text-center text-Do-Hyeon">주간 예측량</div>
                             </div>
                     </q-card-section> -->
-                    <div class="bg-grey-1">
-                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar"></bar-chart>
+                    <div class="bg-grey-1" style="width: 580px">
+                    <bar-chart :chart-data="datacollectionBar" :options="optionsBar" :styles="myStyles"></bar-chart>
                     </div>
                 <!-- </div> -->
             </q-carousel-slide>
@@ -341,6 +341,11 @@ export default {
           }
         ]
       },
+      this.myStyles = {height: '400px',
+        width: '100%',
+        position: 'relative',
+
+      },
       this.optionsBar = {
         legend: {
           display: false,
@@ -382,7 +387,10 @@ export default {
         title: {
           display: true,
           text: 'Predict Value'
-        }
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        height: 100,
       }
     },
     

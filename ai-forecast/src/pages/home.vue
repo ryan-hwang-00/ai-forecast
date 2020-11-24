@@ -1,7 +1,7 @@
 <template>
   <main
     class="q-page q-pa-sm"
-    style="padding:80px 3px 78px 3px; min-height: 500px;"
+    style="padding: 60px 3px 30px 3px; min-height: 500px;"
   >
 
     <div 
