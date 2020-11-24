@@ -51,6 +51,7 @@
             />
             <br>
             <span class="text-h6 text-dark">조회조건</span>
+
             <q-table
               :data="NavigatorData"
               :columns="NavigatorColumns"
@@ -296,6 +297,13 @@ export default {
     line-height: 4px;
     font-weight: 100;
 }
+
+.q-pa-md{
+
+  font-family: 'Jua'; 
+
+}
+
 </style>
 
 <!--

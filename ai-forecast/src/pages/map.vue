@@ -7,7 +7,9 @@
                 square="square"
                 bordered="bordered"
                 class="text-center content-center">
-                <h2 class="text-jua item-start">지역을 선택해주세요.</h2>
+
+                <h4 class="text-gugi">지역을 선택해주세요.</h4>
+
             </div>
 
             <svg
@@ -515,9 +517,20 @@ export default {
     src: url(../assets/KirangHaerang-Regular.ttf);
     }
 
-    .text-gugi {
-    font-family: 'Kirang Haerang';
+    
+    @font-face {
+    font-family: 'BMEuljiro10yearslater';
+    src: url(../assets/BMEuljiro10yearslater.ttf);
     }
 
+    @font-face {
+    font-family: 'KOTRA_BOLD';
+    src: url(../assets/KOTRA_BOLD.ttf);
+    }
+
+    .text-gugi {
+    font-family: 'KOTRA_BOLD';
+    font-size:'10px'
+    }
 
 </style>
