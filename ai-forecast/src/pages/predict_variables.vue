@@ -377,9 +377,6 @@ export default {
 
     // },
 
-    processClick () {
-      console.log('>>>>>>>>>mouse_clicked')
-    },
 
     bac_2l () {
       console.log('Clicked item')
@@ -605,7 +602,9 @@ export default {
 
     showCustom () {
 
-      EventBus.$emit("Date_bus", this.model1)
+      // EventBus.$emit("Date_bus", this.model1)
+      localStorage.removeItem('day1');
+
       localStorage.event_mon=this.event_mon;
       localStorage.event_tue=this.event_tue;
       localStorage.event_wen=this.event_wen;
@@ -802,7 +801,7 @@ export default {
       // we simulate some progress here...
       let percentage = 0
       const interval = setInterval(() => {
-        percentage = Math.min(100, percentage + Math.floor(Math.random() * 7))
+        percentage = Math.min(100, percentage + Math.floor(Math.random() * 5))
         // *22가 원본
 
         // we update the dialog
