@@ -1,6 +1,6 @@
 <template>
   <q-page
-    class="window-height window-width row justify-center items-center"
+    class="q-page q-pt-sm row justify-center items-center"
     style="background: linear-gradient(white, white);"
   >
     <div class="column q-pa-lg">
@@ -26,20 +26,24 @@
                 </template>
               </q-input>
 
-              <q-input square clearable 
-              v-model="password" 
-              type="password" 
-              label="Password">
+              <q-input 
+                square clearable 
+                v-model="password" 
+                type="password" 
+                label="Password"
+              >
 
                 <template v-slot:prepend>
                   <q-icon name="lock" />
                 </template>    
               </q-input>
 
-              <q-input square clearable 
-              v-model="password1" 
-              type="password" 
-              label="Confirm Password">
+              <q-input 
+                quare clearable 
+                v-model="password1" 
+                type="password" 
+                label="Confirm Password"
+              >
                 <template v-slot:prepend>
                   <q-icon name="lock" />    
                 </template>
@@ -51,14 +55,15 @@
           <q-card-actions class="q-pa-md q-gutter-sm">
 
             <q-btn 
-            label="register" 
-            color="primary"
-            @click="alert"
-            type="submit" />
+              label="register" 
+              color="primary"
+              @click="alert"
+              type="submit" />
 
-            <q-btn label="back" 
-            color="primary" 
-            to="/login" /> 
+            <q-btn 
+              label="back" 
+              color="primary" 
+              to="/login" /> 
 
             <q-dialog 
             >
@@ -159,11 +164,15 @@ export default {
 .text-Gugi {
 
   font-size: 30px;
-  font-family: 'Wemakeprice-Regular';
+  font-family: 'Jua';
  
   line-height: 4px;
   font-weight: 100;
 
+}
+
+.block{
+  font-family: 'Jua';
 }
 
 </style>
