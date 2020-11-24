@@ -132,10 +132,13 @@ export default {
     src: url(../assets/KirangHaerang-Regular.ttf);
 }
 
-
+@font-face {
+    font-family: 'Jua';
+    src: url(../assets/Jua-Regular.ttf);
+}
 .q-tab {
   font-size: 30px;
-  font-family: 'Kirang Haerang';
+  font-family: 'Jua';
  
   line-height: 4px;
   font-weight: 100;
