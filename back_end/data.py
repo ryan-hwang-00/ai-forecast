@@ -326,6 +326,8 @@ class prepareData:
         df_train = df_train.drop(columns='date')
         df_test = df_test.drop(columns='date')
 
+        # print(df_test.tail(20))
+
         x_columns = ['year', 'month', 'day',
                      'weekday', 'weeknum', 'weekend', 'national_holiday',
                      'break', 'mean_temp',
@@ -393,7 +395,7 @@ class prepareData:
     def scaled_origin(self):
 
         df, df_train, df_test, sale_qty, x_columns, x_1_columns = self.sep_data2(
-            )
+        )
 
         x_df, x_df_1, y_df = self.sep_xy(
             df, x_columns, x_1_columns)
@@ -415,8 +417,7 @@ class prepareData:
 
         return x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_columns, x_1_columns, sale_qty
 
-    def scaled_data(self,df_train):
-
+    def scaled_data(self, df_train):
 
         x_scaler, x_1_scaler, y_scaler, column_num_x, column_num_x_1, x_columns, x_1_columns, sale_qty = self.scaled_origin()
 

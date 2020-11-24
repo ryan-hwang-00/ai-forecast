@@ -94,7 +94,7 @@ def seven_days():
 
     startdt = datetime.strptime(start_date, "%Y-%m-%d")
 
-    print(merged_df)
+    # print(merged_df)
 
     train_subtracttime = timedelta(days=1)
 
@@ -111,7 +111,7 @@ def seven_days():
     predict_date = predict_date.strftime('%Y-%m-%d')
     print('bug2>>>>>')
     startPredict = start_predict(merged_df, int(store_info), product_info, train_date,
-                              predict_date)
+                                 predict_date)
 
     next_week_sales = startPredict.predictor()
     print('bug3>>>>>')
