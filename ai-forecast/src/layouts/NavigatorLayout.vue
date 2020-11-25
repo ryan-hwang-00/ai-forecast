@@ -53,6 +53,7 @@
               label="예측결과 조회"
               to="/Predict"
             />
+            
             <br>
             <span 
               class="text-h6 text-dark"
@@ -254,7 +255,6 @@ export default {
         this.NavigatorData[5].Value = bus_special_order;
     });
 
-    
   },
 }
 </script>

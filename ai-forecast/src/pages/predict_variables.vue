@@ -594,8 +594,6 @@ export default {
       this.so_days.pop();
       EventBus.$emit("special_order_bus", this.so_days);
       // console.log('so_days>>>>>>', this.so_days)
-      
-
     },
 
 
