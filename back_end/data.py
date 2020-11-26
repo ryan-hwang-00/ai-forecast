@@ -82,7 +82,7 @@ class prepareData:
 
         return x, x_1, y
 
-    def detect_outliers(df, n, features):
+    def detect_outliers(self, df, n, features):
         outlier_indices = []
         for col in features:
             Q1 = np.percentile(df[col], 25)
