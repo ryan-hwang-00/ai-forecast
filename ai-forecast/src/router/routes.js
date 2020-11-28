@@ -7,6 +7,7 @@ const routes = [
       // { path: '', component: () => import('pages/Index.vue') },
       { path: "", component: () => import("pages/home.vue") },
       { path: 'login', component: () => import('pages/login.vue') },
+
       { path: "register", component: () => import("pages/register.vue") },
 
       // { path: "map", component: () => import("pages/map.vue") },
@@ -17,6 +18,7 @@ const routes = [
       { path: "item", component: () => import("pages/item.vue") },
       { path: "chart", component: () => import("pages/chart.vue") },
       { path: "sample", component: () => import("pages/sample.vue") }
+
     ]
   },
 
