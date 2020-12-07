@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import routes from './routes'
+import EvaIcons from 'vue-eva-icons'
+Vue.use(EvaIcons)
 
 Vue.use(VueRouter)
 

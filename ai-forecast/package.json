@@ -9,14 +9,33 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@amcharts/amcharts4": "^4.10.10",
+    "@amcharts/amcharts4-fonts": "^4.0.1",
+    "@amcharts/amcharts4-geodata": "^4.1.19",
+    "@quasar/cli": "^1.1.2",
     "@quasar/extras": "^1.0.0",
+    "@svg-maps/south-korea": "^1.0.1",
     "axios": "^0.18.1",
+    "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
+    "jquery": "^3.5.1",
     "quasar": "^1.0.0",
-    "vue-i18n": "^8.0.0"
+    "validator": "^13.1.17",
+    "vue": "^2.6.12",
+    "vue-chartjs": "^3.5.1",
+    "vue-choropleth": "^0.3.1",
+    "vue-eva-icons": "^1.1.1",
+    "vue-google-maps": "^0.1.21",
+    "vue-i18n": "^8.0.0",
+    "vue-loader": "^15.9.5",
+    "vue-sorted-table": "^1.2.0",
+    "vue-svg-map": "^1.2.0",
+    "vue2-gmap-custom-marker": "^5.6.2",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
-    "@quasar/app": "^2.0.0"
+    "@quasar/app": "^2.0.0",
+    "vue-svg-loader": "^0.16.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
